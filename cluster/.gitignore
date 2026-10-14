@@ -1,0 +1,38 @@
+# Build artifacts
+build/
+bin/
+*.o
+*.a
+*.dylib
+*.so
+*.app
+*.zip
+.qt/
+.rcc/
+Makefile.Debug
+Makefile.Release
+
+# CMake
+CMakeCache.txt
+CMakeFiles/
+cmake_install.cmake
+*.ninja
+.ninja_*
+
+# IDEs and OS
+.DS_Store
+.vscode/
+.idea/
+*.swp
+*.user
+*.user.*
+.gemini/
+.agents/
+
+# Raw downloaded audio (not project assets)
+resources/audio/zedge_startup_tone.mp3
+
+# Clangd and compilation database
+.cache/
+compile_commands.json
+

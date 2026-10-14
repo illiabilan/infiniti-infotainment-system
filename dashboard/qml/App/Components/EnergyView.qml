@@ -1,0 +1,180 @@
+// EnergyView.qml
+// EV energy dashboard: a large battery/range card plus a grid of metric cards.
+// Used as the "Energy" tab of the Control screen.
+
+import QtQuick
+import QtQuick.Controls
+import QtQuick.Layouts
+import App.Theme
+import App.Icons
+import App.Components
+import App.Controllers
+
+Control {
+    id: view
+    property SystemController controller
+    padding: 30
+    topPadding: 0
+    bottomPadding: 20
+
+    contentItem: RowLayout {
+        spacing: Theme.metrics.spacing
+
+        // ---- Battery / range card ----------------------------------------
+        Control {
+            Layout.preferredWidth: 360
+            Layout.fillHeight: true
+
+            padding: 28
+            background: Surface {
+                radius: Theme.metrics.cardRadius
+                neomorph: true
+                color: Theme.colors.tile
+            }
+
+            contentItem: ColumnLayout {
+                spacing: 14
+
+                RowLayout {
+                    spacing: 12
+                    AppIcon { source: Icons.battery; size: 32; color: Theme.colors.success }
+                    Text {
+                        text: view.controller.charging ? "Charging" : "Battery"
+                        color: Theme.colors.textSecondary
+                        font.family: Theme.typography.family
+                        font.pixelSize: Theme.typography.subtitle
+                    }
+                    Item { Layout.fillWidth: true }
+                }
+
+                Text {
+                    text: Math.round(view.controller.batteryLevel * 100) + "%"
+                    color: Theme.colors.textPrimary
+                    font.family: Theme.typography.family
+                    font.pixelSize: 58
+                    font.weight: Theme.typography.weightBold
+                }
+
+                // battery level bar
+                Rectangle {
+                    Layout.fillWidth: true
+                    height: 16
+                    radius: 8
+                    color: Theme.colors.sliderTrack
+                    Rectangle {
+                        width: parent.width * view.controller.batteryLevel
+                        height: parent.height
+                        radius: parent.radius
+                        color: Theme.colors.success
+                        Behavior on width { NumberAnimation { duration: Theme.motion.normal } }
+                    }
+                }
+
+                Text {
+                    text: view.controller.rangeKm + " km range"
+                    color: Theme.colors.textSecondary
+                    font.family: Theme.typography.family
+                    font.pixelSize: Theme.typography.subtitle
+                }
+
+                RowLayout {
+                    Layout.fillWidth: true
+                    spacing: 12
+                    Text {
+                        Layout.fillWidth: true
+                        text: "Charge limit"
+                        color: Theme.colors.textSecondary
+                        font.family: Theme.typography.family
+                        font.pixelSize: Theme.typography.caption
+                    }
+                    Text {
+                        text: "85%"
+                        color: Theme.colors.textPrimary
+                        font.family: Theme.typography.family
+                        font.pixelSize: Theme.typography.subtitle
+                        font.weight: Theme.typography.weightBold
+                    }
+                }
+
+                RowLayout {
+                    Layout.fillWidth: true
+                    spacing: 12
+                    Text {
+                        Layout.fillWidth: true
+                        text: "Scheduled charge"
+                        color: Theme.colors.textSecondary
+                        font.family: Theme.typography.family
+                        font.pixelSize: Theme.typography.caption
+                    }
+                    Text {
+                        text: "23:30"
+                        color: Theme.colors.textPrimary
+                        font.family: Theme.typography.family
+                        font.pixelSize: Theme.typography.subtitle
+                        font.weight: Theme.typography.weightBold
+                    }
+                }
+
+                Item { Layout.fillHeight: true }
+            }
+        }
+
+        // ---- Metric grid -------------------------------------------------
+        GridLayout {
+            Layout.fillWidth: true
+            Layout.fillHeight: true
+            columns: 2
+            rowSpacing: Theme.metrics.spacing
+            columnSpacing: Theme.metrics.spacing
+
+            StatCard {
+                Layout.fillWidth: true; Layout.fillHeight: true
+                icon: Icons.bolt;  accent: Theme.colors.accent
+                value: view.controller.consumption.toFixed(1)
+                label: "kWh / 100 km"
+            }
+            StatCard {
+                Layout.fillWidth: true; Layout.fillHeight: true
+                icon: Icons.leaf;  accent: Theme.colors.success
+                value: view.controller.regen.toFixed(1) + " kWh"
+                label: "Regenerated"
+            }
+            StatCard {
+                Layout.fillWidth: true; Layout.fillHeight: true
+                icon: Icons.road;  accent: Theme.colors.accent
+                value: view.controller.rangeKm + " km"
+                label: "Estimated range"
+            }
+            StatCard {
+                Layout.fillWidth: true; Layout.fillHeight: true
+                icon: Icons.battery; accent: Theme.colors.danger
+                value: view.controller.batteryTemp + "°C"
+                label: "Battery temp"
+            }
+            StatCard {
+                Layout.fillWidth: true; Layout.fillHeight: true
+                icon: Icons.shield; accent: Theme.colors.success
+                value: "96%"
+                label: "Battery health"
+            }
+            StatCard {
+                Layout.fillWidth: true; Layout.fillHeight: true
+                icon: Icons.globe; accent: Theme.colors.success
+                value: "¥18"
+                label: "Est. charge cost"
+            }
+            StatCard {
+                Layout.fillWidth: true; Layout.fillHeight: true
+                icon: Icons.nav; accent: Theme.colors.accent
+                value: "22%"
+                label: "Arrival battery"
+            }
+            StatCard {
+                Layout.fillWidth: true; Layout.fillHeight: true
+                icon: Icons.bolt; accent: Theme.colors.danger
+                value: "32m"
+                label: "Fast charge stop"
+            }
+        }
+    }
+}
