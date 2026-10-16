@@ -30,21 +30,25 @@ Item {
         pressed: active
 
         RowLayout {
-            anchors.centerIn: parent
             spacing: 4
+            anchors { fill: parent; leftMargin: 4; rightMargin: 4 }
+
+            Item { Layout.fillWidth: true; Layout.fillHeight: true }
 
             AppIcon {
                 visible: String(chip.iconSource).length > 0
                 source: chip.iconSource
-                size: 14
-                Layout.preferredWidth: 14
-                Layout.preferredHeight: 14
+                size: 18
                 color: chip.active ? Theme.colors.onaccent : Theme.colors.textSecondary
+                Layout.preferredWidth: 18
+                Layout.preferredHeight: 18
+                Layout.alignment: Qt.AlignVCenter
             }
 
             Text {
                 text: chip.label
                 color: chip.active ? Theme.colors.onaccent : Theme.colors.textSecondary
+                Layout.alignment: Qt.AlignVCenter
                 font {
                     family: Theme.typography.family
                     pixelSize: 8
@@ -52,6 +56,8 @@ Item {
                     weight: Theme.typography.weightMedium
                 }
             }
+
+            Item { Layout.fillWidth: true; Layout.fillHeight: true }
         }
     }
 
@@ -84,7 +90,9 @@ Item {
         property bool dimmed: false
 
         opacity: dimmed ? 0.4 : 1.0
-
+        radius: Theme.metrics.cardRadius
+        color: Theme.colors.surface
+        neomorph: false
         Layout.fillWidth: false
         Layout.fillHeight: true
         Layout.preferredWidth: tempText.implicitWidth + 32
@@ -92,9 +100,6 @@ Item {
         Layout.rightMargin: 4
         Layout.topMargin: 24
         Layout.bottomMargin: 24
-        radius: Theme.metrics.cardRadius
-        color: Theme.colors.surface
-        neomorph: false
 
         ColumnLayout {
             anchors.centerIn: parent
@@ -103,8 +108,9 @@ Item {
 
                 Text {
                     text: dualMode ? "Dual" : zoneLabel
-                    Layout.alignment: Qt.AlignHCenter
+                    color: dualMode ? Theme.colors.success : Theme.colors.textSecondary
                     horizontalAlignment: Text.AlignHCenter
+                    Layout.alignment: Qt.AlignHCenter
                     font {
                         family: Theme.typography.family
                         pixelSize: 14
@@ -112,29 +118,29 @@ Item {
                         letterSpacing: 1
                         weight: Theme.typography.weightMedium
                     }
-                    color: dualMode ? Theme.colors.success : Theme.colors.textSecondary
                 }
 
                 Text {
                     id: tempText
+                    objectName: "tempText"
                     text: tempValue.toFixed(1) + "°C"
-                    Layout.alignment: Qt.AlignHCenter
+                    color: Theme.colors.textPrimary
                     horizontalAlignment: Text.AlignHCenter
+                    Layout.alignment: Qt.AlignHCenter
                     font {
                         family: Theme.typography.family
                         pixelSize: 42
                         bold: true
                         weight: Font.DemiBold
                     }
-                    color: Theme.colors.textPrimary
                 }
             }
     }
 
     RowLayout {
+        spacing: 6
         anchors.fill: parent
         anchors.margins: 8
-        spacing: 6
 
         // ====== ZONE 1: Driver temp only ======
         TempZone {
@@ -145,27 +151,28 @@ Item {
         }
 
         Rectangle {
-            width: 1
-            Layout.fillHeight: true
             color: Theme.colors.divider
+            Layout.preferredWidth: 1
+            Layout.fillHeight: true
         }
 
         // ====== ZONE 2: System Status ======
         Surface {
-            Layout.fillWidth: true
-            Layout.fillHeight: true
             radius: Theme.metrics.cardRadius
             color: Theme.colors.surface
             neomorph: false
             opacity: root.hvacOff ? 0.4 : 1.0
+            Layout.fillWidth: true
+            Layout.fillHeight: true
 
             ColumnLayout {
+                spacing: 4
                 anchors.fill: parent
                 anchors.margins: 8
-                spacing: 4
 
                 Text {
                     text: "CLIMATE"
+                    color: Theme.colors.textSecondary
                     Layout.alignment: Qt.AlignHCenter
                     font {
                         family: Theme.typography.family
@@ -174,29 +181,28 @@ Item {
                         letterSpacing: 1.5
                         weight: Theme.typography.weightBold
                     }
-                    color: Theme.colors.textSecondary
                 }
 
                 Item { Layout.fillWidth: true; Layout.fillHeight: true }
 
                 // Rear defrost + airflow direction + fan speed
                 RowLayout {
+                    spacing: 16
                     Layout.fillWidth: true
                     Layout.alignment: Qt.AlignHCenter
-                    spacing: 16
 
                     AppIcon {
                         source: Icons.rear
                         size: 40
+                        color: (vs && vs.rearDefrostActive) ? Theme.colors.success : Theme.colors.sliderTrack
                         Layout.preferredWidth: 40
                         Layout.preferredHeight: 40
-                        color: (vs && vs.rearDefrostActive) ? Theme.colors.success : Theme.colors.sliderTrack
                     }
 
                     Rectangle {
-                        width: 1
-                        height: 40
                         color: Theme.colors.divider
+                        Layout.preferredWidth: 1
+                        Layout.preferredHeight: 40
                     }
 
                     AppIcon {
@@ -209,15 +215,15 @@ Item {
                             }
                         }
                         size: 40
+                        color: Theme.colors.accent
                         Layout.preferredWidth: 40
                         Layout.preferredHeight: 40
-                        color: Theme.colors.accent
                     }
 
                     Rectangle {
-                        width: 1
-                        height: 40
                         color: Theme.colors.divider
+                        Layout.preferredWidth: 1
+                        Layout.preferredHeight: 40
                     }
 
                     RowLayout {
@@ -227,9 +233,9 @@ Item {
                         AppIcon {
                             source: (vs ? vs.fanSpeed : 3) >= 7 ? Icons.fanMax : Icons.fan
                             size: 40
+                            color: Theme.colors.accent
                             Layout.preferredWidth: 40
                             Layout.preferredHeight: 40
-                            color: Theme.colors.accent
                         }
 
                         FanBars { level: vs ? vs.fanSpeed : 3 }
@@ -238,13 +244,13 @@ Item {
                     Text {
                         visible: root.hvacOff
                         text: "Off"
+                        color: Theme.colors.textSecondary
                         font {
                             family: Theme.typography.family
                             pixelSize: 24
                             bold: true
                             weight: Theme.typography.weightMedium
                         }
-                        color: Theme.colors.textSecondary
                     }
                 }
 
@@ -252,38 +258,38 @@ Item {
 
                 // A/C / AUTO / RECIRC / ECO chips
                 RowLayout {
+                    spacing: 4
                     Layout.fillWidth: true
                     Layout.leftMargin: 24
                     Layout.rightMargin: 24
                     Layout.bottomMargin: 8
-                    spacing: 4
 
-                    Chip { Layout.fillWidth: true; label: "A/C"; iconSource: Icons.ac; active: vs ? vs.acActive : true }
-                    Chip { Layout.fillWidth: true; label: "AUTO"; iconSource: Icons.auto; active: vs ? vs.autoActive : true }
-                    Chip { Layout.fillWidth: true; label: "RECIRC"; iconSource: Icons.rec; active: vs ? vs.recircActive : false }
-                    Chip { Layout.fillWidth: true; label: "ECO"; iconSource: Icons.eco; active: vs ? vs.ecoMode : false }
+                    Chip { label: "A/C"; iconSource: Icons.ac; active: vs ? vs.acActive : true; Layout.fillWidth: true }
+                    Chip { label: "AUTO"; iconSource: Icons.auto; active: vs ? vs.autoActive : true; Layout.fillWidth: true }
+                    Chip { label: "RECIRC"; iconSource: Icons.rec; active: vs ? vs.recircActive : false; Layout.fillWidth: true }
+                    Chip { label: "ECO"; iconSource: Icons.eco; active: vs ? vs.ecoMode : false; Layout.fillWidth: true }
                 }
             }
         }
 
         Rectangle {
-            width: 1
-            Layout.fillHeight: true
             color: Theme.colors.divider
+            Layout.preferredWidth: 1
+            Layout.fillHeight: true
         }
 
         // ====== ZONE 3: Outside temp + Clock ======
         Surface {
-            Layout.fillWidth: true
-            Layout.fillHeight: true
             radius: Theme.metrics.cardRadius
             color: Theme.colors.surface
             neomorph: false
+            Layout.fillWidth: true
+            Layout.fillHeight: true
 
             RowLayout {
+                spacing: 6
                 anchors.fill: parent
                 anchors.margins: 8
-                spacing: 6
 
                 TempZone {
                     zoneLabel: "Outside"
@@ -291,20 +297,21 @@ Item {
                 }
 
                 Rectangle {
-                    width: 1
-                    Layout.fillHeight: true
                     color: Theme.colors.divider
+                    Layout.preferredWidth: 1
+                    Layout.fillHeight: true
                 }
 
                 ColumnLayout {
+                    spacing: 2
                     Layout.fillWidth: true
                     Layout.fillHeight: true
-                    spacing: 2
 
                     Item { Layout.fillWidth: true; Layout.fillHeight: true }
 
                     Text {
                         text: clock ? clock.currentTime : "12:00"
+                        color: Theme.colors.textPrimary
                         Layout.alignment: Qt.AlignHCenter
                         font {
                             family: Theme.typography.family
@@ -312,11 +319,11 @@ Item {
                             bold: true
                             weight: Font.DemiBold
                         }
-                        color: Theme.colors.textPrimary
                     }
 
                     Text {
                         text: clock ? clock.currentDate : "MON 01"
+                        color: Theme.colors.textSecondary
                         Layout.alignment: Qt.AlignHCenter
                         font {
                             family: Theme.typography.family
@@ -324,7 +331,6 @@ Item {
                             bold: true
                             weight: Theme.typography.weightMedium
                         }
-                        color: Theme.colors.textSecondary
                     }
 
                     Item { Layout.fillWidth: true; Layout.fillHeight: true }
@@ -333,9 +339,9 @@ Item {
         }
 
         Rectangle {
-            width: 1
-            Layout.fillHeight: true
             color: Theme.colors.divider
+            Layout.preferredWidth: 1
+            Layout.fillHeight: true
         }
 
         // ====== ZONE 4: Passenger temp only ======
