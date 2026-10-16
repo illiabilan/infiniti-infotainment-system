@@ -43,6 +43,17 @@
         <file>icons/seat.svg</file>
         <file>icons/fan.svg</file>
         <file>icons/defrost.svg</file>
+        <file>icons/face.svg</file>
+        <file>icons/face-feet.svg</file>
+        <file>icons/feet.svg</file>
+        <file>icons/wind-feet.svg</file>
+        <file>icons/wind.svg</file>
+        <file>icons/rec.svg</file>
+        <file>icons/rear.svg</file>
+        <file>icons/ac.svg</file>
+        <file>icons/auto.svg</file>
+        <file>icons/fan-max.svg</file>
+        <file>icons/eco.svg</file>
         <file>icons/infinity.svg</file>
         <file>icons/bulb.svg</file>
         <file>icons/warning.svg</file>

@@ -127,6 +127,16 @@ void ClimateRibbonController::setRecircActive(bool enabled)
     syncToVehicleState();
 }
 
+void ClimateRibbonController::setEcoActive(bool enabled)
+{
+    if (m_ecoActive == enabled)
+        return;
+
+    m_ecoActive = enabled;
+    emit ecoActiveChanged();
+    syncToVehicleState();
+}
+
 void ClimateRibbonController::setFrontDefrostActive(bool enabled)
 {
     if (m_frontDefrostActive == enabled)
@@ -222,6 +232,11 @@ void ClimateRibbonController::toggleRecirc()
     setRecircActive(!m_recircActive);
 }
 
+void ClimateRibbonController::toggleEco()
+{
+    setEcoActive(!m_ecoActive);
+}
+
 void ClimateRibbonController::toggleFrontDefrost()
 {
     setFrontDefrostActive(!m_frontDefrostActive);
@@ -257,6 +272,7 @@ void ClimateRibbonController::attachVehicleState(VehicleState *state)
     m_autoActive = m_state->autoActive();
     m_dualMode = m_state->dualMode();
     m_recircActive = m_state->recircActive();
+    m_ecoActive = m_state->ecoMode();
     m_frontDefrostActive = m_state->frontDefrostActive();
     m_rearDefrostActive = m_state->rearDefrostActive();
     m_driverSeatHeat = m_state->driverSeatHeat();
@@ -272,6 +288,7 @@ void ClimateRibbonController::attachVehicleState(VehicleState *state)
     emit autoActiveChanged();
     emit dualModeChanged();
     emit recircActiveChanged();
+    emit ecoActiveChanged();
     emit frontDefrostActiveChanged();
     emit rearDefrostActiveChanged();
     emit driverSeatHeatChanged();
@@ -350,6 +367,15 @@ void ClimateRibbonController::attachVehicleState(VehicleState *state)
         m_syncingFromState = false;
     });
 
+    connect(m_state, &VehicleState::ecoModeChanged, this, [this]() {
+        if (m_syncingFromState) return;
+        if (m_ecoActive == m_state->ecoMode()) return;
+        m_syncingFromState = true;
+        m_ecoActive = m_state->ecoMode();
+        emit ecoActiveChanged();
+        m_syncingFromState = false;
+    });
+
     connect(m_state, &VehicleState::frontDefrostActiveChanged, this, [this]() {
         if (m_syncingFromState) return;
         if (m_frontDefrostActive == m_state->frontDefrostActive()) return;
@@ -410,6 +436,7 @@ void ClimateRibbonController::syncToVehicleState()
     m_state->setAutoActive(m_autoActive);
     m_state->setDualMode(m_dualMode);
     m_state->setRecircActive(m_recircActive);
+    m_state->setEcoMode(m_ecoActive);
     m_state->setFrontDefrostActive(m_frontDefrostActive);
     m_state->setRearDefrostActive(m_rearDefrostActive);
     m_state->setDriverSeatHeat(m_driverSeatHeat);

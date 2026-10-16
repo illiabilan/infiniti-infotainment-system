@@ -17,6 +17,12 @@ SocketCanBackend::SocketCanBackend(QObject *parent)
 {
 }
 
+SocketCanBackend::SocketCanBackend(const QString &interfaceName, QObject *parent)
+    : CanInterface(parent)
+    , m_interfaceName(interfaceName)
+{
+}
+
 SocketCanBackend::~SocketCanBackend()
 {
     close();
@@ -27,7 +33,11 @@ bool SocketCanBackend::open(const QString &interfaceName)
 #ifdef __linux__
     close();
 
-    m_interfaceName = interfaceName.isEmpty() ? "vcan0" : interfaceName;
+    if (!interfaceName.isEmpty()) {
+        m_interfaceName = interfaceName;
+    } else if (m_interfaceName.isEmpty()) {
+        m_interfaceName = QStringLiteral("vcan0");
+    }
     m_socketFd = ::socket(PF_CAN, SOCK_RAW, CAN_RAW);
     if (m_socketFd < 0) {
         emit errorOccurred(QString("Failed to create CAN socket: %1").arg(std::strerror(errno)));

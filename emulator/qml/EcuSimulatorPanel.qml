@@ -1394,6 +1394,13 @@ Item {
                                 Text { anchors.centerIn: parent; text: "REAR DEF"; font.pixelSize: 7; font.bold: true; color: parent.on ? "#FFA000" : "#8AA2B8" }
                                 MouseArea { anchors.fill: parent; cursorShape: Qt.PointingHandCursor; onClicked: if (typeof controller !== "undefined" && controller) controller.setRearDefrostActive(!controller.rearDefrostActive) }
                             }
+                            Rectangle {
+                                width: (parent.width - 6) / 3; height: 22; radius: 2.5
+                                property bool on: typeof controller !== "undefined" && controller && controller.ecoActive
+                                color: on ? "#182E22" : "#101824"; border.color: on ? "#00E676" : "#203042"
+                                Text { anchors.centerIn: parent; text: "ECO: " + (parent.on ? "ON" : "OFF"); font.pixelSize: 7; font.bold: true; color: parent.on ? "#00E676" : "#8AA2B8" }
+                                MouseArea { anchors.fill: parent; cursorShape: Qt.PointingHandCursor; onClicked: if (typeof controller !== "undefined" && controller) controller.setEcoActive(!controller.ecoActive) }
+                            }
                         }
 
                         // Heated Seats (0..3)

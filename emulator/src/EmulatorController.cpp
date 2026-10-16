@@ -57,6 +57,7 @@ EmulatorController::EmulatorController(VehicleState *state, QObject *parent)
     connect(m_state, &VehicleState::autoActiveChanged, this, &EmulatorController::autoActiveChanged);
     connect(m_state, &VehicleState::dualModeChanged, this, &EmulatorController::dualModeChanged);
     connect(m_state, &VehicleState::recircActiveChanged, this, &EmulatorController::recircActiveChanged);
+    connect(m_state, &VehicleState::ecoModeChanged, this, &EmulatorController::ecoActiveChanged);
     connect(m_state, &VehicleState::frontDefrostActiveChanged, this, &EmulatorController::frontDefrostActiveChanged);
     connect(m_state, &VehicleState::rearDefrostActiveChanged, this, &EmulatorController::rearDefrostActiveChanged);
     connect(m_state, &VehicleState::driverSeatHeatChanged, this, &EmulatorController::driverSeatHeatChanged);
@@ -430,6 +431,12 @@ void EmulatorController::setDualMode(bool b)
 void EmulatorController::setRecircActive(bool b)
 {
     m_state->setRecircActive(b);
+    m_state->broadcastClimate();
+}
+
+void EmulatorController::setEcoActive(bool b)
+{
+    m_state->setEcoMode(b);
     m_state->broadcastClimate();
 }
 

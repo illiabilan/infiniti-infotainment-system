@@ -32,3 +32,7 @@ run-all:
 # Run standalone telemetry emulator bench
 run-emu:
     ./build/emulator/InfinitiEmulatorApp
+
+# Test clima
+test-clima:
+    ./build/emulator/InfinitiEmulatorApp & ./build/climate/InfinitiClimateApp

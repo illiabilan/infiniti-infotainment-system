@@ -91,13 +91,14 @@ static void testCodecs() {
 
     // 7. Climate
     {
-        CanFrame f = NissanCan::encodeClimate(22.5, 23.0, 4, 1, true, false, true, true, false, true, 2, 0);
+        CanFrame f = NissanCan::encodeClimate(22.5, 23.0, 4, 1, true, false, true, true, false, true, 2, 0, true);
         double dTemp = 0.0, pTemp = 0.0;
         int fan = 0, airflow = 0;
         bool ac = false, autoMode = false, dual = false, recirc = false;
         bool fDef = false, rDef = false;
         int dHeat = 0, pHeat = 0;
-        NissanCan::decodeClimate(f, dTemp, pTemp, fan, airflow, ac, autoMode, dual, recirc, fDef, rDef, dHeat, pHeat);
+        bool eco = false;
+        NissanCan::decodeClimate(f, dTemp, pTemp, fan, airflow, ac, autoMode, dual, recirc, fDef, rDef, dHeat, pHeat, eco);
         assert(std::abs(dTemp - 22.5) < 0.2);
         assert(std::abs(pTemp - 23.0) < 0.2);
         assert(fan == 4);
@@ -110,6 +111,7 @@ static void testCodecs() {
         assert(rDef == true);
         assert(dHeat == 2);
         assert(pHeat == 0);
+        assert(eco == true);
     }
 
     // 8. Mode & Theme
@@ -198,13 +200,14 @@ static void testVehicleState() {
     assert(state.engineRunning() == true);
 
     // Simulate incoming Climate CAN frame
-    CanFrame fClimate = NissanCan::encodeClimate(21.0, 21.0, 2, 0, true, true, false, false, false, false, 0, 0);
+    CanFrame fClimate = NissanCan::encodeClimate(21.0, 21.0, 2, 0, true, true, false, false, false, false, 0, 0, true);
     state.processFrame(fClimate);
     assert(std::abs(state.driverTemp() - 21.0) < 0.2);
     assert(state.property("outsideTemp").toInt() == state.ambientTemp());
     assert(state.fanSpeed() == 2);
     assert(state.acActive() == true);
     assert(state.dualMode() == false);
+    assert(state.ecoMode() == true);
 
     // Simulate incoming Occupants & Alerts CAN frame (0x652)
     CanFrame fAlerts = NissanCan::encodeOccupantsAlerts(true, false, true, true, true, 2, 1, true, true, false, true, true);

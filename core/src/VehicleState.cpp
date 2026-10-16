@@ -199,8 +199,9 @@ void VehicleState::processFrame(const CanFrame &frame)
         bool ac = false, autoMode = false, dual = false, recirc = false;
         bool fDefrost = false, rDefrost = false;
         int dHeat = 0, pHeat = 0;
+        bool eco = false;
         NissanCan::decodeClimate(frame, dTemp, pTemp, fan, airflow, ac, autoMode, dual, recirc,
-                                 fDefrost, rDefrost, dHeat, pHeat);
+                                 fDefrost, rDefrost, dHeat, pHeat, eco);
         setDriverTemp(dTemp);
         setPassengerTemp(pTemp);
         setFanSpeed(fan);
@@ -209,6 +210,7 @@ void VehicleState::processFrame(const CanFrame &frame)
         setAutoActive(autoMode);
         setDualMode(dual);
         setRecircActive(recirc);
+        setEcoMode(eco);
         setFrontDefrostActive(fDefrost);
         setRearDefrostActive(rDefrost);
         setDriverSeatHeat(dHeat);
@@ -706,6 +708,13 @@ void VehicleState::setRecircActive(bool val)
     emit recircActiveChanged();
 }
 
+void VehicleState::setEcoMode(bool val)
+{
+    if (m_ecoMode == val) return;
+    m_ecoMode = val;
+    emit ecoModeChanged();
+}
+
 void VehicleState::setFrontDefrostActive(bool val)
 {
     if (m_frontDefrostActive == val) return;
@@ -835,7 +844,7 @@ void VehicleState::broadcastClimate()
     CanFrame f = NissanCan::encodeClimate(m_driverTemp, m_passengerTemp, m_fanSpeed, m_airflowMode,
                                           m_acActive, m_autoActive, m_dualMode, m_recircActive,
                                           m_frontDefrostActive, m_rearDefrostActive,
-                                          m_driverSeatHeat, m_passengerSeatHeat);
+                                          m_driverSeatHeat, m_passengerSeatHeat, m_ecoMode);
     m_canInterface->sendFrame(f);
 }
 

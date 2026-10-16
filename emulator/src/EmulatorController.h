@@ -70,6 +70,7 @@ class EmulatorController : public QObject
     Q_PROPERTY(bool autoActive READ autoActive WRITE setAutoActive NOTIFY autoActiveChanged)
     Q_PROPERTY(bool dualMode READ dualMode WRITE setDualMode NOTIFY dualModeChanged)
     Q_PROPERTY(bool recircActive READ recircActive WRITE setRecircActive NOTIFY recircActiveChanged)
+    Q_PROPERTY(bool ecoActive READ ecoActive WRITE setEcoActive NOTIFY ecoActiveChanged)
     Q_PROPERTY(bool frontDefrostActive READ frontDefrostActive WRITE setFrontDefrostActive NOTIFY frontDefrostActiveChanged)
     Q_PROPERTY(bool rearDefrostActive READ rearDefrostActive WRITE setRearDefrostActive NOTIFY rearDefrostActiveChanged)
     Q_PROPERTY(int driverSeatHeat READ driverSeatHeat WRITE setDriverSeatHeat NOTIFY driverSeatHeatChanged)
@@ -160,6 +161,7 @@ public:
     bool autoActive() const { return m_state->autoActive(); }
     bool dualMode() const { return m_state->dualMode(); }
     bool recircActive() const { return m_state->recircActive(); }
+    bool ecoActive() const { return m_state->ecoMode(); }
     bool frontDefrostActive() const { return m_state->frontDefrostActive(); }
     bool rearDefrostActive() const { return m_state->rearDefrostActive(); }
     int driverSeatHeat() const { return m_state->driverSeatHeat(); }
@@ -250,6 +252,7 @@ public slots:
     void setAutoActive(bool b);
     void setDualMode(bool b);
     void setRecircActive(bool b);
+    void setEcoActive(bool b);
     void setFrontDefrostActive(bool b);
     void setRearDefrostActive(bool b);
     void setDriverSeatHeat(int h);
@@ -370,6 +373,7 @@ signals:
     void autoActiveChanged();
     void dualModeChanged();
     void recircActiveChanged();
+    void ecoActiveChanged();
     void frontDefrostActiveChanged();
     void rearDefrostActiveChanged();
     void driverSeatHeatChanged();

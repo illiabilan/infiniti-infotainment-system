@@ -11,6 +11,7 @@ class SocketCanBackend : public CanInterface
 
 public:
     explicit SocketCanBackend(QObject *parent = nullptr);
+    explicit SocketCanBackend(const QString &interfaceName, QObject *parent = nullptr);
     ~SocketCanBackend() override;
 
     bool open(const QString &interfaceName = QString("vcan0")) override;

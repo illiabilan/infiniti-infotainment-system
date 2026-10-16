@@ -92,6 +92,7 @@ class VehicleState : public QObject
     Q_PROPERTY(bool autoActive READ autoActive WRITE setAutoActive NOTIFY autoActiveChanged)
     Q_PROPERTY(bool dualMode READ dualMode WRITE setDualMode NOTIFY dualModeChanged)
     Q_PROPERTY(bool recircActive READ recircActive WRITE setRecircActive NOTIFY recircActiveChanged)
+    Q_PROPERTY(bool ecoMode READ ecoMode WRITE setEcoMode NOTIFY ecoModeChanged)
     Q_PROPERTY(bool frontDefrostActive READ frontDefrostActive WRITE setFrontDefrostActive NOTIFY frontDefrostActiveChanged)
     Q_PROPERTY(bool rearDefrostActive READ rearDefrostActive WRITE setRearDefrostActive NOTIFY rearDefrostActiveChanged)
     Q_PROPERTY(int driverSeatHeat READ driverSeatHeat WRITE setDriverSeatHeat NOTIFY driverSeatHeatChanged)
@@ -189,6 +190,7 @@ public:
     bool autoActive() const { return m_autoActive; }
     bool dualMode() const { return m_dualMode; }
     bool recircActive() const { return m_recircActive; }
+    bool ecoMode() const { return m_ecoMode; }
     bool frontDefrostActive() const { return m_frontDefrostActive; }
     bool rearDefrostActive() const { return m_rearDefrostActive; }
     int driverSeatHeat() const { return m_driverSeatHeat; }
@@ -275,6 +277,7 @@ public slots:
     void setAutoActive(bool val);
     void setDualMode(bool val);
     void setRecircActive(bool val);
+    void setEcoMode(bool val);
     void setFrontDefrostActive(bool val);
     void setRearDefrostActive(bool val);
     void setDriverSeatHeat(int val);
@@ -378,6 +381,7 @@ signals:
     void autoActiveChanged();
     void dualModeChanged();
     void recircActiveChanged();
+    void ecoModeChanged();
     void frontDefrostActiveChanged();
     void rearDefrostActiveChanged();
     void driverSeatHeatChanged();
@@ -469,6 +473,7 @@ private:
     bool m_autoActive{true};
     bool m_dualMode{true};
     bool m_recircActive{false};
+    bool m_ecoMode{false};
     bool m_frontDefrostActive{false};
     bool m_rearDefrostActive{false};
     int m_driverSeatHeat{0};

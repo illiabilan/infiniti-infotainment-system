@@ -1,6 +1,4 @@
 import QtQuick
-import QtQuick.Controls
-import QtQuick.Effects
 import QtQuick.Layouts
 import App.Theme
 import App.Components
@@ -14,6 +12,7 @@ Item {
 
     readonly property var vs: vehicleState
     readonly property var clock: climateController
+    readonly property bool hvacOff: (vs ? vs.fanSpeed : 3) === 0
 
     // --- Compact chips component ---
     component Chip: Surface {
@@ -21,71 +20,115 @@ Item {
         property string label
         property bool active: false
         property color activeColor: Theme.colors.accent
+        property url iconSource: ""
 
-        implicitWidth: label.length * 9 + 16
+        implicitWidth: label.length * 9 + 16 + (String(iconSource).length > 0 ? 20 : 0)
         implicitHeight: 22
         radius: 4
         color: active ? activeColor : Theme.colors.tile
-        neomorph: true
+        neomorph: false
         pressed: active
 
-        Text {
+        RowLayout {
             anchors.centerIn: parent
-            text: label
-            color: active ? Theme.colors.onaccent : Theme.colors.textSecondary
-            font {
-                family: Theme.typography.family
-                pixelSize: 8
-                bold: true
-                weight: Theme.typography.weightMedium
+            spacing: 4
+
+            AppIcon {
+                visible: String(chip.iconSource).length > 0
+                source: chip.iconSource
+                size: 14
+                Layout.preferredWidth: 14
+                Layout.preferredHeight: 14
+                color: chip.active ? Theme.colors.onaccent : Theme.colors.textSecondary
+            }
+
+            Text {
+                text: chip.label
+                color: chip.active ? Theme.colors.onaccent : Theme.colors.textSecondary
+                font {
+                    family: Theme.typography.family
+                    pixelSize: 8
+                    bold: true
+                    weight: Theme.typography.weightMedium
+                }
             }
         }
     }
 
-    // --- Fan bar ---
+    // --- Fan bar (double size) ---
     component FanBars: Item {
         id: bars
         property int level: 3
 
-        width: 9 * 8
-        height: 14
+        width: 18 * 7
+        height: 40
 
         Repeater {
-            model: 8
+            model: 7
             Rectangle {
-                width: 9
-                height: 14
-                x: index * 11
+                width: 18
+                height: 40
+                x: index * 22
                 y: 0
-                radius: 2
+                radius: 4
                 color: index < bars.level ? Theme.colors.accent : Theme.colors.sliderTrack
             }
         }
     }
 
-    // --- Seat heat indicator ---
-    component SeatHeatLev: Item {
-        id: heat
-        property int level: 0
+    // --- Driver / Passenger temperature zone (wrap-content) ---
+    component TempZone: Surface {
+        property string zoneLabel: "Driver"
+        property real tempValue: 21.5
+        property bool dualMode: false
+        property bool dimmed: false
 
-        implicitWidth: 34
-        implicitHeight: 7
+        opacity: dimmed ? 0.4 : 1.0
 
-        RowLayout {
-            anchors.fill: parent
-            spacing: 2
+        Layout.fillWidth: false
+        Layout.fillHeight: true
+        Layout.preferredWidth: tempText.implicitWidth + 32
+        Layout.leftMargin: 4
+        Layout.rightMargin: 4
+        Layout.topMargin: 24
+        Layout.bottomMargin: 24
+        radius: Theme.metrics.cardRadius
+        color: Theme.colors.surface
+        neomorph: false
 
-            Repeater {
-                model: 3
-                Rectangle {
-                    width: 10
-                    height: 5
-                    radius: 1
-                    color: index < heat.level ? Theme.colors.accent : Theme.colors.iconMuted
-                    opacity: index < heat.level ? 1.0 : 0.5
+        ColumnLayout {
+            anchors.centerIn: parent
+            width: parent.width - 16
+            spacing: 1
+
+                Text {
+                    text: dualMode ? "Dual" : zoneLabel
+                    Layout.alignment: Qt.AlignHCenter
+                    horizontalAlignment: Text.AlignHCenter
+                    font {
+                        family: Theme.typography.family
+                        pixelSize: 14
+                        bold: true
+                        letterSpacing: 1
+                        weight: Theme.typography.weightMedium
+                    }
+                    color: dualMode ? Theme.colors.success : Theme.colors.textSecondary
+                }
+
+                Text {
+                    id: tempText
+                    text: tempValue.toFixed(1) + "°C"
+                    Layout.alignment: Qt.AlignHCenter
+                    horizontalAlignment: Text.AlignHCenter
+                    font {
+                        family: Theme.typography.family
+                        pixelSize: 42
+                        bold: true
+                        weight: Font.DemiBold
+                    }
+                    color: Theme.colors.textPrimary
                 }
             }
-        }
     }
 
     RowLayout {
@@ -93,94 +136,18 @@ Item {
         anchors.margins: 8
         spacing: 6
 
-        // ====== ZONE 1: Driver ======
-        Surface {
-            Layout.fillWidth: true
+        // ====== ZONE 1: Driver temp only ======
+        TempZone {
+            zoneLabel: "Driver"
+            tempValue: vs ? vs.driverTemp : 21.5
+            dualMode: vs ? vs.dualMode : false
+            dimmed: root.hvacOff
+        }
+
+        Rectangle {
+            width: 1
             Layout.fillHeight: true
-            radius: Theme.metrics.cardRadius
-            color: Theme.colors.surface
-            neomorph: true
-
-            RowLayout {
-                anchors.fill: parent
-                anchors.margins: 8
-                spacing: 8
-
-                // Seat heat
-                ColumnLayout {
-                    Layout.preferredWidth: 30
-                    Layout.fillHeight: true
-                    spacing: 1
-
-                    AppIcon {
-                        Layout.alignment: Qt.AlignHCenter
-                        source: Icons.seat
-                        size: 10
-                        color: Theme.colors.icon
-                        Layout.preferredHeight: 16
-                    }
-
-                    SeatHeatLev { level: vs ? vs.driverSeatHeat : 0; Layout.alignment: Qt.AlignHCenter }
-
-                    Text {
-                        text: {
-                            switch(vs ? vs.driverSeatHeat : 0) {
-                            case 1: return "LO";
-                            case 2: return "MED";
-                            case 3: return "HI";
-                            default: return "";
-                            }
-                        }
-                        Layout.alignment: Qt.AlignHCenter
-                        font {
-                            family: Theme.typography.family
-                            pixelSize: 6
-                            bold: true
-                            weight: Theme.typography.weightMedium
-                        }
-                        color: Theme.colors.accent
-                    }
-                }
-
-                // Divider
-                Rectangle {
-                    Layout.preferredWidth: 1
-                    Layout.fillHeight: true
-                    color: Theme.colors.divider
-                }
-
-                // Driver temp
-                ColumnLayout {
-                    Layout.fillWidth: true
-                    Layout.fillHeight: true
-                    spacing: 1
-
-                    Text {
-                        text: "DRV"
-                        Layout.alignment: Qt.AlignHCenter
-                        font {
-                            family: Theme.typography.family
-                            pixelSize: 7
-                            bold: true
-                            letterSpacing: 1
-                            weight: Theme.typography.weightMedium
-                        }
-                        color: Theme.colors.textSecondary
-                    }
-
-                    Text {
-                        text: String((vs ? vs.driverTemp : 21.5).toFixed(1)) + "°C"
-                        Layout.alignment: Qt.AlignHCenter
-                        font {
-                            family: Theme.typography.family
-                            pixelSize: 28
-                            bold: true
-                            weight: Font.DemiBold
-                        }
-                        color: Theme.colors.textPrimary
-                    }
-                }
-            }
+            color: Theme.colors.divider
         }
 
         // ====== ZONE 2: System Status ======
@@ -189,7 +156,8 @@ Item {
             Layout.fillHeight: true
             radius: Theme.metrics.cardRadius
             color: Theme.colors.surface
-            neomorph: true
+            neomorph: false
+            opacity: root.hvacOff ? 0.4 : 1.0
 
             ColumnLayout {
                 anchors.fill: parent
@@ -201,7 +169,7 @@ Item {
                     Layout.alignment: Qt.AlignHCenter
                     font {
                         family: Theme.typography.family
-                        pixelSize: 7
+                        pixelSize: 14
                         bold: true
                         letterSpacing: 1.5
                         weight: Theme.typography.weightBold
@@ -209,265 +177,173 @@ Item {
                     color: Theme.colors.textSecondary
                 }
 
-                // AC / AUTO / RECIRC chips
+                Item { Layout.fillWidth: true; Layout.fillHeight: true }
+
+                // Rear defrost + airflow direction + fan speed
                 RowLayout {
                     Layout.fillWidth: true
                     Layout.alignment: Qt.AlignHCenter
-                    spacing: 4
+                    spacing: 16
 
-                    Chip { label: "A/C"; active: vs ? vs.acActive : true }
-                    Chip { label: "AUTO"; active: vs ? vs.autoActive : true }
-                    Chip { label: "RECIRC"; active: vs ? vs.recircActive : false }
-                }
-
-                // Airflow + Dual
-                RowLayout {
-                    Layout.fillWidth: true
-                    Layout.alignment: Qt.AlignHCenter
-                    spacing: 4
-
-                    Text {
-                        text: {
-                            switch(vs ? vs.airflowMode : 0) {
-                            case 0: return "FACE";
-                            case 1: return "FACE+FEET";
-                            case 2: return "FEET";
-                            case 3: return "DEF+FEET";
-                            default: return "FACE";
-                            }
-                        }
-                        font {
-                            family: Theme.typography.family
-                            pixelSize: 8
-                            bold: true
-                            weight: Theme.typography.weightMedium
-                        }
-                        color: Theme.colors.textPrimary
+                    AppIcon {
+                        source: Icons.rear
+                        size: 40
+                        Layout.preferredWidth: 40
+                        Layout.preferredHeight: 40
+                        color: (vs && vs.rearDefrostActive) ? Theme.colors.success : Theme.colors.sliderTrack
                     }
 
                     Rectangle {
                         width: 1
-                        height: 14
+                        height: 40
                         color: Theme.colors.divider
                     }
 
-                    Text {
-                        text: vs && vs.dualMode ? "DUAL" : "SYNC"
-                        font {
-                            family: Theme.typography.family
-                            pixelSize: 8
-                            bold: true
-                            weight: Theme.typography.weightMedium
+                    AppIcon {
+                        source: {
+                            switch (vs ? vs.airflowMode : 0) {
+                            case 1: return Icons.faceFeet;
+                            case 2: return Icons.feet;
+                            case 3: return Icons.windFeet;
+                            default: return Icons.face;
+                            }
                         }
-                        color: Theme.colors.success
-                    }
-                }
-            }
-        }
-
-        // ====== ZONE 3: Clock + Fan ======
-        Surface {
-            Layout.fillWidth: true
-            Layout.fillHeight: true
-            radius: Theme.metrics.cardRadius
-            color: Theme.colors.surface
-            neomorph: true
-
-            ColumnLayout {
-                anchors.fill: parent
-                anchors.margins: 8
-                spacing: 2
-
-                Text {
-                    text: clock ? clock.currentTime : "12:00"
-                    Layout.alignment: Qt.AlignHCenter
-                    font {
-                        family: Theme.typography.family
-                        pixelSize: 28
-                        bold: true
-                        weight: Font.DemiBold
-                    }
-                    color: Theme.colors.textPrimary
-                }
-
-                Text {
-                    text: (clock ? clock.currentDate : "MON 01") + "  " + String(vs ? vs.outsideTemp : 20) + "°C"
-                    Layout.alignment: Qt.AlignHCenter
-                    font {
-                        family: Theme.typography.family
-                        pixelSize: 8
-                        bold: true
-                        weight: Theme.typography.weightMedium
-                    }
-                    color: Theme.colors.textSecondary
-                }
-
-                RowLayout {
-                    Layout.fillWidth: true
-                    Layout.alignment: Qt.AlignHCenter
-                    spacing: 6
-
-                    Text {
-                        text: "F" + (vs ? vs.fanSpeed : 3)
-                        font {
-                            family: Theme.typography.family
-                            pixelSize: 9
-                            bold: true
-                            weight: Theme.typography.weightBold
-                        }
+                        size: 40
+                        Layout.preferredWidth: 40
+                        Layout.preferredHeight: 40
                         color: Theme.colors.accent
                     }
 
-                    FanBars { level: vs ? vs.fanSpeed : 3 }
+                    Rectangle {
+                        width: 1
+                        height: 40
+                        color: Theme.colors.divider
+                    }
+
+                    RowLayout {
+                        visible: !root.hvacOff
+                        spacing: 6
+
+                        AppIcon {
+                            source: (vs ? vs.fanSpeed : 3) >= 7 ? Icons.fanMax : Icons.fan
+                            size: 40
+                            Layout.preferredWidth: 40
+                            Layout.preferredHeight: 40
+                            color: Theme.colors.accent
+                        }
+
+                        FanBars { level: vs ? vs.fanSpeed : 3 }
+                    }
+
+                    Text {
+                        visible: root.hvacOff
+                        text: "Off"
+                        font {
+                            family: Theme.typography.family
+                            pixelSize: 24
+                            bold: true
+                            weight: Theme.typography.weightMedium
+                        }
+                        color: Theme.colors.textSecondary
+                    }
+                }
+
+                Item { Layout.fillWidth: true; Layout.fillHeight: true }
+
+                // A/C / AUTO / RECIRC / ECO chips
+                RowLayout {
+                    Layout.fillWidth: true
+                    Layout.leftMargin: 24
+                    Layout.rightMargin: 24
+                    Layout.bottomMargin: 8
+                    spacing: 4
+
+                    Chip { Layout.fillWidth: true; label: "A/C"; iconSource: Icons.ac; active: vs ? vs.acActive : true }
+                    Chip { Layout.fillWidth: true; label: "AUTO"; iconSource: Icons.auto; active: vs ? vs.autoActive : true }
+                    Chip { Layout.fillWidth: true; label: "RECIRC"; iconSource: Icons.rec; active: vs ? vs.recircActive : false }
+                    Chip { Layout.fillWidth: true; label: "ECO"; iconSource: Icons.eco; active: vs ? vs.ecoMode : false }
                 }
             }
         }
 
-        // ====== ZONE 4: Defrost + Passenger ======
+        Rectangle {
+            width: 1
+            Layout.fillHeight: true
+            color: Theme.colors.divider
+        }
+
+        // ====== ZONE 3: Outside temp + Clock ======
         Surface {
             Layout.fillWidth: true
             Layout.fillHeight: true
             radius: Theme.metrics.cardRadius
             color: Theme.colors.surface
-            neomorph: true
+            neomorph: false
 
             RowLayout {
                 anchors.fill: parent
                 anchors.margins: 8
                 spacing: 6
 
-                // Defrost status
-                ColumnLayout {
-                    Layout.preferredWidth: 60
-                    Layout.fillHeight: true
-                    spacing: 2
-
-                    Text {
-                        text: "DEF"
-                        Layout.alignment: Qt.AlignHCenter
-                        font {
-                            family: Theme.typography.family
-                            pixelSize: 7
-                            bold: true
-                            letterSpacing: 1
-                            weight: Theme.typography.weightBold
-                        }
-                        color: Theme.colors.textSecondary
-                    }
-
-                    RowLayout {
-                        Layout.fillWidth: true
-                        Layout.alignment: Qt.AlignHCenter
-                        spacing: 3
-
-                        Chip {
-                            label: "F"
-                            active: vs ? vs.frontDefrostActive : false
-                            activeColor: "#FF6B6B"
-                        }
-                        Chip {
-                            label: "R"
-                            active: vs ? vs.rearDefrostActive : false
-                            activeColor: "#FFAA00"
-                        }
-                    }
-
-                    Text {
-                        text: {
-                            const f = vs && vs.frontDefrostActive;
-                            const r = vs && vs.rearDefrostActive;
-                            if (f && r) return "BOTH";
-                            if (f) return "F";
-                            if (r) return "R";
-                            return "";
-                        }
-                        Layout.alignment: Qt.AlignHCenter
-                        font {
-                            family: Theme.typography.family
-                            pixelSize: 7
-                            bold: true
-                            weight: Theme.typography.weightBold
-                        }
-                        color: ((vs && vs.frontDefrostActive) || (vs && vs.rearDefrostActive))
-                               ? Theme.colors.textPrimary : Theme.colors.iconMuted
-                    }
+                TempZone {
+                    zoneLabel: "Outside"
+                    tempValue: vs ? vs.outsideTemp : 20
                 }
 
-                // Divider
                 Rectangle {
                     width: 1
-                    height: 60
+                    Layout.fillHeight: true
                     color: Theme.colors.divider
                 }
 
-                // Passenger temp
                 ColumnLayout {
                     Layout.fillWidth: true
                     Layout.fillHeight: true
-                    spacing: 1
+                    spacing: 2
+
+                    Item { Layout.fillWidth: true; Layout.fillHeight: true }
 
                     Text {
-                        text: "PWR"
+                        text: clock ? clock.currentTime : "12:00"
                         Layout.alignment: Qt.AlignHCenter
                         font {
                             family: Theme.typography.family
-                            pixelSize: 7
-                            bold: true
-                            letterSpacing: 1
-                            weight: Theme.typography.weightMedium
-                        }
-                        color: Theme.colors.textSecondary
-                    }
-
-                    Text {
-                        text: String((vs ? vs.passengerTemp : 21.5).toFixed(1)) + "°C"
-                        Layout.alignment: Qt.AlignHCenter
-                        font {
-                            family: Theme.typography.family
-                            pixelSize: 28
+                            pixelSize: 56
                             bold: true
                             weight: Font.DemiBold
                         }
                         color: Theme.colors.textPrimary
                     }
-                }
-
-                // Passenger seat heat
-                ColumnLayout {
-                    Layout.preferredWidth: 30
-                    Layout.fillHeight: true
-                    spacing: 1
-
-                    AppIcon {
-                        Layout.alignment: Qt.AlignHCenter
-                        source: Icons.seat
-                        size: 10
-                        color: Theme.colors.icon
-                        Layout.preferredHeight: 16
-                    }
-
-                    SeatHeatLev { level: vs ? vs.passengerSeatHeat : 0; Layout.alignment: Qt.AlignHCenter }
 
                     Text {
-                        text: {
-                            switch(vs ? vs.passengerSeatHeat : 0) {
-                            case 1: return "LO";
-                            case 2: return "MED";
-                            case 3: return "HI";
-                            default: return "";
-                            }
-                        }
+                        text: clock ? clock.currentDate : "MON 01"
                         Layout.alignment: Qt.AlignHCenter
                         font {
                             family: Theme.typography.family
-                            pixelSize: 6
+                            pixelSize: 24
                             bold: true
                             weight: Theme.typography.weightMedium
                         }
-                        color: Theme.colors.accent
+                        color: Theme.colors.textSecondary
                     }
+
+                    Item { Layout.fillWidth: true; Layout.fillHeight: true }
                 }
             }
+        }
+
+        Rectangle {
+            width: 1
+            Layout.fillHeight: true
+            color: Theme.colors.divider
+        }
+
+        // ====== ZONE 4: Passenger temp only ======
+        TempZone {
+            zoneLabel: "Passenger"
+            tempValue: vs ? vs.passengerTemp : 21.5
+            dualMode: vs ? vs.dualMode : false
+            dimmed: root.hvacOff
         }
     }
 }

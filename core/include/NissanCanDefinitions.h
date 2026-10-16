@@ -355,7 +355,7 @@ inline void decodeInfotainmentMfd(const CanFrame& f, bool& isMediaPlaying, std::
 inline CanFrame encodeClimate(double driverTemp, double passTemp, int fanSpeed, int airflowMode,
                               bool ac, bool autoMode, bool dual, bool recirc,
                               bool frontDefrost, bool rearDefrost,
-                              int driverSeatHeat, int passSeatHeat) {
+                              int driverSeatHeat, int passSeatHeat, bool eco = false) {
     CanFrame f = CanFrame::make(ID_CLIMATE_HVAC, 8);
     f.data[0] = static_cast<uint8_t>(driverTemp * 2.0);
     f.data[1] = static_cast<uint8_t>(passTemp * 2.0);
@@ -369,6 +369,7 @@ inline CanFrame encodeClimate(double driverTemp, double passTemp, int fanSpeed, 
     if (recirc) flags |= (1 << 3);
     if (frontDefrost) flags |= (1 << 4);
     if (rearDefrost) flags |= (1 << 5);
+    if (eco) flags |= (1 << 6);
     f.data[4] = flags;
 
     f.data[5] = static_cast<uint8_t>(driverSeatHeat);
@@ -379,7 +380,7 @@ inline CanFrame encodeClimate(double driverTemp, double passTemp, int fanSpeed, 
 inline void decodeClimate(const CanFrame& f, double& driverTemp, double& passTemp, int& fanSpeed, int& airflowMode,
                           bool& ac, bool& autoMode, bool& dual, bool& recirc,
                           bool& frontDefrost, bool& rearDefrost,
-                          int& driverSeatHeat, int& passSeatHeat) {
+                          int& driverSeatHeat, int& passSeatHeat, bool& eco) {
     driverTemp = static_cast<double>(f.data[0]) / 2.0;
     passTemp = static_cast<double>(f.data[1]) / 2.0;
     fanSpeed = static_cast<int>(f.data[2]);
@@ -391,6 +392,7 @@ inline void decodeClimate(const CanFrame& f, double& driverTemp, double& passTem
     recirc = (f.data[4] & (1 << 3)) != 0;
     frontDefrost = (f.data[4] & (1 << 4)) != 0;
     rearDefrost = (f.data[4] & (1 << 5)) != 0;
+    eco = (f.data[4] & (1 << 6)) != 0;
 
     driverSeatHeat = static_cast<int>(f.data[5]);
     passSeatHeat = static_cast<int>(f.data[6]);

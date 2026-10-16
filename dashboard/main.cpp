@@ -3,6 +3,7 @@
 #include <QQmlContext>
 #include <QtQml>
 #include <QUrl>
+#include <QDebug>
 
 #include <memory>
 
@@ -29,11 +30,20 @@ int main(int argc, char *argv[])
 
     std::unique_ptr<CanInterface> canBackend;
 #if defined(Q_OS_LINUX)
-    canBackend = std::make_unique<SocketCanBackend>("vcan0");
+    {
+        auto socketBackend = std::make_unique<SocketCanBackend>("vcan0");
+        if (socketBackend->open()) {
+            canBackend = std::move(socketBackend);
+        } else {
+            qWarning() << "vcan0 unavailable, falling back to multicast mock CAN";
+            canBackend = std::make_unique<MockCanBackend>();
+            canBackend->open();
+        }
+    }
 #else
     canBackend = std::make_unique<MockCanBackend>();
-#endif
     canBackend->open();
+#endif
 
     auto vehicleState = std::make_unique<VehicleState>();
     vehicleState->attachCanInterface(canBackend.get());
