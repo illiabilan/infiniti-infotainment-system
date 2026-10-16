@@ -65,3 +65,15 @@ Development host: macOS (Apple Silicon) with dual-mode execution (native macOS w
    - `scripts/can_replay.py`: Python CLI script to broadcast simulated or logged Nissan CAN frames at 50Hz.
    - `configs/weston.ini`: Reference Weston configuration mapping output names to physical HDMI/Type-C ports on RK3588.
 
+### Core Code Principles
+
+1. Number of lines in the files has NOT to be more then 700 lines.
+2. It is important to keep the codebase clean and structured.
+    - Use proper C++ naming convention;
+    - Use proper OOP breakdown wile writing a code;
+    - SOLID, DRY and KISS are mandatory for this project. (especialy Single Responsibility Principles and DRY.)
+3. Keep code testable but DO NOT create "tests for tests".  
+
+## 3 Harness tools
+
+Instead of `bash` tool, always use `process` tool!

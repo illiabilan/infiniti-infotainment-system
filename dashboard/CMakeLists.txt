@@ -31,7 +31,14 @@ qt_add_executable(SmartUiDashboard
     qml.qrc
 )
 
+target_include_directories(SmartUiDashboard PRIVATE
+    ${CMAKE_CURRENT_SOURCE_DIR}
+    ${CMAKE_SOURCE_DIR}/core/include
+)
+
 target_link_libraries(SmartUiDashboard PRIVATE
+    InfinitiCore
+    InfinitiTheme
     Qt6::Core
     Qt6::Gui
     Qt6::Quick

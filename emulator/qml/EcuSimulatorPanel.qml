@@ -235,7 +235,8 @@ Item {
                     { id: 4, tag: "SYS-04", name: "Chassis/TPMS" },
                     { id: 5, tag: "SYS-05", name: "Doors/Body" },
                     { id: 6, tag: "SYS-06", name: "Safety/Belts" },
-                    { id: 7, tag: "SYS-07", name: "Infotainment" }
+                    { id: 7, tag: "SYS-07", name: "Infotainment" },
+                    { id: 8, tag: "SYS-08", name: "Climate/HVAC" }
                 ]
 
                 delegate: Rectangle {
@@ -341,11 +342,11 @@ Item {
                                     MouseArea {
                                         anchors.fill: parent; cursorShape: Qt.PointingHandCursor
                                         onClicked: {
-                                            if (typeof controller !== "undefined" && controller) {
-                                                if (modelData.state === 5) controller.triggerShutdown();
-                                                else if (modelData.state === 1) controller.triggerStartupSequence();
-                                                else controller.setClusterState(modelData.state);
-                                            }
+                                             if (typeof controller !== "undefined" && controller) {
+                                                 if (modelData.state === 5) controller.triggerShutdown();
+                                                 else if (modelData.state === 1) controller.triggerStartupSequence();
+                                                 else controller.setClusterState(modelData.state);
+                                             }
                                         }
                                     }
                                 }
@@ -886,6 +887,24 @@ Item {
                                 }
                             }
                         }
+
+                        // Central Lock Toggle
+                        Rectangle {
+                            width: parent.width; height: 20; radius: 2.5
+                            property bool locked: typeof controller !== "undefined" && controller && controller.centralLock
+                            color: locked ? "#18261C" : "#35FFA000"
+                            border.color: locked ? "#00E676" : "#FFA000"
+                            Text {
+                                anchors.centerIn: parent
+                                text: "CENTRAL LOCK: " + (parent.locked ? "LOCKED" : "UNLOCKED")
+                                font.pixelSize: 7; font.bold: true
+                                color: parent.locked ? "#00E676" : "#FFA000"
+                            }
+                            MouseArea {
+                                anchors.fill: parent; cursorShape: Qt.PointingHandCursor
+                                onClicked: if (typeof controller !== "undefined" && controller) controller.setCentralLock(!controller.centralLock)
+                            }
+                        }
                     }
                 }
 
@@ -1187,6 +1206,225 @@ Item {
                                             controller.setDriverAttentionActive(false);
                                         }
                                     }
+                                }
+                            }
+                        }
+                    }
+                }
+
+                // -----------------------------------------------------
+                // CARD 8: CLIMATE & HVAC CONTROL (SYS-08)
+                // -----------------------------------------------------
+                Rectangle {
+                    visible: ecuRoot.activeTab === 0 || ecuRoot.activeTab === 8
+                    width: modulesFlow.cardWidth; height: 215; radius: 5
+                    color: "#0C1624"; border.color: "#1A2C40"; border.width: 1
+
+                    Column {
+                        anchors.fill: parent; anchors.margins: 7; spacing: 4
+
+                        Row {
+                            width: parent.width; spacing: 4
+                            Rectangle { width: 3; height: 10; radius: 1.5; color: "#29B6F6"; anchors.verticalCenter: parent.verticalCenter }
+                            Text { text: "SYS-08: DUAL-ZONE CLIMATE & HVAC"; font.pixelSize: 8; font.bold: true; color: "#29B6F6" }
+                        }
+
+                        // Driver & Passenger Temp Steppers + Ambient Temp
+                        Row {
+                            width: parent.width; spacing: 3
+                            Rectangle {
+                                width: (parent.width - 6) / 3; height: 34; radius: 3
+                                color: "#101824"; border.color: "#203042"
+                                Column {
+                                    anchors.centerIn: parent; spacing: 1
+                                    Text { text: "DRIVER TEMP"; font.pixelSize: 6; color: "#7890A8"; anchors.horizontalCenter: parent.horizontalCenter }
+                                    Row {
+                                        anchors.horizontalCenter: parent.horizontalCenter; spacing: 4
+                                        Text {
+                                            text: " - "
+                                            font.pixelSize: 9; font.bold: true; color: "#29B6F6"
+                                            MouseArea { anchors.fill: parent; cursorShape: Qt.PointingHandCursor; onClicked: if (typeof controller !== "undefined" && controller) controller.setDriverTemp(Math.max(16.0, controller.driverTemp - 0.5)) }
+                                        }
+                                        Text {
+                                            text: (typeof controller !== "undefined" && controller ? controller.driverTemp.toFixed(1) : "21.0") + "°"
+                                            font.pixelSize: 8; font.bold: true; color: "#FFFFFF"
+                                        }
+                                        Text {
+                                            text: " + "
+                                            font.pixelSize: 9; font.bold: true; color: "#FF8A65"
+                                            MouseArea { anchors.fill: parent; cursorShape: Qt.PointingHandCursor; onClicked: if (typeof controller !== "undefined" && controller) controller.setDriverTemp(Math.min(30.0, controller.driverTemp + 0.5)) }
+                                        }
+                                    }
+                                }
+                            }
+                            Rectangle {
+                                width: (parent.width - 6) / 3; height: 34; radius: 3
+                                color: "#101824"; border.color: "#203042"
+                                Column {
+                                    anchors.centerIn: parent; spacing: 1
+                                    Text { text: "PASS TEMP"; font.pixelSize: 6; color: "#7890A8"; anchors.horizontalCenter: parent.horizontalCenter }
+                                    Row {
+                                        anchors.horizontalCenter: parent.horizontalCenter; spacing: 4
+                                        Text {
+                                            text: " - "
+                                            font.pixelSize: 9; font.bold: true; color: "#29B6F6"
+                                            MouseArea { anchors.fill: parent; cursorShape: Qt.PointingHandCursor; onClicked: if (typeof controller !== "undefined" && controller) controller.setPassengerTemp(Math.max(16.0, controller.passengerTemp - 0.5)) }
+                                        }
+                                        Text {
+                                            text: (typeof controller !== "undefined" && controller ? controller.passengerTemp.toFixed(1) : "22.5") + "°"
+                                            font.pixelSize: 8; font.bold: true; color: "#FFFFFF"
+                                        }
+                                        Text {
+                                            text: " + "
+                                            font.pixelSize: 9; font.bold: true; color: "#FF8A65"
+                                            MouseArea { anchors.fill: parent; cursorShape: Qt.PointingHandCursor; onClicked: if (typeof controller !== "undefined" && controller) controller.setPassengerTemp(Math.min(30.0, controller.passengerTemp + 0.5)) }
+                                        }
+                                    }
+                                }
+                            }
+                            Rectangle {
+                                width: (parent.width - 6) / 3; height: 34; radius: 3
+                                color: "#101824"; border.color: "#203042"
+                                Column {
+                                    anchors.centerIn: parent; spacing: 1
+                                    Text { text: "OUTSIDE TEMP"; font.pixelSize: 6; color: "#7890A8"; anchors.horizontalCenter: parent.horizontalCenter }
+                                    Row {
+                                        anchors.horizontalCenter: parent.horizontalCenter; spacing: 4
+                                        Text {
+                                            text: " - "
+                                            font.pixelSize: 9; font.bold: true; color: "#29B6F6"
+                                            MouseArea { anchors.fill: parent; cursorShape: Qt.PointingHandCursor; onClicked: if (typeof controller !== "undefined" && controller) controller.setAmbientTemp(Math.max(-30, controller.ambientTemp - 1)) }
+                                        }
+                                        Text {
+                                            text: (typeof controller !== "undefined" && controller ? controller.ambientTemp : 24) + "°C"
+                                            font.pixelSize: 8; font.bold: true; color: "#00E5FF"
+                                        }
+                                        Text {
+                                            text: " + "
+                                            font.pixelSize: 9; font.bold: true; color: "#FF8A65"
+                                            MouseArea { anchors.fill: parent; cursorShape: Qt.PointingHandCursor; onClicked: if (typeof controller !== "undefined" && controller) controller.setAmbientTemp(Math.min(50, controller.ambientTemp + 1)) }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+
+                        // Fan Speed (0..7) & Airflow Mode (0..3)
+                        Row {
+                            width: parent.width; spacing: 3
+                            Rectangle {
+                                width: (parent.width - 3) / 2; height: 24; radius: 2.5
+                                color: "#101824"; border.color: "#203042"
+                                Row {
+                                    anchors.centerIn: parent; spacing: 6
+                                    Text {
+                                        text: "FAN -"
+                                        font.pixelSize: 7; font.bold: true; color: "#29B6F6"
+                                        MouseArea { anchors.fill: parent; cursorShape: Qt.PointingHandCursor; onClicked: if (typeof controller !== "undefined" && controller) controller.setFanSpeed(Math.max(0, controller.fanSpeed - 1)) }
+                                    }
+                                    Text {
+                                        text: "LVL " + (typeof controller !== "undefined" && controller ? controller.fanSpeed : 3)
+                                        font.pixelSize: 7; font.bold: true; color: "#FFFFFF"
+                                    }
+                                    Text {
+                                        text: "FAN +"
+                                        font.pixelSize: 7; font.bold: true; color: "#00E676"
+                                        MouseArea { anchors.fill: parent; cursorShape: Qt.PointingHandCursor; onClicked: if (typeof controller !== "undefined" && controller) controller.setFanSpeed(Math.min(7, controller.fanSpeed + 1)) }
+                                    }
+                                }
+                            }
+                            Rectangle {
+                                width: (parent.width - 3) / 2; height: 24; radius: 2.5
+                                property int modeIdx: typeof controller !== "undefined" && controller ? controller.airflowMode : 0
+                                color: "#101824"; border.color: "#29B6F6"
+                                Text {
+                                    anchors.centerIn: parent
+                                    text: "FLOW: " + (parent.modeIdx === 0 ? "FACE" : (parent.modeIdx === 1 ? "BI-LEVEL" : (parent.modeIdx === 2 ? "FLOOR" : "DEF+FLR")))
+                                    font.pixelSize: 7; font.bold: true; color: "#29B6F6"
+                                }
+                                MouseArea {
+                                    anchors.fill: parent; cursorShape: Qt.PointingHandCursor
+                                    onClicked: if (typeof controller !== "undefined" && controller) controller.setAirflowMode((controller.airflowMode + 1) % 4)
+                                }
+                            }
+                        }
+
+                        // HVAC Mode Toggles (A/C, AUTO, DUAL, RECIRC, FRONT DEF, REAR DEF)
+                        Grid {
+                            columns: 3; width: parent.width; spacing: 3
+                            Rectangle {
+                                width: (parent.width - 6) / 3; height: 22; radius: 2.5
+                                property bool on: typeof controller !== "undefined" && controller && controller.acActive
+                                color: on ? "#182E22" : "#101824"; border.color: on ? "#00E676" : "#203042"
+                                Text { anchors.centerIn: parent; text: "A/C: " + (parent.on ? "ON" : "OFF"); font.pixelSize: 7; font.bold: true; color: parent.on ? "#00E676" : "#8AA2B8" }
+                                MouseArea { anchors.fill: parent; cursorShape: Qt.PointingHandCursor; onClicked: if (typeof controller !== "undefined" && controller) controller.setAcActive(!controller.acActive) }
+                            }
+                            Rectangle {
+                                width: (parent.width - 6) / 3; height: 22; radius: 2.5
+                                property bool on: typeof controller !== "undefined" && controller && controller.autoActive
+                                color: on ? "#182E22" : "#101824"; border.color: on ? "#00E676" : "#203042"
+                                Text { anchors.centerIn: parent; text: "AUTO: " + (parent.on ? "ON" : "OFF"); font.pixelSize: 7; font.bold: true; color: parent.on ? "#00E676" : "#8AA2B8" }
+                                MouseArea { anchors.fill: parent; cursorShape: Qt.PointingHandCursor; onClicked: if (typeof controller !== "undefined" && controller) controller.setAutoActive(!controller.autoActive) }
+                            }
+                            Rectangle {
+                                width: (parent.width - 6) / 3; height: 22; radius: 2.5
+                                property bool on: typeof controller !== "undefined" && controller && controller.dualMode
+                                color: on ? "#182E22" : "#101824"; border.color: on ? "#00E676" : "#203042"
+                                Text { anchors.centerIn: parent; text: "DUAL: " + (parent.on ? "ON" : "OFF"); font.pixelSize: 7; font.bold: true; color: parent.on ? "#00E676" : "#8AA2B8" }
+                                MouseArea { anchors.fill: parent; cursorShape: Qt.PointingHandCursor; onClicked: if (typeof controller !== "undefined" && controller) controller.setDualMode(!controller.dualMode) }
+                            }
+                            Rectangle {
+                                width: (parent.width - 6) / 3; height: 22; radius: 2.5
+                                property bool on: typeof controller !== "undefined" && controller && controller.recircActive
+                                color: on ? "#142232" : "#101824"; border.color: on ? "#29B6F6" : "#203042"
+                                Text { anchors.centerIn: parent; text: "RECIRC: " + (parent.on ? "ON" : "OFF"); font.pixelSize: 7; font.bold: true; color: parent.on ? "#29B6F6" : "#8AA2B8" }
+                                MouseArea { anchors.fill: parent; cursorShape: Qt.PointingHandCursor; onClicked: if (typeof controller !== "undefined" && controller) controller.setRecircActive(!controller.recircActive) }
+                            }
+                            Rectangle {
+                                width: (parent.width - 6) / 3; height: 22; radius: 2.5
+                                property bool on: typeof controller !== "undefined" && controller && controller.frontDefrostActive
+                                color: on ? "#35FFA000" : "#101824"; border.color: on ? "#FFA000" : "#203042"
+                                Text { anchors.centerIn: parent; text: "FRNT DEF"; font.pixelSize: 7; font.bold: true; color: parent.on ? "#FFA000" : "#8AA2B8" }
+                                MouseArea { anchors.fill: parent; cursorShape: Qt.PointingHandCursor; onClicked: if (typeof controller !== "undefined" && controller) controller.setFrontDefrostActive(!controller.frontDefrostActive) }
+                            }
+                            Rectangle {
+                                width: (parent.width - 6) / 3; height: 22; radius: 2.5
+                                property bool on: typeof controller !== "undefined" && controller && controller.rearDefrostActive
+                                color: on ? "#35FFA000" : "#101824"; border.color: on ? "#FFA000" : "#203042"
+                                Text { anchors.centerIn: parent; text: "REAR DEF"; font.pixelSize: 7; font.bold: true; color: parent.on ? "#FFA000" : "#8AA2B8" }
+                                MouseArea { anchors.fill: parent; cursorShape: Qt.PointingHandCursor; onClicked: if (typeof controller !== "undefined" && controller) controller.setRearDefrostActive(!controller.rearDefrostActive) }
+                            }
+                        }
+
+                        // Heated Seats (0..3)
+                        Row {
+                            width: parent.width; spacing: 3
+                            Rectangle {
+                                width: (parent.width - 3) / 2; height: 22; radius: 2.5
+                                property int heat: typeof controller !== "undefined" && controller ? controller.driverSeatHeat : 0
+                                color: heat > 0 ? "#281C18" : "#101824"; border.color: heat > 0 ? "#FF8A65" : "#203042"
+                                Text {
+                                    anchors.centerIn: parent
+                                    text: "DRV SEAT HEAT: " + (parent.heat === 0 ? "OFF" : ("LVL " + parent.heat))
+                                    font.pixelSize: 7; font.bold: true; color: parent.heat > 0 ? "#FF8A65" : "#8AA2B8"
+                                }
+                                MouseArea {
+                                    anchors.fill: parent; cursorShape: Qt.PointingHandCursor
+                                    onClicked: if (typeof controller !== "undefined" && controller) controller.setDriverSeatHeat((controller.driverSeatHeat + 1) % 4)
+                                }
+                            }
+                            Rectangle {
+                                width: (parent.width - 3) / 2; height: 22; radius: 2.5
+                                property int heat: typeof controller !== "undefined" && controller ? controller.passengerSeatHeat : 0
+                                color: heat > 0 ? "#281C18" : "#101824"; border.color: heat > 0 ? "#FF8A65" : "#203042"
+                                Text {
+                                    anchors.centerIn: parent
+                                    text: "PAS SEAT HEAT: " + (parent.heat === 0 ? "OFF" : ("LVL " + parent.heat))
+                                    font.pixelSize: 7; font.bold: true; color: parent.heat > 0 ? "#FF8A65" : "#8AA2B8"
+                                }
+                                MouseArea {
+                                    anchors.fill: parent; cursorShape: Qt.PointingHandCursor
+                                    onClicked: if (typeof controller !== "undefined" && controller) controller.setPassengerSeatHeat((controller.passengerSeatHeat + 1) % 4)
                                 }
                             }
                         }

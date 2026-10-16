@@ -1,4 +1,5 @@
 #include "ClimateRibbonController.h"
+#include "VehicleState.h"
 
 ClimateRibbonController::ClimateRibbonController(QObject *parent)
     : QObject(parent)
@@ -40,6 +41,7 @@ void ClimateRibbonController::setDriverTemp(double temp)
         m_passengerTemp = clamped;
         emit passengerTempChanged();
     }
+    syncToVehicleState();
 }
 
 void ClimateRibbonController::setPassengerTemp(double temp)
@@ -55,6 +57,7 @@ void ClimateRibbonController::setPassengerTemp(double temp)
         m_dualMode = true;
         emit dualModeChanged();
     }
+    syncToVehicleState();
 }
 
 void ClimateRibbonController::setDualMode(bool enabled)
@@ -69,6 +72,7 @@ void ClimateRibbonController::setDualMode(bool enabled)
         m_passengerTemp = m_driverTemp;
         emit passengerTempChanged();
     }
+    syncToVehicleState();
 }
 
 void ClimateRibbonController::setFanSpeed(int speed)
@@ -79,6 +83,7 @@ void ClimateRibbonController::setFanSpeed(int speed)
 
     m_fanSpeed = clamped;
     emit fanSpeedChanged();
+    syncToVehicleState();
 }
 
 void ClimateRibbonController::setAirflowMode(int mode)
@@ -89,6 +94,7 @@ void ClimateRibbonController::setAirflowMode(int mode)
 
     m_airflowMode = clamped;
     emit airflowModeChanged();
+    syncToVehicleState();
 }
 
 void ClimateRibbonController::setAcActive(bool enabled)
@@ -98,6 +104,7 @@ void ClimateRibbonController::setAcActive(bool enabled)
 
     m_acActive = enabled;
     emit acActiveChanged();
+    syncToVehicleState();
 }
 
 void ClimateRibbonController::setAutoActive(bool enabled)
@@ -107,6 +114,7 @@ void ClimateRibbonController::setAutoActive(bool enabled)
 
     m_autoActive = enabled;
     emit autoActiveChanged();
+    syncToVehicleState();
 }
 
 void ClimateRibbonController::setRecircActive(bool enabled)
@@ -116,6 +124,7 @@ void ClimateRibbonController::setRecircActive(bool enabled)
 
     m_recircActive = enabled;
     emit recircActiveChanged();
+    syncToVehicleState();
 }
 
 void ClimateRibbonController::setFrontDefrostActive(bool enabled)
@@ -134,6 +143,7 @@ void ClimateRibbonController::setFrontDefrostActive(bool enabled)
             emit fanSpeedChanged();
         }
     }
+    syncToVehicleState();
 }
 
 void ClimateRibbonController::setRearDefrostActive(bool enabled)
@@ -143,6 +153,7 @@ void ClimateRibbonController::setRearDefrostActive(bool enabled)
 
     m_rearDefrostActive = enabled;
     emit rearDefrostActiveChanged();
+    syncToVehicleState();
 }
 
 void ClimateRibbonController::setDriverSeatHeat(int level)
@@ -153,6 +164,7 @@ void ClimateRibbonController::setDriverSeatHeat(int level)
 
     m_driverSeatHeat = clamped;
     emit driverSeatHeatChanged();
+    syncToVehicleState();
 }
 
 void ClimateRibbonController::setPassengerSeatHeat(int level)
@@ -163,6 +175,7 @@ void ClimateRibbonController::setPassengerSeatHeat(int level)
 
     m_passengerSeatHeat = clamped;
     emit passengerSeatHeatChanged();
+    syncToVehicleState();
 }
 
 void ClimateRibbonController::setOutsideTemp(int temp)
@@ -227,4 +240,181 @@ void ClimateRibbonController::cycleDriverSeatHeat()
 void ClimateRibbonController::cyclePassengerSeatHeat()
 {
     setPassengerSeatHeat((m_passengerSeatHeat + 1) % 4);
+}
+
+void ClimateRibbonController::attachVehicleState(VehicleState *state)
+{
+    m_state = state;
+    if (!m_state)
+        return;
+
+    m_syncingFromState = true;
+    m_driverTemp = m_state->driverTemp();
+    m_passengerTemp = m_state->passengerTemp();
+    m_fanSpeed = m_state->fanSpeed();
+    m_airflowMode = m_state->airflowMode();
+    m_acActive = m_state->acActive();
+    m_autoActive = m_state->autoActive();
+    m_dualMode = m_state->dualMode();
+    m_recircActive = m_state->recircActive();
+    m_frontDefrostActive = m_state->frontDefrostActive();
+    m_rearDefrostActive = m_state->rearDefrostActive();
+    m_driverSeatHeat = m_state->driverSeatHeat();
+    m_passengerSeatHeat = m_state->passengerSeatHeat();
+    m_outsideTemp = m_state->ambientTemp();
+    m_syncingFromState = false;
+
+    emit driverTempChanged();
+    emit passengerTempChanged();
+    emit fanSpeedChanged();
+    emit airflowModeChanged();
+    emit acActiveChanged();
+    emit autoActiveChanged();
+    emit dualModeChanged();
+    emit recircActiveChanged();
+    emit frontDefrostActiveChanged();
+    emit rearDefrostActiveChanged();
+    emit driverSeatHeatChanged();
+    emit passengerSeatHeatChanged();
+    emit outsideTempChanged();
+
+    connect(m_state, &VehicleState::driverTempChanged, this, [this]() {
+        if (m_syncingFromState) return;
+        if (std::abs(m_driverTemp - m_state->driverTemp()) < 0.1) return;
+        m_syncingFromState = true;
+        m_driverTemp = m_state->driverTemp();
+        emit driverTempChanged();
+        m_syncingFromState = false;
+    });
+
+    connect(m_state, &VehicleState::passengerTempChanged, this, [this]() {
+        if (m_syncingFromState) return;
+        if (std::abs(m_passengerTemp - m_state->passengerTemp()) < 0.1) return;
+        m_syncingFromState = true;
+        m_passengerTemp = m_state->passengerTemp();
+        emit passengerTempChanged();
+        m_syncingFromState = false;
+    });
+
+    connect(m_state, &VehicleState::fanSpeedChanged, this, [this]() {
+        if (m_syncingFromState) return;
+        if (m_fanSpeed == m_state->fanSpeed()) return;
+        m_syncingFromState = true;
+        m_fanSpeed = m_state->fanSpeed();
+        emit fanSpeedChanged();
+        m_syncingFromState = false;
+    });
+
+    connect(m_state, &VehicleState::airflowModeChanged, this, [this]() {
+        if (m_syncingFromState) return;
+        if (m_airflowMode == m_state->airflowMode()) return;
+        m_syncingFromState = true;
+        m_airflowMode = m_state->airflowMode();
+        emit airflowModeChanged();
+        m_syncingFromState = false;
+    });
+
+    connect(m_state, &VehicleState::acActiveChanged, this, [this]() {
+        if (m_syncingFromState) return;
+        if (m_acActive == m_state->acActive()) return;
+        m_syncingFromState = true;
+        m_acActive = m_state->acActive();
+        emit acActiveChanged();
+        m_syncingFromState = false;
+    });
+
+    connect(m_state, &VehicleState::autoActiveChanged, this, [this]() {
+        if (m_syncingFromState) return;
+        if (m_autoActive == m_state->autoActive()) return;
+        m_syncingFromState = true;
+        m_autoActive = m_state->autoActive();
+        emit autoActiveChanged();
+        m_syncingFromState = false;
+    });
+
+    connect(m_state, &VehicleState::dualModeChanged, this, [this]() {
+        if (m_syncingFromState) return;
+        if (m_dualMode == m_state->dualMode()) return;
+        m_syncingFromState = true;
+        m_dualMode = m_state->dualMode();
+        emit dualModeChanged();
+        m_syncingFromState = false;
+    });
+
+    connect(m_state, &VehicleState::recircActiveChanged, this, [this]() {
+        if (m_syncingFromState) return;
+        if (m_recircActive == m_state->recircActive()) return;
+        m_syncingFromState = true;
+        m_recircActive = m_state->recircActive();
+        emit recircActiveChanged();
+        m_syncingFromState = false;
+    });
+
+    connect(m_state, &VehicleState::frontDefrostActiveChanged, this, [this]() {
+        if (m_syncingFromState) return;
+        if (m_frontDefrostActive == m_state->frontDefrostActive()) return;
+        m_syncingFromState = true;
+        m_frontDefrostActive = m_state->frontDefrostActive();
+        emit frontDefrostActiveChanged();
+        m_syncingFromState = false;
+    });
+
+    connect(m_state, &VehicleState::rearDefrostActiveChanged, this, [this]() {
+        if (m_syncingFromState) return;
+        if (m_rearDefrostActive == m_state->rearDefrostActive()) return;
+        m_syncingFromState = true;
+        m_rearDefrostActive = m_state->rearDefrostActive();
+        emit rearDefrostActiveChanged();
+        m_syncingFromState = false;
+    });
+
+    connect(m_state, &VehicleState::driverSeatHeatChanged, this, [this]() {
+        if (m_syncingFromState) return;
+        if (m_driverSeatHeat == m_state->driverSeatHeat()) return;
+        m_syncingFromState = true;
+        m_driverSeatHeat = m_state->driverSeatHeat();
+        emit driverSeatHeatChanged();
+        m_syncingFromState = false;
+    });
+
+    connect(m_state, &VehicleState::passengerSeatHeatChanged, this, [this]() {
+        if (m_syncingFromState) return;
+        if (m_passengerSeatHeat == m_state->passengerSeatHeat()) return;
+        m_syncingFromState = true;
+        m_passengerSeatHeat = m_state->passengerSeatHeat();
+        emit passengerSeatHeatChanged();
+        m_syncingFromState = false;
+    });
+
+    connect(m_state, &VehicleState::ambientTempChanged, this, [this]() {
+        if (m_syncingFromState) return;
+        if (m_outsideTemp == m_state->ambientTemp()) return;
+        m_syncingFromState = true;
+        m_outsideTemp = m_state->ambientTemp();
+        emit outsideTempChanged();
+        m_syncingFromState = false;
+    });
+}
+
+void ClimateRibbonController::syncToVehicleState()
+{
+    if (!m_state || m_syncingFromState)
+        return;
+
+    m_syncingFromState = true;
+    m_state->setDriverTemp(m_driverTemp);
+    m_state->setPassengerTemp(m_passengerTemp);
+    m_state->setFanSpeed(m_fanSpeed);
+    m_state->setAirflowMode(m_airflowMode);
+    m_state->setAcActive(m_acActive);
+    m_state->setAutoActive(m_autoActive);
+    m_state->setDualMode(m_dualMode);
+    m_state->setRecircActive(m_recircActive);
+    m_state->setFrontDefrostActive(m_frontDefrostActive);
+    m_state->setRearDefrostActive(m_rearDefrostActive);
+    m_state->setDriverSeatHeat(m_driverSeatHeat);
+    m_state->setPassengerSeatHeat(m_passengerSeatHeat);
+    m_syncingFromState = false;
+
+    m_state->broadcastClimate();
 }

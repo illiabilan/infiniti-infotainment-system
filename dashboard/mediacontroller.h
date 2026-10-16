@@ -4,6 +4,7 @@
 #include <QObject>
 #include <QTimer>
 #include <QVector>
+#include "VehicleState.h"
 
 class MediaController : public QObject
 {
@@ -21,6 +22,7 @@ class MediaController : public QObject
 
 public:
     explicit MediaController(QObject *parent = nullptr);
+    void attachVehicleState(VehicleState *state);
 
     bool playing() const;
     qreal trackProgress() const;
@@ -73,6 +75,8 @@ private:
     bool m_musicDetailOpen = false;
     bool m_liked = false;
     bool m_repeatOn = false;
+    VehicleState *m_state = nullptr;
+    bool m_syncingFromState = false;
 };
 
 #endif // MEDIACONTROLLER_H

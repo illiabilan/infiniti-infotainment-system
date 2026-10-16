@@ -25,10 +25,164 @@ ClusterController::ClusterController(QObject *parent)
     m_rearBlinkTimer = new QTimer(this);
     m_rearBlinkTimer->setInterval(350);
     connect(m_rearBlinkTimer, &QTimer::timeout, this, &ClusterController::onRearBlinkTick);
+
+    m_lightPopupTimer = new QTimer(this);
+    m_lightPopupTimer->setSingleShot(true);
+    connect(m_lightPopupTimer, &QTimer::timeout, this, &ClusterController::onLightPopupTimeout);
+}
+
+void ClusterController::attachVehicleState(VehicleState *state)
+{
+    m_vehicleState = state;
+    if (!m_vehicleState) return;
+
+    connect(m_vehicleState, &VehicleState::speedChanged, this, [this]() { setSpeed(m_vehicleState->speed()); });
+    connect(m_vehicleState, &VehicleState::rpmChanged, this, [this]() { setRpm(m_vehicleState->rpm()); });
+    connect(m_vehicleState, &VehicleState::gearChanged, this, [this]() { setGear(m_vehicleState->gear()); });
+    connect(m_vehicleState, &VehicleState::coolantTempChanged, this, [this]() { setTempLevel(m_vehicleState->coolantTemp()); });
+    connect(m_vehicleState, &VehicleState::fuelLevelChanged, this, [this]() { setFuelLevel(m_vehicleState->fuelLevel()); });
+    connect(m_vehicleState, &VehicleState::ambientTempChanged, this, [this]() { setAmbientTemp(m_vehicleState->ambientTemp()); });
+    connect(m_vehicleState, &VehicleState::odoKmChanged, this, [this]() { setOdoKm(m_vehicleState->odoKm()); });
+    connect(m_vehicleState, &VehicleState::dteKmChanged, this, [this]() { setDteKm(m_vehicleState->dteKm()); });
+
+    connect(m_vehicleState, &VehicleState::flPsiChanged, this, [this]() { setFlPsi(m_vehicleState->flPsi()); });
+    connect(m_vehicleState, &VehicleState::frPsiChanged, this, [this]() { setFrPsi(m_vehicleState->frPsi()); });
+    connect(m_vehicleState, &VehicleState::rlPsiChanged, this, [this]() { setRlPsi(m_vehicleState->rlPsi()); });
+    connect(m_vehicleState, &VehicleState::rrPsiChanged, this, [this]() { setRrPsi(m_vehicleState->rrPsi()); });
+
+    connect(m_vehicleState, &VehicleState::parkBrakeActiveChanged, this, [this]() { setParkBrakeActive(m_vehicleState->parkBrakeActive()); });
+    connect(m_vehicleState, &VehicleState::seatbeltActiveChanged, this, [this]() { setSeatbeltActive(m_vehicleState->seatbeltActive()); });
+    connect(m_vehicleState, &VehicleState::absActiveChanged, this, [this]() { setAbsActive(m_vehicleState->absActive()); });
+    connect(m_vehicleState, &VehicleState::tpmsActiveChanged, this, [this]() { setTpmsActive(m_vehicleState->tpmsActive()); });
+    connect(m_vehicleState, &VehicleState::batteryActiveChanged, this, [this]() { setBatteryActive(m_vehicleState->batteryActive()); });
+    connect(m_vehicleState, &VehicleState::oilActiveChanged, this, [this]() { setOilActive(m_vehicleState->oilActive()); });
+    connect(m_vehicleState, &VehicleState::checkEngineActiveChanged, this, [this]() { setCheckEngineActive(m_vehicleState->checkEngineActive()); });
+    connect(m_vehicleState, &VehicleState::escActiveChanged, this, [this]() { setEscActive(m_vehicleState->escActive()); });
+    connect(m_vehicleState, &VehicleState::escOffActiveChanged, this, [this]() { setEscOffActive(m_vehicleState->escOffActive()); });
+    connect(m_vehicleState, &VehicleState::steeringActiveChanged, this, [this]() { setSteeringActive(m_vehicleState->steeringActive()); });
+    connect(m_vehicleState, &VehicleState::airbagActiveChanged, this, [this]() { setAirbagActive(m_vehicleState->airbagActive()); });
+    connect(m_vehicleState, &VehicleState::masterWarningChanged, this, [this]() { setMasterWarning(m_vehicleState->masterWarning()); });
+    connect(m_vehicleState, &VehicleState::lightWarningChanged, this, [this]() { setLightWarning(m_vehicleState->lightWarning()); });
+
+    connect(m_vehicleState, &VehicleState::leftIndicatorChanged, this, [this]() { setLeftIndicator(m_vehicleState->leftIndicator()); });
+    connect(m_vehicleState, &VehicleState::rightIndicatorChanged, this, [this]() { setRightIndicator(m_vehicleState->rightIndicator()); });
+    connect(m_vehicleState, &VehicleState::highBeamChanged, this, [this]() { setHighBeam(m_vehicleState->highBeam()); });
+    connect(m_vehicleState, &VehicleState::lowBeamChanged, this, [this]() { setLowBeam(m_vehicleState->lowBeam()); });
+    connect(m_vehicleState, &VehicleState::positionLampChanged, this, [this]() { setPositionLamp(m_vehicleState->positionLamp()); });
+    connect(m_vehicleState, &VehicleState::lightModeChanged, this, [this]() { setLightMode(m_vehicleState->lightMode()); });
+
+    connect(m_vehicleState, &VehicleState::doorFrontLeftChanged, this, [this]() { setDoorFrontLeft(m_vehicleState->doorFrontLeft()); });
+    connect(m_vehicleState, &VehicleState::doorFrontRightChanged, this, [this]() { setDoorFrontRight(m_vehicleState->doorFrontRight()); });
+    connect(m_vehicleState, &VehicleState::doorRearLeftChanged, this, [this]() { setDoorRearLeft(m_vehicleState->doorRearLeft()); });
+    connect(m_vehicleState, &VehicleState::doorRearRightChanged, this, [this]() { setDoorRearRight(m_vehicleState->doorRearRight()); });
+    connect(m_vehicleState, &VehicleState::hoodOpenChanged, this, [this]() { setBonnetOpen(m_vehicleState->hoodOpen()); });
+    connect(m_vehicleState, &VehicleState::trunkOpenChanged, this, [this]() { setTrunkOpen(m_vehicleState->trunkOpen()); });
+
+    connect(m_vehicleState, &VehicleState::cruiseEnabledChanged, this, [this]() { setCruiseEnabled(m_vehicleState->cruiseEnabled()); });
+    connect(m_vehicleState, &VehicleState::rearLeftBuckledChanged, this, [this]() { setRearLeftBuckled(m_vehicleState->rearLeftBuckled()); });
+    connect(m_vehicleState, &VehicleState::rearCenterBuckledChanged, this, [this]() { setRearCenterBuckled(m_vehicleState->rearCenterBuckled()); });
+    connect(m_vehicleState, &VehicleState::rearRightBuckledChanged, this, [this]() { setRearRightBuckled(m_vehicleState->rearRightBuckled()); });
+    connect(m_vehicleState, &VehicleState::rearAlarmActiveChanged, this, [this]() {
+        if (m_vehicleState->rearAlarmActive()) {
+            if (!m_rearAlarmActive)
+                triggerRearAlarm(m_rearAlarmSeat >= 0 ? m_rearAlarmSeat : 0);
+        } else {
+            stopRearAlarm();
+        }
+    });
+    connect(m_vehicleState, &VehicleState::smartKeyPromptChanged, this, [this]() { setSmartKeyPrompt(m_vehicleState->smartKeyPrompt()); });
+    connect(m_vehicleState, &VehicleState::startPedalPromptChanged, this, [this]() { setStartPedalPrompt(m_vehicleState->startPedalPrompt()); });
+    connect(m_vehicleState, &VehicleState::pressStartAgainAlertChanged, this, [this]() { setPressStartAgainAlert(m_vehicleState->pressStartAgainAlert()); });
+    connect(m_vehicleState, &VehicleState::driverAttentionActiveChanged, this, [this]() { setDriverAttentionActive(m_vehicleState->driverAttentionActive()); });
+    connect(m_vehicleState, &VehicleState::reduceSpeedAlertChanged, this, [this]() { setReduceSpeedAlert(m_vehicleState->reduceSpeedAlert()); });
+    connect(m_vehicleState, &VehicleState::sunroofOpenChanged, this, [this]() { setSunroofOpen(m_vehicleState->sunroofOpen()); });
+    connect(m_vehicleState, &VehicleState::sunroofAlertActiveChanged, this, [this]() { setSunroofAlertActive(m_vehicleState->sunroofAlertActive()); });
+
+    connect(m_vehicleState, &VehicleState::isMediaPlayingChanged, this, [this]() { setIsMediaPlaying(m_vehicleState->isMediaPlaying()); });
+    connect(m_vehicleState, &VehicleState::mediaSourceChanged, this, [this]() { setMediaSource(m_vehicleState->mediaSource()); });
+    connect(m_vehicleState, &VehicleState::showMediaPopupChanged, this, [this]() { setShowMediaPopup(m_vehicleState->showMediaPopup()); });
+    connect(m_vehicleState, &VehicleState::menuTabChanged, this, [this]() { setMenuTab(m_vehicleState->menuTab()); });
+    connect(m_vehicleState, &VehicleState::tripPageChanged, this, [this]() { setTripPage(m_vehicleState->tripPage()); });
+
+    connect(m_vehicleState, &VehicleState::mediaNextRequested, this, &ClusterController::nextMediaTrack);
+    connect(m_vehicleState, &VehicleState::mediaPrevRequested, this, &ClusterController::prevMediaTrack);
+    connect(m_vehicleState, &VehicleState::tripResetRequested, this, &ClusterController::resetActiveTripPage);
+    connect(m_vehicleState, &VehicleState::mediaPopupRequested, this, &ClusterController::triggerMediaPopup);
+    connect(m_vehicleState, &VehicleState::infoMenuRequested, this, &ClusterController::triggerInfoMenu);
+
+    connect(m_vehicleState, &VehicleState::clusterStateChanged, this, [this]() {
+        m_sequenceTimer.stop();
+        setClusterState(m_vehicleState->clusterState());
+    });
+    connect(m_vehicleState, &VehicleState::themeColorChanged, this, [this]() { setThemeColor(m_vehicleState->themeColor()); });
+
+    // Initial sync
+    setClusterState(m_vehicleState->clusterState());
+    setSpeed(m_vehicleState->speed());
+    setRpm(m_vehicleState->rpm());
+    setGear(m_vehicleState->gear());
+    setFuelLevel(m_vehicleState->fuelLevel());
+    setTempLevel(m_vehicleState->coolantTemp());
+    setAmbientTemp(m_vehicleState->ambientTemp());
+    setOdoKm(m_vehicleState->odoKm());
+    setDteKm(m_vehicleState->dteKm());
+    setFlPsi(m_vehicleState->flPsi());
+    setFrPsi(m_vehicleState->frPsi());
+    setRlPsi(m_vehicleState->rlPsi());
+    setRrPsi(m_vehicleState->rrPsi());
+    setParkBrakeActive(m_vehicleState->parkBrakeActive());
+    setSeatbeltActive(m_vehicleState->seatbeltActive());
+    setAbsActive(m_vehicleState->absActive());
+    setTpmsActive(m_vehicleState->tpmsActive());
+    setBatteryActive(m_vehicleState->batteryActive());
+    setOilActive(m_vehicleState->oilActive());
+    setCheckEngineActive(m_vehicleState->checkEngineActive());
+    setEscActive(m_vehicleState->escActive());
+    setEscOffActive(m_vehicleState->escOffActive());
+    setSteeringActive(m_vehicleState->steeringActive());
+    setAirbagActive(m_vehicleState->airbagActive());
+    setMasterWarning(m_vehicleState->masterWarning());
+    setLightWarning(m_vehicleState->lightWarning());
+    setLeftIndicator(m_vehicleState->leftIndicator());
+    setRightIndicator(m_vehicleState->rightIndicator());
+    setHighBeam(m_vehicleState->highBeam());
+    setLowBeam(m_vehicleState->lowBeam());
+    setPositionLamp(m_vehicleState->positionLamp());
+    setLightMode(m_vehicleState->lightMode());
+    setShowLightPopup(false);
+    setDoorFrontLeft(m_vehicleState->doorFrontLeft());
+    setDoorFrontRight(m_vehicleState->doorFrontRight());
+    setDoorRearLeft(m_vehicleState->doorRearLeft());
+    setDoorRearRight(m_vehicleState->doorRearRight());
+    setBonnetOpen(m_vehicleState->hoodOpen());
+    setTrunkOpen(m_vehicleState->trunkOpen());
+    setCruiseEnabled(m_vehicleState->cruiseEnabled());
+    setRearLeftBuckled(m_vehicleState->rearLeftBuckled());
+    setRearCenterBuckled(m_vehicleState->rearCenterBuckled());
+    setRearRightBuckled(m_vehicleState->rearRightBuckled());
+    if (!m_vehicleState->rearAlarmActive())
+        stopRearAlarm();
+    setSmartKeyPrompt(m_vehicleState->smartKeyPrompt());
+    setStartPedalPrompt(m_vehicleState->startPedalPrompt());
+    setPressStartAgainAlert(m_vehicleState->pressStartAgainAlert());
+    setDriverAttentionActive(m_vehicleState->driverAttentionActive());
+    setReduceSpeedAlert(m_vehicleState->reduceSpeedAlert());
+    setSunroofOpen(m_vehicleState->sunroofOpen());
+    setSunroofAlertActive(m_vehicleState->sunroofAlertActive());
+    setIsMediaPlaying(m_vehicleState->isMediaPlaying());
+    setMediaSource(m_vehicleState->mediaSource());
+    setShowMediaPopup(m_vehicleState->showMediaPopup());
+    setMenuTab(m_vehicleState->menuTab());
+    setTripPage(m_vehicleState->tripPage());
+    setThemeColor(m_vehicleState->themeColor());
 }
 
 void ClusterController::triggerStartupSequence()
 {
+    if (m_vehicleState) {
+        return;
+    }
+
     m_sequenceStepIndex = 1;
     setClusterState(StateInitialStartup);
 
@@ -178,7 +332,7 @@ void ClusterController::driveDemo()
 
 void ClusterController::onDriveSimulationTick()
 {
-    if (m_isDemoDriving && m_clusterState == StateNormalTrip) {
+    if (!m_vehicleState && m_isDemoDriving && m_clusterState == StateNormalTrip) {
         m_demoCycleTime += 0.033; // 30Hz tick
 
         // Simulation loop duration: ~60 seconds total cycle
@@ -354,7 +508,7 @@ void ClusterController::onDriveSimulationTick()
             emit demoScenarioChanged();
         }
     }
-    else if (!m_isDemoDriving && m_speed > 0 && m_clusterState == StateNormalTrip) {
+    else if (!m_vehicleState && !m_isDemoDriving && m_speed > 0 && m_clusterState == StateNormalTrip) {
         // Manual driving live speed telemetry calculation
         double speedVal = static_cast<double>(m_speed);
 
@@ -547,14 +701,21 @@ void ClusterController::setShowLightPopup(bool show) {
         m_showLightPopup = show;
         emit showLightPopupChanged();
     }
+    if (m_showLightPopup && m_lightPopupTimer) {
+        m_lightPopupTimer->start(3000);
+    } else if (!m_showLightPopup && m_lightPopupTimer) {
+        m_lightPopupTimer->stop();
+    }
 }
 
 void ClusterController::setLightMode(int mode) {
-    m_lightMode = std::clamp(mode, 0, 3);
-    emit lightModeChanged();
-
-    // Trigger popup display on center screen
-    setShowLightPopup(true);
+    int clamped = std::clamp(mode, 0, 3);
+    bool changed = (m_lightMode != clamped);
+    m_lightMode = clamped;
+    if (changed) {
+        emit lightModeChanged();
+        setShowLightPopup(true);
+    }
 
     // Update telltale states directly:
     // 0 = OFF (all off)
@@ -598,38 +759,40 @@ void ClusterController::setSpeed(int s)
             setClusterState(StateNormalTrip);
         }
 
-        // =============================================================
-        // APEX HORIZON 5-SPEED SMART AUTO AMT COUPLING:
-        // Speed directly drives realistic AMT gear shifts and engine RPM
-        // =============================================================
-        int currentGearNum = 1;
-        if (m_speed <= 18) currentGearNum = 1;
-        else if (m_speed <= 36) currentGearNum = 2;
-        else if (m_speed <= 58) currentGearNum = 3;
-        else if (m_speed <= 82) currentGearNum = 4;
-        else currentGearNum = 5;
+        if (!m_vehicleState) {
+            // =============================================================
+            // APEX HORIZON 5-SPEED SMART AUTO AMT COUPLING:
+            // Speed directly drives realistic AMT gear shifts and engine RPM
+            // =============================================================
+            int currentGearNum = 1;
+            if (m_speed <= 18) currentGearNum = 1;
+            else if (m_speed <= 36) currentGearNum = 2;
+            else if (m_speed <= 58) currentGearNum = 3;
+            else if (m_speed <= 82) currentGearNum = 4;
+            else currentGearNum = 5;
 
-        // Gear display (Auto D mode)
-        if (m_speed == 0) {
-            setGear("D");
-        } else {
-            setGear(QString("D%1").arg(currentGearNum));
-        }
-
-        // Realistic AMT RPM curve coupled to speed per gear
-        if (m_clusterState == StateNormalTrip) {
+            // Gear display (Auto D mode)
             if (m_speed == 0) {
-                setRpm(0.8); // 800 RPM smooth idle in D
+                setGear("D");
             } else {
-                double gearMin = (currentGearNum == 1) ? 0.0 : (currentGearNum == 2 ? 18.0 : (currentGearNum == 3 ? 36.0 : (currentGearNum == 4 ? 58.0 : 82.0)));
-                double gearMax = (currentGearNum == 1) ? 24.0 : (currentGearNum == 2 ? 44.0 : (currentGearNum == 3 ? 68.0 : (currentGearNum == 4 ? 92.0 : 175.0)));
-                double frac = (m_speed - gearMin) / std::max(1.0, gearMax - gearMin);
-                frac = std::clamp(frac, 0.0, 1.0);
+                setGear(QString("D%1").arg(currentGearNum));
+            }
 
-                double baseR = (currentGearNum == 1) ? 0.9 : 1.4;
-                double topR = (currentGearNum == 5) ? 5.8 : 3.2;
-                double calcRpm = baseR + frac * (topR - baseR);
-                setRpm(std::round(calcRpm * 10.0) / 10.0);
+            // Realistic AMT RPM curve coupled to speed per gear
+            if (m_clusterState == StateNormalTrip) {
+                if (m_speed == 0) {
+                    setRpm(0.8); // 800 RPM smooth idle in D
+                } else {
+                    double gearMin = (currentGearNum == 1) ? 0.0 : (currentGearNum == 2 ? 18.0 : (currentGearNum == 3 ? 36.0 : (currentGearNum == 4 ? 58.0 : 82.0)));
+                    double gearMax = (currentGearNum == 1) ? 24.0 : (currentGearNum == 2 ? 44.0 : (currentGearNum == 3 ? 68.0 : (currentGearNum == 4 ? 92.0 : 175.0)));
+                    double frac = (m_speed - gearMin) / std::max(1.0, gearMax - gearMin);
+                    frac = std::clamp(frac, 0.0, 1.0);
+
+                    double baseR = (currentGearNum == 1) ? 0.9 : 1.4;
+                    double topR = (currentGearNum == 5) ? 5.8 : 3.2;
+                    double calcRpm = baseR + frac * (topR - baseR);
+                    setRpm(std::round(calcRpm * 10.0) / 10.0);
+                }
             }
         }
 
@@ -951,6 +1114,10 @@ void ClusterController::onRearBlinkTick() {
 
 void ClusterController::onRearAlarmTimeout() {
     stopRearAlarm();
+}
+
+void ClusterController::onLightPopupTimeout() {
+    setShowLightPopup(false);
 }
 
 void ClusterController::setLanguage(const QString& lang) {

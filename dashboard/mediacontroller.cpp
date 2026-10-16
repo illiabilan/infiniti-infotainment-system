@@ -28,6 +28,60 @@ MediaController::MediaController(QObject *parent)
     updateElapsedFromProgress();
 }
 
+void MediaController::attachVehicleState(VehicleState *state)
+{
+    m_state = state;
+    if (!m_state)
+        return;
+
+    auto syncSource = [this]() {
+        const QString src = m_state->mediaSource();
+        if (src.contains(QStringLiteral("Radio"), Qt::CaseInsensitive)) {
+            setMusicTab(2);
+            setTrackIndex(2);
+        } else if (src.contains(QStringLiteral("USB"), Qt::CaseInsensitive)) {
+            setMusicTab(1);
+            setTrackIndex(1);
+        } else if (src.contains(QStringLiteral("Apple"), Qt::CaseInsensitive)) {
+            setMusicTab(3);
+            setTrackIndex(3);
+        } else {
+            setMusicTab(0);
+            setTrackIndex(0);
+        }
+    };
+
+    connect(m_state, &VehicleState::isMediaPlayingChanged, this, [this]() {
+        m_syncingFromState = true;
+        setPlaying(m_state->isMediaPlaying());
+        m_syncingFromState = false;
+    });
+    connect(m_state, &VehicleState::mediaSourceChanged, this, [this, syncSource]() {
+        m_syncingFromState = true;
+        syncSource();
+        m_syncingFromState = false;
+    });
+    connect(m_state, &VehicleState::mediaNextRequested, this, [this]() {
+        m_syncingFromState = true;
+        setTrackIndex((m_trackIndex + 1) % m_tracks.size());
+        m_syncingFromState = false;
+    });
+    connect(m_state, &VehicleState::mediaPrevRequested, this, [this]() {
+        m_syncingFromState = true;
+        if (m_trackProgress > 0.05) {
+            setTrackProgress(0.0);
+        } else {
+            setTrackIndex((m_trackIndex - 1 + m_tracks.size()) % m_tracks.size());
+        }
+        m_syncingFromState = false;
+    });
+
+    m_syncingFromState = true;
+    setPlaying(m_state->isMediaPlaying());
+    syncSource();
+    m_syncingFromState = false;
+}
+
 bool MediaController::playing() const { return m_playing; }
 qreal MediaController::trackProgress() const { return m_trackProgress; }
 QString MediaController::trackTitle() const { return m_tracks.at(m_trackIndex).title; }
@@ -49,6 +103,10 @@ void MediaController::setPlaying(bool playing)
     else
         m_progressTimer.stop();
     emit mediaChanged();
+    if (!m_syncingFromState && m_state) {
+        m_state->setIsMediaPlaying(m_playing);
+        m_state->broadcastInfotainmentMfd();
+    }
 }
 
 void MediaController::setTrackProgress(qreal progress)
@@ -68,6 +126,17 @@ void MediaController::setMusicTab(int tab)
         return;
     m_musicTab = normalized;
     emit mediaChanged();
+    if (!m_syncingFromState && m_state) {
+        if (m_musicTab == 1)
+            m_state->setMediaSource(QStringLiteral("USB Music"));
+        else if (m_musicTab == 2)
+            m_state->setMediaSource(QStringLiteral("FM Radio"));
+        else if (m_musicTab == 3)
+            m_state->setMediaSource(QStringLiteral("Apple Music"));
+        else
+            m_state->setMediaSource(QStringLiteral("Bluetooth Audio"));
+        m_state->broadcastInfotainmentMfd();
+    }
 }
 
 void MediaController::setMusicDetailOpen(bool open)
@@ -103,14 +172,20 @@ void MediaController::previousTrack()
 {
     if (m_trackProgress > 0.05) {
         setTrackProgress(0.0);
-        return;
+    } else {
+        setTrackIndex((m_trackIndex - 1 + m_tracks.size()) % m_tracks.size());
     }
-    setTrackIndex((m_trackIndex - 1 + m_tracks.size()) % m_tracks.size());
+    if (!m_syncingFromState && m_state) {
+        m_state->broadcastInfotainmentMfd(2);
+    }
 }
 
 void MediaController::nextTrack()
 {
     setTrackIndex((m_trackIndex + 1) % m_tracks.size());
+    if (!m_syncingFromState && m_state) {
+        m_state->broadcastInfotainmentMfd(1);
+    }
 }
 
 void MediaController::toggleLiked()
@@ -137,12 +212,28 @@ void MediaController::selectSource(const QString &source)
 {
     if (source.contains(QStringLiteral("favorite"), Qt::CaseInsensitive)) {
         setTrackIndex(1);
+        if (!m_syncingFromState && m_state) {
+            m_state->setMediaSource(QStringLiteral("USB Music"));
+            m_state->broadcastInfotainmentMfd();
+        }
     } else if (source.contains(QStringLiteral("radio"), Qt::CaseInsensitive)) {
         setTrackIndex(2);
+        if (!m_syncingFromState && m_state) {
+            m_state->setMediaSource(QStringLiteral("FM Radio"));
+            m_state->broadcastInfotainmentMfd();
+        }
     } else if (source.contains(QStringLiteral("popular"), Qt::CaseInsensitive)) {
         setTrackIndex(3);
+        if (!m_syncingFromState && m_state) {
+            m_state->setMediaSource(QStringLiteral("Apple Music"));
+            m_state->broadcastInfotainmentMfd();
+        }
     } else {
         setTrackIndex(0);
+        if (!m_syncingFromState && m_state) {
+            m_state->setMediaSource(QStringLiteral("Bluetooth Audio"));
+            m_state->broadcastInfotainmentMfd();
+        }
     }
     setMusicDetailOpen(true);
 }

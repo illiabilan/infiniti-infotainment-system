@@ -1,305 +1,471 @@
 import QtQuick
 import QtQuick.Controls
+import QtQuick.Effects
 import QtQuick.Layouts
-import "components"
+import App.Theme
+import App.Components
+import App.Icons
 
 Item {
     id: root
 
-    width: 1920
-    height: 480
+    width: 1280
+    height: 160
 
-    // Reference to backend controller (defaulting to context property if registered)
-    property var controller: typeof climateController !== "undefined" ? climateController : null
+    readonly property var vs: vehicleState
+    readonly property var clock: climateController
 
-    // Background gradient and automotive border styling
-    Rectangle {
-        anchors.fill: parent
-        color: "#0B0D12"
+    // --- Compact chips component ---
+    component Chip: Surface {
+        id: chip
+        property string label
+        property bool active: false
+        property color activeColor: Theme.colors.accent
 
-        // Subtle gradient sheen
-        gradient: Gradient {
-            GradientStop { position: 0.0; color: "#11141D" }
-            GradientStop { position: 0.5; color: "#0B0D12" }
-            GradientStop { position: 1.0; color: "#07080B" }
-        }
+        implicitWidth: label.length * 9 + 16
+        implicitHeight: 22
+        radius: 4
+        color: active ? activeColor : Theme.colors.tile
+        neomorph: true
+        pressed: active
 
-        // Top edge accent line
-        Rectangle {
-            anchors.top: parent.top
-            anchors.left: parent.left
-            anchors.right: parent.right
-            height: 2
-            color: "#1E232E"
-        }
-
-        // Bottom edge accent line
-        Rectangle {
-            anchors.bottom: parent.bottom
-            anchors.left: parent.left
-            anchors.right: parent.right
-            height: 2
-            color: "#1E232E"
+        Text {
+            anchors.centerIn: parent
+            text: label
+            color: active ? Theme.colors.onaccent : Theme.colors.textSecondary
+            font {
+                family: Theme.typography.family
+                pixelSize: 8
+                bold: true
+                weight: Theme.typography.weightMedium
+            }
         }
     }
 
-    // Main 5-zone horizontal layout
+    // --- Fan bar ---
+    component FanBars: Item {
+        id: bars
+        property int level: 3
+
+        width: 9 * 8
+        height: 14
+
+        Repeater {
+            model: 8
+            Rectangle {
+                width: 9
+                height: 14
+                x: index * 11
+                y: 0
+                radius: 2
+                color: index < bars.level ? Theme.colors.accent : Theme.colors.sliderTrack
+            }
+        }
+    }
+
+    // --- Seat heat indicator ---
+    component SeatHeatLev: Item {
+        id: heat
+        property int level: 0
+
+        implicitWidth: 34
+        implicitHeight: 7
+
+        RowLayout {
+            anchors.fill: parent
+            spacing: 2
+
+            Repeater {
+                model: 3
+                Rectangle {
+                    width: 10
+                    height: 5
+                    radius: 1
+                    color: index < heat.level ? Theme.colors.accent : Theme.colors.iconMuted
+                    opacity: index < heat.level ? 1.0 : 0.5
+                }
+            }
+        }
+    }
+
     RowLayout {
         anchors.fill: parent
-        anchors.margins: 20
-        spacing: 24
+        anchors.margins: 8
+        spacing: 6
 
-        // ==========================================
-        // 1. DRIVER ZONE (LEFT)
-        // ==========================================
-        RowLayout {
-            Layout.preferredWidth: 380
+        // ====== ZONE 1: Driver ======
+        Surface {
+            Layout.fillWidth: true
             Layout.fillHeight: true
-            spacing: 12
+            radius: Theme.metrics.cardRadius
+            color: Theme.colors.surface
+            neomorph: true
 
-            SeatHeaterButton {
-                Layout.preferredWidth: 76
-                Layout.preferredHeight: 120
-                Layout.alignment: Qt.AlignVCenter
-                label: "DRIVER"
-                level: root.controller ? root.controller.driverSeatHeat : 1
-                onClicked: {
-                    if (root.controller) root.controller.cycleDriverSeatHeat();
-                }
-            }
-
-            TempControl {
-                Layout.fillWidth: true
-                Layout.fillHeight: true
-                title: "DRIVER ZONE"
-                accentColor: "#00B4D8"
-                temperature: root.controller ? root.controller.driverTemp : 21.5
-                onTempStep: (delta) => {
-                    if (root.controller) root.controller.stepDriverTemp(delta);
-                }
-            }
-        }
-
-        // ==========================================
-        // 2. CENTER-LEFT: PRIMARY TOGGLES & AIRFLOW
-        // ==========================================
-        ColumnLayout {
-            Layout.preferredWidth: 360
-            Layout.fillHeight: true
-            Layout.alignment: Qt.AlignVCenter
-            spacing: 20
-
-            Text {
-                text: "SYSTEM MODES"
-                color: "#6C7A9C"
-                font.pixelSize: 11
-                font.bold: true
-                font.letterSpacing: 2
-                font.family: "Helvetica Neue, Arial, sans-serif"
-            }
-
-            // AC, AUTO, RECIRC
             RowLayout {
-                Layout.fillWidth: true
-                spacing: 12
-
-                ClimateButton {
-                    Layout.fillWidth: true
-                    Layout.preferredHeight: 90
-                    text: "A/C"
-                    subText: "COMPRESSOR"
-                    active: root.controller ? root.controller.acActive : true
-                    activeColor: "#00B4D8"
-                    onClicked: {
-                        if (root.controller) root.controller.toggleAc();
-                    }
-                }
-
-                ClimateButton {
-                    Layout.fillWidth: true
-                    Layout.preferredHeight: 90
-                    text: "AUTO"
-                    subText: "CLIMATE"
-                    active: root.controller ? root.controller.autoActive : true
-                    activeColor: "#48CAE4"
-                    onClicked: {
-                        if (root.controller) root.controller.toggleAuto();
-                    }
-                }
-
-                ClimateButton {
-                    Layout.fillWidth: true
-                    Layout.preferredHeight: 90
-                    text: "RECIRC"
-                    subText: "CABIN AIR"
-                    active: root.controller ? root.controller.recircActive : false
-                    activeColor: "#FFAA00"
-                    onClicked: {
-                        if (root.controller) root.controller.toggleRecirc();
-                    }
-                }
-            }
-
-            // Airflow distribution buttons
-            ColumnLayout {
-                Layout.fillWidth: true
+                anchors.fill: parent
+                anchors.margins: 8
                 spacing: 8
 
-                Text {
-                    text: "AIRFLOW DISTRIBUTION"
-                    color: "#6C7A9C"
-                    font.pixelSize: 11
-                    font.bold: true
-                    font.letterSpacing: 2
-                    font.family: "Helvetica Neue, Arial, sans-serif"
+                // Seat heat
+                ColumnLayout {
+                    Layout.preferredWidth: 30
+                    Layout.fillHeight: true
+                    spacing: 1
+
+                    AppIcon {
+                        Layout.alignment: Qt.AlignHCenter
+                        source: Icons.seat
+                        size: 10
+                        color: Theme.colors.icon
+                        Layout.preferredHeight: 16
+                    }
+
+                    SeatHeatLev { level: vs ? vs.driverSeatHeat : 0; Layout.alignment: Qt.AlignHCenter }
+
+                    Text {
+                        text: {
+                            switch(vs ? vs.driverSeatHeat : 0) {
+                            case 1: return "LO";
+                            case 2: return "MED";
+                            case 3: return "HI";
+                            default: return "";
+                            }
+                        }
+                        Layout.alignment: Qt.AlignHCenter
+                        font {
+                            family: Theme.typography.family
+                            pixelSize: 6
+                            bold: true
+                            weight: Theme.typography.weightMedium
+                        }
+                        color: Theme.colors.accent
+                    }
                 }
 
-                AirflowControl {
+                // Divider
+                Rectangle {
+                    Layout.preferredWidth: 1
+                    Layout.fillHeight: true
+                    color: Theme.colors.divider
+                }
+
+                // Driver temp
+                ColumnLayout {
                     Layout.fillWidth: true
-                    Layout.preferredHeight: 90
-                    airflowMode: root.controller ? root.controller.airflowMode : 0
-                    onModeSelected: (mode) => {
-                        if (root.controller) root.controller.setAirflowMode(mode);
+                    Layout.fillHeight: true
+                    spacing: 1
+
+                    Text {
+                        text: "DRV"
+                        Layout.alignment: Qt.AlignHCenter
+                        font {
+                            family: Theme.typography.family
+                            pixelSize: 7
+                            bold: true
+                            letterSpacing: 1
+                            weight: Theme.typography.weightMedium
+                        }
+                        color: Theme.colors.textSecondary
+                    }
+
+                    Text {
+                        text: String((vs ? vs.driverTemp : 21.5).toFixed(1)) + "°C"
+                        Layout.alignment: Qt.AlignHCenter
+                        font {
+                            family: Theme.typography.family
+                            pixelSize: 28
+                            bold: true
+                            weight: Font.DemiBold
+                        }
+                        color: Theme.colors.textPrimary
                     }
                 }
             }
         }
 
-        // ==========================================
-        // 3. CENTER: LUXURY CLOCK & INFOTAINMENT STATUS
-        // ==========================================
-        ColumnLayout {
-            Layout.preferredWidth: 320
+        // ====== ZONE 2: System Status ======
+        Surface {
+            Layout.fillWidth: true
             Layout.fillHeight: true
-            Layout.alignment: Qt.AlignVCenter
-            spacing: 16
+            radius: Theme.metrics.cardRadius
+            color: Theme.colors.surface
+            neomorph: true
 
-            ClockDisplay {
-                Layout.fillWidth: true
-                Layout.preferredHeight: 230
-                timeString: root.controller ? root.controller.currentTime : "16:20"
-                dateString: root.controller ? root.controller.currentDate : "WED, OCT 14"
-                outsideTemp: root.controller ? root.controller.outsideTemp : 19
-                dualMode: root.controller ? root.controller.dualMode : false
-            }
-
-            // Dual / Sync quick toggle
-            ClimateButton {
-                Layout.fillWidth: true
-                Layout.preferredHeight: 80
-                text: "DUAL ZONE"
-                subText: (root.controller && root.controller.dualMode) ? "INDEPENDENT" : "SYNCED"
-                active: root.controller ? root.controller.dualMode : false
-                activeColor: "#90E0EF"
-                onClicked: {
-                    if (root.controller) root.controller.toggleDual();
-                }
-            }
-        }
-
-        // ==========================================
-        // 4. CENTER-RIGHT: DEFROST & FAN SPEED
-        // ==========================================
-        ColumnLayout {
-            Layout.preferredWidth: 360
-            Layout.fillHeight: true
-            Layout.alignment: Qt.AlignVCenter
-            spacing: 20
-
-            Text {
-                text: "DEFROST CONTROLS"
-                color: "#6C7A9C"
-                font.pixelSize: 11
-                font.bold: true
-                font.letterSpacing: 2
-                font.family: "Helvetica Neue, Arial, sans-serif"
-            }
-
-            // Front & Rear Defrost
-            RowLayout {
-                Layout.fillWidth: true
-                spacing: 12
-
-                ClimateButton {
-                    Layout.fillWidth: true
-                    Layout.preferredHeight: 90
-                    text: "FRONT"
-                    subText: "MAX DEFROST"
-                    active: root.controller ? root.controller.frontDefrostActive : false
-                    activeColor: "#FF6B6B"
-                    onClicked: {
-                        if (root.controller) root.controller.toggleFrontDefrost();
-                    }
-                }
-
-                ClimateButton {
-                    Layout.fillWidth: true
-                    Layout.preferredHeight: 90
-                    text: "REAR"
-                    subText: "HEATED GLASS"
-                    active: root.controller ? root.controller.rearDefrostActive : false
-                    activeColor: "#FFAA00"
-                    onClicked: {
-                        if (root.controller) root.controller.toggleRearDefrost();
-                    }
-                }
-            }
-
-            // Fan Speed
             ColumnLayout {
-                Layout.fillWidth: true
-                spacing: 8
+                anchors.fill: parent
+                anchors.margins: 8
+                spacing: 4
 
                 Text {
-                    text: "BLOWER VENTILATION"
-                    color: "#6C7A9C"
-                    font.pixelSize: 11
-                    font.bold: true
-                    font.letterSpacing: 2
-                    font.family: "Helvetica Neue, Arial, sans-serif"
+                    text: "CLIMATE"
+                    Layout.alignment: Qt.AlignHCenter
+                    font {
+                        family: Theme.typography.family
+                        pixelSize: 7
+                        bold: true
+                        letterSpacing: 1.5
+                        weight: Theme.typography.weightBold
+                    }
+                    color: Theme.colors.textSecondary
                 }
 
-                FanControl {
+                // AC / AUTO / RECIRC chips
+                RowLayout {
                     Layout.fillWidth: true
-                    Layout.preferredHeight: 110
-                    fanSpeed: root.controller ? root.controller.fanSpeed : 3
-                    onSpeedChanged: (speed) => {
-                        if (root.controller) root.controller.setFanSpeed(speed);
+                    Layout.alignment: Qt.AlignHCenter
+                    spacing: 4
+
+                    Chip { label: "A/C"; active: vs ? vs.acActive : true }
+                    Chip { label: "AUTO"; active: vs ? vs.autoActive : true }
+                    Chip { label: "RECIRC"; active: vs ? vs.recircActive : false }
+                }
+
+                // Airflow + Dual
+                RowLayout {
+                    Layout.fillWidth: true
+                    Layout.alignment: Qt.AlignHCenter
+                    spacing: 4
+
+                    Text {
+                        text: {
+                            switch(vs ? vs.airflowMode : 0) {
+                            case 0: return "FACE";
+                            case 1: return "FACE+FEET";
+                            case 2: return "FEET";
+                            case 3: return "DEF+FEET";
+                            default: return "FACE";
+                            }
+                        }
+                        font {
+                            family: Theme.typography.family
+                            pixelSize: 8
+                            bold: true
+                            weight: Theme.typography.weightMedium
+                        }
+                        color: Theme.colors.textPrimary
                     }
-                    onSpeedStep: (delta) => {
-                        if (root.controller) root.controller.stepFanSpeed(delta);
+
+                    Rectangle {
+                        width: 1
+                        height: 14
+                        color: Theme.colors.divider
+                    }
+
+                    Text {
+                        text: vs && vs.dualMode ? "DUAL" : "SYNC"
+                        font {
+                            family: Theme.typography.family
+                            pixelSize: 8
+                            bold: true
+                            weight: Theme.typography.weightMedium
+                        }
+                        color: Theme.colors.success
                     }
                 }
             }
         }
 
-        // ==========================================
-        // 5. PASSENGER ZONE (RIGHT)
-        // ==========================================
-        RowLayout {
-            Layout.preferredWidth: 380
+        // ====== ZONE 3: Clock + Fan ======
+        Surface {
+            Layout.fillWidth: true
             Layout.fillHeight: true
-            spacing: 12
+            radius: Theme.metrics.cardRadius
+            color: Theme.colors.surface
+            neomorph: true
 
-            TempControl {
-                Layout.fillWidth: true
-                Layout.fillHeight: true
-                title: "PASSENGER ZONE"
-                accentColor: "#00B4D8"
-                temperature: root.controller ? root.controller.passengerTemp : 21.5
-                onTempStep: (delta) => {
-                    if (root.controller) root.controller.stepPassengerTemp(delta);
+            ColumnLayout {
+                anchors.fill: parent
+                anchors.margins: 8
+                spacing: 2
+
+                Text {
+                    text: clock ? clock.currentTime : "12:00"
+                    Layout.alignment: Qt.AlignHCenter
+                    font {
+                        family: Theme.typography.family
+                        pixelSize: 28
+                        bold: true
+                        weight: Font.DemiBold
+                    }
+                    color: Theme.colors.textPrimary
+                }
+
+                Text {
+                    text: (clock ? clock.currentDate : "MON 01") + "  " + String(vs ? vs.outsideTemp : 20) + "°C"
+                    Layout.alignment: Qt.AlignHCenter
+                    font {
+                        family: Theme.typography.family
+                        pixelSize: 8
+                        bold: true
+                        weight: Theme.typography.weightMedium
+                    }
+                    color: Theme.colors.textSecondary
+                }
+
+                RowLayout {
+                    Layout.fillWidth: true
+                    Layout.alignment: Qt.AlignHCenter
+                    spacing: 6
+
+                    Text {
+                        text: "F" + (vs ? vs.fanSpeed : 3)
+                        font {
+                            family: Theme.typography.family
+                            pixelSize: 9
+                            bold: true
+                            weight: Theme.typography.weightBold
+                        }
+                        color: Theme.colors.accent
+                    }
+
+                    FanBars { level: vs ? vs.fanSpeed : 3 }
                 }
             }
+        }
 
-            SeatHeaterButton {
-                Layout.preferredWidth: 76
-                Layout.preferredHeight: 120
-                Layout.alignment: Qt.AlignVCenter
-                label: "PASS"
-                level: root.controller ? root.controller.passengerSeatHeat : 0
-                onClicked: {
-                    if (root.controller) root.controller.cyclePassengerSeatHeat();
+        // ====== ZONE 4: Defrost + Passenger ======
+        Surface {
+            Layout.fillWidth: true
+            Layout.fillHeight: true
+            radius: Theme.metrics.cardRadius
+            color: Theme.colors.surface
+            neomorph: true
+
+            RowLayout {
+                anchors.fill: parent
+                anchors.margins: 8
+                spacing: 6
+
+                // Defrost status
+                ColumnLayout {
+                    Layout.preferredWidth: 60
+                    Layout.fillHeight: true
+                    spacing: 2
+
+                    Text {
+                        text: "DEF"
+                        Layout.alignment: Qt.AlignHCenter
+                        font {
+                            family: Theme.typography.family
+                            pixelSize: 7
+                            bold: true
+                            letterSpacing: 1
+                            weight: Theme.typography.weightBold
+                        }
+                        color: Theme.colors.textSecondary
+                    }
+
+                    RowLayout {
+                        Layout.fillWidth: true
+                        Layout.alignment: Qt.AlignHCenter
+                        spacing: 3
+
+                        Chip {
+                            label: "F"
+                            active: vs ? vs.frontDefrostActive : false
+                            activeColor: "#FF6B6B"
+                        }
+                        Chip {
+                            label: "R"
+                            active: vs ? vs.rearDefrostActive : false
+                            activeColor: "#FFAA00"
+                        }
+                    }
+
+                    Text {
+                        text: {
+                            const f = vs && vs.frontDefrostActive;
+                            const r = vs && vs.rearDefrostActive;
+                            if (f && r) return "BOTH";
+                            if (f) return "F";
+                            if (r) return "R";
+                            return "";
+                        }
+                        Layout.alignment: Qt.AlignHCenter
+                        font {
+                            family: Theme.typography.family
+                            pixelSize: 7
+                            bold: true
+                            weight: Theme.typography.weightBold
+                        }
+                        color: ((vs && vs.frontDefrostActive) || (vs && vs.rearDefrostActive))
+                               ? Theme.colors.textPrimary : Theme.colors.iconMuted
+                    }
+                }
+
+                // Divider
+                Rectangle {
+                    width: 1
+                    height: 60
+                    color: Theme.colors.divider
+                }
+
+                // Passenger temp
+                ColumnLayout {
+                    Layout.fillWidth: true
+                    Layout.fillHeight: true
+                    spacing: 1
+
+                    Text {
+                        text: "PWR"
+                        Layout.alignment: Qt.AlignHCenter
+                        font {
+                            family: Theme.typography.family
+                            pixelSize: 7
+                            bold: true
+                            letterSpacing: 1
+                            weight: Theme.typography.weightMedium
+                        }
+                        color: Theme.colors.textSecondary
+                    }
+
+                    Text {
+                        text: String((vs ? vs.passengerTemp : 21.5).toFixed(1)) + "°C"
+                        Layout.alignment: Qt.AlignHCenter
+                        font {
+                            family: Theme.typography.family
+                            pixelSize: 28
+                            bold: true
+                            weight: Font.DemiBold
+                        }
+                        color: Theme.colors.textPrimary
+                    }
+                }
+
+                // Passenger seat heat
+                ColumnLayout {
+                    Layout.preferredWidth: 30
+                    Layout.fillHeight: true
+                    spacing: 1
+
+                    AppIcon {
+                        Layout.alignment: Qt.AlignHCenter
+                        source: Icons.seat
+                        size: 10
+                        color: Theme.colors.icon
+                        Layout.preferredHeight: 16
+                    }
+
+                    SeatHeatLev { level: vs ? vs.passengerSeatHeat : 0; Layout.alignment: Qt.AlignHCenter }
+
+                    Text {
+                        text: {
+                            switch(vs ? vs.passengerSeatHeat : 0) {
+                            case 1: return "LO";
+                            case 2: return "MED";
+                            case 3: return "HI";
+                            default: return "";
+                            }
+                        }
+                        Layout.alignment: Qt.AlignHCenter
+                        font {
+                            family: Theme.typography.family
+                            pixelSize: 6
+                            bold: true
+                            weight: Theme.typography.weightMedium
+                        }
+                        color: Theme.colors.accent
+                    }
                 }
             }
         }

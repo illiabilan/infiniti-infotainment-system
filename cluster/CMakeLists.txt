@@ -9,14 +9,14 @@
 cmake_minimum_required(VERSION 3.16)
 project(ApexCluster LANGUAGES CXX)
 
-set(CMAKE_CXX_STANDARD 17)
+set(CMAKE_CXX_STANDARD 20)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
 set(CMAKE_AUTOMOC ON)
 set(CMAKE_AUTORCC ON)
 set(CMAKE_AUTOUIC ON)
 
-find_package(Qt6 6.5 REQUIRED COMPONENTS Quick QuickControls2 Gui Qml Svg Multimedia)
+find_package(Qt6 6.5 REQUIRED COMPONENTS Quick QuickControls2 Gui Qml Svg Multimedia Network)
 
 qt_standard_project_setup()
 qt_policy(SET QTP0001 NEW)
@@ -52,7 +52,6 @@ qt_add_qml_module(ApexClusterApp
         qml/center/GoodbyeView.qml
         qml/center/UserSettingsView.qml
         qml/center/TpmsDisplayView.qml
-        qml/simulator/EcuSimulatorPanel.qml
     RESOURCES
         resources/fonts/ClusterSansHead-Regular.ttf
         resources/fonts/ClusterSansHead-Medium.ttf
@@ -155,14 +154,18 @@ qt_add_qml_module(ApexClusterApp
 )
 
 target_link_libraries(ApexClusterApp PRIVATE
+    InfinitiCore
+    Qt6::Core
     Qt6::Quick
     Qt6::QuickControls2
     Qt6::Gui
     Qt6::Qml
     Qt6::Svg
     Qt6::Multimedia
+    Qt6::Network
 )
 
 target_include_directories(ApexClusterApp PRIVATE
     ${CMAKE_CURRENT_SOURCE_DIR}/src
+    ${CMAKE_SOURCE_DIR}/core/include
 )

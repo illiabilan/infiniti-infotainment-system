@@ -7,6 +7,8 @@
 #include <QString>
 #include <algorithm>
 
+class VehicleState;
+
 class ClimateRibbonController : public QObject
 {
     Q_OBJECT
@@ -28,6 +30,7 @@ class ClimateRibbonController : public QObject
 
 public:
     explicit ClimateRibbonController(QObject *parent = nullptr);
+    void attachVehicleState(VehicleState *state);
 
     double driverTemp() const { return m_driverTemp; }
     double passengerTemp() const { return m_passengerTemp; }
@@ -110,4 +113,8 @@ private:
     QString m_currentTime;
     QString m_currentDate;
     QTimer m_clockTimer;
+
+    VehicleState *m_state = nullptr;
+    bool m_syncingFromState = false;
+    void syncToVehicleState();
 };

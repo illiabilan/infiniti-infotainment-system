@@ -8,7 +8,7 @@ set(CMAKE_AUTOMOC ON)
 set(CMAKE_AUTORCC ON)
 set(CMAKE_AUTOUIC ON)
 
-find_package(Qt6 6.5 REQUIRED COMPONENTS Core Gui Quick QuickControls2 Qml)
+find_package(Qt6 6.5 REQUIRED COMPONENTS Core Gui Quick QuickControls2 Qml Svg)
 
 qt_standard_project_setup()
 qt_policy(SET QTP0001 NEW)
@@ -20,27 +20,30 @@ qt_add_executable(InfinitiClimateApp
     src/main.cpp
     src/ClimateRibbonController.h
     src/ClimateRibbonController.cpp
+    qml.qrc
 )
 
 qt_add_qml_module(InfinitiClimateApp
     URI InfinitiClimate
     VERSION 1.0
-    RESOURCE_PREFIX "/qt/qml"
     QML_FILES
         qml/Main.qml
         qml/ClimateRibbonView.qml
-        qml/components/TempControl.qml
-        qml/components/FanControl.qml
-        qml/components/AirflowControl.qml
-        qml/components/ClimateButton.qml
-        qml/components/SeatHeaterButton.qml
-        qml/components/ClockDisplay.qml
+)
+
+target_include_directories(InfinitiClimateApp PRIVATE
+    ${CMAKE_CURRENT_SOURCE_DIR}/src
+    ${CMAKE_SOURCE_DIR}/core/include
 )
 
 target_link_libraries(InfinitiClimateApp PRIVATE
+    InfinitiCore
+    InfinitiTheme
     Qt6::Core
     Qt6::Gui
     Qt6::Quick
     Qt6::QuickControls2
+    Qt6::Network
     Qt6::Qml
+    Qt6::Svg
 )

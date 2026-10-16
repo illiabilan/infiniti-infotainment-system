@@ -19,6 +19,13 @@
 #include <QByteArray>
 #include <cstdio>
 #include <cstdlib>
+#include <memory>
+#include "CanInterface.h"
+#include "MockCanBackend.h"
+#if defined(Q_OS_LINUX)
+#include "SocketCanBackend.h"
+#endif
+#include "VehicleState.h"
 #include "ClusterController.h"
 
 static void clusterMessageHandler(QtMsgType type, const QMessageLogContext &context, const QString &msg)
@@ -75,10 +82,23 @@ int main(int argc, char *argv[])
     qDebug() << "Loaded Cluster Sans Head Bold:" << QFontDatabase::applicationFontFamilies(f3);
     qDebug() << "Loaded Noto Sans Devanagari:" << QFontDatabase::applicationFontFamilies(f4);
 
+    std::unique_ptr<CanInterface> canBackend;
+#if defined(Q_OS_LINUX)
+    canBackend = std::make_unique<SocketCanBackend>("vcan0");
+#else
+    canBackend = std::make_unique<MockCanBackend>();
+#endif
+    canBackend->open();
+
+    auto vehicleState = std::make_unique<VehicleState>();
+    vehicleState->attachCanInterface(canBackend.get());
+
     QQmlApplicationEngine engine;
     ClusterController controller;
+    controller.attachVehicleState(vehicleState.get());
 
     engine.rootContext()->setContextProperty("controller", &controller);
+    engine.rootContext()->setContextProperty("vehicleState", vehicleState.get());
 
     const QUrl url(QStringLiteral("qrc:/qt/qml/ApexCluster/qml/Main.qml"));
     QObject::connect(

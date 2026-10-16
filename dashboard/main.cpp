@@ -4,6 +4,16 @@
 #include <QtQml>
 #include <QUrl>
 
+#include <memory>
+
+#include "CanInterface.h"
+#include "MockCanBackend.h"
+#if defined(Q_OS_LINUX)
+#include "SocketCanBackend.h"
+#endif
+#include "InfinitiTheme.h"
+#include "VehicleState.h"
+
 #include "appbackend.h"
 #include "climatecontroller.h"
 #include "mediacontroller.h"
@@ -17,33 +27,36 @@ int main(int argc, char *argv[])
 #endif
     QGuiApplication app(argc, argv);
 
+    std::unique_ptr<CanInterface> canBackend;
+#if defined(Q_OS_LINUX)
+    canBackend = std::make_unique<SocketCanBackend>("vcan0");
+#else
+    canBackend = std::make_unique<MockCanBackend>();
+#endif
+    canBackend->open();
+
+    auto vehicleState = std::make_unique<VehicleState>();
+    vehicleState->attachCanInterface(canBackend.get());
+
     QQmlApplicationEngine engine;
+    InfinitiTheme::setup(engine);
+
     AppBackend appBackend;
     QuickSettingsController quickSettings;
     MediaController mediaController;
     VehicleController vehicleController;
     ClimateController climateController;
 
-    // Resolve App.* QML modules (Components, Screens, Controllers) shipped in
-    // the resource tree, so QML can `import App.Components` instead of "../".
-    engine.addImportPath(QStringLiteral("qrc:/qml"));
-
-    // Register the design-system singletons. The .qml files declare `pragma
-    // Singleton`; these calls supply the module URI/name (so no qmldir entry is
-    // needed) — a single source of truth reachable from any QML file via
-    // `import App.Theme` / `import App.Icons`.
-    qmlRegisterSingletonType(
-        QUrl(QStringLiteral("qrc:/qml/App/Theme/Theme.qml")),
-        "App.Theme", 1, 0, "Theme");
-    qmlRegisterSingletonType(
-        QUrl(QStringLiteral("qrc:/qml/App/Icons/Icons.qml")),
-        "App.Icons", 1, 0, "Icons");
+    vehicleController.attachVehicleState(vehicleState.get());
+    climateController.attachVehicleState(vehicleState.get());
+    mediaController.attachVehicleState(vehicleState.get());
 
     engine.rootContext()->setContextProperty(QStringLiteral("appBackend"), &appBackend);
     engine.rootContext()->setContextProperty(QStringLiteral("quickControls"), &quickSettings);
     engine.rootContext()->setContextProperty(QStringLiteral("mediaControls"), &mediaController);
     engine.rootContext()->setContextProperty(QStringLiteral("vehicleControls"), &vehicleController);
     engine.rootContext()->setContextProperty(QStringLiteral("climateControls"), &climateController);
+    engine.rootContext()->setContextProperty(QStringLiteral("vehicleState"), vehicleState.get());
 
     const QUrl url(QStringLiteral("qrc:/main.qml"));
     QObject::connect(

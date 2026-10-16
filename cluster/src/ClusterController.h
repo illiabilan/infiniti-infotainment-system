@@ -13,6 +13,7 @@
 #include <QTimer>
 #include <QElapsedTimer>
 #include <QString>
+#include "VehicleState.h"
 
 class ClusterController : public QObject
 {
@@ -132,6 +133,7 @@ public:
     Q_ENUM(State)
 
     explicit ClusterController(QObject *parent = nullptr);
+    void attachVehicleState(VehicleState *state);
 
     QString themeColor() const { return m_themeColor; }
     int clusterState() const { return m_clusterState; }
@@ -512,6 +514,7 @@ private slots:
     void onSequenceStep();
     void onDriveSimulationTick();
     void onRearAlarmTimeout();
+    void onLightPopupTimeout();
     void onRearBlinkTick();
     void onShutdownTimeout();
     void onReduceSpeedDismissTimeout();
@@ -538,6 +541,7 @@ private:
     bool m_rearSeatBlinkState = false;
     QTimer* m_rearAlarmTimer = nullptr;
     QTimer* m_rearBlinkTimer = nullptr;
+    QTimer* m_lightPopupTimer = nullptr;
 
     bool m_driverAttentionActive = false;
     int m_attentionLevel = 4; // 1 to 5 bars
@@ -647,4 +651,5 @@ private:
     bool m_isMediaPlaying = true;
     int m_mediaTrackIndex = 0;
     QTimer* m_mediaPopupTimer = nullptr;
+    VehicleState* m_vehicleState = nullptr;
 };

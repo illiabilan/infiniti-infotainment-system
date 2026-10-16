@@ -15,3 +15,5 @@ VoiceAssistantPage 1.0 VoiceAssistantPage.qml
 ParkedModePage 1.0 ParkedModePage.qml
 SafetyPage 1.0 SafetyPage.qml
 ThemeStudioPage 1.0 ThemeStudioPage.qml
+EnergyView 1.0 EnergyView.qml
+SettingsView 1.0 SettingsView.qml

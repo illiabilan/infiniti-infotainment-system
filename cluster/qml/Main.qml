@@ -10,7 +10,6 @@
 
 import QtQuick
 import QtQuick.Controls
-import "simulator"
 
 ApplicationWindow {
     id: appWindow
@@ -110,105 +109,9 @@ ApplicationWindow {
                 if (controller) controller.cycleLightMode();
             } else if (event.key === Qt.Key_C) {
                 if (controller) controller.toggleCruise();
-            } else if (event.key === Qt.Key_F12 || event.key === Qt.Key_Tab) {
-                ecuSimulatorWindow.visible = !ecuSimulatorWindow.visible;
-                if (ecuSimulatorWindow.visible) ecuSimulatorWindow.raise();
-            }
-        }
-
-        // Floating Quick Button to Toggle / Focus ECU Simulator Window
-        Rectangle {
-            anchors.top: parent.top
-            anchors.right: parent.right
-            anchors.margins: 12
-            width: 130
-            height: 28
-            radius: 5
-            color: ecuSimulatorWindow.visible ? "#2500E5FF" : "#1A2230"
-            border.color: ecuSimulatorWindow.visible ? "#00E5FF" : "#304050"
-            border.width: 1.2
-            z: 9999
-
-            Row {
-                anchors.centerIn: parent
-                spacing: 5
-                Text { text: "🎛️"; font.pixelSize: 11 }
-                Text {
-                    text: ecuSimulatorWindow.visible ? "ECU Bench (ON)" : "ECU Bench (OFF)"
-                    font.pixelSize: 10
-                    font.bold: true
-                    color: ecuSimulatorWindow.visible ? "#00E5FF" : "#80A0C0"
-                }
-            }
-
-            MouseArea {
-                anchors.fill: parent
-                cursorShape: Qt.PointingHandCursor
-                onClicked: {
-                    ecuSimulatorWindow.visible = !ecuSimulatorWindow.visible;
-                    if (ecuSimulatorWindow.visible) ecuSimulatorWindow.raise();
-                }
             }
         }
     }
-
-    // =================================================================
-    // 2. SEPARATE MOVABLE ECU EMULATOR WINDOW
-    // =================================================================
-    Window {
-        id: ecuSimulatorWindow
-        title: "⚙️ APEX Horizon — ECU Simulator Bench"
-        visible: true
-        width: 1060
-        height: 480
-        minimumWidth: 680
-        minimumHeight: 320
-        x: appWindow.x + (appWindow.width - width) / 2
-        y: appWindow.y + appWindow.height + 12
-        color: "#080F18"
-
-        EcuSimulatorPanel {
-            id: ecuSimulator
-            anchors.fill: parent
-
-            onBtnUpPressed: {
-                if (controller && controller.menuTab === 1) {
-                    liveCluster.navSettingsUp();
-                } else if (controller) {
-                    controller.prevTripPage();
-                }
-            }
-
-            onBtnDownPressed: {
-                if (controller && controller.menuTab === 1) {
-                    liveCluster.navSettingsDown();
-                } else if (controller) {
-                    controller.nextTripPage();
-                }
-            }
-
-            onBtnOkPressed: {
-                if (controller && controller.menuTab === 1) {
-                    liveCluster.selectSettings();
-                } else if (controller && controller.menuTab === 0) {
-                    liveCluster.triggerResetPrompt();
-                }
-            }
-
-            onBtnBackPressed: {
-                if (controller && controller.menuTab === 1) {
-                    liveCluster.backSettings();
-                }
-            }
-
-            onBtnInfoPressed: {
-                if (controller) {
-                    controller.triggerInfoMenu();
-                }
-            }
-        }
-    }
-
 
     Component.onCompleted: {
         clusterContainer.forceActiveFocus();
