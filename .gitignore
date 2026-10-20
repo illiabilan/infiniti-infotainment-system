@@ -37,3 +37,6 @@ resources/audio/zedge_startup_tone.mp3
 # Clangd and compilation database
 .cache/
 compile_commands.json
+
+# Personal feature workflow artifacts
+.personal/
