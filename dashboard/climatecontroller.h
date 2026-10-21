@@ -2,7 +2,7 @@
 #define CLIMATECONTROLLER_H
 
 #include <QObject>
-#include "VehicleState.h"
+#include "VehicleModel.h"
 
 class ClimateController : public QObject
 {
@@ -17,7 +17,7 @@ class ClimateController : public QObject
 
 public:
     explicit ClimateController(QObject *parent = nullptr);
-    void attachVehicleState(VehicleState *state);
+    void attachVehicleState(VehicleModel *state);
 
     qreal driverTemp() const;
     qreal passengerTemp() const;
@@ -56,7 +56,7 @@ private:
     bool m_acOn = true;
     bool m_defrostOn = false;
     bool m_seatHeatOn = false;
-    VehicleState *m_state = nullptr;
+    VehicleModel *m_state = nullptr;
     bool m_syncingFromState = false;
 };
 

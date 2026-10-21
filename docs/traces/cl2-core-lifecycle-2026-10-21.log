@@ -1,0 +1,7 @@
+core: listening 127.0.0.1:8765 pid=99917
+core: client connected peer=127.0.0.1:60169
+core: hello id=cluster role=cluster aa_session=0/idle keyframe=none
+core: client disconnected id=cluster role=cluster aa_session=0/idle kept
+core: client connected peer=127.0.0.1:60171
+core: hello id=cluster role=cluster aa_session=0/idle keyframe=none
+core: client disconnected id=cluster role=cluster aa_session=0/idle kept

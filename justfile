@@ -13,6 +13,10 @@ configure:
     cmake -B build -S . -DCMAKE_OSX_SYSROOT=/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk
     cmake --build build -j
 
+# Run Core process (owns CAN and VehicleState, serves ws://127.0.0.1)
+run-core:
+    ./build/core/app/InfinitiCoreApp
+
 # Run climate ribbon application
 run-clima:
     ./build/climate/InfinitiClimateApp
@@ -27,7 +31,7 @@ run-dash:
 
 # Run all 3 display applications concurrently in one terminal session
 run-all:
-    ./build/cluster/ApexClusterApp & ./build/dashboard/SmartUiDashboard & ./build/climate/InfinitiClimateApp & wait
+    ./build/core/app/InfinitiCoreApp & ./build/cluster/ApexClusterApp & ./build/dashboard/SmartUiDashboard & ./build/climate/InfinitiClimateApp & wait
 
 # Run standalone telemetry emulator bench
 run-emu:
@@ -35,4 +39,4 @@ run-emu:
 
 # Test clima
 test-clima:
-    ./build/emulator/InfinitiEmulatorApp & ./build/climate/InfinitiClimateApp
+    ./build/core/app/InfinitiCoreApp & ./build/emulator/InfinitiEmulatorApp & ./build/climate/InfinitiClimateApp

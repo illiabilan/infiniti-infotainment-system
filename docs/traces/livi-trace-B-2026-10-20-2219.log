@@ -1,0 +1,1583 @@
+$ vite
+
+  VITE v8.3.4  ready in 125 ms
+
+  ➜  Local:   http://localhost:5173/
+  ➜  Network: use --host to expose
+vite v8.3.4 building client environment for development...
+
+watching for file changes...
+vite v8.3.4 building client environment for development...
+
+watching for file changes...
+
+build started...
+
+build started...
+transforming...
+transforming...
+✓ 5 modules transformed.
+✓ 38 modules transformed.
+rendering chunks...
+rendering chunks...
+computing gzip size...
+out/preload/index.js  5.38 kB │ gzip: 2.02 kB
+
+built in 10ms.
+computing gzip size...
+out/main/main.js  62.40 kB │ gzip: 18.12 kB
+
+built in 11ms.
+[22:19:26.036] [core] waiting for livi-core at /var/folders/g2/876byb6d7r39lvp4yzyrj_mc0000gn/T/livi-501/core.sock
+[22:19:27.032] [core] starting /Users/illiabilan/Projects/LIVI/native/livi-helperd/build/Release/livi-core
+[22:19:27.062] [core] listening on /var/folders/g2/876byb6d7r39lvp4yzyrj_mc0000gn/T/livi-501/core.sock
+[22:19:27.067] [core] CarPlay listening on :58858 (dual-stack)
+[22:19:27.067] [core] running without a UI
+[22:19:27.069] [telemetry] listening on port 4000
+[22:19:27.078] [helper] [helperd] Android Auto USB watcher started
+[22:19:27.078] [helper] [helperd] dongle watcher started
+[22:19:27.079] [helper] [helperd] wired CarPlay watcher started (system usbmuxd), waiting for the LIVI Link
+[22:19:27.079] [helper] [shared-sock] listening on /tmp/livi-shared.sock
+[22:19:27.079] [helper] [aa-sock] listening on /tmp/aa-bt.sock
+[22:19:27.079] [helper] [cp-sock] listening on /tmp/cp-bt.sock
+[22:19:27.080] [helper] [aa-usb] watching for phones
+[22:19:27.080] [helper] [dongle] watching for dongles
+[22:19:27.086] [core] screen: 344x223 mm over 3456x2234 px
+[22:19:27.087] [AaSession] display 1280x720 -> AA tier 1280x720 @180dpi, cluster 1280x720 -> tier 1280x720 @180dpi
+[22:19:27.087] [AaManager] Android Auto sessions come from the helper
+[22:19:27.088] [helper] [aa-sock] event subscriber connected
+[22:19:27.089] [AaSession] display 1280x720 -> AA tier 1280x720 @180dpi, cluster 1280x720 -> tier 1280x720 @180dpi
+[22:19:27.109] [volume] watching the output for changes made outside LIVI
+[22:19:27.121] [helper] [cp] published _airplay._tcp port=58858 deviceid=02:5e:6d:63:61:33
+[22:19:27.121] [helper] [helperd] CarPlay receiver seam ready (cp-bt.sock + bonjour :58858)
+[22:19:27.388] [core] gst-host codecs {"av1":{"hw":false,"sw":false},"h264":{"hw":true,"sw":true},"h265":{"hw":true,"sw":true},"vp9":{"hw":false,"sw":false}}
+[22:19:27.388] [core] codecs hevc true vp9 false av1 false
+[22:19:27.390] [AaSession] display 1280x720 -> AA tier 1280x720 @180dpi, cluster 1280x720 -> tier 1280x720 @180dpi
+[22:19:27.542] [core] electron connected
+[22:19:37.093] [helper] [aa-usb] usb:46241FDAP002FS: phone candidate 18d1:4ee7, switching to accessory mode
+[22:19:37.106] [helper] [aa-usb] usb:46241FDAP002FS: accessory mode requested
+[22:19:38.107] [helper] [aa-usb] usb:46241FDAP002FS: accessory up, session socket /tmp/aa-session-1.sock
+[22:19:38.107] [AaManager] helper session /tmp/aa-session-1.sock from usb:46241FDAP002FS (usb)
+[22:19:38.275] [helper] [aa-session] usb:46241FDAP002FS: tls up, protocol 6.1
+[22:19:38.276] [Session] AUTH_COMPLETE proto bytes: 0800
+[22:19:38.276] [Session] AUTH_COMPLETE sent, waiting for SERVICE_DISCOVERY_REQUEST
+[22:19:38.282] [Session] MSG ch=0 msgId=0x0005 len=881 state=SERVICE_DISCOVERY
+[22:19:38.282] [ControlChannel] ServiceDiscoveryRequest label="Android" phone="Google Pixel 9 Pro" device_id="0f8824c5-d870-43ca-8a01-c6201a603572"
+[22:19:38.282] [Session] Phone: Android / Google Pixel 9 Pro
+[22:19:38.282] [Session] advertising codec: h265
+[22:19:38.282] [Session] SDR: 13 channels, 582B
+[22:19:38.282] [Session] SDR hex: 0a3808031a3408072230080210011800200028b40140904e50075a1e0a080800100018002000120808001000180020001a0808001000180020000a4008131a3c...
+[22:19:38.282] [Session] SDR + Ping sent (1500ms interval)
+[22:19:38.282] [Session] Channel setup, waiting for phone CHANNEL_OPEN_REQUEST on each service channel
+[22:19:38.284] [core] active session #1
+[22:19:38.286] [AaSession] display 1280x720 -> AA tier 1280x720 @180dpi, cluster 1280x720 -> tier 1280x720 @180dpi
+[22:19:38.396] [Session] MSG ch=0 msgId=0x0012 len=2 state=CHANNEL_SETUP
+[22:19:38.396] [ControlChannel] AudioFocusRequest raw: 0804
+[22:19:38.397] [ControlChannel] AudioFocus type=4(RELEASE) -> state=3(LOSS)
+[22:19:38.397] [AaEventBridge] audio-focus type=4 -> duck level=1
+[22:19:38.403] [Session] CHANNEL_OPEN_REQUEST ch=3, responding OK
+[22:19:38.403] [Session] MSG ch=20 msgId=0x0007 len=4 state=CHANNEL_SETUP
+[22:19:38.403] [Session] CHANNEL_OPEN_REQUEST ch=20, responding OK
+[22:19:38.403] [Session] CHANNEL_OPEN_REQUEST ch=19, responding OK
+[22:19:38.404] [Session] CHANNEL_OPEN_REQUEST ch=4, responding OK
+[22:19:38.404] [Session] CHANNEL_OPEN_REQUEST ch=5, responding OK
+[22:19:38.404] [Session] CHANNEL_OPEN_REQUEST ch=6, responding OK
+[22:19:38.405] [Session] CHANNEL_OPEN_REQUEST ch=9, responding OK
+[22:19:38.406] [Session] CHANNEL_OPEN_REQUEST ch=1, responding OK
+[22:19:38.406] [Session] CHANNEL_OPEN_REQUEST ch=8, responding OK
+[22:19:38.406] [Session] MSG ch=10 msgId=0x0007 len=4 state=CHANNEL_SETUP
+[22:19:38.406] [Session] CHANNEL_OPEN_REQUEST ch=10, responding OK
+[22:19:38.406] [Session] MSG ch=12 msgId=0x0007 len=4 state=CHANNEL_SETUP
+[22:19:38.406] [Session] CHANNEL_OPEN_REQUEST ch=12, responding OK
+[22:19:38.406] [Session] MSG ch=13 msgId=0x0007 len=4 state=CHANNEL_SETUP
+[22:19:38.406] [Session] CHANNEL_OPEN_REQUEST ch=13, responding OK
+[22:19:38.406] [Session] MSG ch=14 msgId=0x0007 len=4 state=CHANNEL_SETUP
+[22:19:38.406] [Session] CHANNEL_OPEN_REQUEST ch=14, responding OK
+[22:19:38.407] [Session] MSG ch=20 msgId=0x8002 len=0 state=CHANNEL_SETUP
+[22:19:38.407] [Session] ch=20 KeyBindingRequest (len=0), replying status=OK
+[22:19:38.407] [Session] AVSetupRequest ch=3 codec=7
+[22:19:38.407] [Session] video codec selected: h265 (configIdx=0)
+[22:19:38.407] [Session] phone picked video codec: H265 (offered: h265)
+[22:19:38.407] [Session] MediaConfigResponse ch=3 status=READY sent
+[22:19:38.407] [AaEventBridge] video codec h265 (phone selection)
+[22:19:38.409] [AaEventBridge] session connected
+[22:19:38.409] [Session] AVSetupRequest ch=19 codec=7
+[22:19:38.409] [Session] cluster codec selected: h265 (configIdx=0)
+[22:19:38.409] [Session] MediaConfigResponse ch=19 status=READY sent
+[22:19:38.409] [AaEventBridge] cluster video codec h265 (phone selection)
+[22:19:38.409] [core] Android Auto projects over usb
+[22:19:38.409] [Session] AVSetupRequest ch=4 codec=1
+[22:19:38.409] [AudioChannel:media] setup codec=1 48000Hz 2ch
+[22:19:38.409] [Session] MediaConfigResponse ch=4 status=READY sent
+[22:19:38.409] [Session] AVSetupRequest ch=5 codec=1
+[22:19:38.409] [AudioChannel:speech] setup codec=1 16000Hz 1ch
+[22:19:38.409] [Session] MediaConfigResponse ch=5 status=READY sent
+[22:19:38.410] [Session] AVSetupRequest ch=6 codec=1
+[22:19:38.410] [AudioChannel:system] setup codec=1 16000Hz 1ch
+[22:19:38.410] [Session] MediaConfigResponse ch=6 status=READY sent
+[22:19:38.410] [Session] ch=8 KeyBindingRequest (len=57), replying status=OK
+[22:19:38.412] [Session] SensorStartRequest type=13
+[22:19:38.413] [VideoChannel] stream started, session=5
+[22:19:38.415] [Session] SensorStartRequest type=10
+[22:19:38.415] [Session] SensorBatch: NightMode=false sent
+[22:19:38.417] [Session] SensorStartRequest type=3
+[22:19:38.422] [Session] SensorStartRequest type=8
+[22:19:38.427] [Session] SensorStartRequest type=7
+[22:19:38.839] [Session] MSG ch=0 msgId=0x0012 len=2 state=RUNNING
+[22:19:38.839] [ControlChannel] AudioFocusRequest raw: 0801
+[22:19:38.839] [ControlChannel] AudioFocus type=1(GAIN) -> state=1(GAIN)
+[22:19:38.839] [AaEventBridge] audio-focus type=1 -> duck level=1
+[22:19:38.980] [Session] SensorStartRequest type=1
+[22:19:39.016] [Session] MSG ch=14 msgId=0x8001 len=2 state=RUNNING
+[22:19:39.048] [VideoChannel] stream stopped
+[22:19:39.048] [VideoChannel] stream started, session=5
+[22:19:39.300] [Session] MSG ch=13 msgId=0x8001 len=25 state=RUNNING
+[22:19:39.300] [MediaInfoChannel] status: state=paused pos=87s source="YouTube Music" shuffle=false repeat=false
+[22:19:39.593] [Session] MSG ch=13 msgId=0x8001 len=25 state=RUNNING
+[22:19:39.593] [MediaInfoChannel] status: state=stopped pos=0s source="YouTube Music" shuffle=false repeat=false
+[22:19:39.728] [Session] MSG ch=13 msgId=0x8003 len=118917 state=RUNNING
+[22:19:39.728] [MediaInfoChannel] metadata: song="The XX Intro - ELEZO remix ( Official video )" artist="ELEZO" album="ELEZO" duration=161s art=118847B playlist=undefined
+
+(gst-plugin-scanner:44382): GLib-GIRepository-WARNING **: 22:19:39.729: Failed to load shared library 'libgobject-2.0.0.dylib' referenced by the typelib: dlopen(libgobject-2.0.0.dylib, 0x0009): tried: 'libgobject-2.0.0.dylib' (no such file), '/System/Volumes/Preboot/Cryptexes/OSlibgobject-2.0.0.dylib' (no such file), '/usr/lib/libgobject-2.0.0.dylib' (no such file, not in dyld cache), 'libgobject-2.0.0.dylib' (no such file)
+
+(gst-plugin-scanner:44382): GLib-GIRepository-WARNING **: 22:19:39.730: Failed to load shared library 'libglib-2.0.0.dylib' referenced by the typelib: dlopen(libglib-2.0.0.dylib, 0x0009): tried: 'libglib-2.0.0.dylib' (no such file), '/System/Volumes/Preboot/Cryptexes/OSlibglib-2.0.0.dylib' (no such file), '/usr/lib/libglib-2.0.0.dylib' (no such file, not in dyld cache), 'libglib-2.0.0.dylib' (no such file)
+
+** (gst-plugin-scanner:44382): CRITICAL **: 22:19:39.731: can't find gi.repository.Gst
+[22:19:39.854] [Session] MSG ch=10 msgId=0x8001 len=21 state=RUNNING
+[22:19:39.855] [Session] BT pairing request from C0:1C:6A:AD:79:4A -> already paired
+[22:19:39.875] [Session] MSG ch=10 msgId=0x8001 len=21 state=RUNNING
+[22:19:39.875] [Session] BT pairing request from C0:1C:6A:AD:79:4A -> already paired
+[22:19:39.920] [Session] MSG ch=10 msgId=0x8001 len=21 state=RUNNING
+[22:19:39.920] [Session] BT pairing request from C0:1C:6A:AD:79:4A -> already paired
+[22:19:40.080] [Session] SensorStartRequest type=26
+[22:19:40.085] [Session] SensorStartRequest type=19
+[22:19:40.093] [Session] SensorStartRequest type=2
+[22:19:40.097] [Session] SensorStartRequest type=21
+[22:19:40.101] [Session] SensorStartRequest type=23
+[22:19:40.103] [Session] SensorStartRequest type=25
+objc[44382]: Class ResultReceiver is implemented in both /opt/homebrew/Cellar/gtk+3/3.24.52_1/lib/libgtk-3.0.dylib (0x10a825748) and /opt/homebrew/Cellar/gtk4/4.24.1/lib/libgtk-4.1.dylib (0x11a2f6ea0). This may cause spurious casting failures and mysterious crashes. One of the duplicates must be removed or renamed.
+objc[44382]: Class GtkApplicationQuartzDelegate is implemented in both /opt/homebrew/Cellar/gtk+3/3.24.52_1/lib/libgtk-3.0.dylib (0x10a825770) and /opt/homebrew/Cellar/gtk4/4.24.1/lib/libgtk-4.1.dylib (0x11a2f6ec8). This may cause spurious casting failures and mysterious crashes. One of the duplicates must be removed or renamed.
+objc[44382]: Class GNSMenuItem is implemented in both /opt/homebrew/Cellar/gtk+3/3.24.52_1/lib/libgtk-3.0.dylib (0x10a8257c0) and /opt/homebrew/Cellar/gtk4/4.24.1/lib/libgtk-4.1.dylib (0x11a2f6f68). This may cause spurious casting failures and mysterious crashes. One of the duplicates must be removed or renamed.
+objc[44382]: Class GNSMenu is implemented in both /opt/homebrew/Cellar/gtk+3/3.24.52_1/lib/libgtk-3.0.dylib (0x10a8257e8) and /opt/homebrew/Cellar/gtk4/4.24.1/lib/libgtk-4.1.dylib (0x11a2f6f90). This may cause spurious casting failures and mysterious crashes. One of the duplicates must be removed or renamed.
+objc[44382]: Class FilterComboBox is implemented in both /opt/homebrew/Cellar/gtk+3/3.24.52_1/lib/libgtk-3.0.dylib (0x10a825860) and /opt/homebrew/Cellar/gtk4/4.24.1/lib/libgtk-4.1.dylib (0x11a2f7008). This may cause spurious casting failures and mysterious crashes. One of the duplicates must be removed or renamed.
+objc[44382]: Class gdkCoreCursor is implemented in both /opt/homebrew/Cellar/gtk+3/3.24.52_1/lib/libgdk-3.0.dylib (0x109c81290) and /opt/homebrew/Cellar/gtk4/4.24.1/lib/libgtk-4.1.dylib (0x11a2f7058). This may cause spurious casting failures and mysterious crashes. One of the duplicates must be removed or renamed.
+[22:19:40.660] [Session] MSG ch=13 msgId=0x8001 len=25 state=RUNNING
+[22:19:40.660] [MediaInfoChannel] status: state=stopped pos=0s source="YouTube Music" shuffle=false repeat=false
+[gst_video] window=0x10400147bc0 codec=h265 decoder=vtdec (hw) | appsrc name=src is-live=true do-timestamp=true format=time min-latency=0 max-latency=0 caps=video/x-h265,stream-format=byte-stream ! h265parse ! queue max-size-buffers=0 max-size-bytes=0 max-size-time=2000000000 ! vtdec name=dec ! queue max-size-buffers=2 max-size-bytes=0 max-size-time=0 leaky=downstream ! glupload ! glcolorconvert ! glshader name=cal ! glimagesink name=sink sync=false qos=false force-aspect-ratio=false
+[22:19:40.960] [Session] MSG ch=10 msgId=0x8001 len=21 state=RUNNING
+[22:19:40.960] [Session] BT pairing request from C0:1C:6A:AD:79:4A -> already paired
+[22:19:41.025] [gst_video] decoded format=NV12 1280x720 mem=memory:GLMemory
+[22:19:42.984] [Session] MSG ch=10 msgId=0x8001 len=21 state=RUNNING
+[22:19:42.985] [Session] BT pairing request from C0:1C:6A:AD:79:4A -> already paired
+[22:19:47.012] [Session] MSG ch=10 msgId=0x8001 len=21 state=RUNNING
+[22:19:47.013] [Session] BT pairing request from C0:1C:6A:AD:79:4A -> already paired
+[22:19:51.718] [Session] MSG ch=12 msgId=0x8003 len=2 state=RUNNING
+[22:19:51.718] [NavigationChannel] status=Active
+[22:19:51.722] [Session] MSG ch=0 msgId=0x000d len=2 state=RUNNING
+[22:19:51.722] [ControlChannel] NavigationFocusRequest raw: 0802
+[22:19:51.733] [Session] MSG ch=12 msgId=0x8006 len=76 state=RUNNING
+[22:19:51.733] [NavigationChannel] state maneuver=1 road="Exit the parking lot" dest="plac Strzegomski 2"
+[22:19:51.734] [Session] MSG ch=12 msgId=0x8007 len=36 state=RUNNING
+[22:19:51.734] [NavigationChannel] position dest=7599m eta="10:33 PM" ttarr=811s step=undefinedm
+[22:19:52.522] [Session] MSG ch=12 msgId=0x8006 len=76 state=RUNNING
+[22:19:52.522] [NavigationChannel] state maneuver=1 road="Exit the parking lot" dest="plac Strzegomski 2"
+[22:19:52.523] [Session] MSG ch=12 msgId=0x8007 len=36 state=RUNNING
+[22:19:52.523] [NavigationChannel] position dest=7599m eta="10:33 PM" ttarr=811s step=undefinedm
+[22:19:53.884] [Session] MSG ch=12 msgId=0x8006 len=76 state=RUNNING
+[22:19:53.884] [NavigationChannel] state maneuver=1 road="Exit the parking lot" dest="plac Strzegomski 2"
+[22:19:53.884] [Session] MSG ch=12 msgId=0x8007 len=36 state=RUNNING
+[22:19:53.884] [NavigationChannel] position dest=7599m eta="10:33 PM" ttarr=811s step=undefinedm
+[22:19:55.034] [Session] MSG ch=10 msgId=0x8001 len=21 state=RUNNING
+[22:19:55.035] [Session] BT pairing request from C0:1C:6A:AD:79:4A -> already paired
+[22:19:55.222] [Session] MSG ch=12 msgId=0x8006 len=76 state=RUNNING
+[22:19:55.222] [NavigationChannel] state maneuver=1 road="Exit the parking lot" dest="plac Strzegomski 2"
+[22:19:55.225] [Session] MSG ch=12 msgId=0x8007 len=36 state=RUNNING
+[22:19:55.225] [NavigationChannel] position dest=7599m eta="10:33 PM" ttarr=811s step=undefinedm
+[22:19:56.513] [Session] MSG ch=12 msgId=0x8006 len=76 state=RUNNING
+[22:19:56.513] [NavigationChannel] state maneuver=1 road="Exit the parking lot" dest="plac Strzegomski 2"
+[22:19:56.513] [Session] MSG ch=12 msgId=0x8007 len=36 state=RUNNING
+[22:19:56.513] [NavigationChannel] position dest=7599m eta="10:33 PM" ttarr=811s step=undefinedm
+[22:19:57.857] [Session] MSG ch=12 msgId=0x8006 len=76 state=RUNNING
+[22:19:57.857] [NavigationChannel] state maneuver=1 road="Exit the parking lot" dest="plac Strzegomski 2"
+[22:19:57.860] [Session] MSG ch=12 msgId=0x8007 len=36 state=RUNNING
+[22:19:57.861] [NavigationChannel] position dest=7599m eta="10:33 PM" ttarr=811s step=undefinedm
+[22:19:59.174] [Session] MSG ch=12 msgId=0x8006 len=76 state=RUNNING
+[22:19:59.175] [NavigationChannel] state maneuver=1 road="Exit the parking lot" dest="plac Strzegomski 2"
+[22:19:59.175] [Session] MSG ch=12 msgId=0x8007 len=36 state=RUNNING
+[22:19:59.175] [NavigationChannel] position dest=7599m eta="10:33 PM" ttarr=811s step=undefinedm
+[22:20:00.520] [Session] MSG ch=12 msgId=0x8006 len=126 state=RUNNING
+[22:20:00.520] [NavigationChannel] state maneuver=6 road="toward DK5 DK94 al. Generała Józefa Hallera" dest="plac Strzegomski 2"
+[22:20:00.520] [Session] MSG ch=12 msgId=0x8007 len=43 state=RUNNING
+[22:20:00.520] [NavigationChannel] position dest=7520m eta="10:33 PM" ttarr=789s step=202m
+[22:20:01.821] [Session] MSG ch=12 msgId=0x8006 len=126 state=RUNNING
+[22:20:01.821] [NavigationChannel] state maneuver=6 road="toward DK5 DK94 al. Generała Józefa Hallera" dest="plac Strzegomski 2"
+[22:20:01.822] [Session] MSG ch=12 msgId=0x8007 len=43 state=RUNNING
+[22:20:01.822] [NavigationChannel] position dest=7520m eta="10:33 PM" ttarr=789s step=202m
+[22:20:03.161] [Session] MSG ch=12 msgId=0x8006 len=126 state=RUNNING
+[22:20:03.161] [NavigationChannel] state maneuver=6 road="toward DK5 DK94 al. Generała Józefa Hallera" dest="plac Strzegomski 2"
+[22:20:03.162] [Session] MSG ch=12 msgId=0x8007 len=43 state=RUNNING
+[22:20:03.162] [NavigationChannel] position dest=7520m eta="10:33 PM" ttarr=792s step=202m
+[22:20:04.590] [Session] MSG ch=12 msgId=0x8006 len=126 state=RUNNING
+[22:20:04.590] [NavigationChannel] state maneuver=6 road="toward DK5 DK94 al. Generała Józefa Hallera" dest="plac Strzegomski 2"
+[22:20:04.590] [Session] MSG ch=12 msgId=0x8007 len=43 state=RUNNING
+[22:20:04.590] [NavigationChannel] position dest=7520m eta="10:33 PM" ttarr=792s step=202m
+[22:20:05.870] [Session] MSG ch=12 msgId=0x8006 len=126 state=RUNNING
+[22:20:05.870] [NavigationChannel] state maneuver=6 road="toward DK5 DK94 al. Generała Józefa Hallera" dest="plac Strzegomski 2"
+[22:20:05.870] [Session] MSG ch=12 msgId=0x8007 len=43 state=RUNNING
+[22:20:05.870] [NavigationChannel] position dest=7520m eta="10:33 PM" ttarr=792s step=202m
+[22:20:07.213] [Session] MSG ch=12 msgId=0x8006 len=126 state=RUNNING
+[22:20:07.214] [NavigationChannel] state maneuver=6 road="toward DK5 DK94 al. Generała Józefa Hallera" dest="plac Strzegomski 2"
+[22:20:07.214] [Session] MSG ch=12 msgId=0x8007 len=43 state=RUNNING
+[22:20:07.214] [NavigationChannel] position dest=7520m eta="10:33 PM" ttarr=792s step=202m
+[22:20:08.556] [Session] MSG ch=12 msgId=0x8006 len=126 state=RUNNING
+[22:20:08.556] [NavigationChannel] state maneuver=6 road="toward DK5 DK94 al. Generała Józefa Hallera" dest="plac Strzegomski 2"
+[22:20:08.557] [Session] MSG ch=12 msgId=0x8007 len=43 state=RUNNING
+[22:20:08.557] [NavigationChannel] position dest=7520m eta="10:33 PM" ttarr=792s step=202m
+[22:20:09.854] [Session] MSG ch=12 msgId=0x8006 len=126 state=RUNNING
+[22:20:09.854] [NavigationChannel] state maneuver=6 road="toward DK5 DK94 al. Generała Józefa Hallera" dest="plac Strzegomski 2"
+[22:20:09.862] [Session] MSG ch=12 msgId=0x8007 len=43 state=RUNNING
+[22:20:09.862] [NavigationChannel] position dest=7520m eta="10:33 PM" ttarr=792s step=202m
+[22:20:11.058] [Session] MSG ch=10 msgId=0x8001 len=21 state=RUNNING
+[22:20:11.058] [Session] BT pairing request from C0:1C:6A:AD:79:4A -> already paired
+[22:20:11.219] [Session] MSG ch=12 msgId=0x8006 len=126 state=RUNNING
+[22:20:11.219] [NavigationChannel] state maneuver=6 road="toward DK5 DK94 al. Generała Józefa Hallera" dest="plac Strzegomski 2"
+[22:20:11.221] [Session] MSG ch=12 msgId=0x8007 len=43 state=RUNNING
+[22:20:11.221] [NavigationChannel] position dest=7520m eta="10:33 PM" ttarr=792s step=202m
+[22:20:12.540] [Session] MSG ch=12 msgId=0x8006 len=126 state=RUNNING
+[22:20:12.541] [NavigationChannel] state maneuver=6 road="toward DK5 DK94 al. Generała Józefa Hallera" dest="plac Strzegomski 2"
+[22:20:12.542] [Session] MSG ch=12 msgId=0x8007 len=43 state=RUNNING
+[22:20:12.542] [NavigationChannel] position dest=7520m eta="10:33 PM" ttarr=792s step=202m
+[22:20:13.864] [Session] MSG ch=12 msgId=0x8006 len=126 state=RUNNING
+[22:20:13.865] [NavigationChannel] state maneuver=6 road="toward DK5 DK94 al. Generała Józefa Hallera" dest="plac Strzegomski 2"
+[22:20:13.865] [Session] MSG ch=12 msgId=0x8007 len=43 state=RUNNING
+[22:20:13.865] [NavigationChannel] position dest=7520m eta="10:33 PM" ttarr=792s step=202m
+[22:20:15.201] [Session] MSG ch=12 msgId=0x8006 len=126 state=RUNNING
+[22:20:15.201] [NavigationChannel] state maneuver=6 road="toward DK5 DK94 al. Generała Józefa Hallera" dest="plac Strzegomski 2"
+[22:20:15.202] [Session] MSG ch=12 msgId=0x8007 len=43 state=RUNNING
+[22:20:15.202] [NavigationChannel] position dest=7520m eta="10:33 PM" ttarr=792s step=202m
+[22:20:16.535] [Session] MSG ch=12 msgId=0x8006 len=126 state=RUNNING
+[22:20:16.535] [NavigationChannel] state maneuver=6 road="toward DK5 DK94 al. Generała Józefa Hallera" dest="plac Strzegomski 2"
+[22:20:16.537] [Session] MSG ch=12 msgId=0x8007 len=43 state=RUNNING
+[22:20:16.537] [NavigationChannel] position dest=7520m eta="10:33 PM" ttarr=792s step=202m
+[22:20:17.862] [Session] MSG ch=12 msgId=0x8006 len=126 state=RUNNING
+[22:20:17.862] [NavigationChannel] state maneuver=6 road="toward DK5 DK94 al. Generała Józefa Hallera" dest="plac Strzegomski 2"
+[22:20:17.862] [Session] MSG ch=12 msgId=0x8007 len=43 state=RUNNING
+[22:20:17.862] [NavigationChannel] position dest=7520m eta="10:33 PM" ttarr=792s step=202m
+[22:20:19.211] [Session] MSG ch=12 msgId=0x8006 len=126 state=RUNNING
+[22:20:19.211] [NavigationChannel] state maneuver=6 road="toward DK5 DK94 al. Generała Józefa Hallera" dest="plac Strzegomski 2"
+[22:20:19.211] [Session] MSG ch=12 msgId=0x8007 len=43 state=RUNNING
+[22:20:19.211] [NavigationChannel] position dest=7528m eta="10:33 PM" ttarr=794s step=210m
+[22:20:20.497] [Session] MSG ch=12 msgId=0x8006 len=126 state=RUNNING
+[22:20:20.497] [NavigationChannel] state maneuver=6 road="toward DK5 DK94 al. Generała Józefa Hallera" dest="plac Strzegomski 2"
+[22:20:20.498] [Session] MSG ch=12 msgId=0x8007 len=43 state=RUNNING
+[22:20:20.498] [NavigationChannel] position dest=7520m eta="10:33 PM" ttarr=792s step=202m
+[22:20:21.834] [Session] MSG ch=12 msgId=0x8006 len=126 state=RUNNING
+[22:20:21.835] [NavigationChannel] state maneuver=6 road="toward DK5 DK94 al. Generała Józefa Hallera" dest="plac Strzegomski 2"
+[22:20:21.836] [Session] MSG ch=12 msgId=0x8007 len=43 state=RUNNING
+[22:20:21.836] [NavigationChannel] position dest=7519m eta="10:33 PM" ttarr=791s step=201m
+[22:20:23.166] [Session] MSG ch=12 msgId=0x8006 len=126 state=RUNNING
+[22:20:23.166] [NavigationChannel] state maneuver=6 road="toward DK5 DK94 al. Generała Józefa Hallera" dest="plac Strzegomski 2"
+[22:20:23.167] [Session] MSG ch=12 msgId=0x8007 len=43 state=RUNNING
+[22:20:23.167] [NavigationChannel] position dest=7519m eta="10:33 PM" ttarr=791s step=201m
+[22:20:24.472] [Session] MSG ch=12 msgId=0x8006 len=126 state=RUNNING
+[22:20:24.473] [NavigationChannel] state maneuver=6 road="toward DK5 DK94 al. Generała Józefa Hallera" dest="plac Strzegomski 2"
+[22:20:24.473] [Session] MSG ch=12 msgId=0x8007 len=43 state=RUNNING
+[22:20:24.473] [NavigationChannel] position dest=7519m eta="10:33 PM" ttarr=791s step=201m
+[22:20:25.806] [Session] MSG ch=12 msgId=0x8006 len=126 state=RUNNING
+[22:20:25.806] [NavigationChannel] state maneuver=6 road="toward DK5 DK94 al. Generała Józefa Hallera" dest="plac Strzegomski 2"
+[22:20:25.806] [Session] MSG ch=12 msgId=0x8007 len=43 state=RUNNING
+[22:20:25.806] [NavigationChannel] position dest=7519m eta="10:33 PM" ttarr=791s step=201m
+[22:20:27.134] [Session] MSG ch=12 msgId=0x8006 len=126 state=RUNNING
+[22:20:27.134] [NavigationChannel] state maneuver=6 road="toward DK5 DK94 al. Generała Józefa Hallera" dest="plac Strzegomski 2"
+[22:20:27.134] [Session] MSG ch=12 msgId=0x8007 len=43 state=RUNNING
+[22:20:27.134] [NavigationChannel] position dest=7519m eta="10:33 PM" ttarr=791s step=201m
+[22:20:28.477] [Session] MSG ch=12 msgId=0x8006 len=126 state=RUNNING
+[22:20:28.477] [NavigationChannel] state maneuver=6 road="toward DK5 DK94 al. Generała Józefa Hallera" dest="plac Strzegomski 2"
+[22:20:28.478] [Session] MSG ch=12 msgId=0x8007 len=43 state=RUNNING
+[22:20:28.478] [NavigationChannel] position dest=7519m eta="10:33 PM" ttarr=791s step=201m
+[22:20:29.801] [Session] MSG ch=12 msgId=0x8006 len=126 state=RUNNING
+[22:20:29.802] [NavigationChannel] state maneuver=6 road="toward DK5 DK94 al. Generała Józefa Hallera" dest="plac Strzegomski 2"
+[22:20:29.802] [Session] MSG ch=12 msgId=0x8007 len=43 state=RUNNING
+[22:20:29.802] [NavigationChannel] position dest=7522m eta="10:33 PM" ttarr=792s step=204m
+[22:20:31.138] [Session] MSG ch=12 msgId=0x8006 len=126 state=RUNNING
+[22:20:31.138] [NavigationChannel] state maneuver=6 road="toward DK5 DK94 al. Generała Józefa Hallera" dest="plac Strzegomski 2"
+[22:20:31.138] [Session] MSG ch=12 msgId=0x8007 len=43 state=RUNNING
+[22:20:31.138] [NavigationChannel] position dest=7523m eta="10:33 PM" ttarr=793s step=205m
+[22:20:32.458] [Session] MSG ch=12 msgId=0x8006 len=126 state=RUNNING
+[22:20:32.459] [NavigationChannel] state maneuver=6 road="toward DK5 DK94 al. Generała Józefa Hallera" dest="plac Strzegomski 2"
+[22:20:32.459] [Session] MSG ch=12 msgId=0x8007 len=43 state=RUNNING
+[22:20:32.459] [NavigationChannel] position dest=7523m eta="10:33 PM" ttarr=793s step=205m
+[22:20:33.788] [Session] MSG ch=12 msgId=0x8006 len=126 state=RUNNING
+[22:20:33.788] [NavigationChannel] state maneuver=6 road="toward DK5 DK94 al. Generała Józefa Hallera" dest="plac Strzegomski 2"
+[22:20:33.789] [Session] MSG ch=12 msgId=0x8007 len=43 state=RUNNING
+[22:20:33.789] [NavigationChannel] position dest=7523m eta="10:33 PM" ttarr=793s step=205m
+[22:20:35.120] [Session] MSG ch=12 msgId=0x8006 len=126 state=RUNNING
+[22:20:35.120] [NavigationChannel] state maneuver=6 road="toward DK5 DK94 al. Generała Józefa Hallera" dest="plac Strzegomski 2"
+[22:20:35.122] [Session] MSG ch=12 msgId=0x8007 len=43 state=RUNNING
+[22:20:35.122] [NavigationChannel] position dest=7524m eta="10:33 PM" ttarr=793s step=206m
+[22:20:36.446] [Session] MSG ch=12 msgId=0x8006 len=126 state=RUNNING
+[22:20:36.446] [NavigationChannel] state maneuver=6 road="toward DK5 DK94 al. Generała Józefa Hallera" dest="plac Strzegomski 2"
+[22:20:36.446] [Session] MSG ch=12 msgId=0x8007 len=43 state=RUNNING
+[22:20:36.446] [NavigationChannel] position dest=7524m eta="10:33 PM" ttarr=793s step=206m
+[22:20:37.461] [Session] MSG ch=12 msgId=0x8006 len=126 state=RUNNING
+[22:20:37.461] [NavigationChannel] state maneuver=6 road="toward DK5 DK94 al. Generała Józefa Hallera" dest="plac Strzegomski 2"
+[22:20:37.461] [Session] MSG ch=12 msgId=0x8007 len=43 state=RUNNING
+[22:20:37.461] [NavigationChannel] position dest=7521m eta="10:33 PM" ttarr=792s step=203m
+[22:20:39.134] [Session] MSG ch=12 msgId=0x8006 len=126 state=RUNNING
+[22:20:39.134] [NavigationChannel] state maneuver=6 road="toward DK5 DK94 al. Generała Józefa Hallera" dest="plac Strzegomski 2"
+[22:20:39.134] [Session] MSG ch=12 msgId=0x8007 len=43 state=RUNNING
+[22:20:39.134] [NavigationChannel] position dest=7521m eta="10:33 PM" ttarr=792s step=203m
+[22:20:40.437] [Session] MSG ch=12 msgId=0x8006 len=126 state=RUNNING
+[22:20:40.437] [NavigationChannel] state maneuver=6 road="toward DK5 DK94 al. Generała Józefa Hallera" dest="plac Strzegomski 2"
+[22:20:40.437] [Session] MSG ch=12 msgId=0x8007 len=43 state=RUNNING
+[22:20:40.437] [NavigationChannel] position dest=7520m eta="10:33 PM" ttarr=792s step=202m
+[22:20:41.770] [Session] MSG ch=12 msgId=0x8006 len=126 state=RUNNING
+[22:20:41.770] [NavigationChannel] state maneuver=6 road="toward DK5 DK94 al. Generała Józefa Hallera" dest="plac Strzegomski 2"
+[22:20:41.770] [Session] MSG ch=12 msgId=0x8007 len=43 state=RUNNING
+[22:20:41.770] [NavigationChannel] position dest=7520m eta="10:33 PM" ttarr=792s step=202m
+[22:20:43.082] [Session] MSG ch=12 msgId=0x8006 len=126 state=RUNNING
+[22:20:43.083] [NavigationChannel] state maneuver=6 road="toward DK5 DK94 al. Generała Józefa Hallera" dest="plac Strzegomski 2"
+[22:20:43.083] [Session] MSG ch=12 msgId=0x8007 len=43 state=RUNNING
+[22:20:43.083] [NavigationChannel] position dest=7520m eta="10:33 PM" ttarr=792s step=202m
+[22:20:43.085] [Session] MSG ch=10 msgId=0x8001 len=21 state=RUNNING
+[22:20:43.085] [Session] BT pairing request from C0:1C:6A:AD:79:4A -> already paired
+[22:20:44.368] [Session] MSG ch=12 msgId=0x8006 len=126 state=RUNNING
+[22:20:44.368] [NavigationChannel] state maneuver=6 road="toward DK5 DK94 al. Generała Józefa Hallera" dest="plac Strzegomski 2"
+[22:20:44.368] [Session] MSG ch=12 msgId=0x8007 len=43 state=RUNNING
+[22:20:44.368] [NavigationChannel] position dest=7520m eta="10:33 PM" ttarr=792s step=202m
+[22:20:45.693] [Session] MSG ch=12 msgId=0x8006 len=126 state=RUNNING
+[22:20:45.693] [NavigationChannel] state maneuver=6 road="toward DK5 DK94 al. Generała Józefa Hallera" dest="plac Strzegomski 2"
+[22:20:45.694] [Session] MSG ch=12 msgId=0x8007 len=43 state=RUNNING
+[22:20:45.694] [NavigationChannel] position dest=7520m eta="10:33 PM" ttarr=792s step=202m
+[22:20:47.009] [Session] MSG ch=12 msgId=0x8006 len=126 state=RUNNING
+[22:20:47.009] [NavigationChannel] state maneuver=6 road="toward DK5 DK94 al. Generała Józefa Hallera" dest="plac Strzegomski 2"
+[22:20:47.009] [Session] MSG ch=12 msgId=0x8007 len=43 state=RUNNING
+[22:20:47.009] [NavigationChannel] position dest=7520m eta="10:33 PM" ttarr=792s step=202m
+[22:20:48.374] [Session] MSG ch=12 msgId=0x8006 len=126 state=RUNNING
+[22:20:48.374] [NavigationChannel] state maneuver=6 road="toward DK5 DK94 al. Generała Józefa Hallera" dest="plac Strzegomski 2"
+[22:20:48.374] [Session] MSG ch=12 msgId=0x8007 len=43 state=RUNNING
+[22:20:48.374] [NavigationChannel] position dest=7522m eta="10:34 PM" ttarr=792s step=204m
+[22:20:49.691] [Session] MSG ch=12 msgId=0x8006 len=126 state=RUNNING
+[22:20:49.691] [NavigationChannel] state maneuver=6 road="toward DK5 DK94 al. Generała Józefa Hallera" dest="plac Strzegomski 2"
+[22:20:49.691] [Session] MSG ch=12 msgId=0x8007 len=43 state=RUNNING
+[22:20:49.691] [NavigationChannel] position dest=7522m eta="10:34 PM" ttarr=792s step=204m
+[22:20:51.014] [Session] MSG ch=12 msgId=0x8006 len=126 state=RUNNING
+[22:20:51.015] [NavigationChannel] state maneuver=6 road="toward DK5 DK94 al. Generała Józefa Hallera" dest="plac Strzegomski 2"
+[22:20:51.015] [Session] MSG ch=12 msgId=0x8007 len=43 state=RUNNING
+[22:20:51.015] [NavigationChannel] position dest=7522m eta="10:34 PM" ttarr=792s step=204m
+[22:20:52.330] [Session] MSG ch=12 msgId=0x8006 len=126 state=RUNNING
+[22:20:52.330] [NavigationChannel] state maneuver=6 road="toward DK5 DK94 al. Generała Józefa Hallera" dest="plac Strzegomski 2"
+[22:20:52.333] [Session] MSG ch=12 msgId=0x8007 len=43 state=RUNNING
+[22:20:52.333] [NavigationChannel] position dest=7522m eta="10:34 PM" ttarr=792s step=204m
+[22:20:53.667] [Session] MSG ch=12 msgId=0x8006 len=126 state=RUNNING
+[22:20:53.667] [NavigationChannel] state maneuver=6 road="toward DK5 DK94 al. Generała Józefa Hallera" dest="plac Strzegomski 2"
+[22:20:53.667] [Session] MSG ch=12 msgId=0x8007 len=43 state=RUNNING
+[22:20:53.667] [NavigationChannel] position dest=7522m eta="10:34 PM" ttarr=792s step=204m
+[22:20:55.002] [Session] MSG ch=12 msgId=0x8006 len=126 state=RUNNING
+[22:20:55.002] [NavigationChannel] state maneuver=6 road="toward DK5 DK94 al. Generała Józefa Hallera" dest="plac Strzegomski 2"
+[22:20:55.004] [Session] MSG ch=12 msgId=0x8007 len=43 state=RUNNING
+[22:20:55.004] [NavigationChannel] position dest=7522m eta="10:34 PM" ttarr=792s step=204m
+[22:20:56.312] [Session] MSG ch=12 msgId=0x8006 len=126 state=RUNNING
+[22:20:56.312] [NavigationChannel] state maneuver=6 road="toward DK5 DK94 al. Generała Józefa Hallera" dest="plac Strzegomski 2"
+[22:20:56.313] [Session] MSG ch=12 msgId=0x8007 len=43 state=RUNNING
+[22:20:56.313] [NavigationChannel] position dest=7522m eta="10:34 PM" ttarr=792s step=204m
+[22:20:57.463] [Session] MSG ch=12 msgId=0x8006 len=126 state=RUNNING
+[22:20:57.463] [NavigationChannel] state maneuver=6 road="toward DK5 DK94 al. Generała Józefa Hallera" dest="plac Strzegomski 2"
+[22:20:57.463] [Session] MSG ch=12 msgId=0x8007 len=43 state=RUNNING
+[22:20:57.464] [NavigationChannel] position dest=7521m eta="10:34 PM" ttarr=792s step=203m
+[22:20:58.982] [Session] MSG ch=12 msgId=0x8006 len=126 state=RUNNING
+[22:20:58.982] [NavigationChannel] state maneuver=6 road="toward DK5 DK94 al. Generała Józefa Hallera" dest="plac Strzegomski 2"
+[22:20:58.982] [Session] MSG ch=12 msgId=0x8007 len=43 state=RUNNING
+[22:20:58.983] [NavigationChannel] position dest=7520m eta="10:34 PM" ttarr=792s step=202m
+[22:21:00.303] [Session] MSG ch=12 msgId=0x8006 len=126 state=RUNNING
+[22:21:00.303] [NavigationChannel] state maneuver=6 road="toward DK5 DK94 al. Generała Józefa Hallera" dest="plac Strzegomski 2"
+[22:21:00.304] [Session] MSG ch=12 msgId=0x8007 len=43 state=RUNNING
+[22:21:00.304] [NavigationChannel] position dest=7520m eta="10:34 PM" ttarr=792s step=202m
+[22:21:01.619] [Session] MSG ch=12 msgId=0x8006 len=126 state=RUNNING
+[22:21:01.620] [NavigationChannel] state maneuver=6 road="toward DK5 DK94 al. Generała Józefa Hallera" dest="plac Strzegomski 2"
+[22:21:01.620] [Session] MSG ch=12 msgId=0x8007 len=43 state=RUNNING
+[22:21:01.621] [NavigationChannel] position dest=7520m eta="10:34 PM" ttarr=792s step=202m
+[22:21:02.951] [Session] MSG ch=12 msgId=0x8006 len=126 state=RUNNING
+[22:21:02.951] [NavigationChannel] state maneuver=6 road="toward DK5 DK94 al. Generała Józefa Hallera" dest="plac Strzegomski 2"
+[22:21:02.951] [Session] MSG ch=12 msgId=0x8007 len=43 state=RUNNING
+[22:21:02.951] [NavigationChannel] position dest=7520m eta="10:34 PM" ttarr=792s step=202m
+[22:21:04.274] [Session] MSG ch=12 msgId=0x8006 len=126 state=RUNNING
+[22:21:04.275] [NavigationChannel] state maneuver=6 road="toward DK5 DK94 al. Generała Józefa Hallera" dest="plac Strzegomski 2"
+[22:21:04.275] [Session] MSG ch=12 msgId=0x8007 len=43 state=RUNNING
+[22:21:04.275] [NavigationChannel] position dest=7520m eta="10:34 PM" ttarr=803s step=202m
+[22:21:05.645] [Session] MSG ch=12 msgId=0x8006 len=126 state=RUNNING
+[22:21:05.645] [NavigationChannel] state maneuver=6 road="toward DK5 DK94 al. Generała Józefa Hallera" dest="plac Strzegomski 2"
+[22:21:05.646] [Session] MSG ch=12 msgId=0x8007 len=43 state=RUNNING
+[22:21:05.646] [NavigationChannel] position dest=7521m eta="10:34 PM" ttarr=803s step=203m
+[22:21:06.978] [Session] MSG ch=12 msgId=0x8006 len=126 state=RUNNING
+[22:21:06.978] [NavigationChannel] state maneuver=6 road="toward DK5 DK94 al. Generała Józefa Hallera" dest="plac Strzegomski 2"
+[22:21:06.979] [Session] MSG ch=12 msgId=0x8007 len=43 state=RUNNING
+[22:21:06.979] [NavigationChannel] position dest=7521m eta="10:34 PM" ttarr=803s step=203m
+[22:21:08.297] [Session] MSG ch=12 msgId=0x8006 len=126 state=RUNNING
+[22:21:08.297] [NavigationChannel] state maneuver=6 road="toward DK5 DK94 al. Generała Józefa Hallera" dest="plac Strzegomski 2"
+[22:21:08.297] [Session] MSG ch=12 msgId=0x8007 len=43 state=RUNNING
+[22:21:08.297] [NavigationChannel] position dest=7521m eta="10:34 PM" ttarr=803s step=203m
+[22:21:09.623] [Session] MSG ch=12 msgId=0x8006 len=126 state=RUNNING
+[22:21:09.623] [NavigationChannel] state maneuver=6 road="toward DK5 DK94 al. Generała Józefa Hallera" dest="plac Strzegomski 2"
+[22:21:09.623] [Session] MSG ch=12 msgId=0x8007 len=43 state=RUNNING
+[22:21:09.623] [NavigationChannel] position dest=7521m eta="10:34 PM" ttarr=803s step=203m
+[22:21:10.938] [Session] MSG ch=12 msgId=0x8006 len=126 state=RUNNING
+[22:21:10.939] [NavigationChannel] state maneuver=6 road="toward DK5 DK94 al. Generała Józefa Hallera" dest="plac Strzegomski 2"
+[22:21:10.940] [Session] MSG ch=12 msgId=0x8007 len=43 state=RUNNING
+[22:21:10.940] [NavigationChannel] position dest=7521m eta="10:34 PM" ttarr=803s step=203m
+[22:21:12.249] [Session] MSG ch=12 msgId=0x8006 len=126 state=RUNNING
+[22:21:12.249] [NavigationChannel] state maneuver=6 road="toward DK5 DK94 al. Generała Józefa Hallera" dest="plac Strzegomski 2"
+[22:21:12.249] [Session] MSG ch=12 msgId=0x8007 len=43 state=RUNNING
+[22:21:12.249] [NavigationChannel] position dest=7521m eta="10:34 PM" ttarr=803s step=203m
+[22:21:13.595] [Session] MSG ch=12 msgId=0x8006 len=126 state=RUNNING
+[22:21:13.595] [NavigationChannel] state maneuver=6 road="toward DK5 DK94 al. Generała Józefa Hallera" dest="plac Strzegomski 2"
+[22:21:13.595] [Session] MSG ch=12 msgId=0x8007 len=43 state=RUNNING
+[22:21:13.595] [NavigationChannel] position dest=7521m eta="10:34 PM" ttarr=803s step=203m
+[22:21:14.922] [Session] MSG ch=12 msgId=0x8006 len=126 state=RUNNING
+[22:21:14.922] [NavigationChannel] state maneuver=6 road="toward DK5 DK94 al. Generała Józefa Hallera" dest="plac Strzegomski 2"
+[22:21:14.922] [Session] MSG ch=12 msgId=0x8007 len=43 state=RUNNING
+[22:21:14.922] [NavigationChannel] position dest=7521m eta="10:34 PM" ttarr=803s step=203m
+[22:21:16.240] [Session] MSG ch=12 msgId=0x8006 len=126 state=RUNNING
+[22:21:16.240] [NavigationChannel] state maneuver=6 road="toward DK5 DK94 al. Generała Józefa Hallera" dest="plac Strzegomski 2"
+[22:21:16.240] [Session] MSG ch=12 msgId=0x8007 len=43 state=RUNNING
+[22:21:16.240] [NavigationChannel] position dest=7521m eta="10:34 PM" ttarr=803s step=203m
+[22:21:17.489] [Session] MSG ch=12 msgId=0x8006 len=126 state=RUNNING
+[22:21:17.489] [NavigationChannel] state maneuver=6 road="toward DK5 DK94 al. Generała Józefa Hallera" dest="plac Strzegomski 2"
+[22:21:17.494] [Session] MSG ch=12 msgId=0x8007 len=43 state=RUNNING
+[22:21:17.494] [NavigationChannel] position dest=7520m eta="10:34 PM" ttarr=803s step=202m
+[22:21:18.881] [Session] MSG ch=12 msgId=0x8006 len=126 state=RUNNING
+[22:21:18.881] [NavigationChannel] state maneuver=6 road="toward DK5 DK94 al. Generała Józefa Hallera" dest="plac Strzegomski 2"
+[22:21:18.884] [Session] MSG ch=12 msgId=0x8007 len=43 state=RUNNING
+[22:21:18.884] [NavigationChannel] position dest=7520m eta="10:34 PM" ttarr=803s step=202m
+[22:21:20.224] [Session] MSG ch=12 msgId=0x8006 len=126 state=RUNNING
+[22:21:20.224] [NavigationChannel] state maneuver=6 road="toward DK5 DK94 al. Generała Józefa Hallera" dest="plac Strzegomski 2"
+[22:21:20.224] [Session] MSG ch=12 msgId=0x8007 len=43 state=RUNNING
+[22:21:20.224] [NavigationChannel] position dest=7520m eta="10:34 PM" ttarr=803s step=202m
+[22:21:21.543] [Session] MSG ch=12 msgId=0x8006 len=126 state=RUNNING
+[22:21:21.544] [NavigationChannel] state maneuver=6 road="toward DK5 DK94 al. Generała Józefa Hallera" dest="plac Strzegomski 2"
+[22:21:21.544] [Session] MSG ch=12 msgId=0x8007 len=43 state=RUNNING
+[22:21:21.544] [NavigationChannel] position dest=7520m eta="10:34 PM" ttarr=803s step=202m
+[22:21:22.885] [Session] MSG ch=12 msgId=0x8006 len=126 state=RUNNING
+[22:21:22.885] [NavigationChannel] state maneuver=6 road="toward DK5 DK94 al. Generała Józefa Hallera" dest="plac Strzegomski 2"
+[22:21:22.888] [Session] MSG ch=12 msgId=0x8007 len=43 state=RUNNING
+[22:21:22.888] [NavigationChannel] position dest=7520m eta="10:34 PM" ttarr=803s step=202m
+[22:21:24.197] [Session] MSG ch=12 msgId=0x8006 len=126 state=RUNNING
+[22:21:24.197] [NavigationChannel] state maneuver=6 road="toward DK5 DK94 al. Generała Józefa Hallera" dest="plac Strzegomski 2"
+[22:21:24.198] [Session] MSG ch=12 msgId=0x8007 len=43 state=RUNNING
+[22:21:24.198] [NavigationChannel] position dest=7520m eta="10:34 PM" ttarr=803s step=202m
+[22:21:25.523] [Session] MSG ch=12 msgId=0x8006 len=126 state=RUNNING
+[22:21:25.523] [NavigationChannel] state maneuver=6 road="toward DK5 DK94 al. Generała Józefa Hallera" dest="plac Strzegomski 2"
+[22:21:25.524] [Session] MSG ch=12 msgId=0x8007 len=43 state=RUNNING
+[22:21:25.524] [NavigationChannel] position dest=7520m eta="10:34 PM" ttarr=803s step=202m
+[22:21:26.857] [Session] MSG ch=12 msgId=0x8006 len=126 state=RUNNING
+[22:21:26.857] [NavigationChannel] state maneuver=6 road="toward DK5 DK94 al. Generała Józefa Hallera" dest="plac Strzegomski 2"
+[22:21:26.858] [Session] MSG ch=12 msgId=0x8007 len=43 state=RUNNING
+[22:21:26.858] [NavigationChannel] position dest=7520m eta="10:34 PM" ttarr=803s step=202m
+[22:21:28.192] [Session] MSG ch=12 msgId=0x8006 len=126 state=RUNNING
+[22:21:28.192] [NavigationChannel] state maneuver=6 road="toward DK5 DK94 al. Generała Józefa Hallera" dest="plac Strzegomski 2"
+[22:21:28.194] [Session] MSG ch=12 msgId=0x8007 len=43 state=RUNNING
+[22:21:28.194] [NavigationChannel] position dest=7520m eta="10:34 PM" ttarr=803s step=202m
+[22:21:29.530] [Session] MSG ch=12 msgId=0x8006 len=126 state=RUNNING
+[22:21:29.530] [NavigationChannel] state maneuver=6 road="toward DK5 DK94 al. Generała Józefa Hallera" dest="plac Strzegomski 2"
+[22:21:29.531] [Session] MSG ch=12 msgId=0x8007 len=43 state=RUNNING
+[22:21:29.531] [NavigationChannel] position dest=7520m eta="10:34 PM" ttarr=803s step=202m
+[22:21:30.881] [Session] MSG ch=12 msgId=0x8006 len=126 state=RUNNING
+[22:21:30.882] [NavigationChannel] state maneuver=6 road="toward DK5 DK94 al. Generała Józefa Hallera" dest="plac Strzegomski 2"
+[22:21:30.882] [Session] MSG ch=12 msgId=0x8007 len=43 state=RUNNING
+[22:21:30.882] [NavigationChannel] position dest=7520m eta="10:34 PM" ttarr=803s step=202m
+[22:21:32.182] [Session] MSG ch=12 msgId=0x8006 len=126 state=RUNNING
+[22:21:32.182] [NavigationChannel] state maneuver=6 road="toward DK5 DK94 al. Generała Józefa Hallera" dest="plac Strzegomski 2"
+[22:21:32.182] [Session] MSG ch=12 msgId=0x8007 len=43 state=RUNNING
+[22:21:32.183] [NavigationChannel] position dest=7520m eta="10:34 PM" ttarr=803s step=202m
+[22:21:33.519] [Session] MSG ch=12 msgId=0x8006 len=126 state=RUNNING
+[22:21:33.520] [NavigationChannel] state maneuver=6 road="toward DK5 DK94 al. Generała Józefa Hallera" dest="plac Strzegomski 2"
+[22:21:33.520] [Session] MSG ch=12 msgId=0x8007 len=43 state=RUNNING
+[22:21:33.520] [NavigationChannel] position dest=7520m eta="10:34 PM" ttarr=803s step=202m
+[22:21:34.833] [Session] MSG ch=12 msgId=0x8006 len=126 state=RUNNING
+[22:21:34.833] [NavigationChannel] state maneuver=6 road="toward DK5 DK94 al. Generała Józefa Hallera" dest="plac Strzegomski 2"
+[22:21:34.833] [Session] MSG ch=12 msgId=0x8007 len=43 state=RUNNING
+[22:21:34.833] [NavigationChannel] position dest=7520m eta="10:34 PM" ttarr=803s step=202m
+[22:21:35.555] [Session] MSG ch=12 msgId=0x8006 len=126 state=RUNNING
+[22:21:35.555] [NavigationChannel] state maneuver=6 road="toward DK5 DK94 al. Generała Józefa Hallera" dest="plac Strzegomski 2"
+[22:21:35.561] [Session] MSG ch=12 msgId=0x8007 len=43 state=RUNNING
+[22:21:35.561] [NavigationChannel] position dest=7520m eta="10:34 PM" ttarr=803s step=202m
+[22:21:36.170] [Session] MSG ch=12 msgId=0x8006 len=126 state=RUNNING
+[22:21:36.170] [NavigationChannel] state maneuver=6 road="toward DK5 DK94 al. Generała Józefa Hallera" dest="plac Strzegomski 2"
+[22:21:36.172] [Session] MSG ch=12 msgId=0x8007 len=43 state=RUNNING
+[22:21:36.172] [NavigationChannel] position dest=7520m eta="10:34 PM" ttarr=803s step=202m
+[22:21:37.506] [Session] MSG ch=12 msgId=0x8006 len=126 state=RUNNING
+[22:21:37.506] [NavigationChannel] state maneuver=6 road="toward DK5 DK94 al. Generała Józefa Hallera" dest="plac Strzegomski 2"
+[22:21:37.506] [Session] MSG ch=12 msgId=0x8007 len=43 state=RUNNING
+[22:21:37.506] [NavigationChannel] position dest=7520m eta="10:35 PM" ttarr=803s step=202m
+[22:21:38.835] [Session] MSG ch=12 msgId=0x8006 len=126 state=RUNNING
+[22:21:38.836] [NavigationChannel] state maneuver=6 road="toward DK5 DK94 al. Generała Józefa Hallera" dest="plac Strzegomski 2"
+[22:21:38.836] [Session] MSG ch=12 msgId=0x8007 len=43 state=RUNNING
+[22:21:38.836] [NavigationChannel] position dest=7520m eta="10:35 PM" ttarr=803s step=202m
+[22:21:40.166] [Session] MSG ch=12 msgId=0x8006 len=126 state=RUNNING
+[22:21:40.166] [NavigationChannel] state maneuver=6 road="toward DK5 DK94 al. Generała Józefa Hallera" dest="plac Strzegomski 2"
+[22:21:40.166] [Session] MSG ch=12 msgId=0x8007 len=43 state=RUNNING
+[22:21:40.166] [NavigationChannel] position dest=7520m eta="10:35 PM" ttarr=803s step=202m
+[22:21:41.495] [Session] MSG ch=12 msgId=0x8006 len=126 state=RUNNING
+[22:21:41.495] [NavigationChannel] state maneuver=6 road="toward DK5 DK94 al. Generała Józefa Hallera" dest="plac Strzegomski 2"
+[22:21:41.495] [Session] MSG ch=12 msgId=0x8007 len=43 state=RUNNING
+[22:21:41.495] [NavigationChannel] position dest=7520m eta="10:35 PM" ttarr=803s step=202m
+[22:21:42.786] [Session] MSG ch=12 msgId=0x8006 len=126 state=RUNNING
+[22:21:42.786] [NavigationChannel] state maneuver=6 road="toward DK5 DK94 al. Generała Józefa Hallera" dest="plac Strzegomski 2"
+[22:21:42.786] [Session] MSG ch=12 msgId=0x8007 len=43 state=RUNNING
+[22:21:42.786] [NavigationChannel] position dest=7520m eta="10:35 PM" ttarr=803s step=202m
+[22:21:44.147] [Session] MSG ch=12 msgId=0x8006 len=126 state=RUNNING
+[22:21:44.147] [NavigationChannel] state maneuver=6 road="toward DK5 DK94 al. Generała Józefa Hallera" dest="plac Strzegomski 2"
+[22:21:44.150] [Session] MSG ch=12 msgId=0x8007 len=43 state=RUNNING
+[22:21:44.150] [NavigationChannel] position dest=7520m eta="10:35 PM" ttarr=803s step=202m
+[22:21:45.470] [Session] MSG ch=12 msgId=0x8006 len=126 state=RUNNING
+[22:21:45.470] [NavigationChannel] state maneuver=6 road="toward DK5 DK94 al. Generała Józefa Hallera" dest="plac Strzegomski 2"
+[22:21:45.470] [Session] MSG ch=12 msgId=0x8007 len=43 state=RUNNING
+[22:21:45.470] [NavigationChannel] position dest=7520m eta="10:35 PM" ttarr=803s step=202m
+[22:21:46.795] [Session] MSG ch=12 msgId=0x8006 len=126 state=RUNNING
+[22:21:46.795] [NavigationChannel] state maneuver=6 road="toward DK5 DK94 al. Generała Józefa Hallera" dest="plac Strzegomski 2"
+[22:21:46.795] [Session] MSG ch=12 msgId=0x8007 len=43 state=RUNNING
+[22:21:46.795] [NavigationChannel] position dest=7520m eta="10:35 PM" ttarr=803s step=202m
+[22:21:47.104] [Session] MSG ch=10 msgId=0x8001 len=21 state=RUNNING
+[22:21:47.104] [Session] BT pairing request from C0:1C:6A:AD:79:4A -> already paired
+[22:21:48.122] [Session] MSG ch=12 msgId=0x8006 len=126 state=RUNNING
+[22:21:48.122] [NavigationChannel] state maneuver=6 road="toward DK5 DK94 al. Generała Józefa Hallera" dest="plac Strzegomski 2"
+[22:21:48.122] [Session] MSG ch=12 msgId=0x8007 len=43 state=RUNNING
+[22:21:48.122] [NavigationChannel] position dest=7520m eta="10:35 PM" ttarr=803s step=202m
+[22:21:49.443] [Session] MSG ch=12 msgId=0x8006 len=126 state=RUNNING
+[22:21:49.443] [NavigationChannel] state maneuver=6 road="toward DK5 DK94 al. Generała Józefa Hallera" dest="plac Strzegomski 2"
+[22:21:49.444] [Session] MSG ch=12 msgId=0x8007 len=43 state=RUNNING
+[22:21:49.444] [NavigationChannel] position dest=7520m eta="10:35 PM" ttarr=803s step=202m
+[22:21:50.778] [Session] MSG ch=12 msgId=0x8006 len=126 state=RUNNING
+[22:21:50.779] [NavigationChannel] state maneuver=6 road="toward DK5 DK94 al. Generała Józefa Hallera" dest="plac Strzegomski 2"
+[22:21:50.779] [Session] MSG ch=12 msgId=0x8007 len=43 state=RUNNING
+[22:21:50.779] [NavigationChannel] position dest=7520m eta="10:35 PM" ttarr=803s step=202m
+[22:21:52.125] [Session] MSG ch=12 msgId=0x8006 len=126 state=RUNNING
+[22:21:52.125] [NavigationChannel] state maneuver=6 road="toward DK5 DK94 al. Generała Józefa Hallera" dest="plac Strzegomski 2"
+[22:21:52.125] [Session] MSG ch=12 msgId=0x8007 len=43 state=RUNNING
+[22:21:52.125] [NavigationChannel] position dest=7520m eta="10:35 PM" ttarr=803s step=202m
+[22:21:53.448] [Session] MSG ch=12 msgId=0x8006 len=126 state=RUNNING
+[22:21:53.449] [NavigationChannel] state maneuver=6 road="toward DK5 DK94 al. Generała Józefa Hallera" dest="plac Strzegomski 2"
+[22:21:53.450] [Session] MSG ch=12 msgId=0x8007 len=43 state=RUNNING
+[22:21:53.450] [NavigationChannel] position dest=7520m eta="10:35 PM" ttarr=803s step=202m
+[22:21:54.743] [Session] MSG ch=12 msgId=0x8006 len=126 state=RUNNING
+[22:21:54.743] [NavigationChannel] state maneuver=6 road="toward DK5 DK94 al. Generała Józefa Hallera" dest="plac Strzegomski 2"
+[22:21:54.743] [Session] MSG ch=12 msgId=0x8007 len=43 state=RUNNING
+[22:21:54.743] [NavigationChannel] position dest=7520m eta="10:35 PM" ttarr=803s step=202m
+[22:21:55.548] [Session] MSG ch=12 msgId=0x8006 len=126 state=RUNNING
+[22:21:55.548] [NavigationChannel] state maneuver=6 road="toward DK5 DK94 al. Generała Józefa Hallera" dest="plac Strzegomski 2"
+[22:21:55.548] [Session] MSG ch=12 msgId=0x8007 len=43 state=RUNNING
+[22:21:55.548] [NavigationChannel] position dest=7520m eta="10:35 PM" ttarr=803s step=202m
+[22:21:56.063] [Session] MSG ch=12 msgId=0x8006 len=126 state=RUNNING
+[22:21:56.063] [NavigationChannel] state maneuver=6 road="toward DK5 DK94 al. Generała Józefa Hallera" dest="plac Strzegomski 2"
+[22:21:56.063] [Session] MSG ch=12 msgId=0x8007 len=43 state=RUNNING
+[22:21:56.064] [NavigationChannel] position dest=7520m eta="10:35 PM" ttarr=803s step=202m
+[22:21:57.405] [Session] MSG ch=12 msgId=0x8006 len=126 state=RUNNING
+[22:21:57.405] [NavigationChannel] state maneuver=6 road="toward DK5 DK94 al. Generała Józefa Hallera" dest="plac Strzegomski 2"
+[22:21:57.405] [Session] MSG ch=12 msgId=0x8007 len=43 state=RUNNING
+[22:21:57.405] [NavigationChannel] position dest=7520m eta="10:35 PM" ttarr=803s step=202m
+[22:21:58.735] [Session] MSG ch=12 msgId=0x8006 len=126 state=RUNNING
+[22:21:58.735] [NavigationChannel] state maneuver=6 road="toward DK5 DK94 al. Generała Józefa Hallera" dest="plac Strzegomski 2"
+[22:21:58.736] [Session] MSG ch=12 msgId=0x8007 len=43 state=RUNNING
+[22:21:58.736] [NavigationChannel] position dest=7520m eta="10:35 PM" ttarr=803s step=202m
+[22:22:00.058] [Session] MSG ch=12 msgId=0x8006 len=126 state=RUNNING
+[22:22:00.058] [NavigationChannel] state maneuver=6 road="toward DK5 DK94 al. Generała Józefa Hallera" dest="plac Strzegomski 2"
+[22:22:00.058] [Session] MSG ch=12 msgId=0x8007 len=43 state=RUNNING
+[22:22:00.058] [NavigationChannel] position dest=7520m eta="10:35 PM" ttarr=803s step=202m
+[22:22:01.403] [Session] MSG ch=12 msgId=0x8006 len=126 state=RUNNING
+[22:22:01.404] [NavigationChannel] state maneuver=6 road="toward DK5 DK94 al. Generała Józefa Hallera" dest="plac Strzegomski 2"
+[22:22:01.404] [Session] MSG ch=12 msgId=0x8007 len=43 state=RUNNING
+[22:22:01.404] [NavigationChannel] position dest=7520m eta="10:35 PM" ttarr=803s step=202m
+[22:22:02.713] [Session] MSG ch=12 msgId=0x8006 len=126 state=RUNNING
+[22:22:02.713] [NavigationChannel] state maneuver=6 road="toward DK5 DK94 al. Generała Józefa Hallera" dest="plac Strzegomski 2"
+[22:22:02.713] [Session] MSG ch=12 msgId=0x8007 len=43 state=RUNNING
+[22:22:02.713] [NavigationChannel] position dest=7520m eta="10:35 PM" ttarr=803s step=202m
+[22:22:04.057] [Session] MSG ch=12 msgId=0x8006 len=126 state=RUNNING
+[22:22:04.057] [NavigationChannel] state maneuver=6 road="toward DK5 DK94 al. Generała Józefa Hallera" dest="plac Strzegomski 2"
+[22:22:04.057] [Session] MSG ch=12 msgId=0x8007 len=43 state=RUNNING
+[22:22:04.057] [NavigationChannel] position dest=7520m eta="10:35 PM" ttarr=803s step=202m
+[22:22:05.378] [Session] MSG ch=12 msgId=0x8006 len=126 state=RUNNING
+[22:22:05.378] [NavigationChannel] state maneuver=6 road="toward DK5 DK94 al. Generała Józefa Hallera" dest="plac Strzegomski 2"
+[22:22:05.378] [Session] MSG ch=12 msgId=0x8007 len=43 state=RUNNING
+[22:22:05.378] [NavigationChannel] position dest=7520m eta="10:35 PM" ttarr=798s step=202m
+[22:22:06.731] [Session] MSG ch=12 msgId=0x8006 len=126 state=RUNNING
+[22:22:06.732] [NavigationChannel] state maneuver=6 road="toward DK5 DK94 al. Generała Józefa Hallera" dest="plac Strzegomski 2"
+[22:22:06.733] [Session] MSG ch=12 msgId=0x8007 len=43 state=RUNNING
+[22:22:06.733] [NavigationChannel] position dest=7520m eta="10:35 PM" ttarr=798s step=202m
+[22:22:08.072] [Session] MSG ch=12 msgId=0x8006 len=126 state=RUNNING
+[22:22:08.072] [NavigationChannel] state maneuver=6 road="toward DK5 DK94 al. Generała Józefa Hallera" dest="plac Strzegomski 2"
+[22:22:08.074] [Session] MSG ch=12 msgId=0x8007 len=43 state=RUNNING
+[22:22:08.074] [NavigationChannel] position dest=7520m eta="10:35 PM" ttarr=798s step=202m
+[22:22:09.402] [Session] MSG ch=12 msgId=0x8006 len=126 state=RUNNING
+[22:22:09.402] [NavigationChannel] state maneuver=6 road="toward DK5 DK94 al. Generała Józefa Hallera" dest="plac Strzegomski 2"
+[22:22:09.402] [Session] MSG ch=12 msgId=0x8007 len=43 state=RUNNING
+[22:22:09.402] [NavigationChannel] position dest=7520m eta="10:35 PM" ttarr=798s step=202m
+[22:22:10.728] [Session] MSG ch=12 msgId=0x8006 len=126 state=RUNNING
+[22:22:10.729] [NavigationChannel] state maneuver=6 road="toward DK5 DK94 al. Generała Józefa Hallera" dest="plac Strzegomski 2"
+[22:22:10.729] [Session] MSG ch=12 msgId=0x8007 len=43 state=RUNNING
+[22:22:10.729] [NavigationChannel] position dest=7520m eta="10:35 PM" ttarr=798s step=202m
+[22:22:12.059] [Session] MSG ch=12 msgId=0x8006 len=126 state=RUNNING
+[22:22:12.060] [NavigationChannel] state maneuver=6 road="toward DK5 DK94 al. Generała Józefa Hallera" dest="plac Strzegomski 2"
+[22:22:12.060] [Session] MSG ch=12 msgId=0x8007 len=43 state=RUNNING
+[22:22:12.060] [NavigationChannel] position dest=7520m eta="10:35 PM" ttarr=798s step=202m
+[22:22:13.386] [Session] MSG ch=12 msgId=0x8006 len=126 state=RUNNING
+[22:22:13.387] [NavigationChannel] state maneuver=6 road="toward DK5 DK94 al. Generała Józefa Hallera" dest="plac Strzegomski 2"
+[22:22:13.387] [Session] MSG ch=12 msgId=0x8007 len=43 state=RUNNING
+[22:22:13.387] [NavigationChannel] position dest=7520m eta="10:35 PM" ttarr=798s step=202m
+[22:22:14.726] [Session] MSG ch=12 msgId=0x8006 len=126 state=RUNNING
+[22:22:14.726] [NavigationChannel] state maneuver=6 road="toward DK5 DK94 al. Generała Józefa Hallera" dest="plac Strzegomski 2"
+[22:22:14.727] [Session] MSG ch=12 msgId=0x8007 len=43 state=RUNNING
+[22:22:14.727] [NavigationChannel] position dest=7520m eta="10:35 PM" ttarr=798s step=202m
+[22:22:15.548] [Session] MSG ch=12 msgId=0x8006 len=126 state=RUNNING
+[22:22:15.548] [NavigationChannel] state maneuver=6 road="toward DK5 DK94 al. Generała Józefa Hallera" dest="plac Strzegomski 2"
+[22:22:15.548] [Session] MSG ch=12 msgId=0x8007 len=43 state=RUNNING
+[22:22:15.548] [NavigationChannel] position dest=7520m eta="10:35 PM" ttarr=798s step=202m
+[22:22:17.386] [Session] MSG ch=12 msgId=0x8006 len=126 state=RUNNING
+[22:22:17.386] [NavigationChannel] state maneuver=6 road="toward DK5 DK94 al. Generała Józefa Hallera" dest="plac Strzegomski 2"
+[22:22:17.386] [Session] MSG ch=12 msgId=0x8007 len=43 state=RUNNING
+[22:22:17.386] [NavigationChannel] position dest=7520m eta="10:35 PM" ttarr=798s step=202m
+[22:22:18.681] [Session] MSG ch=12 msgId=0x8006 len=126 state=RUNNING
+[22:22:18.681] [NavigationChannel] state maneuver=6 road="toward DK5 DK94 al. Generała Józefa Hallera" dest="plac Strzegomski 2"
+[22:22:18.682] [Session] MSG ch=12 msgId=0x8007 len=43 state=RUNNING
+[22:22:18.682] [NavigationChannel] position dest=7520m eta="10:35 PM" ttarr=798s step=202m
+[22:22:20.024] [Session] MSG ch=12 msgId=0x8006 len=126 state=RUNNING
+[22:22:20.024] [NavigationChannel] state maneuver=6 road="toward DK5 DK94 al. Generała Józefa Hallera" dest="plac Strzegomski 2"
+[22:22:20.025] [Session] MSG ch=12 msgId=0x8007 len=43 state=RUNNING
+[22:22:20.025] [NavigationChannel] position dest=7520m eta="10:35 PM" ttarr=798s step=202m
+[22:22:21.362] [Session] MSG ch=12 msgId=0x8006 len=126 state=RUNNING
+[22:22:21.362] [NavigationChannel] state maneuver=6 road="toward DK5 DK94 al. Generała Józefa Hallera" dest="plac Strzegomski 2"
+[22:22:21.362] [Session] MSG ch=12 msgId=0x8007 len=43 state=RUNNING
+[22:22:21.362] [NavigationChannel] position dest=7520m eta="10:35 PM" ttarr=798s step=202m
+[22:22:22.689] [Session] MSG ch=12 msgId=0x8006 len=126 state=RUNNING
+[22:22:22.689] [NavigationChannel] state maneuver=6 road="toward DK5 DK94 al. Generała Józefa Hallera" dest="plac Strzegomski 2"
+[22:22:22.690] [Session] MSG ch=12 msgId=0x8007 len=43 state=RUNNING
+[22:22:22.690] [NavigationChannel] position dest=7520m eta="10:35 PM" ttarr=798s step=202m
+[22:22:24.008] [Session] MSG ch=12 msgId=0x8006 len=126 state=RUNNING
+[22:22:24.008] [NavigationChannel] state maneuver=6 road="toward DK5 DK94 al. Generała Józefa Hallera" dest="plac Strzegomski 2"
+[22:22:24.009] [Session] MSG ch=12 msgId=0x8007 len=43 state=RUNNING
+[22:22:24.009] [NavigationChannel] position dest=7520m eta="10:35 PM" ttarr=798s step=202m
+[22:22:25.352] [Session] MSG ch=12 msgId=0x8006 len=126 state=RUNNING
+[22:22:25.352] [NavigationChannel] state maneuver=6 road="toward DK5 DK94 al. Generała Józefa Hallera" dest="plac Strzegomski 2"
+[22:22:25.352] [Session] MSG ch=12 msgId=0x8007 len=43 state=RUNNING
+[22:22:25.352] [NavigationChannel] position dest=7520m eta="10:35 PM" ttarr=798s step=202m
+[22:22:26.675] [Session] MSG ch=12 msgId=0x8006 len=126 state=RUNNING
+[22:22:26.675] [NavigationChannel] state maneuver=6 road="toward DK5 DK94 al. Generała Józefa Hallera" dest="plac Strzegomski 2"
+[22:22:26.676] [Session] MSG ch=12 msgId=0x8007 len=43 state=RUNNING
+[22:22:26.676] [NavigationChannel] position dest=7520m eta="10:35 PM" ttarr=798s step=202m
+[22:22:28.007] [Session] MSG ch=12 msgId=0x8006 len=126 state=RUNNING
+[22:22:28.007] [NavigationChannel] state maneuver=6 road="toward DK5 DK94 al. Generała Józefa Hallera" dest="plac Strzegomski 2"
+[22:22:28.007] [Session] MSG ch=12 msgId=0x8007 len=43 state=RUNNING
+[22:22:28.007] [NavigationChannel] position dest=7520m eta="10:35 PM" ttarr=798s step=202m
+[22:22:29.338] [Session] MSG ch=12 msgId=0x8006 len=126 state=RUNNING
+[22:22:29.338] [NavigationChannel] state maneuver=6 road="toward DK5 DK94 al. Generała Józefa Hallera" dest="plac Strzegomski 2"
+[22:22:29.339] [Session] MSG ch=12 msgId=0x8007 len=43 state=RUNNING
+[22:22:29.339] [NavigationChannel] position dest=7520m eta="10:35 PM" ttarr=798s step=202m
+[22:22:30.676] [Session] MSG ch=12 msgId=0x8006 len=126 state=RUNNING
+[22:22:30.676] [NavigationChannel] state maneuver=6 road="toward DK5 DK94 al. Generała Józefa Hallera" dest="plac Strzegomski 2"
+[22:22:30.679] [Session] MSG ch=12 msgId=0x8007 len=43 state=RUNNING
+[22:22:30.679] [NavigationChannel] position dest=7520m eta="10:35 PM" ttarr=798s step=202m
+[22:22:31.998] [Session] MSG ch=12 msgId=0x8006 len=126 state=RUNNING
+[22:22:31.998] [NavigationChannel] state maneuver=6 road="toward DK5 DK94 al. Generała Józefa Hallera" dest="plac Strzegomski 2"
+[22:22:31.999] [Session] MSG ch=12 msgId=0x8007 len=43 state=RUNNING
+[22:22:31.999] [NavigationChannel] position dest=7520m eta="10:35 PM" ttarr=798s step=202m
+[22:22:33.322] [Session] MSG ch=12 msgId=0x8006 len=126 state=RUNNING
+[22:22:33.322] [NavigationChannel] state maneuver=6 road="toward DK5 DK94 al. Generała Józefa Hallera" dest="plac Strzegomski 2"
+[22:22:33.322] [Session] MSG ch=12 msgId=0x8007 len=43 state=RUNNING
+[22:22:33.322] [NavigationChannel] position dest=7520m eta="10:35 PM" ttarr=798s step=202m
+[22:22:34.668] [Session] MSG ch=12 msgId=0x8006 len=126 state=RUNNING
+[22:22:34.668] [NavigationChannel] state maneuver=6 road="toward DK5 DK94 al. Generała Józefa Hallera" dest="plac Strzegomski 2"
+[22:22:34.669] [Session] MSG ch=12 msgId=0x8007 len=43 state=RUNNING
+[22:22:34.669] [NavigationChannel] position dest=7520m eta="10:35 PM" ttarr=798s step=202m
+[22:22:35.982] [Session] MSG ch=12 msgId=0x8006 len=126 state=RUNNING
+[22:22:35.982] [NavigationChannel] state maneuver=6 road="toward DK5 DK94 al. Generała Józefa Hallera" dest="plac Strzegomski 2"
+[22:22:35.982] [Session] MSG ch=12 msgId=0x8007 len=43 state=RUNNING
+[22:22:35.982] [NavigationChannel] position dest=7520m eta="10:35 PM" ttarr=798s step=202m
+[22:22:37.310] [Session] MSG ch=12 msgId=0x8006 len=126 state=RUNNING
+[22:22:37.310] [NavigationChannel] state maneuver=6 road="toward DK5 DK94 al. Generała Józefa Hallera" dest="plac Strzegomski 2"
+[22:22:37.311] [Session] MSG ch=12 msgId=0x8007 len=43 state=RUNNING
+[22:22:37.311] [NavigationChannel] position dest=7520m eta="10:35 PM" ttarr=798s step=202m
+[22:22:38.641] [Session] MSG ch=12 msgId=0x8006 len=126 state=RUNNING
+[22:22:38.642] [NavigationChannel] state maneuver=6 road="toward DK5 DK94 al. Generała Józefa Hallera" dest="plac Strzegomski 2"
+[22:22:38.642] [Session] MSG ch=12 msgId=0x8007 len=43 state=RUNNING
+[22:22:38.642] [NavigationChannel] position dest=7520m eta="10:35 PM" ttarr=798s step=202m
+[22:22:39.979] [Session] MSG ch=12 msgId=0x8006 len=126 state=RUNNING
+[22:22:39.979] [NavigationChannel] state maneuver=6 road="toward DK5 DK94 al. Generała Józefa Hallera" dest="plac Strzegomski 2"
+[22:22:39.979] [Session] MSG ch=12 msgId=0x8007 len=43 state=RUNNING
+[22:22:39.979] [NavigationChannel] position dest=7520m eta="10:35 PM" ttarr=798s step=202m
+[22:22:41.314] [Session] MSG ch=12 msgId=0x8006 len=126 state=RUNNING
+[22:22:41.314] [NavigationChannel] state maneuver=6 road="toward DK5 DK94 al. Generała Józefa Hallera" dest="plac Strzegomski 2"
+[22:22:41.314] [Session] MSG ch=12 msgId=0x8007 len=43 state=RUNNING
+[22:22:41.314] [NavigationChannel] position dest=7520m eta="10:35 PM" ttarr=798s step=202m
+[22:22:42.630] [Session] MSG ch=12 msgId=0x8006 len=126 state=RUNNING
+[22:22:42.630] [NavigationChannel] state maneuver=6 road="toward DK5 DK94 al. Generała Józefa Hallera" dest="plac Strzegomski 2"
+[22:22:42.630] [Session] MSG ch=12 msgId=0x8007 len=43 state=RUNNING
+[22:22:42.630] [NavigationChannel] position dest=7520m eta="10:36 PM" ttarr=798s step=202m
+[22:22:43.942] [Session] MSG ch=12 msgId=0x8006 len=126 state=RUNNING
+[22:22:43.943] [NavigationChannel] state maneuver=6 road="toward DK5 DK94 al. Generała Józefa Hallera" dest="plac Strzegomski 2"
+[22:22:43.943] [Session] MSG ch=12 msgId=0x8007 len=43 state=RUNNING
+[22:22:43.943] [NavigationChannel] position dest=7520m eta="10:36 PM" ttarr=798s step=202m
+[22:22:45.272] [Session] MSG ch=12 msgId=0x8006 len=126 state=RUNNING
+[22:22:45.272] [NavigationChannel] state maneuver=6 road="toward DK5 DK94 al. Generała Józefa Hallera" dest="plac Strzegomski 2"
+[22:22:45.274] [Session] MSG ch=12 msgId=0x8007 len=43 state=RUNNING
+[22:22:45.274] [NavigationChannel] position dest=7520m eta="10:36 PM" ttarr=798s step=202m
+[22:22:46.614] [Session] MSG ch=12 msgId=0x8006 len=126 state=RUNNING
+[22:22:46.615] [NavigationChannel] state maneuver=6 road="toward DK5 DK94 al. Generała Józefa Hallera" dest="plac Strzegomski 2"
+[22:22:46.616] [Session] MSG ch=12 msgId=0x8007 len=43 state=RUNNING
+[22:22:46.616] [NavigationChannel] position dest=7520m eta="10:36 PM" ttarr=798s step=202m
+[22:22:47.934] [Session] MSG ch=12 msgId=0x8006 len=126 state=RUNNING
+[22:22:47.934] [NavigationChannel] state maneuver=6 road="toward DK5 DK94 al. Generała Józefa Hallera" dest="plac Strzegomski 2"
+[22:22:47.934] [Session] MSG ch=12 msgId=0x8007 len=43 state=RUNNING
+[22:22:47.934] [NavigationChannel] position dest=7520m eta="10:36 PM" ttarr=798s step=202m
+[22:22:49.272] [Session] MSG ch=12 msgId=0x8006 len=126 state=RUNNING
+[22:22:49.273] [NavigationChannel] state maneuver=6 road="toward DK5 DK94 al. Generała Józefa Hallera" dest="plac Strzegomski 2"
+[22:22:49.273] [Session] MSG ch=12 msgId=0x8007 len=43 state=RUNNING
+[22:22:49.273] [NavigationChannel] position dest=7520m eta="10:36 PM" ttarr=798s step=202m
+[22:22:50.604] [Session] MSG ch=12 msgId=0x8006 len=126 state=RUNNING
+[22:22:50.604] [NavigationChannel] state maneuver=6 road="toward DK5 DK94 al. Generała Józefa Hallera" dest="plac Strzegomski 2"
+[22:22:50.605] [Session] MSG ch=12 msgId=0x8007 len=43 state=RUNNING
+[22:22:50.605] [NavigationChannel] position dest=7520m eta="10:36 PM" ttarr=798s step=202m
+[22:22:51.960] [Session] MSG ch=12 msgId=0x8006 len=126 state=RUNNING
+[22:22:51.960] [NavigationChannel] state maneuver=6 road="toward DK5 DK94 al. Generała Józefa Hallera" dest="plac Strzegomski 2"
+[22:22:51.960] [Session] MSG ch=12 msgId=0x8007 len=43 state=RUNNING
+[22:22:51.960] [NavigationChannel] position dest=7520m eta="10:36 PM" ttarr=798s step=202m
+[22:22:53.274] [Session] MSG ch=12 msgId=0x8006 len=126 state=RUNNING
+[22:22:53.274] [NavigationChannel] state maneuver=6 road="toward DK5 DK94 al. Generała Józefa Hallera" dest="plac Strzegomski 2"
+[22:22:53.274] [Session] MSG ch=12 msgId=0x8007 len=43 state=RUNNING
+[22:22:53.274] [NavigationChannel] position dest=7520m eta="10:36 PM" ttarr=798s step=202m
+[22:22:54.595] [Session] MSG ch=12 msgId=0x8006 len=126 state=RUNNING
+[22:22:54.595] [NavigationChannel] state maneuver=6 road="toward DK5 DK94 al. Generała Józefa Hallera" dest="plac Strzegomski 2"
+[22:22:54.596] [Session] MSG ch=12 msgId=0x8007 len=43 state=RUNNING
+[22:22:54.596] [NavigationChannel] position dest=7520m eta="10:36 PM" ttarr=798s step=202m
+[22:22:55.946] [Session] MSG ch=12 msgId=0x8006 len=126 state=RUNNING
+[22:22:55.946] [NavigationChannel] state maneuver=6 road="toward DK5 DK94 al. Generała Józefa Hallera" dest="plac Strzegomski 2"
+[22:22:55.946] [Session] MSG ch=12 msgId=0x8007 len=43 state=RUNNING
+[22:22:55.946] [NavigationChannel] position dest=7520m eta="10:36 PM" ttarr=798s step=202m
+[22:22:57.249] [Session] MSG ch=12 msgId=0x8006 len=126 state=RUNNING
+[22:22:57.249] [NavigationChannel] state maneuver=6 road="toward DK5 DK94 al. Generała Józefa Hallera" dest="plac Strzegomski 2"
+[22:22:57.249] [Session] MSG ch=12 msgId=0x8007 len=43 state=RUNNING
+[22:22:57.249] [NavigationChannel] position dest=7520m eta="10:36 PM" ttarr=798s step=202m
+[22:22:58.629] [Session] MSG ch=12 msgId=0x8006 len=126 state=RUNNING
+[22:22:58.630] [NavigationChannel] state maneuver=6 road="toward DK5 DK94 al. Generała Józefa Hallera" dest="plac Strzegomski 2"
+[22:22:58.630] [Session] MSG ch=12 msgId=0x8007 len=43 state=RUNNING
+[22:22:58.630] [NavigationChannel] position dest=7520m eta="10:36 PM" ttarr=798s step=202m
+[22:22:59.911] [Session] MSG ch=12 msgId=0x8006 len=126 state=RUNNING
+[22:22:59.911] [NavigationChannel] state maneuver=6 road="toward DK5 DK94 al. Generała Józefa Hallera" dest="plac Strzegomski 2"
+[22:22:59.912] [Session] MSG ch=12 msgId=0x8007 len=43 state=RUNNING
+[22:22:59.912] [NavigationChannel] position dest=7520m eta="10:36 PM" ttarr=798s step=202m
+[22:23:01.243] [Session] MSG ch=12 msgId=0x8006 len=126 state=RUNNING
+[22:23:01.243] [NavigationChannel] state maneuver=6 road="toward DK5 DK94 al. Generała Józefa Hallera" dest="plac Strzegomski 2"
+[22:23:01.243] [Session] MSG ch=12 msgId=0x8007 len=43 state=RUNNING
+[22:23:01.243] [NavigationChannel] position dest=7520m eta="10:36 PM" ttarr=798s step=202m
+[22:23:02.570] [Session] MSG ch=12 msgId=0x8006 len=126 state=RUNNING
+[22:23:02.570] [NavigationChannel] state maneuver=6 road="toward DK5 DK94 al. Generała Józefa Hallera" dest="plac Strzegomski 2"
+[22:23:02.570] [Session] MSG ch=12 msgId=0x8007 len=43 state=RUNNING
+[22:23:02.570] [NavigationChannel] position dest=7520m eta="10:36 PM" ttarr=798s step=202m
+[22:23:03.911] [Session] MSG ch=12 msgId=0x8006 len=126 state=RUNNING
+[22:23:03.912] [NavigationChannel] state maneuver=6 road="toward DK5 DK94 al. Generała Józefa Hallera" dest="plac Strzegomski 2"
+[22:23:03.912] [Session] MSG ch=12 msgId=0x8007 len=43 state=RUNNING
+[22:23:03.912] [NavigationChannel] position dest=7520m eta="10:36 PM" ttarr=798s step=202m
+[22:23:05.232] [Session] MSG ch=12 msgId=0x8006 len=126 state=RUNNING
+[22:23:05.232] [NavigationChannel] state maneuver=6 road="toward DK5 DK94 al. Generała Józefa Hallera" dest="plac Strzegomski 2"
+[22:23:05.233] [Session] MSG ch=12 msgId=0x8007 len=43 state=RUNNING
+[22:23:05.233] [NavigationChannel] position dest=7520m eta="10:36 PM" ttarr=798s step=202m
+[22:23:06.552] [Session] MSG ch=12 msgId=0x8006 len=126 state=RUNNING
+[22:23:06.553] [NavigationChannel] state maneuver=6 road="toward DK5 DK94 al. Generała Józefa Hallera" dest="plac Strzegomski 2"
+[22:23:06.553] [Session] MSG ch=12 msgId=0x8007 len=43 state=RUNNING
+[22:23:06.553] [NavigationChannel] position dest=7520m eta="10:36 PM" ttarr=791s step=202m
+[22:23:07.917] [Session] MSG ch=12 msgId=0x8006 len=126 state=RUNNING
+[22:23:07.917] [NavigationChannel] state maneuver=6 road="toward DK5 DK94 al. Generała Józefa Hallera" dest="plac Strzegomski 2"
+[22:23:07.917] [Session] MSG ch=12 msgId=0x8007 len=43 state=RUNNING
+[22:23:07.917] [NavigationChannel] position dest=7520m eta="10:36 PM" ttarr=791s step=202m
+[22:23:09.262] [Session] MSG ch=12 msgId=0x8006 len=126 state=RUNNING
+[22:23:09.262] [NavigationChannel] state maneuver=6 road="toward DK5 DK94 al. Generała Józefa Hallera" dest="plac Strzegomski 2"
+[22:23:09.262] [Session] MSG ch=12 msgId=0x8007 len=43 state=RUNNING
+[22:23:09.262] [NavigationChannel] position dest=7520m eta="10:36 PM" ttarr=791s step=202m
+[22:23:10.601] [Session] MSG ch=12 msgId=0x8006 len=126 state=RUNNING
+[22:23:10.601] [NavigationChannel] state maneuver=6 road="toward DK5 DK94 al. Generała Józefa Hallera" dest="plac Strzegomski 2"
+[22:23:10.601] [Session] MSG ch=12 msgId=0x8007 len=43 state=RUNNING
+[22:23:10.601] [NavigationChannel] position dest=7520m eta="10:36 PM" ttarr=791s step=202m
+[22:23:11.910] [Session] MSG ch=12 msgId=0x8006 len=126 state=RUNNING
+[22:23:11.910] [NavigationChannel] state maneuver=6 road="toward DK5 DK94 al. Generała Józefa Hallera" dest="plac Strzegomski 2"
+[22:23:11.910] [Session] MSG ch=12 msgId=0x8007 len=43 state=RUNNING
+[22:23:11.910] [NavigationChannel] position dest=7520m eta="10:36 PM" ttarr=791s step=202m
+[22:23:13.233] [Session] MSG ch=12 msgId=0x8006 len=126 state=RUNNING
+[22:23:13.233] [NavigationChannel] state maneuver=6 road="toward DK5 DK94 al. Generała Józefa Hallera" dest="plac Strzegomski 2"
+[22:23:13.233] [Session] MSG ch=12 msgId=0x8007 len=43 state=RUNNING
+[22:23:13.233] [NavigationChannel] position dest=7520m eta="10:36 PM" ttarr=791s step=202m
+[22:23:14.557] [Session] MSG ch=12 msgId=0x8006 len=126 state=RUNNING
+[22:23:14.558] [NavigationChannel] state maneuver=6 road="toward DK5 DK94 al. Generała Józefa Hallera" dest="plac Strzegomski 2"
+[22:23:14.558] [Session] MSG ch=12 msgId=0x8007 len=43 state=RUNNING
+[22:23:14.558] [NavigationChannel] position dest=7520m eta="10:36 PM" ttarr=791s step=202m
+[22:23:15.903] [Session] MSG ch=12 msgId=0x8006 len=126 state=RUNNING
+[22:23:15.903] [NavigationChannel] state maneuver=6 road="toward DK5 DK94 al. Generała Józefa Hallera" dest="plac Strzegomski 2"
+[22:23:15.903] [Session] MSG ch=12 msgId=0x8007 len=43 state=RUNNING
+[22:23:15.903] [NavigationChannel] position dest=7520m eta="10:36 PM" ttarr=791s step=202m
+[22:23:17.208] [Session] MSG ch=12 msgId=0x8006 len=126 state=RUNNING
+[22:23:17.208] [NavigationChannel] state maneuver=6 road="toward DK5 DK94 al. Generała Józefa Hallera" dest="plac Strzegomski 2"
+[22:23:17.208] [Session] MSG ch=12 msgId=0x8007 len=43 state=RUNNING
+[22:23:17.208] [NavigationChannel] position dest=7520m eta="10:36 PM" ttarr=791s step=202m
+[22:23:18.554] [Session] MSG ch=12 msgId=0x8006 len=126 state=RUNNING
+[22:23:18.555] [NavigationChannel] state maneuver=6 road="toward DK5 DK94 al. Generała Józefa Hallera" dest="plac Strzegomski 2"
+[22:23:18.555] [Session] MSG ch=12 msgId=0x8007 len=43 state=RUNNING
+[22:23:18.555] [NavigationChannel] position dest=7520m eta="10:36 PM" ttarr=791s step=202m
+[22:23:19.883] [Session] MSG ch=12 msgId=0x8006 len=126 state=RUNNING
+[22:23:19.884] [NavigationChannel] state maneuver=6 road="toward DK5 DK94 al. Generała Józefa Hallera" dest="plac Strzegomski 2"
+[22:23:19.884] [Session] MSG ch=12 msgId=0x8007 len=43 state=RUNNING
+[22:23:19.884] [NavigationChannel] position dest=7520m eta="10:36 PM" ttarr=791s step=202m
+[22:23:21.212] [Session] MSG ch=12 msgId=0x8006 len=126 state=RUNNING
+[22:23:21.212] [NavigationChannel] state maneuver=6 road="toward DK5 DK94 al. Generała Józefa Hallera" dest="plac Strzegomski 2"
+[22:23:21.212] [Session] MSG ch=12 msgId=0x8007 len=43 state=RUNNING
+[22:23:21.212] [NavigationChannel] position dest=7520m eta="10:36 PM" ttarr=791s step=202m
+[22:23:22.534] [Session] MSG ch=12 msgId=0x8006 len=126 state=RUNNING
+[22:23:22.534] [NavigationChannel] state maneuver=6 road="toward DK5 DK94 al. Generała Józefa Hallera" dest="plac Strzegomski 2"
+[22:23:22.535] [Session] MSG ch=12 msgId=0x8007 len=43 state=RUNNING
+[22:23:22.535] [NavigationChannel] position dest=7520m eta="10:36 PM" ttarr=791s step=202m
+[22:23:23.847] [Session] MSG ch=12 msgId=0x8006 len=126 state=RUNNING
+[22:23:23.848] [NavigationChannel] state maneuver=6 road="toward DK5 DK94 al. Generała Józefa Hallera" dest="plac Strzegomski 2"
+[22:23:23.848] [Session] MSG ch=12 msgId=0x8007 len=43 state=RUNNING
+[22:23:23.848] [NavigationChannel] position dest=7520m eta="10:36 PM" ttarr=791s step=202m
+[22:23:25.185] [Session] MSG ch=12 msgId=0x8006 len=126 state=RUNNING
+[22:23:25.185] [NavigationChannel] state maneuver=6 road="toward DK5 DK94 al. Generała Józefa Hallera" dest="plac Strzegomski 2"
+[22:23:25.185] [Session] MSG ch=12 msgId=0x8007 len=43 state=RUNNING
+[22:23:25.185] [NavigationChannel] position dest=7520m eta="10:36 PM" ttarr=791s step=202m
+[22:23:26.523] [Session] MSG ch=12 msgId=0x8006 len=126 state=RUNNING
+[22:23:26.523] [NavigationChannel] state maneuver=6 road="toward DK5 DK94 al. Generała Józefa Hallera" dest="plac Strzegomski 2"
+[22:23:26.523] [Session] MSG ch=12 msgId=0x8007 len=43 state=RUNNING
+[22:23:26.523] [NavigationChannel] position dest=7520m eta="10:36 PM" ttarr=791s step=202m
+[22:23:27.840] [Session] MSG ch=12 msgId=0x8006 len=126 state=RUNNING
+[22:23:27.840] [NavigationChannel] state maneuver=6 road="toward DK5 DK94 al. Generała Józefa Hallera" dest="plac Strzegomski 2"
+[22:23:27.840] [Session] MSG ch=12 msgId=0x8007 len=43 state=RUNNING
+[22:23:27.840] [NavigationChannel] position dest=7520m eta="10:36 PM" ttarr=791s step=202m
+[22:23:29.180] [Session] MSG ch=12 msgId=0x8006 len=126 state=RUNNING
+[22:23:29.180] [NavigationChannel] state maneuver=6 road="toward DK5 DK94 al. Generała Józefa Hallera" dest="plac Strzegomski 2"
+[22:23:29.180] [Session] MSG ch=12 msgId=0x8007 len=43 state=RUNNING
+[22:23:29.180] [NavigationChannel] position dest=7520m eta="10:36 PM" ttarr=791s step=202m
+[22:23:30.495] [Session] MSG ch=12 msgId=0x8006 len=126 state=RUNNING
+[22:23:30.495] [NavigationChannel] state maneuver=6 road="toward DK5 DK94 al. Generała Józefa Hallera" dest="plac Strzegomski 2"
+[22:23:30.495] [Session] MSG ch=12 msgId=0x8007 len=43 state=RUNNING
+[22:23:30.495] [NavigationChannel] position dest=7520m eta="10:36 PM" ttarr=791s step=202m
+[22:23:31.577] [Session] MSG ch=12 msgId=0x8006 len=126 state=RUNNING
+[22:23:31.577] [NavigationChannel] state maneuver=6 road="toward DK5 DK94 al. Generała Józefa Hallera" dest="plac Strzegomski 2"
+[22:23:31.577] [Session] MSG ch=12 msgId=0x8007 len=43 state=RUNNING
+[22:23:31.577] [NavigationChannel] position dest=7520m eta="10:36 PM" ttarr=791s step=202m
+[22:23:33.173] [Session] MSG ch=12 msgId=0x8006 len=126 state=RUNNING
+[22:23:33.173] [NavigationChannel] state maneuver=6 road="toward DK5 DK94 al. Generała Józefa Hallera" dest="plac Strzegomski 2"
+[22:23:33.174] [Session] MSG ch=12 msgId=0x8007 len=43 state=RUNNING
+[22:23:33.174] [NavigationChannel] position dest=7520m eta="10:36 PM" ttarr=791s step=202m
+[22:23:34.492] [Session] MSG ch=12 msgId=0x8006 len=126 state=RUNNING
+[22:23:34.493] [NavigationChannel] state maneuver=6 road="toward DK5 DK94 al. Generała Józefa Hallera" dest="plac Strzegomski 2"
+[22:23:34.494] [Session] MSG ch=12 msgId=0x8007 len=43 state=RUNNING
+[22:23:34.494] [NavigationChannel] position dest=7520m eta="10:36 PM" ttarr=791s step=202m
+[22:23:35.814] [Session] MSG ch=12 msgId=0x8006 len=126 state=RUNNING
+[22:23:35.814] [NavigationChannel] state maneuver=6 road="toward DK5 DK94 al. Generała Józefa Hallera" dest="plac Strzegomski 2"
+[22:23:35.814] [Session] MSG ch=12 msgId=0x8007 len=43 state=RUNNING
+[22:23:35.814] [NavigationChannel] position dest=7520m eta="10:36 PM" ttarr=791s step=202m
+[22:23:37.135] [Session] MSG ch=12 msgId=0x8006 len=126 state=RUNNING
+[22:23:37.136] [NavigationChannel] state maneuver=6 road="toward DK5 DK94 al. Generała Józefa Hallera" dest="plac Strzegomski 2"
+[22:23:37.136] [Session] MSG ch=12 msgId=0x8007 len=43 state=RUNNING
+[22:23:37.136] [NavigationChannel] position dest=7520m eta="10:36 PM" ttarr=791s step=202m
+[22:23:38.473] [Session] MSG ch=12 msgId=0x8006 len=126 state=RUNNING
+[22:23:38.473] [NavigationChannel] state maneuver=6 road="toward DK5 DK94 al. Generała Józefa Hallera" dest="plac Strzegomski 2"
+[22:23:38.474] [Session] MSG ch=12 msgId=0x8007 len=43 state=RUNNING
+[22:23:38.474] [NavigationChannel] position dest=7520m eta="10:36 PM" ttarr=791s step=202m
+[22:23:39.801] [Session] MSG ch=12 msgId=0x8006 len=126 state=RUNNING
+[22:23:39.801] [NavigationChannel] state maneuver=6 road="toward DK5 DK94 al. Generała Józefa Hallera" dest="plac Strzegomski 2"
+[22:23:39.802] [Session] MSG ch=12 msgId=0x8007 len=43 state=RUNNING
+[22:23:39.802] [NavigationChannel] position dest=7520m eta="10:36 PM" ttarr=791s step=202m
+[22:23:41.127] [Session] MSG ch=12 msgId=0x8006 len=126 state=RUNNING
+[22:23:41.128] [NavigationChannel] state maneuver=6 road="toward DK5 DK94 al. Generała Józefa Hallera" dest="plac Strzegomski 2"
+[22:23:41.128] [Session] MSG ch=12 msgId=0x8007 len=43 state=RUNNING
+[22:23:41.128] [NavigationChannel] position dest=7520m eta="10:36 PM" ttarr=791s step=202m
+[22:23:42.433] [Session] MSG ch=12 msgId=0x8006 len=126 state=RUNNING
+[22:23:42.434] [NavigationChannel] state maneuver=6 road="toward DK5 DK94 al. Generała Józefa Hallera" dest="plac Strzegomski 2"
+[22:23:42.434] [Session] MSG ch=12 msgId=0x8007 len=43 state=RUNNING
+[22:23:42.434] [NavigationChannel] position dest=7520m eta="10:36 PM" ttarr=791s step=202m
+[22:23:43.775] [Session] MSG ch=12 msgId=0x8006 len=126 state=RUNNING
+[22:23:43.775] [NavigationChannel] state maneuver=6 road="toward DK5 DK94 al. Generała Józefa Hallera" dest="plac Strzegomski 2"
+[22:23:43.776] [Session] MSG ch=12 msgId=0x8007 len=43 state=RUNNING
+[22:23:43.776] [NavigationChannel] position dest=7520m eta="10:36 PM" ttarr=791s step=202m
+[22:23:45.096] [Session] MSG ch=12 msgId=0x8006 len=126 state=RUNNING
+[22:23:45.096] [NavigationChannel] state maneuver=6 road="toward DK5 DK94 al. Generała Józefa Hallera" dest="plac Strzegomski 2"
+[22:23:45.096] [Session] MSG ch=12 msgId=0x8007 len=43 state=RUNNING
+[22:23:45.096] [NavigationChannel] position dest=7520m eta="10:36 PM" ttarr=791s step=202m
+[22:23:46.433] [Session] MSG ch=12 msgId=0x8006 len=126 state=RUNNING
+[22:23:46.433] [NavigationChannel] state maneuver=6 road="toward DK5 DK94 al. Generała Józefa Hallera" dest="plac Strzegomski 2"
+[22:23:46.434] [Session] MSG ch=12 msgId=0x8007 len=43 state=RUNNING
+[22:23:46.434] [NavigationChannel] position dest=7520m eta="10:36 PM" ttarr=791s step=202m
+[22:23:47.761] [Session] MSG ch=12 msgId=0x8006 len=126 state=RUNNING
+[22:23:47.762] [NavigationChannel] state maneuver=6 road="toward DK5 DK94 al. Generała Józefa Hallera" dest="plac Strzegomski 2"
+[22:23:47.762] [Session] MSG ch=12 msgId=0x8007 len=43 state=RUNNING
+[22:23:47.762] [NavigationChannel] position dest=7520m eta="10:36 PM" ttarr=791s step=202m
+[22:23:49.090] [Session] MSG ch=12 msgId=0x8006 len=126 state=RUNNING
+[22:23:49.091] [NavigationChannel] state maneuver=6 road="toward DK5 DK94 al. Generała Józefa Hallera" dest="plac Strzegomski 2"
+[22:23:49.091] [Session] MSG ch=12 msgId=0x8007 len=43 state=RUNNING
+[22:23:49.091] [NavigationChannel] position dest=7520m eta="10:37 PM" ttarr=791s step=202m
+[22:23:50.422] [Session] MSG ch=12 msgId=0x8006 len=126 state=RUNNING
+[22:23:50.422] [NavigationChannel] state maneuver=6 road="toward DK5 DK94 al. Generała Józefa Hallera" dest="plac Strzegomski 2"
+[22:23:50.422] [Session] MSG ch=12 msgId=0x8007 len=43 state=RUNNING
+[22:23:50.422] [NavigationChannel] position dest=7520m eta="10:37 PM" ttarr=791s step=202m
+[22:23:51.577] [Session] MSG ch=12 msgId=0x8006 len=126 state=RUNNING
+[22:23:51.577] [NavigationChannel] state maneuver=6 road="toward DK5 DK94 al. Generała Józefa Hallera" dest="plac Strzegomski 2"
+[22:23:51.577] [Session] MSG ch=12 msgId=0x8007 len=43 state=RUNNING
+[22:23:51.577] [NavigationChannel] position dest=7520m eta="10:37 PM" ttarr=791s step=202m
+[22:23:53.071] [Session] MSG ch=12 msgId=0x8006 len=126 state=RUNNING
+[22:23:53.071] [NavigationChannel] state maneuver=6 road="toward DK5 DK94 al. Generała Józefa Hallera" dest="plac Strzegomski 2"
+[22:23:53.071] [Session] MSG ch=12 msgId=0x8007 len=43 state=RUNNING
+[22:23:53.071] [NavigationChannel] position dest=7520m eta="10:37 PM" ttarr=791s step=202m
+[22:23:54.410] [Session] MSG ch=12 msgId=0x8006 len=126 state=RUNNING
+[22:23:54.411] [NavigationChannel] state maneuver=6 road="toward DK5 DK94 al. Generała Józefa Hallera" dest="plac Strzegomski 2"
+[22:23:54.412] [Session] MSG ch=12 msgId=0x8007 len=43 state=RUNNING
+[22:23:54.412] [NavigationChannel] position dest=7520m eta="10:37 PM" ttarr=791s step=202m
+[22:23:55.134] [Session] MSG ch=10 msgId=0x8001 len=21 state=RUNNING
+[22:23:55.135] [Session] BT pairing request from C0:1C:6A:AD:79:4A -> already paired
+[22:23:55.744] [Session] MSG ch=12 msgId=0x8006 len=126 state=RUNNING
+[22:23:55.745] [NavigationChannel] state maneuver=6 road="toward DK5 DK94 al. Generała Józefa Hallera" dest="plac Strzegomski 2"
+[22:23:55.745] [Session] MSG ch=12 msgId=0x8007 len=43 state=RUNNING
+[22:23:55.745] [NavigationChannel] position dest=7520m eta="10:37 PM" ttarr=791s step=202m
+[22:23:57.063] [Session] MSG ch=12 msgId=0x8006 len=126 state=RUNNING
+[22:23:57.063] [NavigationChannel] state maneuver=6 road="toward DK5 DK94 al. Generała Józefa Hallera" dest="plac Strzegomski 2"
+[22:23:57.063] [Session] MSG ch=12 msgId=0x8007 len=43 state=RUNNING
+[22:23:57.063] [NavigationChannel] position dest=7520m eta="10:37 PM" ttarr=791s step=202m
+[22:23:58.397] [Session] MSG ch=12 msgId=0x8006 len=126 state=RUNNING
+[22:23:58.398] [NavigationChannel] state maneuver=6 road="toward DK5 DK94 al. Generała Józefa Hallera" dest="plac Strzegomski 2"
+[22:23:58.398] [Session] MSG ch=12 msgId=0x8007 len=43 state=RUNNING
+[22:23:58.398] [NavigationChannel] position dest=7520m eta="10:37 PM" ttarr=791s step=202m
+[22:23:59.725] [Session] MSG ch=12 msgId=0x8006 len=126 state=RUNNING
+[22:23:59.725] [NavigationChannel] state maneuver=6 road="toward DK5 DK94 al. Generała Józefa Hallera" dest="plac Strzegomski 2"
+[22:23:59.726] [Session] MSG ch=12 msgId=0x8007 len=43 state=RUNNING
+[22:23:59.726] [NavigationChannel] position dest=7520m eta="10:37 PM" ttarr=791s step=202m
+[22:24:01.052] [Session] MSG ch=12 msgId=0x8006 len=126 state=RUNNING
+[22:24:01.052] [NavigationChannel] state maneuver=6 road="toward DK5 DK94 al. Generała Józefa Hallera" dest="plac Strzegomski 2"
+[22:24:01.053] [Session] MSG ch=12 msgId=0x8007 len=43 state=RUNNING
+[22:24:01.053] [NavigationChannel] position dest=7520m eta="10:37 PM" ttarr=791s step=202m
+[22:24:02.386] [Session] MSG ch=12 msgId=0x8006 len=126 state=RUNNING
+[22:24:02.386] [NavigationChannel] state maneuver=6 road="toward DK5 DK94 al. Generała Józefa Hallera" dest="plac Strzegomski 2"
+[22:24:02.387] [Session] MSG ch=12 msgId=0x8007 len=43 state=RUNNING
+[22:24:02.388] [NavigationChannel] position dest=7520m eta="10:37 PM" ttarr=791s step=202m
+[22:24:03.721] [Session] MSG ch=12 msgId=0x8006 len=126 state=RUNNING
+[22:24:03.721] [NavigationChannel] state maneuver=6 road="toward DK5 DK94 al. Generała Józefa Hallera" dest="plac Strzegomski 2"
+[22:24:03.721] [Session] MSG ch=12 msgId=0x8007 len=43 state=RUNNING
+[22:24:03.722] [NavigationChannel] position dest=7520m eta="10:37 PM" ttarr=791s step=202m
+[22:24:05.032] [Session] MSG ch=12 msgId=0x8006 len=126 state=RUNNING
+[22:24:05.032] [NavigationChannel] state maneuver=6 road="toward DK5 DK94 al. Generała Józefa Hallera" dest="plac Strzegomski 2"
+[22:24:05.032] [Session] MSG ch=12 msgId=0x8007 len=43 state=RUNNING
+[22:24:05.032] [NavigationChannel] position dest=7520m eta="10:37 PM" ttarr=791s step=202m
+[22:24:06.383] [Session] MSG ch=12 msgId=0x8006 len=126 state=RUNNING
+[22:24:06.383] [NavigationChannel] state maneuver=6 road="toward DK5 DK94 al. Generała Józefa Hallera" dest="plac Strzegomski 2"
+[22:24:06.383] [Session] MSG ch=12 msgId=0x8007 len=43 state=RUNNING
+[22:24:06.383] [NavigationChannel] position dest=7520m eta="10:37 PM" ttarr=791s step=202m
+[22:24:07.699] [Session] MSG ch=12 msgId=0x8006 len=126 state=RUNNING
+[22:24:07.699] [NavigationChannel] state maneuver=6 road="toward DK5 DK94 al. Generała Józefa Hallera" dest="plac Strzegomski 2"
+[22:24:07.699] [Session] MSG ch=12 msgId=0x8007 len=43 state=RUNNING
+[22:24:07.699] [NavigationChannel] position dest=7520m eta="10:37 PM" ttarr=789s step=202m
+[22:24:09.049] [Session] MSG ch=12 msgId=0x8006 len=126 state=RUNNING
+[22:24:09.049] [NavigationChannel] state maneuver=6 road="toward DK5 DK94 al. Generała Józefa Hallera" dest="plac Strzegomski 2"
+[22:24:09.050] [Session] MSG ch=12 msgId=0x8007 len=43 state=RUNNING
+[22:24:09.050] [NavigationChannel] position dest=7520m eta="10:37 PM" ttarr=789s step=202m
+[22:24:10.392] [Session] MSG ch=12 msgId=0x8006 len=126 state=RUNNING
+[22:24:10.392] [NavigationChannel] state maneuver=6 road="toward DK5 DK94 al. Generała Józefa Hallera" dest="plac Strzegomski 2"
+[22:24:10.394] [Session] MSG ch=12 msgId=0x8007 len=43 state=RUNNING
+[22:24:10.394] [NavigationChannel] position dest=7520m eta="10:37 PM" ttarr=789s step=202m
+[22:24:11.584] [Session] MSG ch=12 msgId=0x8006 len=126 state=RUNNING
+[22:24:11.584] [NavigationChannel] state maneuver=6 road="toward DK5 DK94 al. Generała Józefa Hallera" dest="plac Strzegomski 2"
+[22:24:11.584] [Session] MSG ch=12 msgId=0x8007 len=43 state=RUNNING
+[22:24:11.584] [NavigationChannel] position dest=7520m eta="10:37 PM" ttarr=789s step=202m
+[22:24:13.056] [Session] MSG ch=12 msgId=0x8006 len=126 state=RUNNING
+[22:24:13.057] [NavigationChannel] state maneuver=6 road="toward DK5 DK94 al. Generała Józefa Hallera" dest="plac Strzegomski 2"
+[22:24:13.057] [Session] MSG ch=12 msgId=0x8007 len=43 state=RUNNING
+[22:24:13.057] [NavigationChannel] position dest=7520m eta="10:37 PM" ttarr=789s step=202m
+[22:24:14.397] [Session] MSG ch=12 msgId=0x8006 len=126 state=RUNNING
+[22:24:14.397] [NavigationChannel] state maneuver=6 road="toward DK5 DK94 al. Generała Józefa Hallera" dest="plac Strzegomski 2"
+[22:24:14.397] [Session] MSG ch=12 msgId=0x8007 len=43 state=RUNNING
+[22:24:14.397] [NavigationChannel] position dest=7520m eta="10:37 PM" ttarr=789s step=202m
+[22:24:15.728] [Session] MSG ch=12 msgId=0x8006 len=126 state=RUNNING
+[22:24:15.728] [NavigationChannel] state maneuver=6 road="toward DK5 DK94 al. Generała Józefa Hallera" dest="plac Strzegomski 2"
+[22:24:15.728] [Session] MSG ch=12 msgId=0x8007 len=43 state=RUNNING
+[22:24:15.728] [NavigationChannel] position dest=7520m eta="10:37 PM" ttarr=789s step=202m
+[22:24:17.040] [Session] MSG ch=12 msgId=0x8006 len=126 state=RUNNING
+[22:24:17.040] [NavigationChannel] state maneuver=6 road="toward DK5 DK94 al. Generała Józefa Hallera" dest="plac Strzegomski 2"
+[22:24:17.041] [Session] MSG ch=12 msgId=0x8007 len=43 state=RUNNING
+[22:24:17.041] [NavigationChannel] position dest=7520m eta="10:37 PM" ttarr=789s step=202m
+[22:24:18.356] [Session] MSG ch=12 msgId=0x8006 len=126 state=RUNNING
+[22:24:18.356] [NavigationChannel] state maneuver=6 road="toward DK5 DK94 al. Generała Józefa Hallera" dest="plac Strzegomski 2"
+[22:24:18.357] [Session] MSG ch=12 msgId=0x8007 len=43 state=RUNNING
+[22:24:18.357] [NavigationChannel] position dest=7520m eta="10:37 PM" ttarr=789s step=202m
+[22:24:19.700] [Session] MSG ch=12 msgId=0x8006 len=126 state=RUNNING
+[22:24:19.700] [NavigationChannel] state maneuver=6 road="toward DK5 DK94 al. Generała Józefa Hallera" dest="plac Strzegomski 2"
+[22:24:19.700] [Session] MSG ch=12 msgId=0x8007 len=43 state=RUNNING
+[22:24:19.700] [NavigationChannel] position dest=7520m eta="10:37 PM" ttarr=789s step=202m
+[22:24:21.021] [Session] MSG ch=12 msgId=0x8006 len=126 state=RUNNING
+[22:24:21.022] [NavigationChannel] state maneuver=6 road="toward DK5 DK94 al. Generała Józefa Hallera" dest="plac Strzegomski 2"
+[22:24:21.023] [Session] MSG ch=12 msgId=0x8007 len=43 state=RUNNING
+[22:24:21.023] [NavigationChannel] position dest=7520m eta="10:37 PM" ttarr=789s step=202m
+[22:24:22.378] [Session] MSG ch=12 msgId=0x8006 len=126 state=RUNNING
+[22:24:22.378] [NavigationChannel] state maneuver=6 road="toward DK5 DK94 al. Generała Józefa Hallera" dest="plac Strzegomski 2"
+[22:24:22.378] [Session] MSG ch=12 msgId=0x8007 len=43 state=RUNNING
+[22:24:22.378] [NavigationChannel] position dest=7520m eta="10:37 PM" ttarr=789s step=202m
+[22:24:23.683] [Session] MSG ch=12 msgId=0x8006 len=126 state=RUNNING
+[22:24:23.683] [NavigationChannel] state maneuver=6 road="toward DK5 DK94 al. Generała Józefa Hallera" dest="plac Strzegomski 2"
+[22:24:23.683] [Session] MSG ch=12 msgId=0x8007 len=43 state=RUNNING
+[22:24:23.684] [NavigationChannel] position dest=7520m eta="10:37 PM" ttarr=789s step=202m
+[22:24:25.022] [Session] MSG ch=12 msgId=0x8006 len=126 state=RUNNING
+[22:24:25.022] [NavigationChannel] state maneuver=6 road="toward DK5 DK94 al. Generała Józefa Hallera" dest="plac Strzegomski 2"
+[22:24:25.023] [Session] MSG ch=12 msgId=0x8007 len=43 state=RUNNING
+[22:24:25.023] [NavigationChannel] position dest=7520m eta="10:37 PM" ttarr=789s step=202m
+[22:24:26.354] [Session] MSG ch=12 msgId=0x8006 len=126 state=RUNNING
+[22:24:26.354] [NavigationChannel] state maneuver=6 road="toward DK5 DK94 al. Generała Józefa Hallera" dest="plac Strzegomski 2"
+[22:24:26.354] [Session] MSG ch=12 msgId=0x8007 len=43 state=RUNNING
+[22:24:26.354] [NavigationChannel] position dest=7520m eta="10:37 PM" ttarr=789s step=202m
+[22:24:27.680] [Session] MSG ch=12 msgId=0x8006 len=126 state=RUNNING
+[22:24:27.680] [NavigationChannel] state maneuver=6 road="toward DK5 DK94 al. Generała Józefa Hallera" dest="plac Strzegomski 2"
+[22:24:27.681] [Session] MSG ch=12 msgId=0x8007 len=43 state=RUNNING
+[22:24:27.681] [NavigationChannel] position dest=7520m eta="10:37 PM" ttarr=789s step=202m
+[22:24:29.007] [Session] MSG ch=12 msgId=0x8006 len=126 state=RUNNING
+[22:24:29.008] [NavigationChannel] state maneuver=6 road="toward DK5 DK94 al. Generała Józefa Hallera" dest="plac Strzegomski 2"
+[22:24:29.008] [Session] MSG ch=12 msgId=0x8007 len=43 state=RUNNING
+[22:24:29.008] [NavigationChannel] position dest=7520m eta="10:37 PM" ttarr=789s step=202m
+[22:24:29.570] [Session] MSG ch=12 msgId=0x8006 len=126 state=RUNNING
+[22:24:29.571] [NavigationChannel] state maneuver=6 road="toward DK5 DK94 al. Generała Józefa Hallera" dest="plac Strzegomski 2"
+[22:24:29.571] [Session] MSG ch=12 msgId=0x8007 len=43 state=RUNNING
+[22:24:29.571] [NavigationChannel] position dest=7520m eta="10:37 PM" ttarr=789s step=202m
+[22:24:30.342] [Session] MSG ch=12 msgId=0x8006 len=126 state=RUNNING
+[22:24:30.342] [NavigationChannel] state maneuver=6 road="toward DK5 DK94 al. Generała Józefa Hallera" dest="plac Strzegomski 2"
+[22:24:30.342] [Session] MSG ch=12 msgId=0x8007 len=43 state=RUNNING
+[22:24:30.342] [NavigationChannel] position dest=7520m eta="10:37 PM" ttarr=789s step=202m
+[22:24:31.675] [Session] MSG ch=12 msgId=0x8006 len=126 state=RUNNING
+[22:24:31.675] [NavigationChannel] state maneuver=6 road="toward DK5 DK94 al. Generała Józefa Hallera" dest="plac Strzegomski 2"
+[22:24:31.675] [Session] MSG ch=12 msgId=0x8007 len=43 state=RUNNING
+[22:24:31.675] [NavigationChannel] position dest=7520m eta="10:37 PM" ttarr=789s step=202m
+[22:24:32.992] [Session] MSG ch=12 msgId=0x8006 len=126 state=RUNNING
+[22:24:32.992] [NavigationChannel] state maneuver=6 road="toward DK5 DK94 al. Generała Józefa Hallera" dest="plac Strzegomski 2"
+[22:24:32.993] [Session] MSG ch=12 msgId=0x8007 len=43 state=RUNNING
+[22:24:32.993] [NavigationChannel] position dest=7520m eta="10:37 PM" ttarr=789s step=202m
+[22:24:34.328] [Session] MSG ch=12 msgId=0x8006 len=126 state=RUNNING
+[22:24:34.328] [NavigationChannel] state maneuver=6 road="toward DK5 DK94 al. Generała Józefa Hallera" dest="plac Strzegomski 2"
+[22:24:34.329] [Session] MSG ch=12 msgId=0x8007 len=43 state=RUNNING
+[22:24:34.329] [NavigationChannel] position dest=7520m eta="10:37 PM" ttarr=789s step=202m
+[22:24:35.673] [Session] MSG ch=12 msgId=0x8006 len=126 state=RUNNING
+[22:24:35.673] [NavigationChannel] state maneuver=6 road="toward DK5 DK94 al. Generała Józefa Hallera" dest="plac Strzegomski 2"
+[22:24:35.673] [Session] MSG ch=12 msgId=0x8007 len=43 state=RUNNING
+[22:24:35.674] [NavigationChannel] position dest=7520m eta="10:37 PM" ttarr=789s step=202m
+[22:24:36.987] [Session] MSG ch=12 msgId=0x8006 len=126 state=RUNNING
+[22:24:36.987] [NavigationChannel] state maneuver=6 road="toward DK5 DK94 al. Generała Józefa Hallera" dest="plac Strzegomski 2"
+[22:24:36.987] [Session] MSG ch=12 msgId=0x8007 len=43 state=RUNNING
+[22:24:36.988] [NavigationChannel] position dest=7520m eta="10:37 PM" ttarr=789s step=202m
+[22:24:38.333] [Session] MSG ch=12 msgId=0x8006 len=126 state=RUNNING
+[22:24:38.333] [NavigationChannel] state maneuver=6 road="toward DK5 DK94 al. Generała Józefa Hallera" dest="plac Strzegomski 2"
+[22:24:38.334] [Session] MSG ch=12 msgId=0x8007 len=43 state=RUNNING
+[22:24:38.334] [NavigationChannel] position dest=7520m eta="10:37 PM" ttarr=789s step=202m
+[22:24:39.654] [Session] MSG ch=12 msgId=0x8006 len=126 state=RUNNING
+[22:24:39.655] [NavigationChannel] state maneuver=6 road="toward DK5 DK94 al. Generała Józefa Hallera" dest="plac Strzegomski 2"
+[22:24:39.662] [Session] MSG ch=12 msgId=0x8007 len=43 state=RUNNING
+[22:24:39.662] [NavigationChannel] position dest=7520m eta="10:37 PM" ttarr=789s step=202m
+[22:24:40.994] [Session] MSG ch=12 msgId=0x8006 len=126 state=RUNNING
+[22:24:40.995] [NavigationChannel] state maneuver=6 road="toward DK5 DK94 al. Generała Józefa Hallera" dest="plac Strzegomski 2"
+[22:24:40.995] [Session] MSG ch=12 msgId=0x8007 len=43 state=RUNNING
+[22:24:40.995] [NavigationChannel] position dest=7520m eta="10:37 PM" ttarr=789s step=202m
+[22:24:42.299] [Session] MSG ch=12 msgId=0x8006 len=126 state=RUNNING
+[22:24:42.299] [NavigationChannel] state maneuver=6 road="toward DK5 DK94 al. Generała Józefa Hallera" dest="plac Strzegomski 2"
+[22:24:42.299] [Session] MSG ch=12 msgId=0x8007 len=43 state=RUNNING
+[22:24:42.299] [NavigationChannel] position dest=7520m eta="10:37 PM" ttarr=789s step=202m
+[22:24:43.632] [Session] MSG ch=12 msgId=0x8006 len=126 state=RUNNING
+[22:24:43.632] [NavigationChannel] state maneuver=6 road="toward DK5 DK94 al. Generała Józefa Hallera" dest="plac Strzegomski 2"
+[22:24:43.632] [Session] MSG ch=12 msgId=0x8007 len=43 state=RUNNING
+[22:24:43.633] [NavigationChannel] position dest=7520m eta="10:37 PM" ttarr=789s step=202m
+[22:24:44.955] [Session] MSG ch=12 msgId=0x8006 len=126 state=RUNNING
+[22:24:44.955] [NavigationChannel] state maneuver=6 road="toward DK5 DK94 al. Generała Józefa Hallera" dest="plac Strzegomski 2"
+[22:24:44.955] [Session] MSG ch=12 msgId=0x8007 len=43 state=RUNNING
+[22:24:44.955] [NavigationChannel] position dest=7520m eta="10:37 PM" ttarr=789s step=202m
+[22:24:46.296] [Session] MSG ch=12 msgId=0x8006 len=126 state=RUNNING
+[22:24:46.297] [NavigationChannel] state maneuver=6 road="toward DK5 DK94 al. Generała Józefa Hallera" dest="plac Strzegomski 2"
+[22:24:46.297] [Session] MSG ch=12 msgId=0x8007 len=43 state=RUNNING
+[22:24:46.297] [NavigationChannel] position dest=7520m eta="10:37 PM" ttarr=789s step=202m
+[22:24:47.657] [Session] MSG ch=12 msgId=0x8006 len=126 state=RUNNING
+[22:24:47.658] [NavigationChannel] state maneuver=6 road="toward DK5 DK94 al. Generała Józefa Hallera" dest="plac Strzegomski 2"
+[22:24:47.660] [Session] MSG ch=12 msgId=0x8007 len=43 state=RUNNING
+[22:24:47.660] [NavigationChannel] position dest=7520m eta="10:37 PM" ttarr=789s step=202m
+[22:24:48.974] [Session] MSG ch=12 msgId=0x8006 len=126 state=RUNNING
+[22:24:48.974] [NavigationChannel] state maneuver=6 road="toward DK5 DK94 al. Generała Józefa Hallera" dest="plac Strzegomski 2"
+[22:24:48.974] [Session] MSG ch=12 msgId=0x8007 len=43 state=RUNNING
+[22:24:48.974] [NavigationChannel] position dest=7520m eta="10:37 PM" ttarr=789s step=202m
+[22:24:49.537] [Session] MSG ch=12 msgId=0x8006 len=126 state=RUNNING
+[22:24:49.538] [NavigationChannel] state maneuver=6 road="toward DK5 DK94 al. Generała Józefa Hallera" dest="plac Strzegomski 2"
+[22:24:49.538] [Session] MSG ch=12 msgId=0x8007 len=43 state=RUNNING
+[22:24:49.538] [NavigationChannel] position dest=7520m eta="10:37 PM" ttarr=789s step=202m
+[22:24:50.294] [Session] MSG ch=12 msgId=0x8006 len=126 state=RUNNING
+[22:24:50.295] [NavigationChannel] state maneuver=6 road="toward DK5 DK94 al. Generała Józefa Hallera" dest="plac Strzegomski 2"
+[22:24:50.295] [Session] MSG ch=12 msgId=0x8007 len=43 state=RUNNING
+[22:24:50.296] [NavigationChannel] position dest=7520m eta="10:37 PM" ttarr=789s step=202m
+[22:24:51.641] [Session] MSG ch=12 msgId=0x8006 len=126 state=RUNNING
+[22:24:51.641] [NavigationChannel] state maneuver=6 road="toward DK5 DK94 al. Generała Józefa Hallera" dest="plac Strzegomski 2"
+[22:24:51.641] [Session] MSG ch=12 msgId=0x8007 len=43 state=RUNNING
+[22:24:51.641] [NavigationChannel] position dest=7520m eta="10:38 PM" ttarr=789s step=202m
+[22:24:52.971] [Session] MSG ch=12 msgId=0x8006 len=126 state=RUNNING
+[22:24:52.971] [NavigationChannel] state maneuver=6 road="toward DK5 DK94 al. Generała Józefa Hallera" dest="plac Strzegomski 2"
+[22:24:52.971] [Session] MSG ch=12 msgId=0x8007 len=43 state=RUNNING
+[22:24:52.971] [NavigationChannel] position dest=7520m eta="10:38 PM" ttarr=789s step=202m
+[22:24:54.305] [Session] MSG ch=12 msgId=0x8006 len=126 state=RUNNING
+[22:24:54.305] [NavigationChannel] state maneuver=6 road="toward DK5 DK94 al. Generała Józefa Hallera" dest="plac Strzegomski 2"
+[22:24:54.305] [Session] MSG ch=12 msgId=0x8007 len=43 state=RUNNING
+[22:24:54.305] [NavigationChannel] position dest=7520m eta="10:38 PM" ttarr=789s step=202m
+[22:24:55.626] [Session] MSG ch=12 msgId=0x8006 len=126 state=RUNNING
+[22:24:55.626] [NavigationChannel] state maneuver=6 road="toward DK5 DK94 al. Generała Józefa Hallera" dest="plac Strzegomski 2"
+[22:24:55.627] [Session] MSG ch=12 msgId=0x8007 len=43 state=RUNNING
+[22:24:55.627] [NavigationChannel] position dest=7520m eta="10:38 PM" ttarr=789s step=202m
+[22:24:56.941] [Session] MSG ch=12 msgId=0x8006 len=126 state=RUNNING
+[22:24:56.942] [NavigationChannel] state maneuver=6 road="toward DK5 DK94 al. Generała Józefa Hallera" dest="plac Strzegomski 2"
+[22:24:56.942] [Session] MSG ch=12 msgId=0x8007 len=43 state=RUNNING
+[22:24:56.942] [NavigationChannel] position dest=7520m eta="10:38 PM" ttarr=789s step=202m
+[22:24:58.285] [Session] MSG ch=12 msgId=0x8006 len=126 state=RUNNING
+[22:24:58.285] [NavigationChannel] state maneuver=6 road="toward DK5 DK94 al. Generała Józefa Hallera" dest="plac Strzegomski 2"
+[22:24:58.288] [Session] MSG ch=12 msgId=0x8007 len=43 state=RUNNING
+[22:24:58.288] [NavigationChannel] position dest=7520m eta="10:38 PM" ttarr=789s step=202m
+[22:24:59.603] [Session] MSG ch=12 msgId=0x8006 len=126 state=RUNNING
+[22:24:59.604] [NavigationChannel] state maneuver=6 road="toward DK5 DK94 al. Generała Józefa Hallera" dest="plac Strzegomski 2"
+[22:24:59.605] [Session] MSG ch=12 msgId=0x8007 len=43 state=RUNNING
+[22:24:59.605] [NavigationChannel] position dest=7520m eta="10:38 PM" ttarr=789s step=202m
+[22:25:00.935] [Session] MSG ch=12 msgId=0x8006 len=126 state=RUNNING
+[22:25:00.935] [NavigationChannel] state maneuver=6 road="toward DK5 DK94 al. Generała Józefa Hallera" dest="plac Strzegomski 2"
+[22:25:00.938] [Session] MSG ch=12 msgId=0x8007 len=43 state=RUNNING
+[22:25:00.938] [NavigationChannel] position dest=7520m eta="10:38 PM" ttarr=789s step=202m
+[22:25:02.257] [Session] MSG ch=12 msgId=0x8006 len=126 state=RUNNING
+[22:25:02.257] [NavigationChannel] state maneuver=6 road="toward DK5 DK94 al. Generała Józefa Hallera" dest="plac Strzegomski 2"
+[22:25:02.257] [Session] MSG ch=12 msgId=0x8007 len=43 state=RUNNING
+[22:25:02.257] [NavigationChannel] position dest=7520m eta="10:38 PM" ttarr=789s step=202m
+[22:25:03.595] [Session] MSG ch=12 msgId=0x8006 len=126 state=RUNNING
+[22:25:03.596] [NavigationChannel] state maneuver=6 road="toward DK5 DK94 al. Generała Józefa Hallera" dest="plac Strzegomski 2"
+[22:25:03.596] [Session] MSG ch=12 msgId=0x8007 len=43 state=RUNNING
+[22:25:03.596] [NavigationChannel] position dest=7520m eta="10:38 PM" ttarr=789s step=202m
+[22:25:04.913] [Session] MSG ch=12 msgId=0x8006 len=126 state=RUNNING
+[22:25:04.913] [NavigationChannel] state maneuver=6 road="toward DK5 DK94 al. Generała Józefa Hallera" dest="plac Strzegomski 2"
+[22:25:04.914] [Session] MSG ch=12 msgId=0x8007 len=43 state=RUNNING
+[22:25:04.915] [NavigationChannel] position dest=7520m eta="10:38 PM" ttarr=789s step=202m
+[22:25:06.234] [Session] MSG ch=12 msgId=0x8006 len=126 state=RUNNING
+[22:25:06.235] [NavigationChannel] state maneuver=6 road="toward DK5 DK94 al. Generała Józefa Hallera" dest="plac Strzegomski 2"
+[22:25:06.235] [Session] MSG ch=12 msgId=0x8007 len=43 state=RUNNING
+[22:25:06.235] [NavigationChannel] position dest=7520m eta="10:38 PM" ttarr=789s step=202m
+[22:25:07.557] [Session] MSG ch=12 msgId=0x8006 len=126 state=RUNNING
+[22:25:07.557] [NavigationChannel] state maneuver=6 road="toward DK5 DK94 al. Generała Józefa Hallera" dest="plac Strzegomski 2"
+[22:25:07.557] [Session] MSG ch=12 msgId=0x8007 len=43 state=RUNNING
+[22:25:07.557] [NavigationChannel] position dest=7520m eta="10:38 PM" ttarr=789s step=202m
+[22:25:08.886] [Session] MSG ch=12 msgId=0x8006 len=126 state=RUNNING
+[22:25:08.886] [NavigationChannel] state maneuver=6 road="toward DK5 DK94 al. Generała Józefa Hallera" dest="plac Strzegomski 2"
+[22:25:08.886] [Session] MSG ch=12 msgId=0x8007 len=43 state=RUNNING
+[22:25:08.886] [NavigationChannel] position dest=7520m eta="10:38 PM" ttarr=785s step=202m
+[22:25:09.566] [Session] MSG ch=12 msgId=0x8006 len=126 state=RUNNING
+[22:25:09.567] [NavigationChannel] state maneuver=6 road="toward DK5 DK94 al. Generała Józefa Hallera" dest="plac Strzegomski 2"
+[22:25:09.567] [Session] MSG ch=12 msgId=0x8007 len=43 state=RUNNING
+[22:25:09.567] [NavigationChannel] position dest=7520m eta="10:38 PM" ttarr=785s step=202m
+[22:25:10.259] [Session] MSG ch=12 msgId=0x8006 len=126 state=RUNNING
+[22:25:10.259] [NavigationChannel] state maneuver=6 road="toward DK5 DK94 al. Generała Józefa Hallera" dest="plac Strzegomski 2"
+[22:25:10.260] [Session] MSG ch=12 msgId=0x8007 len=43 state=RUNNING
+[22:25:10.260] [NavigationChannel] position dest=7520m eta="10:38 PM" ttarr=785s step=202m
+[22:25:11.586] [Session] MSG ch=12 msgId=0x8006 len=126 state=RUNNING
+[22:25:11.587] [NavigationChannel] state maneuver=6 road="toward DK5 DK94 al. Generała Józefa Hallera" dest="plac Strzegomski 2"
+[22:25:11.589] [Session] MSG ch=12 msgId=0x8007 len=43 state=RUNNING
+[22:25:11.589] [NavigationChannel] position dest=7520m eta="10:38 PM" ttarr=785s step=202m
+[22:25:12.922] [Session] MSG ch=12 msgId=0x8006 len=126 state=RUNNING
+[22:25:12.923] [NavigationChannel] state maneuver=6 road="toward DK5 DK94 al. Generała Józefa Hallera" dest="plac Strzegomski 2"
+[22:25:12.923] [Session] MSG ch=12 msgId=0x8007 len=43 state=RUNNING
+[22:25:12.923] [NavigationChannel] position dest=7520m eta="10:38 PM" ttarr=785s step=202m
+[22:25:14.246] [Session] MSG ch=12 msgId=0x8006 len=126 state=RUNNING
+[22:25:14.246] [NavigationChannel] state maneuver=6 road="toward DK5 DK94 al. Generała Józefa Hallera" dest="plac Strzegomski 2"
+[22:25:14.248] [Session] MSG ch=12 msgId=0x8007 len=43 state=RUNNING
+[22:25:14.248] [NavigationChannel] position dest=7520m eta="10:38 PM" ttarr=785s step=202m
+[22:25:15.589] [Session] MSG ch=12 msgId=0x8006 len=126 state=RUNNING
+[22:25:15.589] [NavigationChannel] state maneuver=6 road="toward DK5 DK94 al. Generała Józefa Hallera" dest="plac Strzegomski 2"
+[22:25:15.589] [Session] MSG ch=12 msgId=0x8007 len=43 state=RUNNING
+[22:25:15.589] [NavigationChannel] position dest=7520m eta="10:38 PM" ttarr=785s step=202m
+[22:25:16.916] [Session] MSG ch=12 msgId=0x8006 len=126 state=RUNNING
+[22:25:16.916] [NavigationChannel] state maneuver=6 road="toward DK5 DK94 al. Generała Józefa Hallera" dest="plac Strzegomski 2"
+[22:25:16.916] [Session] MSG ch=12 msgId=0x8007 len=43 state=RUNNING
+[22:25:16.916] [NavigationChannel] position dest=7520m eta="10:38 PM" ttarr=785s step=202m
+[22:25:18.231] [Session] MSG ch=12 msgId=0x8006 len=126 state=RUNNING
+[22:25:18.231] [NavigationChannel] state maneuver=6 road="toward DK5 DK94 al. Generała Józefa Hallera" dest="plac Strzegomski 2"
+[22:25:18.232] [Session] MSG ch=12 msgId=0x8007 len=43 state=RUNNING
+[22:25:18.232] [NavigationChannel] position dest=7520m eta="10:38 PM" ttarr=785s step=202m
+[22:25:19.555] [Session] MSG ch=12 msgId=0x8006 len=126 state=RUNNING
+[22:25:19.555] [NavigationChannel] state maneuver=6 road="toward DK5 DK94 al. Generała Józefa Hallera" dest="plac Strzegomski 2"
+[22:25:19.555] [Session] MSG ch=12 msgId=0x8007 len=43 state=RUNNING
+[22:25:19.555] [NavigationChannel] position dest=7520m eta="10:38 PM" ttarr=785s step=202m
+[22:25:20.896] [Session] MSG ch=12 msgId=0x8006 len=126 state=RUNNING
+[22:25:20.897] [NavigationChannel] state maneuver=6 road="toward DK5 DK94 al. Generała Józefa Hallera" dest="plac Strzegomski 2"
+[22:25:20.897] [Session] MSG ch=12 msgId=0x8007 len=43 state=RUNNING
+[22:25:20.897] [NavigationChannel] position dest=7520m eta="10:38 PM" ttarr=785s step=202m
+[22:25:22.220] [Session] MSG ch=12 msgId=0x8006 len=126 state=RUNNING
+[22:25:22.220] [NavigationChannel] state maneuver=6 road="toward DK5 DK94 al. Generała Józefa Hallera" dest="plac Strzegomski 2"
+[22:25:22.220] [Session] MSG ch=12 msgId=0x8007 len=43 state=RUNNING
+[22:25:22.220] [NavigationChannel] position dest=7520m eta="10:38 PM" ttarr=785s step=202m
+[22:25:23.548] [Session] MSG ch=12 msgId=0x8006 len=126 state=RUNNING
+[22:25:23.549] [NavigationChannel] state maneuver=6 road="toward DK5 DK94 al. Generała Józefa Hallera" dest="plac Strzegomski 2"
+[22:25:23.549] [Session] MSG ch=12 msgId=0x8007 len=43 state=RUNNING
+[22:25:23.550] [NavigationChannel] position dest=7520m eta="10:38 PM" ttarr=785s step=202m
+[22:25:24.874] [Session] MSG ch=12 msgId=0x8006 len=126 state=RUNNING
+[22:25:24.874] [NavigationChannel] state maneuver=6 road="toward DK5 DK94 al. Generała Józefa Hallera" dest="plac Strzegomski 2"
+[22:25:24.875] [Session] MSG ch=12 msgId=0x8007 len=43 state=RUNNING
+[22:25:24.875] [NavigationChannel] position dest=7520m eta="10:38 PM" ttarr=785s step=202m
+[22:25:26.233] [Session] MSG ch=12 msgId=0x8006 len=126 state=RUNNING
+[22:25:26.233] [NavigationChannel] state maneuver=6 road="toward DK5 DK94 al. Generała Józefa Hallera" dest="plac Strzegomski 2"
+[22:25:26.233] [Session] MSG ch=12 msgId=0x8007 len=43 state=RUNNING
+[22:25:26.233] [NavigationChannel] position dest=7520m eta="10:38 PM" ttarr=785s step=202m
+[22:25:27.556] [Session] MSG ch=12 msgId=0x8006 len=126 state=RUNNING
+[22:25:27.557] [NavigationChannel] state maneuver=6 road="toward DK5 DK94 al. Generała Józefa Hallera" dest="plac Strzegomski 2"
+[22:25:27.558] [Session] MSG ch=12 msgId=0x8007 len=43 state=RUNNING
+[22:25:27.558] [NavigationChannel] position dest=7520m eta="10:38 PM" ttarr=785s step=202m
+[22:25:28.875] [Session] MSG ch=12 msgId=0x8006 len=126 state=RUNNING
+[22:25:28.875] [NavigationChannel] state maneuver=6 road="toward DK5 DK94 al. Generała Józefa Hallera" dest="plac Strzegomski 2"
+[22:25:28.875] [Session] MSG ch=12 msgId=0x8007 len=43 state=RUNNING
+[22:25:28.875] [NavigationChannel] position dest=7520m eta="10:38 PM" ttarr=785s step=202m
+[22:25:30.230] [Session] MSG ch=12 msgId=0x8006 len=126 state=RUNNING
+[22:25:30.230] [NavigationChannel] state maneuver=6 road="toward DK5 DK94 al. Generała Józefa Hallera" dest="plac Strzegomski 2"
+[22:25:30.230] [Session] MSG ch=12 msgId=0x8007 len=43 state=RUNNING
+[22:25:30.230] [NavigationChannel] position dest=7520m eta="10:38 PM" ttarr=785s step=202m
+[22:25:31.549] [Session] MSG ch=12 msgId=0x8006 len=126 state=RUNNING
+[22:25:31.549] [NavigationChannel] state maneuver=6 road="toward DK5 DK94 al. Generała Józefa Hallera" dest="plac Strzegomski 2"
+[22:25:31.550] [Session] MSG ch=12 msgId=0x8007 len=43 state=RUNNING
+[22:25:31.550] [NavigationChannel] position dest=7520m eta="10:38 PM" ttarr=785s step=202m
+[22:25:32.887] [Session] MSG ch=12 msgId=0x8006 len=126 state=RUNNING
+[22:25:32.887] [NavigationChannel] state maneuver=6 road="toward DK5 DK94 al. Generała Józefa Hallera" dest="plac Strzegomski 2"
+[22:25:32.887] [Session] MSG ch=12 msgId=0x8007 len=43 state=RUNNING
+[22:25:32.887] [NavigationChannel] position dest=7520m eta="10:38 PM" ttarr=785s step=202m
+[22:25:34.211] [Session] MSG ch=12 msgId=0x8006 len=126 state=RUNNING
+[22:25:34.211] [NavigationChannel] state maneuver=6 road="toward DK5 DK94 al. Generała Józefa Hallera" dest="plac Strzegomski 2"
+[22:25:34.212] [Session] MSG ch=12 msgId=0x8007 len=43 state=RUNNING
+[22:25:34.212] [NavigationChannel] position dest=7520m eta="10:38 PM" ttarr=785s step=202m
+[22:25:35.539] [Session] MSG ch=12 msgId=0x8006 len=126 state=RUNNING
+[22:25:35.539] [NavigationChannel] state maneuver=6 road="toward DK5 DK94 al. Generała Józefa Hallera" dest="plac Strzegomski 2"
+[22:25:35.539] [Session] MSG ch=12 msgId=0x8007 len=43 state=RUNNING
+[22:25:35.539] [NavigationChannel] position dest=7520m eta="10:38 PM" ttarr=785s step=202m
+[22:25:36.863] [Session] MSG ch=12 msgId=0x8006 len=126 state=RUNNING
+[22:25:36.863] [NavigationChannel] state maneuver=6 road="toward DK5 DK94 al. Generała Józefa Hallera" dest="plac Strzegomski 2"
+[22:25:36.863] [Session] MSG ch=12 msgId=0x8007 len=43 state=RUNNING
+[22:25:36.863] [NavigationChannel] position dest=7520m eta="10:38 PM" ttarr=785s step=202m
+[22:25:38.188] [Session] MSG ch=12 msgId=0x8006 len=126 state=RUNNING
+[22:25:38.189] [NavigationChannel] state maneuver=6 road="toward DK5 DK94 al. Generała Józefa Hallera" dest="plac Strzegomski 2"
+[22:25:38.189] [Session] MSG ch=12 msgId=0x8007 len=43 state=RUNNING
+[22:25:38.189] [NavigationChannel] position dest=7520m eta="10:38 PM" ttarr=785s step=202m
+[22:25:39.518] [Session] MSG ch=12 msgId=0x8006 len=126 state=RUNNING
+[22:25:39.519] [NavigationChannel] state maneuver=6 road="toward DK5 DK94 al. Generała Józefa Hallera" dest="plac Strzegomski 2"
+[22:25:39.519] [Session] MSG ch=12 msgId=0x8007 len=43 state=RUNNING
+[22:25:39.520] [NavigationChannel] position dest=7520m eta="10:38 PM" ttarr=785s step=202m
+[22:25:40.812] [Session] MSG ch=12 msgId=0x8006 len=126 state=RUNNING
+[22:25:40.812] [NavigationChannel] state maneuver=6 road="toward DK5 DK94 al. Generała Józefa Hallera" dest="plac Strzegomski 2"
+[22:25:40.812] [Session] MSG ch=12 msgId=0x8007 len=43 state=RUNNING
+[22:25:40.812] [NavigationChannel] position dest=7520m eta="10:38 PM" ttarr=785s step=202m
+[22:25:42.172] [Session] MSG ch=12 msgId=0x8006 len=126 state=RUNNING
+[22:25:42.172] [NavigationChannel] state maneuver=6 road="toward DK5 DK94 al. Generała Józefa Hallera" dest="plac Strzegomski 2"
+[22:25:42.173] [Session] MSG ch=12 msgId=0x8007 len=43 state=RUNNING
+[22:25:42.173] [NavigationChannel] position dest=7520m eta="10:38 PM" ttarr=785s step=202m
+[22:25:43.491] [Session] MSG ch=12 msgId=0x8006 len=126 state=RUNNING
+[22:25:43.492] [NavigationChannel] state maneuver=6 road="toward DK5 DK94 al. Generała Józefa Hallera" dest="plac Strzegomski 2"
+[22:25:43.492] [Session] MSG ch=12 msgId=0x8007 len=43 state=RUNNING
+[22:25:43.492] [NavigationChannel] position dest=7520m eta="10:38 PM" ttarr=785s step=202m
+[22:25:44.819] [Session] MSG ch=12 msgId=0x8006 len=126 state=RUNNING
+[22:25:44.819] [NavigationChannel] state maneuver=6 road="toward DK5 DK94 al. Generała Józefa Hallera" dest="plac Strzegomski 2"
+[22:25:44.822] [Session] MSG ch=12 msgId=0x8007 len=43 state=RUNNING
+[22:25:44.823] [NavigationChannel] position dest=7520m eta="10:38 PM" ttarr=785s step=202m
+[22:25:46.147] [Session] MSG ch=12 msgId=0x8006 len=126 state=RUNNING
+[22:25:46.147] [NavigationChannel] state maneuver=6 road="toward DK5 DK94 al. Generała Józefa Hallera" dest="plac Strzegomski 2"
+[22:25:46.147] [Session] MSG ch=12 msgId=0x8007 len=43 state=RUNNING
+[22:25:46.147] [NavigationChannel] position dest=7520m eta="10:38 PM" ttarr=785s step=202m
+[22:25:47.474] [Session] MSG ch=12 msgId=0x8006 len=126 state=RUNNING
+[22:25:47.474] [NavigationChannel] state maneuver=6 road="toward DK5 DK94 al. Generała Józefa Hallera" dest="plac Strzegomski 2"
+[22:25:47.474] [Session] MSG ch=12 msgId=0x8007 len=43 state=RUNNING
+[22:25:47.474] [NavigationChannel] position dest=7520m eta="10:38 PM" ttarr=785s step=202m
+[22:25:48.825] [Session] MSG ch=12 msgId=0x8006 len=126 state=RUNNING
+[22:25:48.826] [NavigationChannel] state maneuver=6 road="toward DK5 DK94 al. Generała Józefa Hallera" dest="plac Strzegomski 2"
+[22:25:48.826] [Session] MSG ch=12 msgId=0x8007 len=43 state=RUNNING
+[22:25:48.826] [NavigationChannel] position dest=7520m eta="10:38 PM" ttarr=785s step=202m
+[22:25:50.152] [Session] MSG ch=12 msgId=0x8006 len=126 state=RUNNING
+[22:25:50.152] [NavigationChannel] state maneuver=6 road="toward DK5 DK94 al. Generała Józefa Hallera" dest="plac Strzegomski 2"
+[22:25:50.153] [Session] MSG ch=12 msgId=0x8007 len=43 state=RUNNING
+[22:25:50.153] [NavigationChannel] position dest=7520m eta="10:38 PM" ttarr=785s step=202m
+[22:25:51.485] [Session] MSG ch=12 msgId=0x8006 len=126 state=RUNNING
+[22:25:51.486] [NavigationChannel] state maneuver=6 road="toward DK5 DK94 al. Generała Józefa Hallera" dest="plac Strzegomski 2"
+[22:25:51.486] [Session] MSG ch=12 msgId=0x8007 len=43 state=RUNNING
+[22:25:51.486] [NavigationChannel] position dest=7520m eta="10:38 PM" ttarr=785s step=202m
+[22:25:52.797] [Session] MSG ch=12 msgId=0x8006 len=126 state=RUNNING
+[22:25:52.798] [NavigationChannel] state maneuver=6 road="toward DK5 DK94 al. Generała Józefa Hallera" dest="plac Strzegomski 2"
+[22:25:52.798] [Session] MSG ch=12 msgId=0x8007 len=43 state=RUNNING
+[22:25:52.798] [NavigationChannel] position dest=7520m eta="10:38 PM" ttarr=785s step=202m
+[22:25:54.136] [Session] MSG ch=12 msgId=0x8006 len=126 state=RUNNING
+[22:25:54.136] [NavigationChannel] state maneuver=6 road="toward DK5 DK94 al. Generała Józefa Hallera" dest="plac Strzegomski 2"
+[22:25:54.136] [Session] MSG ch=12 msgId=0x8007 len=43 state=RUNNING
+[22:25:54.136] [NavigationChannel] position dest=7520m eta="10:38 PM" ttarr=785s step=202m
+[22:25:55.460] [Session] MSG ch=12 msgId=0x8006 len=126 state=RUNNING
+[22:25:55.460] [NavigationChannel] state maneuver=6 road="toward DK5 DK94 al. Generała Józefa Hallera" dest="plac Strzegomski 2"
+[22:25:55.461] [Session] MSG ch=12 msgId=0x8007 len=43 state=RUNNING
+[22:25:55.461] [NavigationChannel] position dest=7520m eta="10:39 PM" ttarr=785s step=202m
+[22:25:56.793] [Session] MSG ch=12 msgId=0x8006 len=126 state=RUNNING
+[22:25:56.793] [NavigationChannel] state maneuver=6 road="toward DK5 DK94 al. Generała Józefa Hallera" dest="plac Strzegomski 2"
+[22:25:56.793] [Session] MSG ch=12 msgId=0x8007 len=43 state=RUNNING
+[22:25:56.793] [NavigationChannel] position dest=7520m eta="10:39 PM" ttarr=785s step=202m
+[22:25:58.111] [Session] MSG ch=12 msgId=0x8006 len=126 state=RUNNING
+[22:25:58.112] [NavigationChannel] state maneuver=6 road="toward DK5 DK94 al. Generała Józefa Hallera" dest="plac Strzegomski 2"
+[22:25:58.112] [Session] MSG ch=12 msgId=0x8007 len=43 state=RUNNING
+[22:25:58.113] [NavigationChannel] position dest=7520m eta="10:39 PM" ttarr=785s step=202m
+[22:25:59.445] [Session] MSG ch=12 msgId=0x8006 len=126 state=RUNNING
+[22:25:59.445] [NavigationChannel] state maneuver=6 road="toward DK5 DK94 al. Generała Józefa Hallera" dest="plac Strzegomski 2"
+[22:25:59.445] [Session] MSG ch=12 msgId=0x8007 len=43 state=RUNNING
+[22:25:59.445] [NavigationChannel] position dest=7520m eta="10:39 PM" ttarr=785s step=202m
+[22:26:00.790] [Session] MSG ch=12 msgId=0x8006 len=126 state=RUNNING
+[22:26:00.791] [NavigationChannel] state maneuver=6 road="toward DK5 DK94 al. Generała Józefa Hallera" dest="plac Strzegomski 2"
+[22:26:00.792] [Session] MSG ch=12 msgId=0x8007 len=43 state=RUNNING
+[22:26:00.792] [NavigationChannel] position dest=7520m eta="10:39 PM" ttarr=785s step=202m
+[22:26:02.103] [Session] MSG ch=12 msgId=0x8006 len=126 state=RUNNING
+[22:26:02.104] [NavigationChannel] state maneuver=6 road="toward DK5 DK94 al. Generała Józefa Hallera" dest="plac Strzegomski 2"
+[22:26:02.104] [Session] MSG ch=12 msgId=0x8007 len=43 state=RUNNING
+[22:26:02.104] [NavigationChannel] position dest=7520m eta="10:39 PM" ttarr=785s step=202m
+[22:26:03.428] [Session] MSG ch=12 msgId=0x8006 len=126 state=RUNNING
+[22:26:03.428] [NavigationChannel] state maneuver=6 road="toward DK5 DK94 al. Generała Józefa Hallera" dest="plac Strzegomski 2"
+[22:26:03.430] [Session] MSG ch=12 msgId=0x8007 len=43 state=RUNNING
+[22:26:03.430] [NavigationChannel] position dest=7520m eta="10:39 PM" ttarr=785s step=202m
+[22:26:04.772] [Session] MSG ch=12 msgId=0x8006 len=126 state=RUNNING
+[22:26:04.772] [NavigationChannel] state maneuver=6 road="toward DK5 DK94 al. Generała Józefa Hallera" dest="plac Strzegomski 2"
+[22:26:04.775] [Session] MSG ch=12 msgId=0x8007 len=43 state=RUNNING
+[22:26:04.775] [NavigationChannel] position dest=7520m eta="10:39 PM" ttarr=785s step=202m
+[22:26:06.080] [Session] MSG ch=12 msgId=0x8006 len=126 state=RUNNING
+[22:26:06.080] [NavigationChannel] state maneuver=6 road="toward DK5 DK94 al. Generała Józefa Hallera" dest="plac Strzegomski 2"
+[22:26:06.081] [Session] MSG ch=12 msgId=0x8007 len=43 state=RUNNING
+[22:26:06.081] [NavigationChannel] position dest=7520m eta="10:39 PM" ttarr=785s step=202m
+[22:26:07.423] [Session] MSG ch=12 msgId=0x8006 len=126 state=RUNNING
+[22:26:07.423] [NavigationChannel] state maneuver=6 road="toward DK5 DK94 al. Generała Józefa Hallera" dest="plac Strzegomski 2"
+[22:26:07.423] [Session] MSG ch=12 msgId=0x8007 len=43 state=RUNNING
+[22:26:07.423] [NavigationChannel] position dest=7520m eta="10:39 PM" ttarr=785s step=202m
+[22:26:08.747] [Session] MSG ch=12 msgId=0x8006 len=126 state=RUNNING
+[22:26:08.748] [NavigationChannel] state maneuver=6 road="toward DK5 DK94 al. Generała Józefa Hallera" dest="plac Strzegomski 2"
+[22:26:08.748] [Session] MSG ch=12 msgId=0x8007 len=43 state=RUNNING
+[22:26:08.748] [NavigationChannel] position dest=7520m eta="10:39 PM" ttarr=785s step=202m
+[22:26:10.063] [Session] MSG ch=12 msgId=0x8006 len=126 state=RUNNING
+[22:26:10.063] [NavigationChannel] state maneuver=6 road="toward DK5 DK94 al. Generała Józefa Hallera" dest="plac Strzegomski 2"
+[22:26:10.063] [Session] MSG ch=12 msgId=0x8007 len=43 state=RUNNING
+[22:26:10.064] [NavigationChannel] position dest=7520m eta="10:39 PM" ttarr=788s step=202m
+[22:26:11.453] [Session] MSG ch=12 msgId=0x8006 len=126 state=RUNNING
+[22:26:11.453] [NavigationChannel] state maneuver=6 road="toward DK5 DK94 al. Generała Józefa Hallera" dest="plac Strzegomski 2"
+[22:26:11.453] [Session] MSG ch=12 msgId=0x8007 len=43 state=RUNNING
+[22:26:11.453] [NavigationChannel] position dest=7520m eta="10:39 PM" ttarr=788s step=202m
+[22:26:12.794] [Session] MSG ch=12 msgId=0x8006 len=126 state=RUNNING
+[22:26:12.795] [NavigationChannel] state maneuver=6 road="toward DK5 DK94 al. Generała Józefa Hallera" dest="plac Strzegomski 2"
+[22:26:12.795] [Session] MSG ch=12 msgId=0x8007 len=43 state=RUNNING
+[22:26:12.796] [NavigationChannel] position dest=7520m eta="10:39 PM" ttarr=788s step=202m
+[22:26:14.114] [Session] MSG ch=12 msgId=0x8006 len=126 state=RUNNING
+[22:26:14.114] [NavigationChannel] state maneuver=6 road="toward DK5 DK94 al. Generała Józefa Hallera" dest="plac Strzegomski 2"
+[22:26:14.115] [Session] MSG ch=12 msgId=0x8007 len=43 state=RUNNING
+[22:26:14.115] [NavigationChannel] position dest=7520m eta="10:39 PM" ttarr=788s step=202m
+[22:26:15.459] [Session] MSG ch=12 msgId=0x8006 len=126 state=RUNNING
+[22:26:15.459] [NavigationChannel] state maneuver=6 road="toward DK5 DK94 al. Generała Józefa Hallera" dest="plac Strzegomski 2"
+[22:26:15.459] [Session] MSG ch=12 msgId=0x8007 len=43 state=RUNNING
+[22:26:15.459] [NavigationChannel] position dest=7520m eta="10:39 PM" ttarr=788s step=202m
+[22:26:16.785] [Session] MSG ch=12 msgId=0x8006 len=126 state=RUNNING
+[22:26:16.785] [NavigationChannel] state maneuver=6 road="toward DK5 DK94 al. Generała Józefa Hallera" dest="plac Strzegomski 2"
+[22:26:16.785] [Session] MSG ch=12 msgId=0x8007 len=43 state=RUNNING
+[22:26:16.785] [NavigationChannel] position dest=7520m eta="10:39 PM" ttarr=788s step=202m
+[22:26:18.097] [Session] MSG ch=12 msgId=0x8006 len=126 state=RUNNING
+[22:26:18.098] [NavigationChannel] state maneuver=6 road="toward DK5 DK94 al. Generała Józefa Hallera" dest="plac Strzegomski 2"
+[22:26:18.098] [Session] MSG ch=12 msgId=0x8007 len=43 state=RUNNING
+[22:26:18.098] [NavigationChannel] position dest=7520m eta="10:39 PM" ttarr=788s step=202m
+[22:26:19.410] [Session] MSG ch=12 msgId=0x8006 len=126 state=RUNNING
+[22:26:19.410] [NavigationChannel] state maneuver=6 road="toward DK5 DK94 al. Generała Józefa Hallera" dest="plac Strzegomski 2"
+[22:26:19.410] [Session] MSG ch=12 msgId=0x8007 len=43 state=RUNNING
+[22:26:19.410] [NavigationChannel] position dest=7520m eta="10:39 PM" ttarr=788s step=202m
+[22:26:20.743] [Session] MSG ch=12 msgId=0x8006 len=126 state=RUNNING
+[22:26:20.743] [NavigationChannel] state maneuver=6 road="toward DK5 DK94 al. Generała Józefa Hallera" dest="plac Strzegomski 2"
+[22:26:20.743] [Session] MSG ch=12 msgId=0x8007 len=43 state=RUNNING
+[22:26:20.743] [NavigationChannel] position dest=7520m eta="10:39 PM" ttarr=788s step=202m
+[22:26:22.075] [Session] MSG ch=12 msgId=0x8006 len=126 state=RUNNING
+[22:26:22.076] [NavigationChannel] state maneuver=6 road="toward DK5 DK94 al. Generała Józefa Hallera" dest="plac Strzegomski 2"
+[22:26:22.080] [Session] MSG ch=12 msgId=0x8007 len=43 state=RUNNING
+[22:26:22.080] [NavigationChannel] position dest=7520m eta="10:39 PM" ttarr=788s step=202m
+[22:26:23.392] [Session] MSG ch=12 msgId=0x8006 len=126 state=RUNNING
+[22:26:23.393] [NavigationChannel] state maneuver=6 road="toward DK5 DK94 al. Generała Józefa Hallera" dest="plac Strzegomski 2"
+[22:26:23.393] [Session] MSG ch=12 msgId=0x8007 len=43 state=RUNNING
+[22:26:23.393] [NavigationChannel] position dest=7520m eta="10:39 PM" ttarr=788s step=202m
+[22:26:24.742] [Session] MSG ch=12 msgId=0x8006 len=126 state=RUNNING
+[22:26:24.742] [NavigationChannel] state maneuver=6 road="toward DK5 DK94 al. Generała Józefa Hallera" dest="plac Strzegomski 2"
+[22:26:24.743] [Session] MSG ch=12 msgId=0x8007 len=43 state=RUNNING
+[22:26:24.743] [NavigationChannel] position dest=7520m eta="10:39 PM" ttarr=788s step=202m
+[22:26:25.696] [Session] MSG ch=12 msgId=0x8006 len=126 state=RUNNING
+[22:26:25.696] [NavigationChannel] state maneuver=6 road="toward DK5 DK94 al. Generała Józefa Hallera" dest="plac Strzegomski 2"
+[22:26:25.696] [Session] MSG ch=12 msgId=0x8007 len=43 state=RUNNING
+[22:26:25.696] [NavigationChannel] position dest=7520m eta="10:39 PM" ttarr=788s step=202m
+[22:26:27.384] [Session] MSG ch=12 msgId=0x8006 len=126 state=RUNNING
+[22:26:27.384] [NavigationChannel] state maneuver=6 road="toward DK5 DK94 al. Generała Józefa Hallera" dest="plac Strzegomski 2"
+[22:26:27.384] [Session] MSG ch=12 msgId=0x8007 len=43 state=RUNNING
+[22:26:27.384] [NavigationChannel] position dest=7520m eta="10:39 PM" ttarr=788s step=202m
+[22:26:28.731] [Session] MSG ch=12 msgId=0x8006 len=126 state=RUNNING
+[22:26:28.732] [NavigationChannel] state maneuver=6 road="toward DK5 DK94 al. Generała Józefa Hallera" dest="plac Strzegomski 2"
+[22:26:28.732] [Session] MSG ch=12 msgId=0x8007 len=43 state=RUNNING
+[22:26:28.733] [NavigationChannel] position dest=7520m eta="10:39 PM" ttarr=788s step=202m
+[22:26:30.049] [Session] MSG ch=12 msgId=0x8006 len=126 state=RUNNING
+[22:26:30.049] [NavigationChannel] state maneuver=6 road="toward DK5 DK94 al. Generała Józefa Hallera" dest="plac Strzegomski 2"
+[22:26:30.049] [Session] MSG ch=12 msgId=0x8007 len=43 state=RUNNING
+[22:26:30.049] [NavigationChannel] position dest=7520m eta="10:39 PM" ttarr=788s step=202m
+[22:26:31.386] [Session] MSG ch=12 msgId=0x8006 len=126 state=RUNNING
+[22:26:31.387] [NavigationChannel] state maneuver=6 road="toward DK5 DK94 al. Generała Józefa Hallera" dest="plac Strzegomski 2"
+[22:26:31.387] [Session] MSG ch=12 msgId=0x8007 len=43 state=RUNNING
+[22:26:31.387] [NavigationChannel] position dest=7520m eta="10:39 PM" ttarr=788s step=202m
+[22:26:32.724] [Session] MSG ch=12 msgId=0x8006 len=126 state=RUNNING
+[22:26:32.725] [NavigationChannel] state maneuver=6 road="toward DK5 DK94 al. Generała Józefa Hallera" dest="plac Strzegomski 2"
+[22:26:32.725] [Session] MSG ch=12 msgId=0x8007 len=43 state=RUNNING
+[22:26:32.725] [NavigationChannel] position dest=7520m eta="10:39 PM" ttarr=788s step=202m
+[22:26:34.039] [Session] MSG ch=12 msgId=0x8006 len=126 state=RUNNING
+[22:26:34.040] [NavigationChannel] state maneuver=6 road="toward DK5 DK94 al. Generała Józefa Hallera" dest="plac Strzegomski 2"
+[22:26:34.040] [Session] MSG ch=12 msgId=0x8007 len=43 state=RUNNING
+[22:26:34.040] [NavigationChannel] position dest=7520m eta="10:39 PM" ttarr=788s step=202m
+[22:26:35.373] [Session] MSG ch=12 msgId=0x8006 len=126 state=RUNNING
+[22:26:35.373] [NavigationChannel] state maneuver=6 road="toward DK5 DK94 al. Generała Józefa Hallera" dest="plac Strzegomski 2"
+[22:26:35.373] [Session] MSG ch=12 msgId=0x8007 len=43 state=RUNNING
+[22:26:35.373] [NavigationChannel] position dest=7520m eta="10:39 PM" ttarr=788s step=202m
+[22:26:36.713] [Session] MSG ch=12 msgId=0x8006 len=126 state=RUNNING
+[22:26:36.714] [NavigationChannel] state maneuver=6 road="toward DK5 DK94 al. Generała Józefa Hallera" dest="plac Strzegomski 2"
+[22:26:36.714] [Session] MSG ch=12 msgId=0x8007 len=43 state=RUNNING
+[22:26:36.714] [NavigationChannel] position dest=7520m eta="10:39 PM" ttarr=788s step=202m
+[22:26:38.047] [Session] MSG ch=12 msgId=0x8006 len=126 state=RUNNING
+[22:26:38.047] [NavigationChannel] state maneuver=6 road="toward DK5 DK94 al. Generała Józefa Hallera" dest="plac Strzegomski 2"
+[22:26:38.047] [Session] MSG ch=12 msgId=0x8007 len=43 state=RUNNING
+[22:26:38.048] [NavigationChannel] position dest=7520m eta="10:39 PM" ttarr=788s step=202m
+[22:26:39.378] [Session] MSG ch=12 msgId=0x8006 len=126 state=RUNNING
+[22:26:39.378] [NavigationChannel] state maneuver=6 road="toward DK5 DK94 al. Generała Józefa Hallera" dest="plac Strzegomski 2"
+[22:26:39.379] [Session] MSG ch=12 msgId=0x8007 len=43 state=RUNNING
+[22:26:39.379] [NavigationChannel] position dest=7520m eta="10:39 PM" ttarr=788s step=202m
+[22:26:40.691] [Session] MSG ch=12 msgId=0x8006 len=126 state=RUNNING
+[22:26:40.691] [NavigationChannel] state maneuver=6 road="toward DK5 DK94 al. Generała Józefa Hallera" dest="plac Strzegomski 2"
+[22:26:40.692] [Session] MSG ch=12 msgId=0x8007 len=43 state=RUNNING
+[22:26:40.692] [NavigationChannel] position dest=7520m eta="10:39 PM" ttarr=788s step=202m
+[22:26:42.033] [Session] MSG ch=12 msgId=0x8006 len=126 state=RUNNING
+[22:26:42.033] [NavigationChannel] state maneuver=6 road="toward DK5 DK94 al. Generała Józefa Hallera" dest="plac Strzegomski 2"
+[22:26:42.033] [Session] MSG ch=12 msgId=0x8007 len=43 state=RUNNING
+[22:26:42.034] [NavigationChannel] position dest=7520m eta="10:39 PM" ttarr=788s step=202m
+[22:26:43.374] [Session] MSG ch=12 msgId=0x8006 len=126 state=RUNNING
+[22:26:43.374] [NavigationChannel] state maneuver=6 road="toward DK5 DK94 al. Generała Józefa Hallera" dest="plac Strzegomski 2"
+[22:26:43.374] [Session] MSG ch=12 msgId=0x8007 len=43 state=RUNNING
+[22:26:43.374] [NavigationChannel] position dest=7520m eta="10:39 PM" ttarr=788s step=202m
+[22:26:44.703] [Session] MSG ch=12 msgId=0x8006 len=126 state=RUNNING
+[22:26:44.703] [NavigationChannel] state maneuver=6 road="toward DK5 DK94 al. Generała Józefa Hallera" dest="plac Strzegomski 2"
+[22:26:44.703] [Session] MSG ch=12 msgId=0x8007 len=43 state=RUNNING
+[22:26:44.703] [NavigationChannel] position dest=7520m eta="10:39 PM" ttarr=788s step=202m
+[22:26:45.710] [Session] MSG ch=12 msgId=0x8006 len=126 state=RUNNING
+[22:26:45.710] [NavigationChannel] state maneuver=6 road="toward DK5 DK94 al. Generała Józefa Hallera" dest="plac Strzegomski 2"
+[22:26:45.710] [Session] MSG ch=12 msgId=0x8007 len=43 state=RUNNING
+[22:26:45.710] [NavigationChannel] position dest=7520m eta="10:39 PM" ttarr=788s step=202m
+[22:26:47.360] [Session] MSG ch=12 msgId=0x8006 len=126 state=RUNNING
+[22:26:47.360] [NavigationChannel] state maneuver=6 road="toward DK5 DK94 al. Generała Józefa Hallera" dest="plac Strzegomski 2"
+[22:26:47.363] [Session] MSG ch=12 msgId=0x8007 len=43 state=RUNNING
+[22:26:47.363] [NavigationChannel] position dest=7520m eta="10:39 PM" ttarr=788s step=202m
+[22:26:48.683] [Session] MSG ch=12 msgId=0x8006 len=126 state=RUNNING
+[22:26:48.683] [NavigationChannel] state maneuver=6 road="toward DK5 DK94 al. Generała Józefa Hallera" dest="plac Strzegomski 2"
+[22:26:48.683] [Session] MSG ch=12 msgId=0x8007 len=43 state=RUNNING
+[22:26:48.684] [NavigationChannel] position dest=7520m eta="10:39 PM" ttarr=788s step=202m
+[22:26:50.012] [Session] MSG ch=12 msgId=0x8006 len=126 state=RUNNING
+[22:26:50.012] [NavigationChannel] state maneuver=6 road="toward DK5 DK94 al. Generała Józefa Hallera" dest="plac Strzegomski 2"
+[22:26:50.013] [Session] MSG ch=12 msgId=0x8007 len=43 state=RUNNING
+[22:26:50.013] [NavigationChannel] position dest=7520m eta="10:39 PM" ttarr=788s step=202m
+[22:26:51.335] [Session] MSG ch=12 msgId=0x8006 len=126 state=RUNNING
+[22:26:51.335] [NavigationChannel] state maneuver=6 road="toward DK5 DK94 al. Generała Józefa Hallera" dest="plac Strzegomski 2"
+[22:26:51.337] [Session] MSG ch=12 msgId=0x8007 len=43 state=RUNNING
+[22:26:51.337] [NavigationChannel] position dest=7520m eta="10:39 PM" ttarr=788s step=202m
+[22:26:52.673] [Session] MSG ch=12 msgId=0x8006 len=126 state=RUNNING
+[22:26:52.674] [NavigationChannel] state maneuver=6 road="toward DK5 DK94 al. Generała Józefa Hallera" dest="plac Strzegomski 2"
+[22:26:52.675] [Session] MSG ch=12 msgId=0x8007 len=43 state=RUNNING
+[22:26:52.675] [NavigationChannel] position dest=7520m eta="10:40 PM" ttarr=788s step=202m
+[22:26:53.988] [Session] MSG ch=12 msgId=0x8006 len=126 state=RUNNING
+[22:26:53.988] [NavigationChannel] state maneuver=6 road="toward DK5 DK94 al. Generała Józefa Hallera" dest="plac Strzegomski 2"
+[22:26:53.989] [Session] MSG ch=12 msgId=0x8007 len=43 state=RUNNING
+[22:26:53.989] [NavigationChannel] position dest=7520m eta="10:40 PM" ttarr=788s step=202m
+[22:26:55.330] [Session] MSG ch=12 msgId=0x8006 len=126 state=RUNNING
+[22:26:55.331] [NavigationChannel] state maneuver=6 road="toward DK5 DK94 al. Generała Józefa Hallera" dest="plac Strzegomski 2"
+[22:26:55.331] [Session] MSG ch=12 msgId=0x8007 len=43 state=RUNNING
+[22:26:55.331] [NavigationChannel] position dest=7520m eta="10:40 PM" ttarr=788s step=202m
+[22:26:56.635] [Session] MSG ch=12 msgId=0x8006 len=126 state=RUNNING
+[22:26:56.636] [NavigationChannel] state maneuver=6 road="toward DK5 DK94 al. Generała Józefa Hallera" dest="plac Strzegomski 2"
+[22:26:56.636] [Session] MSG ch=12 msgId=0x8007 len=43 state=RUNNING
+[22:26:56.636] [NavigationChannel] position dest=7520m eta="10:40 PM" ttarr=788s step=202m
+[22:26:57.958] [Session] MSG ch=12 msgId=0x8006 len=126 state=RUNNING
+[22:26:57.959] [NavigationChannel] state maneuver=6 road="toward DK5 DK94 al. Generała Józefa Hallera" dest="plac Strzegomski 2"
+[22:26:57.959] [Session] MSG ch=12 msgId=0x8007 len=43 state=RUNNING
+[22:26:57.959] [NavigationChannel] position dest=7520m eta="10:40 PM" ttarr=788s step=202m
+[22:26:59.283] [Session] MSG ch=12 msgId=0x8006 len=126 state=RUNNING
+[22:26:59.283] [NavigationChannel] state maneuver=6 road="toward DK5 DK94 al. Generała Józefa Hallera" dest="plac Strzegomski 2"
+[22:26:59.284] [Session] MSG ch=12 msgId=0x8007 len=43 state=RUNNING
+[22:26:59.284] [NavigationChannel] position dest=7520m eta="10:40 PM" ttarr=788s step=202m
+[22:27:00.587] [Session] MSG ch=12 msgId=0x8006 len=126 state=RUNNING
+[22:27:00.587] [NavigationChannel] state maneuver=6 road="toward DK5 DK94 al. Generała Józefa Hallera" dest="plac Strzegomski 2"
+[22:27:00.587] [Session] MSG ch=12 msgId=0x8007 len=43 state=RUNNING
+[22:27:00.587] [NavigationChannel] position dest=7520m eta="10:40 PM" ttarr=788s step=202m
+[22:27:01.914] [Session] MSG ch=12 msgId=0x8006 len=126 state=RUNNING
+[22:27:01.914] [NavigationChannel] state maneuver=6 road="toward DK5 DK94 al. Generała Józefa Hallera" dest="plac Strzegomski 2"
+[22:27:01.916] [Session] MSG ch=12 msgId=0x8007 len=43 state=RUNNING
+[22:27:01.916] [NavigationChannel] position dest=7520m eta="10:40 PM" ttarr=788s step=202m
+[22:27:03.227] [Session] MSG ch=12 msgId=0x8006 len=126 state=RUNNING
+[22:27:03.227] [NavigationChannel] state maneuver=6 road="toward DK5 DK94 al. Generała Józefa Hallera" dest="plac Strzegomski 2"
+[22:27:03.228] [Session] MSG ch=12 msgId=0x8007 len=43 state=RUNNING
+[22:27:03.228] [NavigationChannel] position dest=7520m eta="10:40 PM" ttarr=788s step=202m
+[22:27:04.579] [Session] MSG ch=12 msgId=0x8006 len=126 state=RUNNING
+[22:27:04.580] [NavigationChannel] state maneuver=6 road="toward DK5 DK94 al. Generała Józefa Hallera" dest="plac Strzegomski 2"
+[22:27:04.580] [Session] MSG ch=12 msgId=0x8007 len=43 state=RUNNING
+[22:27:04.580] [NavigationChannel] position dest=7520m eta="10:40 PM" ttarr=788s step=202m
+[22:27:05.697] [Session] MSG ch=12 msgId=0x8006 len=126 state=RUNNING
+[22:27:05.697] [NavigationChannel] state maneuver=6 road="toward DK5 DK94 al. Generała Józefa Hallera" dest="plac Strzegomski 2"
+[22:27:05.697] [Session] MSG ch=12 msgId=0x8007 len=43 state=RUNNING
+[22:27:05.697] [NavigationChannel] position dest=7520m eta="10:40 PM" ttarr=788s step=202m
+[22:27:07.232] [Session] MSG ch=12 msgId=0x8006 len=126 state=RUNNING
+[22:27:07.233] [NavigationChannel] state maneuver=6 road="toward DK5 DK94 al. Generała Józefa Hallera" dest="plac Strzegomski 2"
+[22:27:07.233] [Session] MSG ch=12 msgId=0x8007 len=43 state=RUNNING
+[22:27:07.233] [NavigationChannel] position dest=7520m eta="10:40 PM" ttarr=788s step=202m
+[22:27:08.567] [Session] MSG ch=12 msgId=0x8006 len=126 state=RUNNING
+[22:27:08.567] [NavigationChannel] state maneuver=6 road="toward DK5 DK94 al. Generała Józefa Hallera" dest="plac Strzegomski 2"
+[22:27:08.568] [Session] MSG ch=12 msgId=0x8007 len=43 state=RUNNING
+[22:27:08.568] [NavigationChannel] position dest=7520m eta="10:40 PM" ttarr=788s step=202m
+[22:27:09.899] [Session] MSG ch=12 msgId=0x8006 len=126 state=RUNNING
+[22:27:09.899] [NavigationChannel] state maneuver=6 road="toward DK5 DK94 al. Generała Józefa Hallera" dest="plac Strzegomski 2"
+[22:27:09.901] [Session] MSG ch=12 msgId=0x8007 len=43 state=RUNNING
+[22:27:09.901] [NavigationChannel] position dest=7520m eta="10:40 PM" ttarr=788s step=202m
+[22:27:10.418] [Session] MSG ch=12 msgId=0x8006 len=126 state=RUNNING
+[22:27:10.418] [NavigationChannel] state maneuver=6 road="toward DK5 DK94 al. Generała Józefa Hallera" dest="plac Strzegomski 2"
+[22:27:10.418] [Session] MSG ch=12 msgId=0x8007 len=43 state=RUNNING
+[22:27:10.419] [NavigationChannel] position dest=7520m eta="10:40 PM" ttarr=784s step=202m
+[22:27:11.209] [Session] MSG ch=12 msgId=0x8006 len=126 state=RUNNING
+[22:27:11.209] [NavigationChannel] state maneuver=6 road="toward DK5 DK94 al. Generała Józefa Hallera" dest="plac Strzegomski 2"
+[22:27:11.209] [Session] MSG ch=12 msgId=0x8007 len=43 state=RUNNING
+[22:27:11.210] [NavigationChannel] position dest=7520m eta="10:40 PM" ttarr=784s step=202m
+[22:27:12.596] [Session] MSG ch=12 msgId=0x8006 len=126 state=RUNNING
+[22:27:12.596] [NavigationChannel] state maneuver=6 road="toward DK5 DK94 al. Generała Józefa Hallera" dest="plac Strzegomski 2"
+[22:27:12.596] [Session] MSG ch=12 msgId=0x8007 len=43 state=RUNNING
+[22:27:12.596] [NavigationChannel] position dest=7520m eta="10:40 PM" ttarr=784s step=202m
+[22:27:13.926] [Session] MSG ch=12 msgId=0x8006 len=126 state=RUNNING
+[22:27:13.928] [NavigationChannel] state maneuver=6 road="toward DK5 DK94 al. Generała Józefa Hallera" dest="plac Strzegomski 2"
+[22:27:13.928] [Session] MSG ch=12 msgId=0x8007 len=43 state=RUNNING
+[22:27:13.928] [NavigationChannel] position dest=7520m eta="10:40 PM" ttarr=784s step=202m
+[22:27:15.252] [Session] MSG ch=12 msgId=0x8006 len=126 state=RUNNING
+[22:27:15.253] [NavigationChannel] state maneuver=6 road="toward DK5 DK94 al. Generała Józefa Hallera" dest="plac Strzegomski 2"
+[22:27:15.253] [Session] MSG ch=12 msgId=0x8007 len=43 state=RUNNING
+[22:27:15.253] [NavigationChannel] position dest=7520m eta="10:40 PM" ttarr=784s step=202m
+[22:27:16.584] [Session] MSG ch=12 msgId=0x8006 len=126 state=RUNNING
+[22:27:16.584] [NavigationChannel] state maneuver=6 road="toward DK5 DK94 al. Generała Józefa Hallera" dest="plac Strzegomski 2"
+[22:27:16.585] [Session] MSG ch=12 msgId=0x8007 len=43 state=RUNNING
+[22:27:16.585] [NavigationChannel] position dest=7520m eta="10:40 PM" ttarr=784s step=202m
+[22:27:17.911] [Session] MSG ch=12 msgId=0x8006 len=126 state=RUNNING
+[22:27:17.912] [NavigationChannel] state maneuver=6 road="toward DK5 DK94 al. Generała Józefa Hallera" dest="plac Strzegomski 2"
+[22:27:17.915] [Session] MSG ch=12 msgId=0x8007 len=43 state=RUNNING
+[22:27:17.915] [NavigationChannel] position dest=7520m eta="10:40 PM" ttarr=784s step=202m
+[22:27:19.237] [Session] MSG ch=12 msgId=0x8006 len=126 state=RUNNING
+[22:27:19.238] [NavigationChannel] state maneuver=6 road="toward DK5 DK94 al. Generała Józefa Hallera" dest="plac Strzegomski 2"
+[22:27:19.238] [Session] MSG ch=12 msgId=0x8007 len=43 state=RUNNING
+[22:27:19.239] [NavigationChannel] position dest=7520m eta="10:40 PM" ttarr=784s step=202m
+[22:27:20.573] [Session] MSG ch=12 msgId=0x8006 len=126 state=RUNNING
+[22:27:20.573] [NavigationChannel] state maneuver=6 road="toward DK5 DK94 al. Generała Józefa Hallera" dest="plac Strzegomski 2"
+[22:27:20.574] [Session] MSG ch=12 msgId=0x8007 len=43 state=RUNNING
+[22:27:20.574] [NavigationChannel] position dest=7520m eta="10:40 PM" ttarr=784s step=202m
+[22:27:21.910] [Session] MSG ch=12 msgId=0x8006 len=126 state=RUNNING
+[22:27:21.910] [NavigationChannel] state maneuver=6 road="toward DK5 DK94 al. Generała Józefa Hallera" dest="plac Strzegomski 2"
+[22:27:21.910] [Session] MSG ch=12 msgId=0x8007 len=43 state=RUNNING
+[22:27:21.910] [NavigationChannel] position dest=7520m eta="10:40 PM" ttarr=784s step=202m
+[22:27:22.084] [Session] MSG ch=12 msgId=0x8003 len=2 state=RUNNING
+[22:27:22.084] [NavigationChannel] status=Inactive
+[22:27:22.185] [Session] MSG ch=0 msgId=0x000d len=2 state=RUNNING
+[22:27:22.186] [ControlChannel] NavigationFocusRequest raw: 0801
+[22:28:11.164] [Session] MSG ch=10 msgId=0x8001 len=21 state=RUNNING
+[22:28:11.164] [Session] BT pairing request from C0:1C:6A:AD:79:4A -> already paired
+[22:36:43.182] [Session] MSG ch=10 msgId=0x8001 len=21 state=RUNNING
+[22:36:43.183] [Session] BT pairing request from C0:1C:6A:AD:79:4A -> already paired
+[22:53:47.195] [Session] MSG ch=10 msgId=0x8001 len=21 state=RUNNING
+[22:53:47.196] [Session] BT pairing request from C0:1C:6A:AD:79:4A -> already paired
+[23:27:55.216] [Session] MSG ch=10 msgId=0x8001 len=21 state=RUNNING
+[23:27:55.217] [Session] BT pairing request from C0:1C:6A:AD:79:4A -> already paired

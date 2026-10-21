@@ -5,13 +5,9 @@
 #include <QDebug>
 #include <memory>
 
-#include "CanInterface.h"
-#include "MockCanBackend.h"
-#if defined(Q_OS_LINUX)
-#include "SocketCanBackend.h"
-#endif
+#include "CoreClient.h"
 #include "InfinitiTheme.h"
-#include "VehicleState.h"
+#include "VehicleModel.h"
 #include "ClimateRibbonController.h"
 
 static constexpr int CLIMATE_SCREEN_WIDTH = 1280;
@@ -23,25 +19,19 @@ int main(int argc, char *argv[])
     app.setApplicationName("Infiniti G35 Climate Ribbon");
     app.setOrganizationName("Infiniti HMI");
 
-    std::unique_ptr<CanInterface> canBackend;
-#if defined(Q_OS_LINUX)
-    {
-        auto socketBackend = std::make_unique<SocketCanBackend>("vcan0");
-        if (socketBackend->open()) {
-            canBackend = std::move(socketBackend);
-        } else {
-            qWarning() << "vcan0 unavailable, falling back to multicast mock CAN";
-            canBackend = std::make_unique<MockCanBackend>();
-            canBackend->open();
-        }
-    }
-#else
-    canBackend = std::make_unique<MockCanBackend>();
-    canBackend->open();
-#endif
+    auto vehicleState = std::make_unique<VehicleModel>();
 
-    auto vehicleState = std::make_unique<VehicleState>();
-    vehicleState->attachCanInterface(canBackend.get());
+    CoreClient coreClient(vehicleState.get());
+    Protocol::HelloInfo hello;
+    hello.clientId = QStringLiteral("climate");
+    hello.role = QString(Protocol::Role::CLIMATE);
+    hello.displayId = QStringLiteral("climate");
+    hello.width = 1920;
+    hello.height = 480;
+    hello.wants = {QString(Protocol::Want::VEHICLE)};
+    if (!coreClient.start(hello)) {
+        return 2;
+    }
 
     QQmlApplicationEngine engine;
     InfinitiTheme::setup(engine);

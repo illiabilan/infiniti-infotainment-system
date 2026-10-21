@@ -5,9 +5,14 @@ set(CMAKE_CXX_STANDARD 20)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 set(CMAKE_AUTOMOC ON)
 
-find_package(Qt6 REQUIRED COMPONENTS Core Network)
+find_package(Qt6 6.5 REQUIRED COMPONENTS Core Network WebSockets Test)
+
+add_subdirectory(protocol)
+add_subdirectory(aa)
 
 add_library(InfinitiCore STATIC
+    include/CanBackendFactory.h
+    src/CanBackendFactory.cpp
     include/CanFrame.h
     include/NissanCanDefinitions.h
     include/CanInterface.h
@@ -25,11 +30,15 @@ target_include_directories(InfinitiCore PUBLIC
 )
 
 target_link_libraries(InfinitiCore PUBLIC
+    InfinitiProtocol
     Qt6::Core
     Qt6::Network
 )
 
 target_compile_features(InfinitiCore PUBLIC cxx_std_20)
+
+add_subdirectory(client)
+add_subdirectory(app)
 
 # Verification / Unit test executable
 add_executable(core_test
@@ -38,6 +47,20 @@ add_executable(core_test
 
 target_link_libraries(core_test PRIVATE
     InfinitiCore
+    InfinitiCoreClient
     Qt6::Core
     Qt6::Network
 )
+
+# Protocol tests (CL-2)
+qt_add_executable(core_protocol_test
+    tests/CoreProtocolTest.cpp
+)
+
+target_link_libraries(core_protocol_test PRIVATE
+    InfinitiCoreServer
+    Qt6::Test
+)
+
+add_test(NAME core_test COMMAND core_test)
+add_test(NAME core_protocol_test COMMAND core_protocol_test)

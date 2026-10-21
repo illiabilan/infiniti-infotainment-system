@@ -9,52 +9,52 @@ VehicleController::VehicleController(QObject *parent)
     updateRange();
 }
 
-void VehicleController::attachVehicleState(VehicleState *state)
+void VehicleController::attachVehicleState(VehicleModel *state)
 {
     m_state = state;
     if (!m_state)
         return;
 
-    connect(m_state, &VehicleState::speedChanged, this, [this]() {
+    connect(m_state, &VehicleModel::speedChanged, this, [this]() {
         m_syncingFromState = true;
         setVehicleMoving(m_state->speed() > 0);
         m_syncingFromState = false;
     });
-    connect(m_state, &VehicleState::centralLockChanged, this, [this]() {
+    connect(m_state, &VehicleModel::centralLockChanged, this, [this]() {
         m_syncingFromState = true;
         setCentralLock(m_state->centralLock());
         m_syncingFromState = false;
     });
-    connect(m_state, &VehicleState::trunkOpenChanged, this, [this]() {
+    connect(m_state, &VehicleModel::trunkOpenChanged, this, [this]() {
         m_syncingFromState = true;
         setTrunkOpen(m_state->trunkOpen());
         m_syncingFromState = false;
     });
-    connect(m_state, &VehicleState::isAnyDoorOpenChanged, this, [this]() {
+    connect(m_state, &VehicleModel::isAnyDoorOpenChanged, this, [this]() {
         m_syncingFromState = true;
         setWindowsClosed(!m_state->isAnyDoorOpen());
         m_syncingFromState = false;
     });
-    connect(m_state, &VehicleState::fuelLevelChanged, this, [this]() {
+    connect(m_state, &VehicleModel::fuelLevelChanged, this, [this]() {
         m_syncingFromState = true;
         setBatteryLevel(m_state->fuelLevel() / 12.0);
         m_syncingFromState = false;
     });
-    connect(m_state, &VehicleState::dteKmChanged, this, [this]() {
+    connect(m_state, &VehicleModel::dteKmChanged, this, [this]() {
         updateRange();
         emit vehicleChanged();
     });
-    connect(m_state, &VehicleState::coolantTempChanged, this, [this]() {
+    connect(m_state, &VehicleModel::coolantTempChanged, this, [this]() {
         m_syncingFromState = true;
         setBatteryTemp(m_state->coolantTemp());
         m_syncingFromState = false;
     });
-    connect(m_state, &VehicleState::tpmsActiveChanged, this, [this]() {
+    connect(m_state, &VehicleModel::tpmsActiveChanged, this, [this]() {
         m_syncingFromState = true;
         setTirePressureWarning(m_state->tpmsActive() ? 3 : -1);
         m_syncingFromState = false;
     });
-    connect(m_state, &VehicleState::highBeamChanged, this, [this]() {
+    connect(m_state, &VehicleModel::highBeamChanged, this, [this]() {
         m_syncingFromState = true;
         setLightControl(m_state->highBeam());
         m_syncingFromState = false;

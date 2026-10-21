@@ -1,5 +1,5 @@
 #include "ClimateRibbonController.h"
-#include "VehicleState.h"
+#include "VehicleModel.h"
 
 ClimateRibbonController::ClimateRibbonController(QObject *parent)
     : QObject(parent)
@@ -257,7 +257,7 @@ void ClimateRibbonController::cyclePassengerSeatHeat()
     setPassengerSeatHeat((m_passengerSeatHeat + 1) % 4);
 }
 
-void ClimateRibbonController::attachVehicleState(VehicleState *state)
+void ClimateRibbonController::attachVehicleState(VehicleModel *state)
 {
     m_state = state;
     if (!m_state)
@@ -295,7 +295,7 @@ void ClimateRibbonController::attachVehicleState(VehicleState *state)
     emit passengerSeatHeatChanged();
     emit outsideTempChanged();
 
-    connect(m_state, &VehicleState::driverTempChanged, this, [this]() {
+    connect(m_state, &VehicleModel::driverTempChanged, this, [this]() {
         if (m_syncingFromState) return;
         if (std::abs(m_driverTemp - m_state->driverTemp()) < 0.1) return;
         m_syncingFromState = true;
@@ -304,7 +304,7 @@ void ClimateRibbonController::attachVehicleState(VehicleState *state)
         m_syncingFromState = false;
     });
 
-    connect(m_state, &VehicleState::passengerTempChanged, this, [this]() {
+    connect(m_state, &VehicleModel::passengerTempChanged, this, [this]() {
         if (m_syncingFromState) return;
         if (std::abs(m_passengerTemp - m_state->passengerTemp()) < 0.1) return;
         m_syncingFromState = true;
@@ -313,7 +313,7 @@ void ClimateRibbonController::attachVehicleState(VehicleState *state)
         m_syncingFromState = false;
     });
 
-    connect(m_state, &VehicleState::fanSpeedChanged, this, [this]() {
+    connect(m_state, &VehicleModel::fanSpeedChanged, this, [this]() {
         if (m_syncingFromState) return;
         if (m_fanSpeed == m_state->fanSpeed()) return;
         m_syncingFromState = true;
@@ -322,7 +322,7 @@ void ClimateRibbonController::attachVehicleState(VehicleState *state)
         m_syncingFromState = false;
     });
 
-    connect(m_state, &VehicleState::airflowModeChanged, this, [this]() {
+    connect(m_state, &VehicleModel::airflowModeChanged, this, [this]() {
         if (m_syncingFromState) return;
         if (m_airflowMode == m_state->airflowMode()) return;
         m_syncingFromState = true;
@@ -331,7 +331,7 @@ void ClimateRibbonController::attachVehicleState(VehicleState *state)
         m_syncingFromState = false;
     });
 
-    connect(m_state, &VehicleState::acActiveChanged, this, [this]() {
+    connect(m_state, &VehicleModel::acActiveChanged, this, [this]() {
         if (m_syncingFromState) return;
         if (m_acActive == m_state->acActive()) return;
         m_syncingFromState = true;
@@ -340,7 +340,7 @@ void ClimateRibbonController::attachVehicleState(VehicleState *state)
         m_syncingFromState = false;
     });
 
-    connect(m_state, &VehicleState::autoActiveChanged, this, [this]() {
+    connect(m_state, &VehicleModel::autoActiveChanged, this, [this]() {
         if (m_syncingFromState) return;
         if (m_autoActive == m_state->autoActive()) return;
         m_syncingFromState = true;
@@ -349,7 +349,7 @@ void ClimateRibbonController::attachVehicleState(VehicleState *state)
         m_syncingFromState = false;
     });
 
-    connect(m_state, &VehicleState::dualModeChanged, this, [this]() {
+    connect(m_state, &VehicleModel::dualModeChanged, this, [this]() {
         if (m_syncingFromState) return;
         if (m_dualMode == m_state->dualMode()) return;
         m_syncingFromState = true;
@@ -358,7 +358,7 @@ void ClimateRibbonController::attachVehicleState(VehicleState *state)
         m_syncingFromState = false;
     });
 
-    connect(m_state, &VehicleState::recircActiveChanged, this, [this]() {
+    connect(m_state, &VehicleModel::recircActiveChanged, this, [this]() {
         if (m_syncingFromState) return;
         if (m_recircActive == m_state->recircActive()) return;
         m_syncingFromState = true;
@@ -367,7 +367,7 @@ void ClimateRibbonController::attachVehicleState(VehicleState *state)
         m_syncingFromState = false;
     });
 
-    connect(m_state, &VehicleState::ecoModeChanged, this, [this]() {
+    connect(m_state, &VehicleModel::ecoModeChanged, this, [this]() {
         if (m_syncingFromState) return;
         if (m_ecoActive == m_state->ecoMode()) return;
         m_syncingFromState = true;
@@ -376,7 +376,7 @@ void ClimateRibbonController::attachVehicleState(VehicleState *state)
         m_syncingFromState = false;
     });
 
-    connect(m_state, &VehicleState::frontDefrostActiveChanged, this, [this]() {
+    connect(m_state, &VehicleModel::frontDefrostActiveChanged, this, [this]() {
         if (m_syncingFromState) return;
         if (m_frontDefrostActive == m_state->frontDefrostActive()) return;
         m_syncingFromState = true;
@@ -385,7 +385,7 @@ void ClimateRibbonController::attachVehicleState(VehicleState *state)
         m_syncingFromState = false;
     });
 
-    connect(m_state, &VehicleState::rearDefrostActiveChanged, this, [this]() {
+    connect(m_state, &VehicleModel::rearDefrostActiveChanged, this, [this]() {
         if (m_syncingFromState) return;
         if (m_rearDefrostActive == m_state->rearDefrostActive()) return;
         m_syncingFromState = true;
@@ -394,7 +394,7 @@ void ClimateRibbonController::attachVehicleState(VehicleState *state)
         m_syncingFromState = false;
     });
 
-    connect(m_state, &VehicleState::driverSeatHeatChanged, this, [this]() {
+    connect(m_state, &VehicleModel::driverSeatHeatChanged, this, [this]() {
         if (m_syncingFromState) return;
         if (m_driverSeatHeat == m_state->driverSeatHeat()) return;
         m_syncingFromState = true;
@@ -403,7 +403,7 @@ void ClimateRibbonController::attachVehicleState(VehicleState *state)
         m_syncingFromState = false;
     });
 
-    connect(m_state, &VehicleState::passengerSeatHeatChanged, this, [this]() {
+    connect(m_state, &VehicleModel::passengerSeatHeatChanged, this, [this]() {
         if (m_syncingFromState) return;
         if (m_passengerSeatHeat == m_state->passengerSeatHeat()) return;
         m_syncingFromState = true;
@@ -412,7 +412,7 @@ void ClimateRibbonController::attachVehicleState(VehicleState *state)
         m_syncingFromState = false;
     });
 
-    connect(m_state, &VehicleState::ambientTempChanged, this, [this]() {
+    connect(m_state, &VehicleModel::ambientTempChanged, this, [this]() {
         if (m_syncingFromState) return;
         if (m_outsideTemp == m_state->ambientTemp()) return;
         m_syncingFromState = true;

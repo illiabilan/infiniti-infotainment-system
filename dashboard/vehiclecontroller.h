@@ -2,7 +2,7 @@
 #define VEHICLECONTROLLER_H
 
 #include <QObject>
-#include "VehicleState.h"
+#include "VehicleModel.h"
 
 class VehicleController : public QObject
 {
@@ -27,7 +27,7 @@ class VehicleController : public QObject
 
 public:
     explicit VehicleController(QObject *parent = nullptr);
-    void attachVehicleState(VehicleState *state);
+    void attachVehicleState(VehicleModel *state);
 
     bool centralLock() const;
     bool fuelTankLock() const;
@@ -94,7 +94,7 @@ private:
     bool m_vehicleMoving = false;
     bool m_windowsClosed = true;
     int m_tirePressureWarning = -1;
-    VehicleState *m_state = nullptr;
+    VehicleModel *m_state = nullptr;
     bool m_syncingFromState = false;
 };
 
