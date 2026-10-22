@@ -1,0 +1,16 @@
+{
+  "source": "docs/traces/livi-trace-B-2026-10-20-2219.log:57-59, 22:19:37.093 -> 22:19:38.107. VID:PID 18d1:4ee7 is from the trace, serial and descriptors are synthetic.",
+  "devices": {
+    "phone": { "id": 1, "vendorId": "18d1", "productId": "4ee7", "deviceClass": 0, "interfaceClasses": [6, 255], "serial": "FAKE0001" },
+    "accessory": { "id": 2, "vendorId": "18d1", "productId": "2d00", "deviceClass": 0, "interfaceClasses": [255], "serial": "FAKE0001" }
+  },
+  "steps": [
+    { "event": "start", "state": "Idle", "log": "^aa-usb: watching for phones$" },
+    { "event": "arrive", "device": "phone", "atStartup": false, "state": "Switching", "log": "^aa-usb: usb:FAKE0001: phone candidate 18d1:4ee7, switching to accessory mode$" },
+    { "event": "requested", "device": "phone", "state": "Switching", "log": "^aa-usb: usb:FAKE0001: accessory mode requested$" },
+    { "event": "leave", "device": "phone", "state": "Switching" },
+    { "event": "arrive", "device": "accessory", "atStartup": false, "state": "AccessoryUp", "log": "^aa-usb: usb:FAKE0001: accessory up in \\d+ ms$" }
+  ],
+  "requests": [1],
+  "resets": []
+}
