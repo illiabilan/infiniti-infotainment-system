@@ -11,7 +11,7 @@ target_include_directories(InfinitiCoreServer PUBLIC
 
 target_link_libraries(InfinitiCoreServer PUBLIC
     InfinitiProtocol
-    InfinitiAa
+    CoreAa
     Qt6::WebSockets
 )
 
@@ -23,3 +23,12 @@ target_link_libraries(InfinitiCoreApp PRIVATE
     InfinitiCoreServer
     InfinitiCore
 )
+
+if(AA_WITH_AASDK)
+    target_link_libraries(InfinitiCoreApp PRIVATE
+        CoreAaAasdk
+    )
+    target_compile_definitions(InfinitiCoreApp PRIVATE
+        AA_WITH_AASDK
+    )
+endif()

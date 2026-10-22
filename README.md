@@ -39,6 +39,16 @@ cmake --build build -j$(nproc)
 ctest --test-dir build --output-on-failure
 ```
 
+Android Auto USB backend (optional, `AA_WITH_AASDK`, default OFF). Core then also builds the aasdk AOA adapter from the `third_party/aasdk` submodule (pinned commit `9bf6adf`). Use the Ninja generator.
+
+```bash
+git submodule update --init third_party/aasdk
+cmake -S . -B build/aa-on -G Ninja -DCMAKE_BUILD_TYPE=Debug -DAA_WITH_AASDK=ON -DCMAKE_PREFIX_PATH="<boost-1.85 prefix>;<other prefixes>"
+cmake --build build/aa-on -j
+```
+
+Dependencies: libusb 1.0, OpenSSL, protobuf, abseil and Boost 1.85. Boost 1.87 removed `boost::asio::io_service`, which aasdk uses. macOS (Homebrew): `boost@1.85` is keg-only, pass `-DCMAKE_PREFIX_PATH="/opt/homebrew/opt/boost@1.85;/opt/homebrew"`. Homebrew disabled that formula on 2026-04-05, so if `brew install boost@1.85` refuses, build Boost 1.85.0 from source as on Debian. Debian (not yet verified on ROCK 5B+): build Boost 1.85.0 from source into `/opt/boost-1.85` (`./bootstrap.sh --prefix=/opt/boost-1.85 --with-libraries=system,log && ./b2 -j"$(nproc)" install`) and pass `-DCMAKE_PREFIX_PATH=/opt/boost-1.85`. With `AA_WITH_AASDK=OFF`, Core logs `aa-usb: USB backend not built` and runs without an AOA backend.
+
 ## Credits
 
 - Cluster UI builds on the open-source [APEX Horizon AMT cluster](https://github.com/skrehanahamed/Apex_MidEnd_Cluster) community project.
