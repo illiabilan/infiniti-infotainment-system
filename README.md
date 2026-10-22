@@ -28,7 +28,7 @@ Standalone ECU test bench driving all screens over CAN. Run: `just run-emu`, or 
 
 ## CAN layer
 
-`core/` holds the shared `VehicleState`, Nissan CAN codec (`0x1F9`, `0x280`, `0x54C`, ...), `SocketCanBackend` for `vcan0`/`can0`, and `MockCanBackend` multicast fallback when no CAN interface exists. Every app tries SocketCAN first and falls back automatically, so the emulator drives every screen with zero setup.
+`core/` holds the shared `VehicleState`, Nissan CAN codec (`0x1F9`, `0x280`, `0x54C`, ...), `SocketCanBackend` for `vcan0`/`can0`, and `MockCanBackend` multicast fallback when no CAN interface exists. The Core process (`core/app`, run with `just run-core`) owns CAN and the only `VehicleState` of the head unit. Display apps connect to `ws://127.0.0.1:<port from configs/core.ini>` and mirror the vehicle state. The emulator drives Core over CAN, so start Core first or in any order, since clients retry every second.
 
 ## Build
 
@@ -36,6 +36,7 @@ Standalone ECU test bench driving all screens over CAN. Run: `just run-emu`, or 
 cmake -S . -B build -DCMAKE_BUILD_TYPE=Debug
 cmake --build build -j$(nproc)
 ./build/core/core_test
+ctest --test-dir build --output-on-failure
 ```
 
 ## Credits

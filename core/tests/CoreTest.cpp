@@ -1,7 +1,11 @@
 #include "NissanCanDefinitions.h"
+#include "CanBackendFactory.h"
+#include "CoreClient.h"
+#include "VehicleChangeWatcher.h"
 #include "VehicleState.h"
 #include "MockCanBackend.h"
 #include <QCoreApplication>
+#include <QStringList>
 #include <QTimer>
 #include <QThread>
 #include <QVariant>
@@ -271,6 +275,63 @@ static void testMockCanLoopback() {
     std::cout << "[TEST] MockCanBackend loopback transmission PASSED." << std::endl;
 }
 
+// AC3 trace: prints the change log of the watched keys until one drive cycle ends.
+static const QStringList TRACE_KEYS{
+    QStringLiteral("speed"), QStringLiteral("rpm"),
+    QStringLiteral("driverTemp"), QStringLiteral("passengerTemp"), QStringLiteral("fanSpeed"),
+    QStringLiteral("airflowMode"), QStringLiteral("acActive"), QStringLiteral("autoActive"),
+    QStringLiteral("dualMode"), QStringLiteral("recircActive"), QStringLiteral("ecoMode"),
+    QStringLiteral("frontDefrostActive"), QStringLiteral("rearDefrostActive"),
+    QStringLiteral("driverSeatHeat"), QStringLiteral("passengerSeatHeat")
+};
+
+static QString traceValue(const VehicleModel &model, const QString &key) {
+    const QVariant value = model.property(key.toLatin1().constData());
+    switch (value.typeId()) {
+    case QMetaType::Double: return QString::number(value.toDouble(), 'f', 2);
+    case QMetaType::Bool: return value.toBool() ? QStringLiteral("true") : QStringLiteral("false");
+    default: return QString::number(value.toInt());
+    }
+}
+
+// The emulator drive demo rounds its speed smoothing to int and settles at 5 km/h, never at 0.
+static constexpr int TRACE_CRUISE_SPEED = 50;
+static constexpr int TRACE_REST_SPEED = 5;
+
+static int runTrace(QCoreApplication &app, VehicleModel &model) {
+    VehicleChangeWatcher watcher(&model);
+    bool sawMotion = false;
+    bool finished = false;
+
+    QObject::connect(&watcher, &VehicleChangeWatcher::valuesChanged, [&](const QJsonObject &values) {
+        if (finished) return;
+        for (const QString &key : TRACE_KEYS) {
+            if (values.contains(key)) {
+                std::cout << key.toStdString() << "=" << traceValue(model, key).toStdString() << std::endl;
+            }
+        }
+        if (!values.contains(QStringLiteral("speed"))) return;
+
+        if (model.speed() >= TRACE_CRUISE_SPEED) {
+            sawMotion = true;
+        } else if (sawMotion && model.speed() <= TRACE_REST_SPEED) {
+            std::cout << "final";
+            for (const QString &key : TRACE_KEYS) {
+                std::cout << " " << key.toStdString() << "=" << traceValue(model, key).toStdString();
+            }
+            std::cout << std::endl;
+            finished = true;
+            app.exit(0);
+        }
+    });
+
+    QTimer::singleShot(300000, [&]() {
+        std::cerr << "TRACE_TIMEOUT" << std::endl;
+        app.exit(1);
+    });
+    return app.exec();
+}
+
 int main(int argc, char *argv[]) {
     QCoreApplication app(argc, argv);
 
@@ -315,6 +376,24 @@ int main(int argc, char *argv[]) {
             QTimer::singleShot(200, [&]() { QCoreApplication::quit(); });
         });
         return app.exec();
+    } else if (argc > 1 && std::string(argv[1]) == "trace-can") {
+        auto can = CanBackendFactory::create();
+        VehicleState state;
+        state.attachCanInterface(can.get());
+        return runTrace(app, state);
+    } else if (argc > 1 && std::string(argv[1]) == "trace-core") {
+        VehicleModel mirror;
+        CoreClient client(&mirror);
+
+        Protocol::HelloInfo hello;
+        hello.clientId = QStringLiteral("trace");
+        hello.role = QString(Protocol::Role::CLUSTER);
+        hello.displayId = QStringLiteral("cluster");
+        hello.width = 1920;
+        hello.height = 720;
+        hello.wants = {QString(Protocol::Want::VEHICLE)};
+        if (!client.start(hello)) return 2;
+        return runTrace(app, mirror);
     }
 
     testCodecs();

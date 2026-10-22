@@ -16,7 +16,7 @@ set(CMAKE_AUTOMOC ON)
 set(CMAKE_AUTORCC ON)
 set(CMAKE_AUTOUIC ON)
 
-find_package(Qt6 6.5 REQUIRED COMPONENTS Quick QuickControls2 Gui Qml Svg Multimedia Network)
+find_package(Qt6 6.5 REQUIRED COMPONENTS Quick QuickControls2 Gui Qml Svg Multimedia Network WebSockets)
 
 qt_standard_project_setup()
 qt_policy(SET QTP0001 NEW)
@@ -154,7 +154,7 @@ qt_add_qml_module(ApexClusterApp
 )
 
 target_link_libraries(ApexClusterApp PRIVATE
-    InfinitiCore
+    InfinitiCoreClient
     Qt6::Core
     Qt6::Quick
     Qt6::QuickControls2
@@ -167,5 +167,4 @@ target_link_libraries(ApexClusterApp PRIVATE
 
 target_include_directories(ApexClusterApp PRIVATE
     ${CMAKE_CURRENT_SOURCE_DIR}/src
-    ${CMAKE_SOURCE_DIR}/core/include
 )

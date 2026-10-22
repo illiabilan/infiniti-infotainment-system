@@ -1,0 +1,679 @@
+=== LIVI debug log dump Tue Oct 20 21:54:23 CEST 2026 ===
+=== macOS 27.0.1, arm64 ===
+
+##### /private/tmp/claude-501/-Users-illiabilan-Projects-LIVI/19a2e17e-eb30-46cd-80bc-31242dcbccb6/scratchpad/livi-debug3.log
+$ vite
+
+  VITE v8.3.4  ready in 102 ms
+
+  ➜  Local:   http://localhost:5173/
+  ➜  Network: use --host to expose
+vite v8.3.4 building client environment for development...
+
+watching for file changes...
+vite v8.3.4 building client environment for development...
+
+watching for file changes...
+
+build started...
+
+build started...
+transforming...
+transforming...
+✓ 5 modules transformed.
+✓ 38 modules transformed.
+rendering chunks...
+rendering chunks...
+computing gzip size...
+out/preload/index.js  5.38 kB │ gzip: 2.02 kB
+
+built in 11ms.
+computing gzip size...
+out/main/main.js  62.40 kB │ gzip: 18.12 kB
+
+built in 12ms.
+[19:45:02.344] [core] waiting for livi-core at /var/folders/g2/876byb6d7r39lvp4yzyrj_mc0000gn/T/livi-501/core.sock
+[19:45:03.343] [core] starting /Users/illiabilan/Projects/LIVI/native/livi-helperd/build/Release/livi-core
+[19:45:03.363] [core] listening on /var/folders/g2/876byb6d7r39lvp4yzyrj_mc0000gn/T/livi-501/core.sock
+[19:45:03.366] [core] CarPlay listening on :58699 (dual-stack)
+[19:45:03.366] [core] running without a UI
+[19:45:03.366] [telemetry] listening on port 4000
+[19:45:03.373] [helper] [helperd] Android Auto USB watcher started
+[19:45:03.373] [helper] [helperd] dongle watcher started
+[19:45:03.373] [helper] [helperd] wired CarPlay watcher started (system usbmuxd), waiting for the LIVI Link
+[19:45:03.373] [helper] [shared-sock] listening on /tmp/livi-shared.sock
+[19:45:03.373] [helper] [aa-sock] listening on /tmp/aa-bt.sock
+[19:45:03.373] [helper] [cp-sock] listening on /tmp/cp-bt.sock
+[19:45:03.374] [helper] [dongle] watching for dongles
+[19:45:03.374] [helper] [aa-usb] watching for phones
+[19:45:03.374] [helper] [aa-usb] usb:46241FDAP002FS: accessory left over from an earlier run, resetting it
+[19:45:03.383] [core] screen: 344x223 mm over 3456x2234 px
+[19:45:03.384] [AaSession] display 1280x720 -> AA tier 1280x720 @180dpi, cluster 1280x720 -> tier 1280x720 @180dpi
+[19:45:03.384] [AaManager] Android Auto sessions come from the helper
+[19:45:03.384] [helper] [aa-sock] event subscriber connected
+[19:45:03.386] [AaSession] display 1280x720 -> AA tier 1280x720 @180dpi, cluster 1280x720 -> tier 1280x720 @180dpi
+[19:45:03.413] [volume] watching the output for changes made outside LIVI
+[19:45:03.414] [helper] [cp] published _airplay._tcp port=58699 deviceid=02:5e:6d:63:61:33
+[19:45:03.414] [helper] [helperd] CarPlay receiver seam ready (cp-bt.sock + bonjour :58699)
+[19:45:03.622] [core] gst-host codecs {"av1":{"hw":false,"sw":false},"h264":{"hw":true,"sw":true},"h265":{"hw":true,"sw":true},"vp9":{"hw":false,"sw":false}}
+[19:45:03.622] [core] codecs hevc true vp9 false av1 false
+[19:45:03.623] [AaSession] display 1280x720 -> AA tier 1280x720 @180dpi, cluster 1280x720 -> tier 1280x720 @180dpi
+[19:45:03.851] [core] electron connected
+[19:45:11.253] [AaSession] display 1280x720 -> AA tier 1280x720 @180dpi, cluster 1280x720 -> tier 1280x720 @180dpi
+[19:45:11.933] [AaSession] display 1280x720 -> AA tier 1280x720 @180dpi, cluster 1280x720 -> tier 1280x720 @180dpi
+[20:02:02.872] [helper] [aa-usb] usb:46241FDAP002FS: phone candidate 18d1:4ee7, switching to accessory mode
+[20:02:02.885] [helper] [aa-usb] usb:46241FDAP002FS: accessory mode requested
+[20:02:03.889] [AaManager] helper session /tmp/aa-session-1.sock from usb:46241FDAP002FS (usb)
+[20:02:03.890] [helper] [aa-usb] usb:46241FDAP002FS: accessory up, session socket /tmp/aa-session-1.sock
+[20:02:04.046] [helper] [aa-session] usb:46241FDAP002FS: tls up, protocol 6.1
+[20:02:04.046] [Session] AUTH_COMPLETE proto bytes: 0800
+[20:02:04.046] [Session] AUTH_COMPLETE sent, waiting for SERVICE_DISCOVERY_REQUEST
+[20:02:04.053] [Session] MSG ch=0 msgId=0x0005 len=881 state=SERVICE_DISCOVERY
+[20:02:04.053] [ControlChannel] ServiceDiscoveryRequest label="Android" phone="Google Pixel 9 Pro" device_id="0f8824c5-d870-43ca-8a01-c6201a603572"
+[20:02:04.053] [Session] Phone: Android / Google Pixel 9 Pro
+[20:02:04.053] [Session] advertising codec: h265
+[20:02:04.053] [Session] SDR: 13 channels, 582B
+[20:02:04.053] [Session] SDR hex: 0a3808031a3408072230080210011800200028b40140904e50075a1e0a080800100018002000120808001000180020001a0808001000180020000a4008131a3c...
+[20:02:04.053] [Session] SDR + Ping sent (1500ms interval)
+[20:02:04.053] [Session] Channel setup, waiting for phone CHANNEL_OPEN_REQUEST on each service channel
+[20:02:04.055] [core] active session #1
+[20:02:04.059] [AaSession] display 1280x720 -> AA tier 1280x720 @180dpi, cluster 1280x720 -> tier 1280x720 @180dpi
+[20:02:04.153] [Session] MSG ch=0 msgId=0x0012 len=2 state=CHANNEL_SETUP
+[20:02:04.154] [ControlChannel] AudioFocusRequest raw: 0804
+[20:02:04.154] [ControlChannel] AudioFocus type=4(RELEASE) -> state=3(LOSS)
+[20:02:04.154] [AaEventBridge] audio-focus type=4 -> duck level=1
+[20:02:04.161] [Session] MSG ch=20 msgId=0x0007 len=4 state=CHANNEL_SETUP
+[20:02:04.161] [Session] CHANNEL_OPEN_REQUEST ch=20, responding OK
+[20:02:04.161] [Session] CHANNEL_OPEN_REQUEST ch=3, responding OK
+[20:02:04.161] [Session] CHANNEL_OPEN_REQUEST ch=19, responding OK
+[20:02:04.162] [Session] CHANNEL_OPEN_REQUEST ch=4, responding OK
+[20:02:04.162] [Session] CHANNEL_OPEN_REQUEST ch=5, responding OK
+[20:02:04.162] [Session] CHANNEL_OPEN_REQUEST ch=6, responding OK
+[20:02:04.163] [Session] CHANNEL_OPEN_REQUEST ch=9, responding OK
+[20:02:04.166] [Session] CHANNEL_OPEN_REQUEST ch=1, responding OK
+[20:02:04.166] [Session] CHANNEL_OPEN_REQUEST ch=8, responding OK
+[20:02:04.166] [Session] MSG ch=10 msgId=0x0007 len=4 state=CHANNEL_SETUP
+[20:02:04.166] [Session] CHANNEL_OPEN_REQUEST ch=10, responding OK
+[20:02:04.166] [Session] MSG ch=12 msgId=0x0007 len=4 state=CHANNEL_SETUP
+[20:02:04.166] [Session] CHANNEL_OPEN_REQUEST ch=12, responding OK
+[20:02:04.166] [Session] MSG ch=13 msgId=0x0007 len=4 state=CHANNEL_SETUP
+[20:02:04.166] [Session] CHANNEL_OPEN_REQUEST ch=13, responding OK
+[20:02:04.166] [Session] MSG ch=14 msgId=0x0007 len=4 state=CHANNEL_SETUP
+[20:02:04.166] [Session] CHANNEL_OPEN_REQUEST ch=14, responding OK
+[20:02:04.166] [Session] MSG ch=20 msgId=0x8002 len=0 state=CHANNEL_SETUP
+[20:02:04.166] [Session] ch=20 KeyBindingRequest (len=0), replying status=OK
+[20:02:04.166] [Session] AVSetupRequest ch=4 codec=1
+[20:02:04.166] [AudioChannel:media] setup codec=1 48000Hz 2ch
+[20:02:04.166] [Session] MediaConfigResponse ch=4 status=READY sent
+[20:02:04.168] [Session] AVSetupRequest ch=5 codec=1
+[20:02:04.168] [AudioChannel:speech] setup codec=1 16000Hz 1ch
+[20:02:04.168] [Session] MediaConfigResponse ch=5 status=READY sent
+[20:02:04.168] [Session] AVSetupRequest ch=3 codec=7
+[20:02:04.168] [Session] video codec selected: h265 (configIdx=0)
+[20:02:04.168] [Session] phone picked video codec: H265 (offered: h265)
+[20:02:04.168] [Session] MediaConfigResponse ch=3 status=READY sent
+[20:02:04.169] [AaEventBridge] video codec h265 (phone selection)
+[20:02:04.169] [AaEventBridge] session connected
+[20:02:04.169] [Session] AVSetupRequest ch=19 codec=7
+[20:02:04.169] [Session] cluster codec selected: h265 (configIdx=0)
+[20:02:04.169] [Session] MediaConfigResponse ch=19 status=READY sent
+[20:02:04.169] [AaEventBridge] cluster video codec h265 (phone selection)
+[20:02:04.169] [Session] AVSetupRequest ch=6 codec=1
+[20:02:04.169] [AudioChannel:system] setup codec=1 16000Hz 1ch
+[20:02:04.169] [Session] MediaConfigResponse ch=6 status=READY sent
+[20:02:04.169] [core] Android Auto projects over usb
+[20:02:04.169] [Session] ch=8 KeyBindingRequest (len=57), replying status=OK
+[20:02:04.170] [Session] SensorStartRequest type=13
+[20:02:04.173] [VideoChannel] stream started, session=5
+[20:02:04.176] [Session] SensorStartRequest type=10
+[20:02:04.176] [Session] SensorBatch: NightMode=false sent
+[20:02:04.179] [Session] SensorStartRequest type=3
+[20:02:04.182] [Session] SensorStartRequest type=8
+[20:02:04.186] [Session] SensorStartRequest type=7
+[20:02:04.436] [Session] MSG ch=0 msgId=0x0012 len=2 state=RUNNING
+[20:02:04.436] [ControlChannel] AudioFocusRequest raw: 0801
+[20:02:04.436] [ControlChannel] AudioFocus type=1(GAIN) -> state=1(GAIN)
+[20:02:04.436] [AaEventBridge] audio-focus type=1 -> duck level=1
+[20:02:04.621] [Session] SensorStartRequest type=1
+[20:02:04.682] [Session] MSG ch=14 msgId=0x8001 len=2 state=RUNNING
+[20:02:04.848] [Session] MSG ch=13 msgId=0x8001 len=25 state=RUNNING
+[20:02:04.848] [MediaInfoChannel] status: state=paused pos=76s source="YouTube Music" shuffle=false repeat=false
+[20:02:04.868] [VideoChannel] stream stopped
+[20:02:04.868] [VideoChannel] stream started, session=5
+[20:02:04.902] [Session] MSG ch=13 msgId=0x8003 len=118917 state=RUNNING
+[20:02:04.902] [MediaInfoChannel] metadata: song="The XX Intro - ELEZO remix ( Official video )" artist="ELEZO" album="ELEZO" duration=161s art=118847B playlist=undefined
+[20:02:05.129] [Session] SensorStartRequest type=26
+[20:02:05.132] [Session] SensorStartRequest type=19
+[20:02:05.140] [Session] SensorStartRequest type=2
+[20:02:05.146] [Session] SensorStartRequest type=21
+[20:02:05.149] [Session] SensorStartRequest type=23
+[20:02:05.150] [Session] SensorStartRequest type=25
+
+(gst-plugin-scanner:39319): GLib-GIRepository-WARNING **: 20:02:05.175: Failed to load shared library 'libgobject-2.0.0.dylib' referenced by the typelib: dlopen(libgobject-2.0.0.dylib, 0x0009): tried: 'libgobject-2.0.0.dylib' (no such file), '/System/Volumes/Preboot/Cryptexes/OSlibgobject-2.0.0.dylib' (no such file), '/usr/lib/libgobject-2.0.0.dylib' (no such file, not in dyld cache), 'libgobject-2.0.0.dylib' (no such file)
+
+(gst-plugin-scanner:39319): GLib-GIRepository-WARNING **: 20:02:05.176: Failed to load shared library 'libglib-2.0.0.dylib' referenced by the typelib: dlopen(libglib-2.0.0.dylib, 0x0009): tried: 'libglib-2.0.0.dylib' (no such file), '/System/Volumes/Preboot/Cryptexes/OSlibglib-2.0.0.dylib' (no such file), '/usr/lib/libglib-2.0.0.dylib' (no such file, not in dyld cache), 'libglib-2.0.0.dylib' (no such file)
+[20:02:05.176] [Session] MSG ch=10 msgId=0x8001 len=21 state=RUNNING
+[20:02:05.176] [Session] BT pairing request from C0:1C:6A:AD:79:4A -> already paired
+
+** (gst-plugin-scanner:39319): CRITICAL **: 20:02:05.177: can't find gi.repository.Gst
+[20:02:05.186] [Session] MSG ch=10 msgId=0x8001 len=21 state=RUNNING
+[20:02:05.186] [Session] BT pairing request from C0:1C:6A:AD:79:4A -> already paired
+[20:02:05.196] [Session] MSG ch=10 msgId=0x8001 len=21 state=RUNNING
+[20:02:05.196] [Session] BT pairing request from C0:1C:6A:AD:79:4A -> already paired
+[20:02:05.353] [Session] MSG ch=13 msgId=0x8001 len=25 state=RUNNING
+[20:02:05.353] [MediaInfoChannel] status: state=stopped pos=0s source="YouTube Music" shuffle=false repeat=false
+objc[39319]: Class ResultReceiver is implemented in both /opt/homebrew/Cellar/gtk+3/3.24.52_1/lib/libgtk-3.0.dylib (0x10c425748) and /opt/homebrew/Cellar/gtk4/4.24.1/lib/libgtk-4.1.dylib (0x11bf4aea0). This may cause spurious casting failures and mysterious crashes. One of the duplicates must be removed or renamed.
+objc[39319]: Class GtkApplicationQuartzDelegate is implemented in both /opt/homebrew/Cellar/gtk+3/3.24.52_1/lib/libgtk-3.0.dylib (0x10c425770) and /opt/homebrew/Cellar/gtk4/4.24.1/lib/libgtk-4.1.dylib (0x11bf4aec8). This may cause spurious casting failures and mysterious crashes. One of the duplicates must be removed or renamed.
+objc[39319]: Class GNSMenuItem is implemented in both /opt/homebrew/Cellar/gtk+3/3.24.52_1/lib/libgtk-3.0.dylib (0x10c4257c0) and /opt/homebrew/Cellar/gtk4/4.24.1/lib/libgtk-4.1.dylib (0x11bf4af68). This may cause spurious casting failures and mysterious crashes. One of the duplicates must be removed or renamed.
+objc[39319]: Class GNSMenu is implemented in both /opt/homebrew/Cellar/gtk+3/3.24.52_1/lib/libgtk-3.0.dylib (0x10c4257e8) and /opt/homebrew/Cellar/gtk4/4.24.1/lib/libgtk-4.1.dylib (0x11bf4af90). This may cause spurious casting failures and mysterious crashes. One of the duplicates must be removed or renamed.
+objc[39319]: Class FilterComboBox is implemented in both /opt/homebrew/Cellar/gtk+3/3.24.52_1/lib/libgtk-3.0.dylib (0x10c425860) and /opt/homebrew/Cellar/gtk4/4.24.1/lib/libgtk-4.1.dylib (0x11bf4b008). This may cause spurious casting failures and mysterious crashes. One of the duplicates must be removed or renamed.
+objc[39319]: Class gdkCoreCursor is implemented in both /opt/homebrew/Cellar/gtk+3/3.24.52_1/lib/libgdk-3.0.dylib (0x10b929290) and /opt/homebrew/Cellar/gtk4/4.24.1/lib/libgtk-4.1.dylib (0x11bf4b058). This may cause spurious casting failures and mysterious crashes. One of the duplicates must be removed or renamed.
+[gst_video] window=0x10400167bc0 codec=h265 decoder=vtdec (hw) | appsrc name=src is-live=true do-timestamp=true format=time min-latency=0 max-latency=0 caps=video/x-h265,stream-format=byte-stream ! h265parse ! queue max-size-buffers=0 max-size-bytes=0 max-size-time=2000000000 ! vtdec name=dec ! queue max-size-buffers=2 max-size-bytes=0 max-size-time=0 leaky=downstream ! glupload ! glcolorconvert ! glshader name=cal ! glimagesink name=sink sync=false qos=false force-aspect-ratio=false
+[20:02:06.205] [Session] MSG ch=10 msgId=0x8001 len=21 state=RUNNING
+[20:02:06.205] [Session] BT pairing request from C0:1C:6A:AD:79:4A -> already paired
+[20:02:06.217] [gst_video] decoded format=NV12 1280x720 mem=memory:GLMemory
+[20:02:08.220] [Session] MSG ch=10 msgId=0x8001 len=21 state=RUNNING
+[20:02:08.221] [Session] BT pairing request from C0:1C:6A:AD:79:4A -> already paired
+[20:02:09.647] [Session] MSG ch=13 msgId=0x8001 len=25 state=RUNNING
+[20:02:09.647] [MediaInfoChannel] status: state=stopped pos=0s source="YouTube Music" shuffle=false repeat=false
+[20:02:09.997] [Session] MSG ch=13 msgId=0x8003 len=65 state=RUNNING
+[20:02:09.998] [MediaInfoChannel] metadata: song="The XX Intro - ELEZO remix ( Official video )" artist="ELEZO" album="ELEZO" duration=0s art=none playlist=undefined
+[20:02:10.361] [Session] MSG ch=13 msgId=0x8003 len=118916 state=RUNNING
+[20:02:10.361] [MediaInfoChannel] metadata: song="The XX Intro - ELEZO remix ( Official video )" artist="ELEZO" album="ELEZO" duration=0s art=118847B playlist=undefined
+[20:02:10.504] [AudioChannel:media] stream started, session=5
+[20:02:10.504] [AaEventBridge] audio media start (48000Hz 2ch)
+[20:02:10.541] [Session] MSG ch=13 msgId=0x8003 len=118917 state=RUNNING
+[20:02:10.541] [MediaInfoChannel] metadata: song="The XX Intro - ELEZO remix ( Official video )" artist="ELEZO" album="ELEZO" duration=161s art=118847B playlist=undefined
+[20:02:10.933] [Session] MSG ch=13 msgId=0x8001 len=25 state=RUNNING
+[20:02:10.933] [MediaInfoChannel] status: state=playing pos=75s source="YouTube Music" shuffle=false repeat=false
+[20:02:11.934] [Session] MSG ch=13 msgId=0x8001 len=25 state=RUNNING
+[20:02:11.935] [MediaInfoChannel] status: state=playing pos=76s source="YouTube Music" shuffle=false repeat=false
+[20:02:12.236] [Session] MSG ch=10 msgId=0x8001 len=21 state=RUNNING
+[20:02:12.237] [Session] BT pairing request from C0:1C:6A:AD:79:4A -> already paired
+[20:02:12.933] [Session] MSG ch=13 msgId=0x8001 len=25 state=RUNNING
+[20:02:12.934] [MediaInfoChannel] status: state=playing pos=77s source="YouTube Music" shuffle=false repeat=false
+[20:02:13.934] [Session] MSG ch=13 msgId=0x8001 len=25 state=RUNNING
+[20:02:13.934] [MediaInfoChannel] status: state=playing pos=78s source="YouTube Music" shuffle=false repeat=false
+[20:02:14.934] [Session] MSG ch=13 msgId=0x8001 len=25 state=RUNNING
+[20:02:14.935] [MediaInfoChannel] status: state=playing pos=79s source="YouTube Music" shuffle=false repeat=false
+[20:02:15.935] [Session] MSG ch=13 msgId=0x8001 len=25 state=RUNNING
+[20:02:15.936] [MediaInfoChannel] status: state=playing pos=80s source="YouTube Music" shuffle=false repeat=false
+[20:02:16.938] [Session] MSG ch=13 msgId=0x8001 len=25 state=RUNNING
+[20:02:16.938] [MediaInfoChannel] status: state=playing pos=81s source="YouTube Music" shuffle=false repeat=false
+[20:02:17.935] [Session] MSG ch=13 msgId=0x8001 len=25 state=RUNNING
+[20:02:17.936] [MediaInfoChannel] status: state=playing pos=82s source="YouTube Music" shuffle=false repeat=false
+[20:02:18.936] [Session] MSG ch=13 msgId=0x8001 len=25 state=RUNNING
+[20:02:18.936] [MediaInfoChannel] status: state=playing pos=83s source="YouTube Music" shuffle=false repeat=false
+[20:02:19.936] [Session] MSG ch=13 msgId=0x8001 len=25 state=RUNNING
+[20:02:19.936] [MediaInfoChannel] status: state=playing pos=84s source="YouTube Music" shuffle=false repeat=false
+[20:02:20.262] [Session] MSG ch=10 msgId=0x8001 len=21 state=RUNNING
+[20:02:20.263] [Session] BT pairing request from C0:1C:6A:AD:79:4A -> already paired
+[20:02:20.366] [Session] MSG ch=13 msgId=0x8001 len=25 state=RUNNING
+[20:02:20.366] [MediaInfoChannel] status: state=paused pos=83s source="YouTube Music" shuffle=false repeat=false
+[20:02:23.693] [AudioChannel:media] stream stopped
+[20:02:23.693] [AaEventBridge] audio media stop (48000Hz 2ch)
+[20:02:36.291] [Session] MSG ch=10 msgId=0x8001 len=21 state=RUNNING
+[20:02:36.291] [Session] BT pairing request from C0:1C:6A:AD:79:4A -> already paired
+[20:02:41.567] [helper!] [usb] read: unknown (error 0xe00002ed)
+[20:02:41.674] [helper] [aa-session] usb:46241FDAP002FS: closed (phone unplugged)
+[20:02:41.674] [helper] [aa-session] usb:46241FDAP002FS: session over, video=570 audio=309
+[20:02:41.674] [AaEventBridge] session disconnected (phone unplugged)
+[20:02:41.675] [core] session #1 ends, nothing left
+[20:02:41.675] [helper!] [aa-usb] usb:46241FDAP002FS: reset: device disconnected (error 0xe00002c0)
+[21:53:30.813] [helper] [aa-usb] usb:46241FDAP002FS: phone candidate 18d1:4ee7, switching to accessory mode
+[21:53:30.833] [helper] [aa-usb] usb:46241FDAP002FS: accessory mode requested
+[21:53:31.819] [helper] [aa-usb] usb:46241FDAP002FS: accessory up, session socket /tmp/aa-session-2.sock
+[21:53:31.819] [AaManager] helper session /tmp/aa-session-2.sock from usb:46241FDAP002FS (usb)
+[21:53:32.588] [helper] [aa-session] usb:46241FDAP002FS: tls up, protocol 6.1
+[21:53:32.589] [Session] AUTH_COMPLETE proto bytes: 0800
+[21:53:32.589] [Session] AUTH_COMPLETE sent, waiting for SERVICE_DISCOVERY_REQUEST
+[21:53:32.607] [Session] MSG ch=0 msgId=0x0005 len=881 state=SERVICE_DISCOVERY
+[21:53:32.607] [ControlChannel] ServiceDiscoveryRequest label="Android" phone="Google Pixel 9 Pro" device_id="0f8824c5-d870-43ca-8a01-c6201a603572"
+[21:53:32.607] [Session] Phone: Android / Google Pixel 9 Pro
+[21:53:32.607] [Session] advertising codec: h265
+[21:53:32.607] [Session] SDR: 13 channels, 582B
+[21:53:32.609] [Session] SDR hex: 0a3808031a3408072230080210011800200028b40140904e50075a1e0a080800100018002000120808001000180020001a0808001000180020000a4008131a3c...
+[21:53:32.609] [Session] SDR + Ping sent (1500ms interval)
+[21:53:32.609] [Session] Channel setup, waiting for phone CHANNEL_OPEN_REQUEST on each service channel
+[21:53:32.610] [core] active session #1
+[21:53:32.808] [Session] MSG ch=0 msgId=0x0012 len=2 state=CHANNEL_SETUP
+[21:53:32.808] [ControlChannel] AudioFocusRequest raw: 0804
+[21:53:32.808] [ControlChannel] AudioFocus type=4(RELEASE) -> state=3(LOSS)
+[21:53:32.808] [AaEventBridge] audio-focus type=4 -> duck level=1
+[21:53:32.815] [Session] CHANNEL_OPEN_REQUEST ch=3, responding OK
+[21:53:32.815] [Session] MSG ch=20 msgId=0x0007 len=4 state=CHANNEL_SETUP
+[21:53:32.815] [Session] CHANNEL_OPEN_REQUEST ch=20, responding OK
+[21:53:32.815] [Session] CHANNEL_OPEN_REQUEST ch=19, responding OK
+[21:53:32.822] [Session] CHANNEL_OPEN_REQUEST ch=4, responding OK
+[21:53:32.822] [Session] CHANNEL_OPEN_REQUEST ch=5, responding OK
+[21:53:32.822] [Session] CHANNEL_OPEN_REQUEST ch=6, responding OK
+[21:53:32.823] [Session] CHANNEL_OPEN_REQUEST ch=9, responding OK
+[21:53:32.823] [Session] CHANNEL_OPEN_REQUEST ch=1, responding OK
+[21:53:32.823] [Session] CHANNEL_OPEN_REQUEST ch=8, responding OK
+[21:53:32.823] [Session] MSG ch=10 msgId=0x0007 len=4 state=CHANNEL_SETUP
+[21:53:32.824] [Session] CHANNEL_OPEN_REQUEST ch=10, responding OK
+[21:53:32.824] [Session] MSG ch=12 msgId=0x0007 len=4 state=CHANNEL_SETUP
+[21:53:32.824] [Session] CHANNEL_OPEN_REQUEST ch=12, responding OK
+[21:53:32.824] [Session] MSG ch=13 msgId=0x0007 len=4 state=CHANNEL_SETUP
+[21:53:32.824] [Session] CHANNEL_OPEN_REQUEST ch=13, responding OK
+[21:53:32.824] [Session] MSG ch=14 msgId=0x0007 len=4 state=CHANNEL_SETUP
+[21:53:32.824] [Session] CHANNEL_OPEN_REQUEST ch=14, responding OK
+[21:53:32.824] [Session] AVSetupRequest ch=3 codec=7
+[21:53:32.824] [Session] video codec selected: h265 (configIdx=0)
+[21:53:32.824] [Session] phone picked video codec: H265 (offered: h265)
+[21:53:32.824] [Session] MediaConfigResponse ch=3 status=READY sent
+[21:53:32.824] [AaEventBridge] video codec h265 (phone selection)
+[21:53:32.824] [AaEventBridge] session connected
+[21:53:32.824] [core] Android Auto projects over usb
+[gst_video] window=0x10400167bc0 codec=h265 decoder=vtdec (hw) | appsrc name=src is-live=true do-timestamp=true format=time min-latency=0 max-latency=0 caps=video/x-h265,stream-format=byte-stream ! h265parse ! queue max-size-buffers=0 max-size-bytes=0 max-size-time=2000000000 ! vtdec name=dec ! queue max-size-buffers=2 max-size-bytes=0 max-size-time=0 leaky=downstream ! glupload ! glcolorconvert ! glshader name=cal ! glimagesink name=sink sync=false qos=false force-aspect-ratio=false
+[21:53:32.827] [Session] MSG ch=20 msgId=0x8002 len=0 state=RUNNING
+[21:53:32.828] [Session] ch=20 KeyBindingRequest (len=0), replying status=OK
+[21:53:32.828] [Session] AVSetupRequest ch=4 codec=1
+[21:53:32.828] [AudioChannel:media] setup codec=1 48000Hz 2ch
+[21:53:32.828] [Session] MediaConfigResponse ch=4 status=READY sent
+[21:53:32.828] [Session] AVSetupRequest ch=19 codec=7
+[21:53:32.828] [Session] cluster codec selected: h265 (configIdx=0)
+[21:53:32.828] [Session] MediaConfigResponse ch=19 status=READY sent
+[21:53:32.828] [AaEventBridge] cluster video codec h265 (phone selection)
+[21:53:32.828] [Session] AVSetupRequest ch=5 codec=1
+[21:53:32.828] [AudioChannel:speech] setup codec=1 16000Hz 1ch
+[21:53:32.828] [Session] MediaConfigResponse ch=5 status=READY sent
+[21:53:32.828] [Session] AVSetupRequest ch=6 codec=1
+[21:53:32.828] [AudioChannel:system] setup codec=1 16000Hz 1ch
+[21:53:32.828] [Session] MediaConfigResponse ch=6 status=READY sent
+[21:53:32.831] [Session] SensorStartRequest type=13
+[21:53:32.836] [Session] ch=8 KeyBindingRequest (len=57), replying status=OK
+[21:53:32.842] [VideoChannel] stream started, session=5
+[21:53:32.852] [Session] SensorStartRequest type=10
+[21:53:32.852] [Session] SensorBatch: NightMode=false sent
+[21:53:32.859] [Session] SensorStartRequest type=3
+[21:53:32.861] [Session] SensorStartRequest type=8
+[21:53:32.862] [Session] SensorStartRequest type=7
+[21:53:33.437] [Session] MSG ch=0 msgId=0x0012 len=2 state=RUNNING
+[21:53:33.437] [ControlChannel] AudioFocusRequest raw: 0801
+[21:53:33.437] [ControlChannel] AudioFocus type=1(GAIN) -> state=1(GAIN)
+[21:53:33.437] [AaEventBridge] audio-focus type=1 -> duck level=1
+[21:53:33.506] [VideoChannel] stream stopped
+[21:53:33.507] [VideoChannel] stream started, session=5
+[21:53:33.695] [gst_video] decoded format=NV12 1280x720 mem=memory:GLMemory
+[21:53:33.800] [Session] SensorStartRequest type=1
+[21:53:33.843] [Session] MSG ch=10 msgId=0x8001 len=21 state=RUNNING
+[21:53:33.843] [Session] BT pairing request from C0:1C:6A:AD:79:4A -> already paired
+[21:53:33.857] [Session] MSG ch=14 msgId=0x8001 len=2 state=RUNNING
+[21:53:33.858] [Session] MSG ch=10 msgId=0x8001 len=21 state=RUNNING
+[21:53:33.858] [Session] BT pairing request from C0:1C:6A:AD:79:4A -> already paired
+[21:53:33.872] [Session] MSG ch=10 msgId=0x8001 len=21 state=RUNNING
+[21:53:33.872] [Session] BT pairing request from C0:1C:6A:AD:79:4A -> already paired
+[21:53:34.386] [Session] MSG ch=13 msgId=0x8001 len=25 state=RUNNING
+[21:53:34.386] [MediaInfoChannel] status: state=paused pos=83s source="YouTube Music" shuffle=false repeat=false
+[21:53:34.603] [Session] MSG ch=13 msgId=0x8001 len=25 state=RUNNING
+[21:53:34.603] [MediaInfoChannel] status: state=stopped pos=0s source="YouTube Music" shuffle=false repeat=false
+[21:53:34.676] [Session] SensorStartRequest type=26
+[21:53:34.686] [Session] SensorStartRequest type=19
+[21:53:34.698] [Session] SensorStartRequest type=2
+[21:53:34.708] [Session] SensorStartRequest type=21
+[21:53:34.712] [Session] SensorStartRequest type=23
+[21:53:34.713] [Session] SensorStartRequest type=25
+[21:53:34.811] [Session] MSG ch=13 msgId=0x8003 len=118917 state=RUNNING
+[21:53:34.811] [MediaInfoChannel] metadata: song="The XX Intro - ELEZO remix ( Official video )" artist="ELEZO" album="ELEZO" duration=161s art=118847B playlist=undefined
+[21:53:34.890] [Session] MSG ch=10 msgId=0x8001 len=21 state=RUNNING
+[21:53:34.890] [Session] BT pairing request from C0:1C:6A:AD:79:4A -> already paired
+[21:53:36.908] [Session] MSG ch=10 msgId=0x8001 len=21 state=RUNNING
+[21:53:36.908] [Session] BT pairing request from C0:1C:6A:AD:79:4A -> already paired
+[21:53:38.916] [Session] MSG ch=13 msgId=0x8001 len=25 state=RUNNING
+[21:53:38.916] [MediaInfoChannel] status: state=stopped pos=0s source="YouTube Music" shuffle=false repeat=false
+[21:53:39.454] [Session] MSG ch=13 msgId=0x8003 len=65 state=RUNNING
+[21:53:39.454] [MediaInfoChannel] metadata: song="The XX Intro - ELEZO remix ( Official video )" artist="ELEZO" album="ELEZO" duration=0s art=none playlist=undefined
+[21:53:39.836] [Session] MSG ch=13 msgId=0x8003 len=66 state=RUNNING
+[21:53:39.836] [MediaInfoChannel] metadata: song="The XX Intro - ELEZO remix ( Official video )" artist="ELEZO" album="ELEZO" duration=161s art=none playlist=undefined
+[21:53:39.869] [AudioChannel:media] stream started, session=5
+[21:53:39.869] [AaEventBridge] audio media start (48000Hz 2ch)
+[21:53:40.229] [Session] MSG ch=13 msgId=0x8003 len=118917 state=RUNNING
+[21:53:40.229] [MediaInfoChannel] metadata: song="The XX Intro - ELEZO remix ( Official video )" artist="ELEZO" album="ELEZO" duration=161s art=118847B playlist=undefined
+[21:53:40.389] [Session] MSG ch=13 msgId=0x8001 len=25 state=RUNNING
+[21:53:40.389] [MediaInfoChannel] status: state=playing pos=83s source="YouTube Music" shuffle=false repeat=false
+[21:53:40.923] [Session] MSG ch=10 msgId=0x8001 len=21 state=RUNNING
+[21:53:40.923] [Session] BT pairing request from C0:1C:6A:AD:79:4A -> already paired
+[21:53:41.386] [Session] MSG ch=13 msgId=0x8001 len=25 state=RUNNING
+[21:53:41.386] [MediaInfoChannel] status: state=playing pos=84s source="YouTube Music" shuffle=false repeat=false
+[21:53:42.385] [Session] MSG ch=13 msgId=0x8001 len=25 state=RUNNING
+[21:53:42.385] [MediaInfoChannel] status: state=playing pos=85s source="YouTube Music" shuffle=false repeat=false
+[21:53:43.386] [Session] MSG ch=13 msgId=0x8001 len=25 state=RUNNING
+[21:53:43.386] [MediaInfoChannel] status: state=playing pos=86s source="YouTube Music" shuffle=false repeat=false
+[21:53:44.387] [Session] MSG ch=13 msgId=0x8001 len=25 state=RUNNING
+[21:53:44.387] [MediaInfoChannel] status: state=playing pos=87s source="YouTube Music" shuffle=false repeat=false
+[21:53:44.971] [Session] MSG ch=13 msgId=0x8001 len=25 state=RUNNING
+[21:53:44.972] [MediaInfoChannel] status: state=paused pos=87s source="YouTube Music" shuffle=false repeat=false
+[21:53:48.315] [AudioChannel:media] stream stopped
+[21:53:48.315] [AaEventBridge] audio media stop (48000Hz 2ch)
+[21:53:48.943] [Session] MSG ch=10 msgId=0x8001 len=21 state=RUNNING
+[21:53:48.943] [Session] BT pairing request from C0:1C:6A:AD:79:4A -> already paired
+[21:54:04.974] [Session] MSG ch=10 msgId=0x8001 len=21 state=RUNNING
+[21:54:04.974] [Session] BT pairing request from C0:1C:6A:AD:79:4A -> already paired
+
+##### /Users/illiabilan/Library/Application Support/LIVI/log/LIVI.log
+[19:45:02.344] [core] waiting for livi-core at /var/folders/g2/876byb6d7r39lvp4yzyrj_mc0000gn/T/livi-501/core.sock
+[19:45:03.343] [core] starting /Users/illiabilan/Projects/LIVI/native/livi-helperd/build/Release/livi-core
+[19:45:03.363] [core] listening on /var/folders/g2/876byb6d7r39lvp4yzyrj_mc0000gn/T/livi-501/core.sock
+[19:45:03.366] [core] CarPlay listening on :58699 (dual-stack)
+[19:45:03.366] [core] running without a UI
+[19:45:03.366] [telemetry] listening on port 4000
+[19:45:03.373] [helper] [helperd] Android Auto USB watcher started
+[19:45:03.373] [helper] [helperd] dongle watcher started
+[19:45:03.373] [helper] [helperd] wired CarPlay watcher started (system usbmuxd), waiting for the LIVI Link
+[19:45:03.373] [helper] [shared-sock] listening on /tmp/livi-shared.sock
+[19:45:03.373] [helper] [aa-sock] listening on /tmp/aa-bt.sock
+[19:45:03.373] [helper] [cp-sock] listening on /tmp/cp-bt.sock
+[19:45:03.374] [helper] [dongle] watching for dongles
+[19:45:03.374] [helper] [aa-usb] watching for phones
+[19:45:03.374] [helper] [aa-usb] usb:46241FDAP002FS: accessory left over from an earlier run, resetting it
+[19:45:03.383] [core] screen: 344x223 mm over 3456x2234 px
+[19:45:03.384] [AaSession] display 1280x720 -> AA tier 1280x720 @180dpi, cluster 1280x720 -> tier 1280x720 @180dpi
+[19:45:03.384] [AaManager] Android Auto sessions come from the helper
+[19:45:03.384] [helper] [aa-sock] event subscriber connected
+[19:45:03.386] [AaSession] display 1280x720 -> AA tier 1280x720 @180dpi, cluster 1280x720 -> tier 1280x720 @180dpi
+[19:45:03.413] [volume] watching the output for changes made outside LIVI
+[19:45:03.414] [helper] [cp] published _airplay._tcp port=58699 deviceid=02:5e:6d:63:61:33
+[19:45:03.414] [helper] [helperd] CarPlay receiver seam ready (cp-bt.sock + bonjour :58699)
+[19:45:03.622] [core] gst-host codecs {"av1":{"hw":false,"sw":false},"h264":{"hw":true,"sw":true},"h265":{"hw":true,"sw":true},"vp9":{"hw":false,"sw":false}}
+[19:45:03.622] [core] codecs hevc true vp9 false av1 false
+[19:45:03.623] [AaSession] display 1280x720 -> AA tier 1280x720 @180dpi, cluster 1280x720 -> tier 1280x720 @180dpi
+[19:45:03.851] [core] electron connected
+[19:45:11.253] [AaSession] display 1280x720 -> AA tier 1280x720 @180dpi, cluster 1280x720 -> tier 1280x720 @180dpi
+[19:45:11.933] [AaSession] display 1280x720 -> AA tier 1280x720 @180dpi, cluster 1280x720 -> tier 1280x720 @180dpi
+[20:02:02.872] [helper] [aa-usb] usb:46241FDAP002FS: phone candidate 18d1:4ee7, switching to accessory mode
+[20:02:02.885] [helper] [aa-usb] usb:46241FDAP002FS: accessory mode requested
+[20:02:03.889] [AaManager] helper session /tmp/aa-session-1.sock from usb:46241FDAP002FS (usb)
+[20:02:03.890] [helper] [aa-usb] usb:46241FDAP002FS: accessory up, session socket /tmp/aa-session-1.sock
+[20:02:04.046] [helper] [aa-session] usb:46241FDAP002FS: tls up, protocol 6.1
+[20:02:04.046] [Session] AUTH_COMPLETE proto bytes: 0800
+[20:02:04.046] [Session] AUTH_COMPLETE sent, waiting for SERVICE_DISCOVERY_REQUEST
+[20:02:04.053] [Session] MSG ch=0 msgId=0x0005 len=881 state=SERVICE_DISCOVERY
+[20:02:04.053] [ControlChannel] ServiceDiscoveryRequest label="Android" phone="Google Pixel 9 Pro" device_id="0f8824c5-d870-43ca-8a01-c6201a603572"
+[20:02:04.053] [Session] Phone: Android / Google Pixel 9 Pro
+[20:02:04.053] [Session] advertising codec: h265
+[20:02:04.053] [Session] SDR: 13 channels, 582B
+[20:02:04.053] [Session] SDR hex: 0a3808031a3408072230080210011800200028b40140904e50075a1e0a080800100018002000120808001000180020001a0808001000180020000a4008131a3c...
+[20:02:04.053] [Session] SDR + Ping sent (1500ms interval)
+[20:02:04.053] [Session] Channel setup, waiting for phone CHANNEL_OPEN_REQUEST on each service channel
+[20:02:04.055] [core] active session #1
+[20:02:04.059] [AaSession] display 1280x720 -> AA tier 1280x720 @180dpi, cluster 1280x720 -> tier 1280x720 @180dpi
+[20:02:04.153] [Session] MSG ch=0 msgId=0x0012 len=2 state=CHANNEL_SETUP
+[20:02:04.154] [ControlChannel] AudioFocusRequest raw: 0804
+[20:02:04.154] [ControlChannel] AudioFocus type=4(RELEASE) -> state=3(LOSS)
+[20:02:04.154] [AaEventBridge] audio-focus type=4 -> duck level=1
+[20:02:04.161] [Session] MSG ch=20 msgId=0x0007 len=4 state=CHANNEL_SETUP
+[20:02:04.161] [Session] CHANNEL_OPEN_REQUEST ch=20, responding OK
+[20:02:04.161] [Session] CHANNEL_OPEN_REQUEST ch=3, responding OK
+[20:02:04.161] [Session] CHANNEL_OPEN_REQUEST ch=19, responding OK
+[20:02:04.162] [Session] CHANNEL_OPEN_REQUEST ch=4, responding OK
+[20:02:04.162] [Session] CHANNEL_OPEN_REQUEST ch=5, responding OK
+[20:02:04.162] [Session] CHANNEL_OPEN_REQUEST ch=6, responding OK
+[20:02:04.163] [Session] CHANNEL_OPEN_REQUEST ch=9, responding OK
+[20:02:04.166] [Session] CHANNEL_OPEN_REQUEST ch=1, responding OK
+[20:02:04.166] [Session] CHANNEL_OPEN_REQUEST ch=8, responding OK
+[20:02:04.166] [Session] MSG ch=10 msgId=0x0007 len=4 state=CHANNEL_SETUP
+[20:02:04.166] [Session] CHANNEL_OPEN_REQUEST ch=10, responding OK
+[20:02:04.166] [Session] MSG ch=12 msgId=0x0007 len=4 state=CHANNEL_SETUP
+[20:02:04.166] [Session] CHANNEL_OPEN_REQUEST ch=12, responding OK
+[20:02:04.166] [Session] MSG ch=13 msgId=0x0007 len=4 state=CHANNEL_SETUP
+[20:02:04.166] [Session] CHANNEL_OPEN_REQUEST ch=13, responding OK
+[20:02:04.166] [Session] MSG ch=14 msgId=0x0007 len=4 state=CHANNEL_SETUP
+[20:02:04.166] [Session] CHANNEL_OPEN_REQUEST ch=14, responding OK
+[20:02:04.166] [Session] MSG ch=20 msgId=0x8002 len=0 state=CHANNEL_SETUP
+[20:02:04.166] [Session] ch=20 KeyBindingRequest (len=0), replying status=OK
+[20:02:04.166] [Session] AVSetupRequest ch=4 codec=1
+[20:02:04.166] [AudioChannel:media] setup codec=1 48000Hz 2ch
+[20:02:04.166] [Session] MediaConfigResponse ch=4 status=READY sent
+[20:02:04.168] [Session] AVSetupRequest ch=5 codec=1
+[20:02:04.168] [AudioChannel:speech] setup codec=1 16000Hz 1ch
+[20:02:04.168] [Session] MediaConfigResponse ch=5 status=READY sent
+[20:02:04.168] [Session] AVSetupRequest ch=3 codec=7
+[20:02:04.168] [Session] video codec selected: h265 (configIdx=0)
+[20:02:04.168] [Session] phone picked video codec: H265 (offered: h265)
+[20:02:04.168] [Session] MediaConfigResponse ch=3 status=READY sent
+[20:02:04.169] [AaEventBridge] video codec h265 (phone selection)
+[20:02:04.169] [AaEventBridge] session connected
+[20:02:04.169] [Session] AVSetupRequest ch=19 codec=7
+[20:02:04.169] [Session] cluster codec selected: h265 (configIdx=0)
+[20:02:04.169] [Session] MediaConfigResponse ch=19 status=READY sent
+[20:02:04.169] [AaEventBridge] cluster video codec h265 (phone selection)
+[20:02:04.169] [Session] AVSetupRequest ch=6 codec=1
+[20:02:04.169] [AudioChannel:system] setup codec=1 16000Hz 1ch
+[20:02:04.169] [Session] MediaConfigResponse ch=6 status=READY sent
+[20:02:04.169] [core] Android Auto projects over usb
+[20:02:04.169] [Session] ch=8 KeyBindingRequest (len=57), replying status=OK
+[20:02:04.170] [Session] SensorStartRequest type=13
+[20:02:04.173] [VideoChannel] stream started, session=5
+[20:02:04.176] [Session] SensorStartRequest type=10
+[20:02:04.176] [Session] SensorBatch: NightMode=false sent
+[20:02:04.179] [Session] SensorStartRequest type=3
+[20:02:04.182] [Session] SensorStartRequest type=8
+[20:02:04.186] [Session] SensorStartRequest type=7
+[20:02:04.436] [Session] MSG ch=0 msgId=0x0012 len=2 state=RUNNING
+[20:02:04.436] [ControlChannel] AudioFocusRequest raw: 0801
+[20:02:04.436] [ControlChannel] AudioFocus type=1(GAIN) -> state=1(GAIN)
+[20:02:04.436] [AaEventBridge] audio-focus type=1 -> duck level=1
+[20:02:04.621] [Session] SensorStartRequest type=1
+[20:02:04.682] [Session] MSG ch=14 msgId=0x8001 len=2 state=RUNNING
+[20:02:04.848] [Session] MSG ch=13 msgId=0x8001 len=25 state=RUNNING
+[20:02:04.848] [MediaInfoChannel] status: state=paused pos=76s source="YouTube Music" shuffle=false repeat=false
+[20:02:04.868] [VideoChannel] stream stopped
+[20:02:04.868] [VideoChannel] stream started, session=5
+[20:02:04.902] [Session] MSG ch=13 msgId=0x8003 len=118917 state=RUNNING
+[20:02:04.902] [MediaInfoChannel] metadata: song="The XX Intro - ELEZO remix ( Official video )" artist="ELEZO" album="ELEZO" duration=161s art=118847B playlist=undefined
+[20:02:05.129] [Session] SensorStartRequest type=26
+[20:02:05.132] [Session] SensorStartRequest type=19
+[20:02:05.140] [Session] SensorStartRequest type=2
+[20:02:05.146] [Session] SensorStartRequest type=21
+[20:02:05.149] [Session] SensorStartRequest type=23
+[20:02:05.150] [Session] SensorStartRequest type=25
+[20:02:05.176] [Session] MSG ch=10 msgId=0x8001 len=21 state=RUNNING
+[20:02:05.176] [Session] BT pairing request from C0:1C:6A:AD:79:4A -> already paired
+[20:02:05.186] [Session] MSG ch=10 msgId=0x8001 len=21 state=RUNNING
+[20:02:05.186] [Session] BT pairing request from C0:1C:6A:AD:79:4A -> already paired
+[20:02:05.196] [Session] MSG ch=10 msgId=0x8001 len=21 state=RUNNING
+[20:02:05.196] [Session] BT pairing request from C0:1C:6A:AD:79:4A -> already paired
+[20:02:05.353] [Session] MSG ch=13 msgId=0x8001 len=25 state=RUNNING
+[20:02:05.353] [MediaInfoChannel] status: state=stopped pos=0s source="YouTube Music" shuffle=false repeat=false
+[20:02:06.205] [Session] MSG ch=10 msgId=0x8001 len=21 state=RUNNING
+[20:02:06.205] [Session] BT pairing request from C0:1C:6A:AD:79:4A -> already paired
+[20:02:08.220] [Session] MSG ch=10 msgId=0x8001 len=21 state=RUNNING
+[20:02:08.221] [Session] BT pairing request from C0:1C:6A:AD:79:4A -> already paired
+[20:02:09.647] [Session] MSG ch=13 msgId=0x8001 len=25 state=RUNNING
+[20:02:09.647] [MediaInfoChannel] status: state=stopped pos=0s source="YouTube Music" shuffle=false repeat=false
+[20:02:09.997] [Session] MSG ch=13 msgId=0x8003 len=65 state=RUNNING
+[20:02:09.998] [MediaInfoChannel] metadata: song="The XX Intro - ELEZO remix ( Official video )" artist="ELEZO" album="ELEZO" duration=0s art=none playlist=undefined
+[20:02:10.361] [Session] MSG ch=13 msgId=0x8003 len=118916 state=RUNNING
+[20:02:10.361] [MediaInfoChannel] metadata: song="The XX Intro - ELEZO remix ( Official video )" artist="ELEZO" album="ELEZO" duration=0s art=118847B playlist=undefined
+[20:02:10.504] [AudioChannel:media] stream started, session=5
+[20:02:10.504] [AaEventBridge] audio media start (48000Hz 2ch)
+[20:02:10.541] [Session] MSG ch=13 msgId=0x8003 len=118917 state=RUNNING
+[20:02:10.541] [MediaInfoChannel] metadata: song="The XX Intro - ELEZO remix ( Official video )" artist="ELEZO" album="ELEZO" duration=161s art=118847B playlist=undefined
+[20:02:10.933] [Session] MSG ch=13 msgId=0x8001 len=25 state=RUNNING
+[20:02:10.933] [MediaInfoChannel] status: state=playing pos=75s source="YouTube Music" shuffle=false repeat=false
+[20:02:11.934] [Session] MSG ch=13 msgId=0x8001 len=25 state=RUNNING
+[20:02:11.935] [MediaInfoChannel] status: state=playing pos=76s source="YouTube Music" shuffle=false repeat=false
+[20:02:12.236] [Session] MSG ch=10 msgId=0x8001 len=21 state=RUNNING
+[20:02:12.237] [Session] BT pairing request from C0:1C:6A:AD:79:4A -> already paired
+[20:02:12.933] [Session] MSG ch=13 msgId=0x8001 len=25 state=RUNNING
+[20:02:12.934] [MediaInfoChannel] status: state=playing pos=77s source="YouTube Music" shuffle=false repeat=false
+[20:02:13.934] [Session] MSG ch=13 msgId=0x8001 len=25 state=RUNNING
+[20:02:13.934] [MediaInfoChannel] status: state=playing pos=78s source="YouTube Music" shuffle=false repeat=false
+[20:02:14.934] [Session] MSG ch=13 msgId=0x8001 len=25 state=RUNNING
+[20:02:14.935] [MediaInfoChannel] status: state=playing pos=79s source="YouTube Music" shuffle=false repeat=false
+[20:02:15.935] [Session] MSG ch=13 msgId=0x8001 len=25 state=RUNNING
+[20:02:15.936] [MediaInfoChannel] status: state=playing pos=80s source="YouTube Music" shuffle=false repeat=false
+[20:02:16.938] [Session] MSG ch=13 msgId=0x8001 len=25 state=RUNNING
+[20:02:16.938] [MediaInfoChannel] status: state=playing pos=81s source="YouTube Music" shuffle=false repeat=false
+[20:02:17.935] [Session] MSG ch=13 msgId=0x8001 len=25 state=RUNNING
+[20:02:17.936] [MediaInfoChannel] status: state=playing pos=82s source="YouTube Music" shuffle=false repeat=false
+[20:02:18.936] [Session] MSG ch=13 msgId=0x8001 len=25 state=RUNNING
+[20:02:18.936] [MediaInfoChannel] status: state=playing pos=83s source="YouTube Music" shuffle=false repeat=false
+[20:02:19.936] [Session] MSG ch=13 msgId=0x8001 len=25 state=RUNNING
+[20:02:19.936] [MediaInfoChannel] status: state=playing pos=84s source="YouTube Music" shuffle=false repeat=false
+[20:02:20.262] [Session] MSG ch=10 msgId=0x8001 len=21 state=RUNNING
+[20:02:20.263] [Session] BT pairing request from C0:1C:6A:AD:79:4A -> already paired
+[20:02:20.366] [Session] MSG ch=13 msgId=0x8001 len=25 state=RUNNING
+[20:02:20.366] [MediaInfoChannel] status: state=paused pos=83s source="YouTube Music" shuffle=false repeat=false
+[20:02:23.693] [AudioChannel:media] stream stopped
+[20:02:23.693] [AaEventBridge] audio media stop (48000Hz 2ch)
+[20:02:36.291] [Session] MSG ch=10 msgId=0x8001 len=21 state=RUNNING
+[20:02:36.291] [Session] BT pairing request from C0:1C:6A:AD:79:4A -> already paired
+[20:02:41.567] [helper!] [usb] read: unknown (error 0xe00002ed)
+[20:02:41.674] [helper] [aa-session] usb:46241FDAP002FS: closed (phone unplugged)
+[20:02:41.674] [helper] [aa-session] usb:46241FDAP002FS: session over, video=570 audio=309
+[20:02:41.674] [AaEventBridge] session disconnected (phone unplugged)
+[20:02:41.675] [core] session #1 ends, nothing left
+[20:02:41.675] [helper!] [aa-usb] usb:46241FDAP002FS: reset: device disconnected (error 0xe00002c0)
+[21:53:30.813] [helper] [aa-usb] usb:46241FDAP002FS: phone candidate 18d1:4ee7, switching to accessory mode
+[21:53:30.833] [helper] [aa-usb] usb:46241FDAP002FS: accessory mode requested
+[21:53:31.819] [helper] [aa-usb] usb:46241FDAP002FS: accessory up, session socket /tmp/aa-session-2.sock
+[21:53:31.819] [AaManager] helper session /tmp/aa-session-2.sock from usb:46241FDAP002FS (usb)
+[21:53:32.588] [helper] [aa-session] usb:46241FDAP002FS: tls up, protocol 6.1
+[21:53:32.589] [Session] AUTH_COMPLETE proto bytes: 0800
+[21:53:32.589] [Session] AUTH_COMPLETE sent, waiting for SERVICE_DISCOVERY_REQUEST
+[21:53:32.607] [Session] MSG ch=0 msgId=0x0005 len=881 state=SERVICE_DISCOVERY
+[21:53:32.607] [ControlChannel] ServiceDiscoveryRequest label="Android" phone="Google Pixel 9 Pro" device_id="0f8824c5-d870-43ca-8a01-c6201a603572"
+[21:53:32.607] [Session] Phone: Android / Google Pixel 9 Pro
+[21:53:32.607] [Session] advertising codec: h265
+[21:53:32.607] [Session] SDR: 13 channels, 582B
+[21:53:32.609] [Session] SDR hex: 0a3808031a3408072230080210011800200028b40140904e50075a1e0a080800100018002000120808001000180020001a0808001000180020000a4008131a3c...
+[21:53:32.609] [Session] SDR + Ping sent (1500ms interval)
+[21:53:32.609] [Session] Channel setup, waiting for phone CHANNEL_OPEN_REQUEST on each service channel
+[21:53:32.610] [core] active session #1
+[21:53:32.808] [Session] MSG ch=0 msgId=0x0012 len=2 state=CHANNEL_SETUP
+[21:53:32.808] [ControlChannel] AudioFocusRequest raw: 0804
+[21:53:32.808] [ControlChannel] AudioFocus type=4(RELEASE) -> state=3(LOSS)
+[21:53:32.808] [AaEventBridge] audio-focus type=4 -> duck level=1
+[21:53:32.815] [Session] CHANNEL_OPEN_REQUEST ch=3, responding OK
+[21:53:32.815] [Session] MSG ch=20 msgId=0x0007 len=4 state=CHANNEL_SETUP
+[21:53:32.815] [Session] CHANNEL_OPEN_REQUEST ch=20, responding OK
+[21:53:32.815] [Session] CHANNEL_OPEN_REQUEST ch=19, responding OK
+[21:53:32.822] [Session] CHANNEL_OPEN_REQUEST ch=4, responding OK
+[21:53:32.822] [Session] CHANNEL_OPEN_REQUEST ch=5, responding OK
+[21:53:32.822] [Session] CHANNEL_OPEN_REQUEST ch=6, responding OK
+[21:53:32.823] [Session] CHANNEL_OPEN_REQUEST ch=9, responding OK
+[21:53:32.823] [Session] CHANNEL_OPEN_REQUEST ch=1, responding OK
+[21:53:32.823] [Session] CHANNEL_OPEN_REQUEST ch=8, responding OK
+[21:53:32.823] [Session] MSG ch=10 msgId=0x0007 len=4 state=CHANNEL_SETUP
+[21:53:32.824] [Session] CHANNEL_OPEN_REQUEST ch=10, responding OK
+[21:53:32.824] [Session] MSG ch=12 msgId=0x0007 len=4 state=CHANNEL_SETUP
+[21:53:32.824] [Session] CHANNEL_OPEN_REQUEST ch=12, responding OK
+[21:53:32.824] [Session] MSG ch=13 msgId=0x0007 len=4 state=CHANNEL_SETUP
+[21:53:32.824] [Session] CHANNEL_OPEN_REQUEST ch=13, responding OK
+[21:53:32.824] [Session] MSG ch=14 msgId=0x0007 len=4 state=CHANNEL_SETUP
+[21:53:32.824] [Session] CHANNEL_OPEN_REQUEST ch=14, responding OK
+[21:53:32.824] [Session] AVSetupRequest ch=3 codec=7
+[21:53:32.824] [Session] video codec selected: h265 (configIdx=0)
+[21:53:32.824] [Session] phone picked video codec: H265 (offered: h265)
+[21:53:32.824] [Session] MediaConfigResponse ch=3 status=READY sent
+[21:53:32.824] [AaEventBridge] video codec h265 (phone selection)
+[21:53:32.824] [AaEventBridge] session connected
+[21:53:32.824] [core] Android Auto projects over usb
+[21:53:32.827] [Session] MSG ch=20 msgId=0x8002 len=0 state=RUNNING
+[21:53:32.828] [Session] ch=20 KeyBindingRequest (len=0), replying status=OK
+[21:53:32.828] [Session] AVSetupRequest ch=4 codec=1
+[21:53:32.828] [AudioChannel:media] setup codec=1 48000Hz 2ch
+[21:53:32.828] [Session] MediaConfigResponse ch=4 status=READY sent
+[21:53:32.828] [Session] AVSetupRequest ch=19 codec=7
+[21:53:32.828] [Session] cluster codec selected: h265 (configIdx=0)
+[21:53:32.828] [Session] MediaConfigResponse ch=19 status=READY sent
+[21:53:32.828] [AaEventBridge] cluster video codec h265 (phone selection)
+[21:53:32.828] [Session] AVSetupRequest ch=5 codec=1
+[21:53:32.828] [AudioChannel:speech] setup codec=1 16000Hz 1ch
+[21:53:32.828] [Session] MediaConfigResponse ch=5 status=READY sent
+[21:53:32.828] [Session] AVSetupRequest ch=6 codec=1
+[21:53:32.828] [AudioChannel:system] setup codec=1 16000Hz 1ch
+[21:53:32.828] [Session] MediaConfigResponse ch=6 status=READY sent
+[21:53:32.831] [Session] SensorStartRequest type=13
+[21:53:32.836] [Session] ch=8 KeyBindingRequest (len=57), replying status=OK
+[21:53:32.842] [VideoChannel] stream started, session=5
+[21:53:32.852] [Session] SensorStartRequest type=10
+[21:53:32.852] [Session] SensorBatch: NightMode=false sent
+[21:53:32.859] [Session] SensorStartRequest type=3
+[21:53:32.861] [Session] SensorStartRequest type=8
+[21:53:32.862] [Session] SensorStartRequest type=7
+[21:53:33.437] [Session] MSG ch=0 msgId=0x0012 len=2 state=RUNNING
+[21:53:33.437] [ControlChannel] AudioFocusRequest raw: 0801
+[21:53:33.437] [ControlChannel] AudioFocus type=1(GAIN) -> state=1(GAIN)
+[21:53:33.437] [AaEventBridge] audio-focus type=1 -> duck level=1
+[21:53:33.506] [VideoChannel] stream stopped
+[21:53:33.507] [VideoChannel] stream started, session=5
+[21:53:33.800] [Session] SensorStartRequest type=1
+[21:53:33.843] [Session] MSG ch=10 msgId=0x8001 len=21 state=RUNNING
+[21:53:33.843] [Session] BT pairing request from C0:1C:6A:AD:79:4A -> already paired
+[21:53:33.857] [Session] MSG ch=14 msgId=0x8001 len=2 state=RUNNING
+[21:53:33.858] [Session] MSG ch=10 msgId=0x8001 len=21 state=RUNNING
+[21:53:33.858] [Session] BT pairing request from C0:1C:6A:AD:79:4A -> already paired
+[21:53:33.872] [Session] MSG ch=10 msgId=0x8001 len=21 state=RUNNING
+[21:53:33.872] [Session] BT pairing request from C0:1C:6A:AD:79:4A -> already paired
+[21:53:34.386] [Session] MSG ch=13 msgId=0x8001 len=25 state=RUNNING
+[21:53:34.386] [MediaInfoChannel] status: state=paused pos=83s source="YouTube Music" shuffle=false repeat=false
+[21:53:34.603] [Session] MSG ch=13 msgId=0x8001 len=25 state=RUNNING
+[21:53:34.603] [MediaInfoChannel] status: state=stopped pos=0s source="YouTube Music" shuffle=false repeat=false
+[21:53:34.676] [Session] SensorStartRequest type=26
+[21:53:34.686] [Session] SensorStartRequest type=19
+[21:53:34.698] [Session] SensorStartRequest type=2
+[21:53:34.708] [Session] SensorStartRequest type=21
+[21:53:34.712] [Session] SensorStartRequest type=23
+[21:53:34.713] [Session] SensorStartRequest type=25
+[21:53:34.811] [Session] MSG ch=13 msgId=0x8003 len=118917 state=RUNNING
+[21:53:34.811] [MediaInfoChannel] metadata: song="The XX Intro - ELEZO remix ( Official video )" artist="ELEZO" album="ELEZO" duration=161s art=118847B playlist=undefined
+[21:53:34.890] [Session] MSG ch=10 msgId=0x8001 len=21 state=RUNNING
+[21:53:34.890] [Session] BT pairing request from C0:1C:6A:AD:79:4A -> already paired
+[21:53:36.908] [Session] MSG ch=10 msgId=0x8001 len=21 state=RUNNING
+[21:53:36.908] [Session] BT pairing request from C0:1C:6A:AD:79:4A -> already paired
+[21:53:38.916] [Session] MSG ch=13 msgId=0x8001 len=25 state=RUNNING
+[21:53:38.916] [MediaInfoChannel] status: state=stopped pos=0s source="YouTube Music" shuffle=false repeat=false
+[21:53:39.454] [Session] MSG ch=13 msgId=0x8003 len=65 state=RUNNING
+[21:53:39.454] [MediaInfoChannel] metadata: song="The XX Intro - ELEZO remix ( Official video )" artist="ELEZO" album="ELEZO" duration=0s art=none playlist=undefined
+[21:53:39.836] [Session] MSG ch=13 msgId=0x8003 len=66 state=RUNNING
+[21:53:39.836] [MediaInfoChannel] metadata: song="The XX Intro - ELEZO remix ( Official video )" artist="ELEZO" album="ELEZO" duration=161s art=none playlist=undefined
+[21:53:39.869] [AudioChannel:media] stream started, session=5
+[21:53:39.869] [AaEventBridge] audio media start (48000Hz 2ch)
+[21:53:40.229] [Session] MSG ch=13 msgId=0x8003 len=118917 state=RUNNING
+[21:53:40.229] [MediaInfoChannel] metadata: song="The XX Intro - ELEZO remix ( Official video )" artist="ELEZO" album="ELEZO" duration=161s art=118847B playlist=undefined
+[21:53:40.389] [Session] MSG ch=13 msgId=0x8001 len=25 state=RUNNING
+[21:53:40.389] [MediaInfoChannel] status: state=playing pos=83s source="YouTube Music" shuffle=false repeat=false
+[21:53:40.923] [Session] MSG ch=10 msgId=0x8001 len=21 state=RUNNING
+[21:53:40.923] [Session] BT pairing request from C0:1C:6A:AD:79:4A -> already paired
+[21:53:41.386] [Session] MSG ch=13 msgId=0x8001 len=25 state=RUNNING
+[21:53:41.386] [MediaInfoChannel] status: state=playing pos=84s source="YouTube Music" shuffle=false repeat=false
+[21:53:42.385] [Session] MSG ch=13 msgId=0x8001 len=25 state=RUNNING
+[21:53:42.385] [MediaInfoChannel] status: state=playing pos=85s source="YouTube Music" shuffle=false repeat=false
+[21:53:43.386] [Session] MSG ch=13 msgId=0x8001 len=25 state=RUNNING
+[21:53:43.386] [MediaInfoChannel] status: state=playing pos=86s source="YouTube Music" shuffle=false repeat=false
+[21:53:44.387] [Session] MSG ch=13 msgId=0x8001 len=25 state=RUNNING
+[21:53:44.387] [MediaInfoChannel] status: state=playing pos=87s source="YouTube Music" shuffle=false repeat=false
+[21:53:44.971] [Session] MSG ch=13 msgId=0x8001 len=25 state=RUNNING
+[21:53:44.972] [MediaInfoChannel] status: state=paused pos=87s source="YouTube Music" shuffle=false repeat=false
+[21:53:48.315] [AudioChannel:media] stream stopped
+[21:53:48.315] [AaEventBridge] audio media stop (48000Hz 2ch)
+[21:53:48.943] [Session] MSG ch=10 msgId=0x8001 len=21 state=RUNNING
+[21:53:48.943] [Session] BT pairing request from C0:1C:6A:AD:79:4A -> already paired
+[21:54:04.974] [Session] MSG ch=10 msgId=0x8001 len=21 state=RUNNING
+[21:54:04.974] [Session] BT pairing request from C0:1C:6A:AD:79:4A -> already paired
+
+##### /Users/illiabilan/Library/Application Support/LIVI/log/gst-host.log
+[feed] connection accepted
+[feed] recv 0x7b000001 -> 0x7a000001: in=173 dropped=3 pushed=173 awaiting_kf=0 active=1
+[feed] recv 0x7b000001 -> 0x7a000001: in=82 dropped=0 pushed=82 awaiting_kf=0 active=1
+[feed] recv 0x7b000001 -> 0x7a000001: in=62 dropped=0 pushed=62 awaiting_kf=0 active=1
+[feed] recv 0x7b000001 -> 0x7a000001: in=81 dropped=0 pushed=81 awaiting_kf=0 active=1
+[feed] recv 0x7b000001 -> 0x7a000001: in=50 dropped=0 pushed=50 awaiting_kf=0 active=1
+[feed] recv 0x7b000001 -> 0x7a000001: in=50 dropped=0 pushed=50 awaiting_kf=0 active=1
+[feed] recv 0x7b000001 -> 0x7a000001: in=50 dropped=0 pushed=50 awaiting_kf=0 active=1
+[feed] connection closed
+[feed] connection accepted
+[feed] recv 0x7b000008 -> 0x7a000001: in=147 dropped=3 pushed=147 awaiting_kf=0 active=1
+[feed] recv 0x7b000008 -> 0x7a000001: in=85 dropped=0 pushed=85 awaiting_kf=0 active=1
+[feed] recv 0x7b000008 -> 0x7a000001: in=88 dropped=0 pushed=88 awaiting_kf=0 active=1
+[feed] recv 0x7b000008 -> 0x7a000001: in=50 dropped=0 pushed=50 awaiting_kf=0 active=1
+[feed] recv 0x7b000008 -> 0x7a000001: in=51 dropped=0 pushed=51 awaiting_kf=0 active=1
+[feed] recv 0x7b000008 -> 0x7a000001: in=50 dropped=0 pushed=50 awaiting_kf=0 active=1
+[feed] recv 0x7b000008 -> 0x7a000001: in=52 dropped=0 pushed=52 awaiting_kf=0 active=1
+[feed] recv 0x7b000008 -> 0x7a000001: in=50 dropped=0 pushed=50 awaiting_kf=0 active=1
+[feed] recv 0x7b000008 -> 0x7a000001: in=51 dropped=0 pushed=51 awaiting_kf=0 active=1
+[feed] recv 0x7b000008 -> 0x7a000001: in=51 dropped=0 pushed=51 awaiting_kf=0 active=1
+

@@ -8,7 +8,7 @@ set(CMAKE_AUTOMOC ON)
 set(CMAKE_AUTORCC ON)
 set(CMAKE_AUTOUIC ON)
 
-find_package(Qt6 6.5 REQUIRED COMPONENTS Core Gui Quick QuickControls2 Qml Svg)
+find_package(Qt6 6.5 REQUIRED COMPONENTS Core Gui Quick QuickControls2 Qml Svg WebSockets)
 
 qt_standard_project_setup()
 qt_policy(SET QTP0001 NEW)
@@ -33,11 +33,10 @@ qt_add_qml_module(InfinitiClimateApp
 
 target_include_directories(InfinitiClimateApp PRIVATE
     ${CMAKE_CURRENT_SOURCE_DIR}/src
-    ${CMAKE_SOURCE_DIR}/core/include
 )
 
 target_link_libraries(InfinitiClimateApp PRIVATE
-    InfinitiCore
+    InfinitiCoreClient
     InfinitiTheme
     Qt6::Core
     Qt6::Gui

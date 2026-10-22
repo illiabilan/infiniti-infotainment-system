@@ -13,7 +13,7 @@
 #include <QTimer>
 #include <QElapsedTimer>
 #include <QString>
-#include "VehicleState.h"
+#include "VehicleModel.h"
 
 class ClusterController : public QObject
 {
@@ -133,7 +133,7 @@ public:
     Q_ENUM(State)
 
     explicit ClusterController(QObject *parent = nullptr);
-    void attachVehicleState(VehicleState *state);
+    void attachVehicleState(VehicleModel *state);
 
     QString themeColor() const { return m_themeColor; }
     int clusterState() const { return m_clusterState; }
@@ -651,5 +651,5 @@ private:
     bool m_isMediaPlaying = true;
     int m_mediaTrackIndex = 0;
     QTimer* m_mediaPopupTimer = nullptr;
-    VehicleState* m_vehicleState = nullptr;
+    VehicleModel* m_vehicleState = nullptr;
 };

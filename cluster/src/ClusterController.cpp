@@ -31,58 +31,58 @@ ClusterController::ClusterController(QObject *parent)
     connect(m_lightPopupTimer, &QTimer::timeout, this, &ClusterController::onLightPopupTimeout);
 }
 
-void ClusterController::attachVehicleState(VehicleState *state)
+void ClusterController::attachVehicleState(VehicleModel *state)
 {
     m_vehicleState = state;
     if (!m_vehicleState) return;
 
-    connect(m_vehicleState, &VehicleState::speedChanged, this, [this]() { setSpeed(m_vehicleState->speed()); });
-    connect(m_vehicleState, &VehicleState::rpmChanged, this, [this]() { setRpm(m_vehicleState->rpm()); });
-    connect(m_vehicleState, &VehicleState::gearChanged, this, [this]() { setGear(m_vehicleState->gear()); });
-    connect(m_vehicleState, &VehicleState::coolantTempChanged, this, [this]() { setTempLevel(m_vehicleState->coolantTemp()); });
-    connect(m_vehicleState, &VehicleState::fuelLevelChanged, this, [this]() { setFuelLevel(m_vehicleState->fuelLevel()); });
-    connect(m_vehicleState, &VehicleState::ambientTempChanged, this, [this]() { setAmbientTemp(m_vehicleState->ambientTemp()); });
-    connect(m_vehicleState, &VehicleState::odoKmChanged, this, [this]() { setOdoKm(m_vehicleState->odoKm()); });
-    connect(m_vehicleState, &VehicleState::dteKmChanged, this, [this]() { setDteKm(m_vehicleState->dteKm()); });
+    connect(m_vehicleState, &VehicleModel::speedChanged, this, [this]() { setSpeed(m_vehicleState->speed()); });
+    connect(m_vehicleState, &VehicleModel::rpmChanged, this, [this]() { setRpm(m_vehicleState->rpm()); });
+    connect(m_vehicleState, &VehicleModel::gearChanged, this, [this]() { setGear(m_vehicleState->gear()); });
+    connect(m_vehicleState, &VehicleModel::coolantTempChanged, this, [this]() { setTempLevel(m_vehicleState->coolantTemp()); });
+    connect(m_vehicleState, &VehicleModel::fuelLevelChanged, this, [this]() { setFuelLevel(m_vehicleState->fuelLevel()); });
+    connect(m_vehicleState, &VehicleModel::ambientTempChanged, this, [this]() { setAmbientTemp(m_vehicleState->ambientTemp()); });
+    connect(m_vehicleState, &VehicleModel::odoKmChanged, this, [this]() { setOdoKm(m_vehicleState->odoKm()); });
+    connect(m_vehicleState, &VehicleModel::dteKmChanged, this, [this]() { setDteKm(m_vehicleState->dteKm()); });
 
-    connect(m_vehicleState, &VehicleState::flPsiChanged, this, [this]() { setFlPsi(m_vehicleState->flPsi()); });
-    connect(m_vehicleState, &VehicleState::frPsiChanged, this, [this]() { setFrPsi(m_vehicleState->frPsi()); });
-    connect(m_vehicleState, &VehicleState::rlPsiChanged, this, [this]() { setRlPsi(m_vehicleState->rlPsi()); });
-    connect(m_vehicleState, &VehicleState::rrPsiChanged, this, [this]() { setRrPsi(m_vehicleState->rrPsi()); });
+    connect(m_vehicleState, &VehicleModel::flPsiChanged, this, [this]() { setFlPsi(m_vehicleState->flPsi()); });
+    connect(m_vehicleState, &VehicleModel::frPsiChanged, this, [this]() { setFrPsi(m_vehicleState->frPsi()); });
+    connect(m_vehicleState, &VehicleModel::rlPsiChanged, this, [this]() { setRlPsi(m_vehicleState->rlPsi()); });
+    connect(m_vehicleState, &VehicleModel::rrPsiChanged, this, [this]() { setRrPsi(m_vehicleState->rrPsi()); });
 
-    connect(m_vehicleState, &VehicleState::parkBrakeActiveChanged, this, [this]() { setParkBrakeActive(m_vehicleState->parkBrakeActive()); });
-    connect(m_vehicleState, &VehicleState::seatbeltActiveChanged, this, [this]() { setSeatbeltActive(m_vehicleState->seatbeltActive()); });
-    connect(m_vehicleState, &VehicleState::absActiveChanged, this, [this]() { setAbsActive(m_vehicleState->absActive()); });
-    connect(m_vehicleState, &VehicleState::tpmsActiveChanged, this, [this]() { setTpmsActive(m_vehicleState->tpmsActive()); });
-    connect(m_vehicleState, &VehicleState::batteryActiveChanged, this, [this]() { setBatteryActive(m_vehicleState->batteryActive()); });
-    connect(m_vehicleState, &VehicleState::oilActiveChanged, this, [this]() { setOilActive(m_vehicleState->oilActive()); });
-    connect(m_vehicleState, &VehicleState::checkEngineActiveChanged, this, [this]() { setCheckEngineActive(m_vehicleState->checkEngineActive()); });
-    connect(m_vehicleState, &VehicleState::escActiveChanged, this, [this]() { setEscActive(m_vehicleState->escActive()); });
-    connect(m_vehicleState, &VehicleState::escOffActiveChanged, this, [this]() { setEscOffActive(m_vehicleState->escOffActive()); });
-    connect(m_vehicleState, &VehicleState::steeringActiveChanged, this, [this]() { setSteeringActive(m_vehicleState->steeringActive()); });
-    connect(m_vehicleState, &VehicleState::airbagActiveChanged, this, [this]() { setAirbagActive(m_vehicleState->airbagActive()); });
-    connect(m_vehicleState, &VehicleState::masterWarningChanged, this, [this]() { setMasterWarning(m_vehicleState->masterWarning()); });
-    connect(m_vehicleState, &VehicleState::lightWarningChanged, this, [this]() { setLightWarning(m_vehicleState->lightWarning()); });
+    connect(m_vehicleState, &VehicleModel::parkBrakeActiveChanged, this, [this]() { setParkBrakeActive(m_vehicleState->parkBrakeActive()); });
+    connect(m_vehicleState, &VehicleModel::seatbeltActiveChanged, this, [this]() { setSeatbeltActive(m_vehicleState->seatbeltActive()); });
+    connect(m_vehicleState, &VehicleModel::absActiveChanged, this, [this]() { setAbsActive(m_vehicleState->absActive()); });
+    connect(m_vehicleState, &VehicleModel::tpmsActiveChanged, this, [this]() { setTpmsActive(m_vehicleState->tpmsActive()); });
+    connect(m_vehicleState, &VehicleModel::batteryActiveChanged, this, [this]() { setBatteryActive(m_vehicleState->batteryActive()); });
+    connect(m_vehicleState, &VehicleModel::oilActiveChanged, this, [this]() { setOilActive(m_vehicleState->oilActive()); });
+    connect(m_vehicleState, &VehicleModel::checkEngineActiveChanged, this, [this]() { setCheckEngineActive(m_vehicleState->checkEngineActive()); });
+    connect(m_vehicleState, &VehicleModel::escActiveChanged, this, [this]() { setEscActive(m_vehicleState->escActive()); });
+    connect(m_vehicleState, &VehicleModel::escOffActiveChanged, this, [this]() { setEscOffActive(m_vehicleState->escOffActive()); });
+    connect(m_vehicleState, &VehicleModel::steeringActiveChanged, this, [this]() { setSteeringActive(m_vehicleState->steeringActive()); });
+    connect(m_vehicleState, &VehicleModel::airbagActiveChanged, this, [this]() { setAirbagActive(m_vehicleState->airbagActive()); });
+    connect(m_vehicleState, &VehicleModel::masterWarningChanged, this, [this]() { setMasterWarning(m_vehicleState->masterWarning()); });
+    connect(m_vehicleState, &VehicleModel::lightWarningChanged, this, [this]() { setLightWarning(m_vehicleState->lightWarning()); });
 
-    connect(m_vehicleState, &VehicleState::leftIndicatorChanged, this, [this]() { setLeftIndicator(m_vehicleState->leftIndicator()); });
-    connect(m_vehicleState, &VehicleState::rightIndicatorChanged, this, [this]() { setRightIndicator(m_vehicleState->rightIndicator()); });
-    connect(m_vehicleState, &VehicleState::highBeamChanged, this, [this]() { setHighBeam(m_vehicleState->highBeam()); });
-    connect(m_vehicleState, &VehicleState::lowBeamChanged, this, [this]() { setLowBeam(m_vehicleState->lowBeam()); });
-    connect(m_vehicleState, &VehicleState::positionLampChanged, this, [this]() { setPositionLamp(m_vehicleState->positionLamp()); });
-    connect(m_vehicleState, &VehicleState::lightModeChanged, this, [this]() { setLightMode(m_vehicleState->lightMode()); });
+    connect(m_vehicleState, &VehicleModel::leftIndicatorChanged, this, [this]() { setLeftIndicator(m_vehicleState->leftIndicator()); });
+    connect(m_vehicleState, &VehicleModel::rightIndicatorChanged, this, [this]() { setRightIndicator(m_vehicleState->rightIndicator()); });
+    connect(m_vehicleState, &VehicleModel::highBeamChanged, this, [this]() { setHighBeam(m_vehicleState->highBeam()); });
+    connect(m_vehicleState, &VehicleModel::lowBeamChanged, this, [this]() { setLowBeam(m_vehicleState->lowBeam()); });
+    connect(m_vehicleState, &VehicleModel::positionLampChanged, this, [this]() { setPositionLamp(m_vehicleState->positionLamp()); });
+    connect(m_vehicleState, &VehicleModel::lightModeChanged, this, [this]() { setLightMode(m_vehicleState->lightMode()); });
 
-    connect(m_vehicleState, &VehicleState::doorFrontLeftChanged, this, [this]() { setDoorFrontLeft(m_vehicleState->doorFrontLeft()); });
-    connect(m_vehicleState, &VehicleState::doorFrontRightChanged, this, [this]() { setDoorFrontRight(m_vehicleState->doorFrontRight()); });
-    connect(m_vehicleState, &VehicleState::doorRearLeftChanged, this, [this]() { setDoorRearLeft(m_vehicleState->doorRearLeft()); });
-    connect(m_vehicleState, &VehicleState::doorRearRightChanged, this, [this]() { setDoorRearRight(m_vehicleState->doorRearRight()); });
-    connect(m_vehicleState, &VehicleState::hoodOpenChanged, this, [this]() { setBonnetOpen(m_vehicleState->hoodOpen()); });
-    connect(m_vehicleState, &VehicleState::trunkOpenChanged, this, [this]() { setTrunkOpen(m_vehicleState->trunkOpen()); });
+    connect(m_vehicleState, &VehicleModel::doorFrontLeftChanged, this, [this]() { setDoorFrontLeft(m_vehicleState->doorFrontLeft()); });
+    connect(m_vehicleState, &VehicleModel::doorFrontRightChanged, this, [this]() { setDoorFrontRight(m_vehicleState->doorFrontRight()); });
+    connect(m_vehicleState, &VehicleModel::doorRearLeftChanged, this, [this]() { setDoorRearLeft(m_vehicleState->doorRearLeft()); });
+    connect(m_vehicleState, &VehicleModel::doorRearRightChanged, this, [this]() { setDoorRearRight(m_vehicleState->doorRearRight()); });
+    connect(m_vehicleState, &VehicleModel::hoodOpenChanged, this, [this]() { setBonnetOpen(m_vehicleState->hoodOpen()); });
+    connect(m_vehicleState, &VehicleModel::trunkOpenChanged, this, [this]() { setTrunkOpen(m_vehicleState->trunkOpen()); });
 
-    connect(m_vehicleState, &VehicleState::cruiseEnabledChanged, this, [this]() { setCruiseEnabled(m_vehicleState->cruiseEnabled()); });
-    connect(m_vehicleState, &VehicleState::rearLeftBuckledChanged, this, [this]() { setRearLeftBuckled(m_vehicleState->rearLeftBuckled()); });
-    connect(m_vehicleState, &VehicleState::rearCenterBuckledChanged, this, [this]() { setRearCenterBuckled(m_vehicleState->rearCenterBuckled()); });
-    connect(m_vehicleState, &VehicleState::rearRightBuckledChanged, this, [this]() { setRearRightBuckled(m_vehicleState->rearRightBuckled()); });
-    connect(m_vehicleState, &VehicleState::rearAlarmActiveChanged, this, [this]() {
+    connect(m_vehicleState, &VehicleModel::cruiseEnabledChanged, this, [this]() { setCruiseEnabled(m_vehicleState->cruiseEnabled()); });
+    connect(m_vehicleState, &VehicleModel::rearLeftBuckledChanged, this, [this]() { setRearLeftBuckled(m_vehicleState->rearLeftBuckled()); });
+    connect(m_vehicleState, &VehicleModel::rearCenterBuckledChanged, this, [this]() { setRearCenterBuckled(m_vehicleState->rearCenterBuckled()); });
+    connect(m_vehicleState, &VehicleModel::rearRightBuckledChanged, this, [this]() { setRearRightBuckled(m_vehicleState->rearRightBuckled()); });
+    connect(m_vehicleState, &VehicleModel::rearAlarmActiveChanged, this, [this]() {
         if (m_vehicleState->rearAlarmActive()) {
             if (!m_rearAlarmActive)
                 triggerRearAlarm(m_rearAlarmSeat >= 0 ? m_rearAlarmSeat : 0);
@@ -90,31 +90,31 @@ void ClusterController::attachVehicleState(VehicleState *state)
             stopRearAlarm();
         }
     });
-    connect(m_vehicleState, &VehicleState::smartKeyPromptChanged, this, [this]() { setSmartKeyPrompt(m_vehicleState->smartKeyPrompt()); });
-    connect(m_vehicleState, &VehicleState::startPedalPromptChanged, this, [this]() { setStartPedalPrompt(m_vehicleState->startPedalPrompt()); });
-    connect(m_vehicleState, &VehicleState::pressStartAgainAlertChanged, this, [this]() { setPressStartAgainAlert(m_vehicleState->pressStartAgainAlert()); });
-    connect(m_vehicleState, &VehicleState::driverAttentionActiveChanged, this, [this]() { setDriverAttentionActive(m_vehicleState->driverAttentionActive()); });
-    connect(m_vehicleState, &VehicleState::reduceSpeedAlertChanged, this, [this]() { setReduceSpeedAlert(m_vehicleState->reduceSpeedAlert()); });
-    connect(m_vehicleState, &VehicleState::sunroofOpenChanged, this, [this]() { setSunroofOpen(m_vehicleState->sunroofOpen()); });
-    connect(m_vehicleState, &VehicleState::sunroofAlertActiveChanged, this, [this]() { setSunroofAlertActive(m_vehicleState->sunroofAlertActive()); });
+    connect(m_vehicleState, &VehicleModel::smartKeyPromptChanged, this, [this]() { setSmartKeyPrompt(m_vehicleState->smartKeyPrompt()); });
+    connect(m_vehicleState, &VehicleModel::startPedalPromptChanged, this, [this]() { setStartPedalPrompt(m_vehicleState->startPedalPrompt()); });
+    connect(m_vehicleState, &VehicleModel::pressStartAgainAlertChanged, this, [this]() { setPressStartAgainAlert(m_vehicleState->pressStartAgainAlert()); });
+    connect(m_vehicleState, &VehicleModel::driverAttentionActiveChanged, this, [this]() { setDriverAttentionActive(m_vehicleState->driverAttentionActive()); });
+    connect(m_vehicleState, &VehicleModel::reduceSpeedAlertChanged, this, [this]() { setReduceSpeedAlert(m_vehicleState->reduceSpeedAlert()); });
+    connect(m_vehicleState, &VehicleModel::sunroofOpenChanged, this, [this]() { setSunroofOpen(m_vehicleState->sunroofOpen()); });
+    connect(m_vehicleState, &VehicleModel::sunroofAlertActiveChanged, this, [this]() { setSunroofAlertActive(m_vehicleState->sunroofAlertActive()); });
 
-    connect(m_vehicleState, &VehicleState::isMediaPlayingChanged, this, [this]() { setIsMediaPlaying(m_vehicleState->isMediaPlaying()); });
-    connect(m_vehicleState, &VehicleState::mediaSourceChanged, this, [this]() { setMediaSource(m_vehicleState->mediaSource()); });
-    connect(m_vehicleState, &VehicleState::showMediaPopupChanged, this, [this]() { setShowMediaPopup(m_vehicleState->showMediaPopup()); });
-    connect(m_vehicleState, &VehicleState::menuTabChanged, this, [this]() { setMenuTab(m_vehicleState->menuTab()); });
-    connect(m_vehicleState, &VehicleState::tripPageChanged, this, [this]() { setTripPage(m_vehicleState->tripPage()); });
+    connect(m_vehicleState, &VehicleModel::isMediaPlayingChanged, this, [this]() { setIsMediaPlaying(m_vehicleState->isMediaPlaying()); });
+    connect(m_vehicleState, &VehicleModel::mediaSourceChanged, this, [this]() { setMediaSource(m_vehicleState->mediaSource()); });
+    connect(m_vehicleState, &VehicleModel::showMediaPopupChanged, this, [this]() { setShowMediaPopup(m_vehicleState->showMediaPopup()); });
+    connect(m_vehicleState, &VehicleModel::menuTabChanged, this, [this]() { setMenuTab(m_vehicleState->menuTab()); });
+    connect(m_vehicleState, &VehicleModel::tripPageChanged, this, [this]() { setTripPage(m_vehicleState->tripPage()); });
 
-    connect(m_vehicleState, &VehicleState::mediaNextRequested, this, &ClusterController::nextMediaTrack);
-    connect(m_vehicleState, &VehicleState::mediaPrevRequested, this, &ClusterController::prevMediaTrack);
-    connect(m_vehicleState, &VehicleState::tripResetRequested, this, &ClusterController::resetActiveTripPage);
-    connect(m_vehicleState, &VehicleState::mediaPopupRequested, this, &ClusterController::triggerMediaPopup);
-    connect(m_vehicleState, &VehicleState::infoMenuRequested, this, &ClusterController::triggerInfoMenu);
+    connect(m_vehicleState, &VehicleModel::mediaNextRequested, this, &ClusterController::nextMediaTrack);
+    connect(m_vehicleState, &VehicleModel::mediaPrevRequested, this, &ClusterController::prevMediaTrack);
+    connect(m_vehicleState, &VehicleModel::tripResetRequested, this, &ClusterController::resetActiveTripPage);
+    connect(m_vehicleState, &VehicleModel::mediaPopupRequested, this, &ClusterController::triggerMediaPopup);
+    connect(m_vehicleState, &VehicleModel::infoMenuRequested, this, &ClusterController::triggerInfoMenu);
 
-    connect(m_vehicleState, &VehicleState::clusterStateChanged, this, [this]() {
+    connect(m_vehicleState, &VehicleModel::clusterStateChanged, this, [this]() {
         m_sequenceTimer.stop();
         setClusterState(m_vehicleState->clusterState());
     });
-    connect(m_vehicleState, &VehicleState::themeColorChanged, this, [this]() { setThemeColor(m_vehicleState->themeColor()); });
+    connect(m_vehicleState, &VehicleModel::themeColorChanged, this, [this]() { setThemeColor(m_vehicleState->themeColor()); });
 
     // Initial sync
     setClusterState(m_vehicleState->clusterState());

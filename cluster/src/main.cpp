@@ -20,12 +20,8 @@
 #include <cstdio>
 #include <cstdlib>
 #include <memory>
-#include "CanInterface.h"
-#include "MockCanBackend.h"
-#if defined(Q_OS_LINUX)
-#include "SocketCanBackend.h"
-#endif
-#include "VehicleState.h"
+#include "CoreClient.h"
+#include "VehicleModel.h"
 #include "ClusterController.h"
 
 static void clusterMessageHandler(QtMsgType type, const QMessageLogContext &context, const QString &msg)
@@ -82,25 +78,19 @@ int main(int argc, char *argv[])
     qDebug() << "Loaded Cluster Sans Head Bold:" << QFontDatabase::applicationFontFamilies(f3);
     qDebug() << "Loaded Noto Sans Devanagari:" << QFontDatabase::applicationFontFamilies(f4);
 
-    std::unique_ptr<CanInterface> canBackend;
-#if defined(Q_OS_LINUX)
-    {
-        auto socketBackend = std::make_unique<SocketCanBackend>("vcan0");
-        if (socketBackend->open()) {
-            canBackend = std::move(socketBackend);
-        } else {
-            qWarning() << "vcan0 unavailable, falling back to multicast mock CAN";
-            canBackend = std::make_unique<MockCanBackend>();
-            canBackend->open();
-        }
-    }
-#else
-    canBackend = std::make_unique<MockCanBackend>();
-    canBackend->open();
-#endif
+    auto vehicleState = std::make_unique<VehicleModel>();
 
-    auto vehicleState = std::make_unique<VehicleState>();
-    vehicleState->attachCanInterface(canBackend.get());
+    CoreClient coreClient(vehicleState.get());
+    Protocol::HelloInfo hello;
+    hello.clientId = QStringLiteral("cluster");
+    hello.role = QString(Protocol::Role::CLUSTER);
+    hello.displayId = QStringLiteral("cluster");
+    hello.width = 1920;
+    hello.height = 720;
+    hello.wants = {QString(Protocol::Want::VEHICLE)};
+    if (!coreClient.start(hello)) {
+        return 2;
+    }
 
     QQmlApplicationEngine engine;
     ClusterController controller;

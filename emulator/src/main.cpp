@@ -6,11 +6,7 @@
 #include <QDebug>
 #include <memory>
 
-#include "CanInterface.h"
-#include "MockCanBackend.h"
-#if defined(Q_OS_LINUX)
-#include "SocketCanBackend.h"
-#endif
+#include "CanBackendFactory.h"
 #include "VehicleState.h"
 #include "EmulatorController.h"
 
@@ -22,22 +18,7 @@ int main(int argc, char *argv[])
 
     QQuickStyle::setStyle("Basic");
 
-    std::unique_ptr<CanInterface> canBackend;
-#if defined(Q_OS_LINUX)
-    {
-        auto socketBackend = std::make_unique<SocketCanBackend>("vcan0");
-        if (socketBackend->open()) {
-            canBackend = std::move(socketBackend);
-        } else {
-            qWarning() << "vcan0 unavailable, falling back to multicast mock CAN";
-            canBackend = std::make_unique<MockCanBackend>();
-            canBackend->open();
-        }
-    }
-#else
-    canBackend = std::make_unique<MockCanBackend>();
-    canBackend->open();
-#endif
+    std::unique_ptr<CanInterface> canBackend = CanBackendFactory::create();
 
     auto vehicleState = std::make_unique<VehicleState>();
     vehicleState->attachCanInterface(canBackend.get());
@@ -68,6 +49,10 @@ int main(int argc, char *argv[])
         Qt::QueuedConnection);
 
     engine.load(url);
+
+    if (QCoreApplication::arguments().contains(QStringLiteral("--drive-demo"))) {
+        controller->driveDemo();
+    }
 
     return app.exec();
 }

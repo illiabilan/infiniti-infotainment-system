@@ -8,43 +8,43 @@ ClimateController::ClimateController(QObject *parent)
 {
 }
 
-void ClimateController::attachVehicleState(VehicleState *state)
+void ClimateController::attachVehicleState(VehicleModel *state)
 {
     m_state = state;
     if (!m_state)
         return;
 
-    connect(m_state, &VehicleState::driverTempChanged, this, [this]() {
+    connect(m_state, &VehicleModel::driverTempChanged, this, [this]() {
         m_syncingFromState = true;
         setDriverTemp(m_state->driverTemp());
         m_syncingFromState = false;
     });
-    connect(m_state, &VehicleState::passengerTempChanged, this, [this]() {
+    connect(m_state, &VehicleModel::passengerTempChanged, this, [this]() {
         m_syncingFromState = true;
         setPassengerTemp(m_state->passengerTemp());
         m_syncingFromState = false;
     });
-    connect(m_state, &VehicleState::fanSpeedChanged, this, [this]() {
+    connect(m_state, &VehicleModel::fanSpeedChanged, this, [this]() {
         m_syncingFromState = true;
         setFanSpeed(m_state->fanSpeed() / 7.0);
         m_syncingFromState = false;
     });
-    connect(m_state, &VehicleState::acActiveChanged, this, [this]() {
+    connect(m_state, &VehicleModel::acActiveChanged, this, [this]() {
         m_syncingFromState = true;
         setAcOn(m_state->acActive());
         m_syncingFromState = false;
     });
-    connect(m_state, &VehicleState::autoActiveChanged, this, [this]() {
+    connect(m_state, &VehicleModel::autoActiveChanged, this, [this]() {
         m_syncingFromState = true;
         setAutoMode(m_state->autoActive());
         m_syncingFromState = false;
     });
-    connect(m_state, &VehicleState::frontDefrostActiveChanged, this, [this]() {
+    connect(m_state, &VehicleModel::frontDefrostActiveChanged, this, [this]() {
         m_syncingFromState = true;
         setDefrostOn(m_state->frontDefrostActive());
         m_syncingFromState = false;
     });
-    connect(m_state, &VehicleState::driverSeatHeatChanged, this, [this]() {
+    connect(m_state, &VehicleModel::driverSeatHeatChanged, this, [this]() {
         m_syncingFromState = true;
         setSeatHeatOn(m_state->driverSeatHeat() > 0);
         m_syncingFromState = false;

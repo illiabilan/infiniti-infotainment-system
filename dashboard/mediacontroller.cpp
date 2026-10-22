@@ -28,7 +28,7 @@ MediaController::MediaController(QObject *parent)
     updateElapsedFromProgress();
 }
 
-void MediaController::attachVehicleState(VehicleState *state)
+void MediaController::attachVehicleState(VehicleModel *state)
 {
     m_state = state;
     if (!m_state)
@@ -51,22 +51,22 @@ void MediaController::attachVehicleState(VehicleState *state)
         }
     };
 
-    connect(m_state, &VehicleState::isMediaPlayingChanged, this, [this]() {
+    connect(m_state, &VehicleModel::isMediaPlayingChanged, this, [this]() {
         m_syncingFromState = true;
         setPlaying(m_state->isMediaPlaying());
         m_syncingFromState = false;
     });
-    connect(m_state, &VehicleState::mediaSourceChanged, this, [this, syncSource]() {
+    connect(m_state, &VehicleModel::mediaSourceChanged, this, [this, syncSource]() {
         m_syncingFromState = true;
         syncSource();
         m_syncingFromState = false;
     });
-    connect(m_state, &VehicleState::mediaNextRequested, this, [this]() {
+    connect(m_state, &VehicleModel::mediaNextRequested, this, [this]() {
         m_syncingFromState = true;
         setTrackIndex((m_trackIndex + 1) % m_tracks.size());
         m_syncingFromState = false;
     });
-    connect(m_state, &VehicleState::mediaPrevRequested, this, [this]() {
+    connect(m_state, &VehicleModel::mediaPrevRequested, this, [this]() {
         m_syncingFromState = true;
         if (m_trackProgress > 0.05) {
             setTrackProgress(0.0);
