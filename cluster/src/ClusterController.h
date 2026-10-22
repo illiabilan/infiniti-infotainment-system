@@ -11,9 +11,13 @@
 #pragma once
 #include <QObject>
 #include <QTimer>
-#include <QElapsedTimer>
 #include <QString>
 #include "VehicleModel.h"
+#include "ClusterTripComputer.h"
+#include "ClusterTelltaleController.h"
+#include "ClusterAlertsController.h"
+#include "ClusterMediaController.h"
+#include "ClusterDriveSimulator.h"
 
 class ClusterController : public QObject
 {
@@ -145,80 +149,80 @@ public:
     int odoKm() const { return m_odoKm; }
     int dteKm() const { return m_dteKm; }
     int ambientTemp() const { return m_ambientTemp; }
-    double tripKm() const { return m_tripKm; }
-    QString tripTime() const { return m_tripTime; }
-    double tripEconomy() const { return m_tripEconomy; }
-    int tripPage() const { return m_tripPage; }
-    double refuelKm() const { return m_refuelKm; }
-    QString refuelTime() const { return m_refuelTime; }
-    double refuelEconomy() const { return m_refuelEconomy; }
-    double accumKm() const { return m_accumKm; }
-    QString accumTime() const { return m_accumTime; }
-    double accumEconomy() const { return m_accumEconomy; }
-    double instantEconomy() const { return m_instantEconomy; }
+    double tripKm() const { return m_trip.tripKm(); }
+    QString tripTime() const { return m_trip.tripTime(); }
+    double tripEconomy() const { return m_trip.tripEconomy(); }
+    int tripPage() const { return m_trip.tripPage(); }
+    double refuelKm() const { return m_trip.refuelKm(); }
+    QString refuelTime() const { return m_trip.refuelTime(); }
+    double refuelEconomy() const { return m_trip.refuelEconomy(); }
+    double accumKm() const { return m_trip.accumKm(); }
+    QString accumTime() const { return m_trip.accumTime(); }
+    double accumEconomy() const { return m_trip.accumEconomy(); }
+    double instantEconomy() const { return m_trip.instantEconomy(); }
     int menuTab() const { return m_menuTab; }
     bool showMenuTabs() const { return m_showMenuTabs; }
 
-    double flPsi() const { return m_flPsi; }
-    double frPsi() const { return m_frPsi; }
-    double rlPsi() const { return m_rlPsi; }
-    double rrPsi() const { return m_rrPsi; }
-    bool tpmsCalibrated() const { return m_tpmsCalibrated; }
+    double flPsi() const { return m_telltales.flPsi(); }
+    double frPsi() const { return m_telltales.frPsi(); }
+    double rlPsi() const { return m_telltales.rlPsi(); }
+    double rrPsi() const { return m_telltales.rrPsi(); }
+    bool tpmsCalibrated() const { return m_telltales.tpmsCalibrated(); }
 
-    bool parkBrakeActive() const { return m_parkBrakeActive; }
-    bool seatbeltActive() const { return m_seatbeltActive; }
-    bool absActive() const { return m_absActive; }
-    bool tpmsActive() const { return m_tpmsActive; }
-    bool batteryActive() const { return m_batteryActive; }
-    bool oilActive() const { return m_oilActive; }
-    bool leftIndicator() const { return m_leftIndicator; }
-    bool rightIndicator() const { return m_rightIndicator; }
-    bool highBeam() const { return m_highBeam; }
-    bool lowBeam() const { return m_lowBeam; }
-    bool positionLamp() const { return m_positionLamp; }
-    bool masterWarning() const { return m_masterWarning; }
-    bool lightWarning() const { return m_lightWarning; }
-    bool escActive() const { return m_escActive; }
-    bool escOffActive() const { return m_escOffActive; }
-    bool checkEngineActive() const { return m_checkEngineActive; }
-    bool smartKeyActive() const { return m_smartKeyActive; }
-    bool steeringActive() const { return m_steeringActive; }
-    bool airbagActive() const { return m_airbagActive; }
+    bool parkBrakeActive() const { return m_telltales.parkBrakeActive(); }
+    bool seatbeltActive() const { return m_telltales.seatbeltActive(); }
+    bool absActive() const { return m_telltales.absActive(); }
+    bool tpmsActive() const { return m_telltales.tpmsActive(); }
+    bool batteryActive() const { return m_telltales.batteryActive(); }
+    bool oilActive() const { return m_telltales.oilActive(); }
+    bool leftIndicator() const { return m_telltales.leftIndicator(); }
+    bool rightIndicator() const { return m_telltales.rightIndicator(); }
+    bool highBeam() const { return m_telltales.highBeam(); }
+    bool lowBeam() const { return m_telltales.lowBeam(); }
+    bool positionLamp() const { return m_telltales.positionLamp(); }
+    bool masterWarning() const { return m_telltales.masterWarning(); }
+    bool lightWarning() const { return m_telltales.lightWarning(); }
+    bool escActive() const { return m_telltales.escActive(); }
+    bool escOffActive() const { return m_telltales.escOffActive(); }
+    bool checkEngineActive() const { return m_telltales.checkEngineActive(); }
+    bool smartKeyActive() const { return m_telltales.smartKeyActive(); }
+    bool steeringActive() const { return m_telltales.steeringActive(); }
+    bool airbagActive() const { return m_telltales.airbagActive(); }
     bool isInteractiveMode() const { return m_isInteractiveMode; }
     QString tempUnit() const { return m_tempUnit; }
     QString fuelUnit() const { return m_fuelUnit; }
     QString tpmsUnit() const { return m_tpmsUnit; }
     int illumination() const { return m_illumination; }
-    bool cruiseEnabled() const { return m_cruiseEnabled; }
-    bool cruiseActive() const { return m_cruiseActive; }
-    int cruiseSetSpeed() const { return m_cruiseSetSpeed; }
-    int lightMode() const { return m_lightMode; }
-    bool showLightPopup() const { return m_showLightPopup; }
-    bool rearLeftBuckled() const { return m_rearLeftBuckled; }
-    bool rearCenterBuckled() const { return m_rearCenterBuckled; }
-    bool rearRightBuckled() const { return m_rearRightBuckled; }
-    bool rearAlarmActive() const { return m_rearAlarmActive; }
-    int rearAlarmSeat() const { return m_rearAlarmSeat; }
-    bool rearSeatBlinkState() const { return m_rearSeatBlinkState; }
+    bool cruiseEnabled() const { return m_alerts.cruiseEnabled(); }
+    bool cruiseActive() const { return m_alerts.cruiseActive(); }
+    int cruiseSetSpeed() const { return m_alerts.cruiseSetSpeed(); }
+    int lightMode() const { return m_telltales.lightMode(); }
+    bool showLightPopup() const { return m_telltales.showLightPopup(); }
+    bool rearLeftBuckled() const { return m_alerts.rearLeftBuckled(); }
+    bool rearCenterBuckled() const { return m_alerts.rearCenterBuckled(); }
+    bool rearRightBuckled() const { return m_alerts.rearRightBuckled(); }
+    bool rearAlarmActive() const { return m_alerts.rearAlarmActive(); }
+    int rearAlarmSeat() const { return m_alerts.rearAlarmSeat(); }
+    bool rearSeatBlinkState() const { return m_alerts.rearSeatBlinkState(); }
     QString language() const { return m_language; }
 
-    bool driverAttentionActive() const { return m_driverAttentionActive; }
-    int attentionLevel() const { return m_attentionLevel; }
-    int serviceDueKm() const { return m_serviceDueKm; }
-    int serviceDueDays() const { return m_serviceDueDays; }
-    bool servicePopupActive() const { return m_servicePopupActive; }
-    bool sunroofOpen() const { return m_sunroofOpen; }
-    bool sunroofAlertActive() const { return m_sunroofAlertActive; }
-    int smartKeyPrompt() const { return m_smartKeyPrompt; }
-    bool isgActive() const { return m_isgActive; }
-    bool reduceSpeedAlert() const { return m_reduceSpeedAlert; }
+    bool driverAttentionActive() const { return m_alerts.driverAttentionActive(); }
+    int attentionLevel() const { return m_alerts.attentionLevel(); }
+    int serviceDueKm() const { return m_alerts.serviceDueKm(); }
+    int serviceDueDays() const { return m_alerts.serviceDueDays(); }
+    bool servicePopupActive() const { return m_alerts.servicePopupActive(); }
+    bool sunroofOpen() const { return m_alerts.sunroofOpen(); }
+    bool sunroofAlertActive() const { return m_alerts.sunroofAlertActive(); }
+    int smartKeyPrompt() const { return m_alerts.smartKeyPrompt(); }
+    bool isgActive() const { return m_alerts.isgActive(); }
+    bool reduceSpeedAlert() const { return m_alerts.reduceSpeedAlert(); }
 
-    bool showMediaPopup() const { return m_showMediaPopup; }
-    QString mediaSource() const { return m_mediaSource; }
-    QString mediaTitle() const { return m_mediaTitle; }
-    QString mediaArtist() const { return m_mediaArtist; }
-    bool isMediaPlaying() const { return m_isMediaPlaying; }
-    int mediaTrackIndex() const { return m_mediaTrackIndex; }
+    bool showMediaPopup() const { return m_media.showMediaPopup(); }
+    QString mediaSource() const { return m_media.mediaSource(); }
+    QString mediaTitle() const { return m_media.mediaTitle(); }
+    QString mediaArtist() const { return m_media.mediaArtist(); }
+    bool isMediaPlaying() const { return m_media.isMediaPlaying(); }
+    int mediaTrackIndex() const { return m_media.mediaTrackIndex(); }
 
 public slots:
     void setShowMediaPopup(bool show);
@@ -328,24 +332,24 @@ public slots:
     void triggerShutdown();
     void setReduceSpeedAlert(bool active);
     void triggerReduceSpeedAlert();
-    bool pressStartAgainAlert() const { return m_pressStartAgainAlert; }
+    bool pressStartAgainAlert() const { return m_alerts.pressStartAgainAlert(); }
     void setPressStartAgainAlert(bool active);
     Q_INVOKABLE void showPressStartAgainAlert(bool show) { setPressStartAgainAlert(show); }
-    int startPedalPrompt() const { return m_startPedalPrompt; }
+    int startPedalPrompt() const { return m_alerts.startPedalPrompt(); }
     void setStartPedalPrompt(int prompt);
     Q_INVOKABLE void showStartPedalAlert(int prompt) { setStartPedalPrompt(prompt); }
-    bool doorOpenAlert() const { return m_doorOpenAlert || isAnyDoorOpen(); }
+    bool doorOpenAlert() const { return m_alerts.doorOpenAlert(); }
     void setDoorOpenAlert(bool open);
-    Q_INVOKABLE void toggleDoorOpen() { setDoorFrontRight(!m_doorFrontRight); }
-    int doorOpenSide() const { return m_doorOpenSide; }
+    Q_INVOKABLE void toggleDoorOpen() { setDoorFrontRight(!doorFrontRight()); }
+    int doorOpenSide() const { return m_alerts.doorOpenSide(); }
     void setDoorOpenSide(int side);
-    bool doorFrontLeft() const { return m_doorFrontLeft; }
-    bool doorFrontRight() const { return m_doorFrontRight; }
-    bool doorRearLeft() const { return m_doorRearLeft; }
-    bool doorRearRight() const { return m_doorRearRight; }
-    bool bonnetOpen() const { return m_bonnetOpen; }
-    bool trunkOpen() const { return m_trunkOpen; }
-    bool isAnyDoorOpen() const { return m_doorFrontLeft || m_doorFrontRight || m_doorRearLeft || m_doorRearRight || m_bonnetOpen || m_trunkOpen; }
+    bool doorFrontLeft() const { return m_alerts.doorFrontLeft(); }
+    bool doorFrontRight() const { return m_alerts.doorFrontRight(); }
+    bool doorRearLeft() const { return m_alerts.doorRearLeft(); }
+    bool doorRearRight() const { return m_alerts.doorRearRight(); }
+    bool bonnetOpen() const { return m_alerts.bonnetOpen(); }
+    bool trunkOpen() const { return m_alerts.trunkOpen(); }
+    bool isAnyDoorOpen() const { return m_alerts.isAnyDoorOpen(); }
     void setDoorFrontLeft(bool open);
     void setDoorFrontRight(bool open);
     void setDoorRearLeft(bool open);
@@ -357,15 +361,15 @@ public slots:
     Q_INVOKABLE void setDoorFROpen(bool open) { setDoorFrontRight(open); }
     Q_INVOKABLE void setDoorRLOpen(bool open) { setDoorRearLeft(open); }
     Q_INVOKABLE void setDoorRROpen(bool open) { setDoorRearRight(open); }
-    Q_INVOKABLE void toggleDoorFL() { setDoorFrontLeft(!m_doorFrontLeft); }
-    Q_INVOKABLE void toggleDoorFR() { setDoorFrontRight(!m_doorFrontRight); }
-    Q_INVOKABLE void toggleDoorRL() { setDoorRearLeft(!m_doorRearLeft); }
-    Q_INVOKABLE void toggleDoorRR() { setDoorRearRight(!m_doorRearRight); }
-    Q_INVOKABLE void toggleBonnet() { setBonnetOpen(!m_bonnetOpen); }
-    Q_INVOKABLE void toggleTrunk() { setTrunkOpen(!m_trunkOpen); }
-    Q_INVOKABLE void toggleLeftDoors() { bool op = !(m_doorFrontLeft && m_doorRearLeft); setDoorFrontLeft(op); setDoorRearLeft(op); }
-    Q_INVOKABLE void toggleRightDoors() { bool op = !(m_doorFrontRight && m_doorRearRight); setDoorFrontRight(op); setDoorRearRight(op); }
-    Q_INVOKABLE void toggleBothDoors() { bool op = !(m_doorFrontLeft && m_doorFrontRight); setDoorFrontLeft(op); setDoorFrontRight(op); }
+    Q_INVOKABLE void toggleDoorFL() { setDoorFrontLeft(!doorFrontLeft()); }
+    Q_INVOKABLE void toggleDoorFR() { setDoorFrontRight(!doorFrontRight()); }
+    Q_INVOKABLE void toggleDoorRL() { setDoorRearLeft(!doorRearLeft()); }
+    Q_INVOKABLE void toggleDoorRR() { setDoorRearRight(!doorRearRight()); }
+    Q_INVOKABLE void toggleBonnet() { setBonnetOpen(!bonnetOpen()); }
+    Q_INVOKABLE void toggleTrunk() { setTrunkOpen(!trunkOpen()); }
+    Q_INVOKABLE void toggleLeftDoors() { bool op = !(doorFrontLeft() && doorRearLeft()); setDoorFrontLeft(op); setDoorRearLeft(op); }
+    Q_INVOKABLE void toggleRightDoors() { bool op = !(doorFrontRight() && doorRearRight()); setDoorFrontRight(op); setDoorRearRight(op); }
+    Q_INVOKABLE void toggleBothDoors() { bool op = !(doorFrontLeft() && doorFrontRight()); setDoorFrontLeft(op); setDoorFrontRight(op); }
     Q_INVOKABLE void toggleAllDoors() { bool op = !isAnyDoorOpen(); setAllDoors(op); }
     Q_INVOKABLE void toggleIgnition() { if (m_clusterState == StateOff || m_clusterState == StateShutdown) { triggerStartupSequence(); } else { triggerShutdown(); } }
     Q_INVOKABLE void setIgnitionOffDirect() { setClusterState(StateOff); setSpeed(0); setRpm(0.0); setAllTelltales(false); }
@@ -381,13 +385,13 @@ public slots:
     Q_INVOKABLE void setAllTiresOK() { setAllPsi(35.0); setTpmsCalibrated(true); }
     Q_INVOKABLE void setAllTiresLow() { setAllPsi(24.0); setTpmsCalibrated(true); }
 
-    bool isDemoDriving() const { return m_isDemoDriving; }
-    QString demoScenario() const { return m_demoScenario; }
+    bool isDemoDriving() const { return m_driveSim.isDemoDriving(); }
+    QString demoScenario() const { return m_driveSim.demoScenario(); }
 
     Q_INVOKABLE void toggleDemo() { driveDemo(); }
     Q_INVOKABLE void toggleRandomSimulation() { driveDemo(); }
-    Q_INVOKABLE void startRandomSimulation() { if (!m_isDemoDriving) driveDemo(); }
-    Q_INVOKABLE void stopRandomSimulation() { if (m_isDemoDriving) driveDemo(); }
+    Q_INVOKABLE void startRandomSimulation() { if (!isDemoDriving()) driveDemo(); }
+    Q_INVOKABLE void stopRandomSimulation() { if (isDemoDriving()) driveDemo(); }
 
     Q_INVOKABLE void playTrack(const QString& source, const QString& artist, const QString& title);
     Q_INVOKABLE void nextMediaTrack();
@@ -512,63 +516,23 @@ signals:
 
 private slots:
     void onSequenceStep();
-    void onDriveSimulationTick();
-    void onRearAlarmTimeout();
-    void onLightPopupTimeout();
-    void onRearBlinkTick();
     void onShutdownTimeout();
-    void onReduceSpeedDismissTimeout();
-    void onOverspeedBeepTick();
-    void onTpmsDismissTimeout();
 
 private:
+    void applyCruiseTargetSpeed(int target);
+
+    ClusterTripComputer m_trip;
+    ClusterTelltaleController m_telltales;
+    ClusterAlertsController m_alerts;
+    ClusterMediaController m_media;
+    ClusterDriveSimulator m_driveSim;
+
     QString m_language = "English"; // "English" or "हिन्दी"
     QString m_themeColor = "blue"; // "blue", "green", "red"
     QString m_tempUnit = "°C";
     QString m_fuelUnit = "km/L";
     QString m_tpmsUnit = "psi";
     int m_illumination = 20;
-    bool m_cruiseEnabled = false;
-    bool m_cruiseActive = false;
-    int m_cruiseSetSpeed = 41;
-    int m_lightMode = 0; // 0 = OFF, 1 = AUTO, 2 = POSITION, 3 = HEADLIGHT
-    bool m_showLightPopup = false;
-    bool m_rearLeftBuckled = true;
-    bool m_rearCenterBuckled = true;
-    bool m_rearRightBuckled = true;
-    bool m_rearAlarmActive = false;
-    int m_rearAlarmSeat = -1; // 0=Left, 1=Center, 2=Right
-    bool m_rearSeatBlinkState = false;
-    QTimer* m_rearAlarmTimer = nullptr;
-    QTimer* m_rearBlinkTimer = nullptr;
-    QTimer* m_lightPopupTimer = nullptr;
-
-    bool m_driverAttentionActive = false;
-    int m_attentionLevel = 4; // 1 to 5 bars
-    int m_serviceDueKm = 1500;
-    int m_serviceDueDays = 30;
-    bool m_servicePopupActive = false;
-    bool m_sunroofOpen = false;
-    bool m_sunroofAlertActive = false;
-    int m_smartKeyPrompt = 0; // 0=None, 1="Key not in vehicle", 2="Press brake to start", 3="Low Key Battery"
-    bool m_isgActive = false;
-    bool m_reduceSpeedAlert = false;
-    bool m_pressStartAgainAlert = false;
-    int m_startPedalPrompt = 0;
-    bool m_doorOpenAlert = false;
-    int m_doorOpenSide = 0;
-    bool m_doorFrontLeft = false;
-    bool m_doorFrontRight = false;
-    bool m_doorRearLeft = false;
-    bool m_doorRearRight = false;
-    bool m_bonnetOpen = false;
-    bool m_trunkOpen = false;
-    bool m_speed80Triggered = false;
-    bool m_speed120Triggered = false;
-    QTimer* m_shutdownTimer = nullptr;
-    QTimer* m_reduceSpeedDismissTimer = nullptr;
-    QTimer* m_overspeedBeepTimer = nullptr;
-    QTimer* m_tpmsDismissTimer = nullptr;
 
     int m_clusterState = StateNormalTrip;
     int m_speed = 0;
@@ -579,77 +543,12 @@ private:
     int m_odoKm = 176;
     int m_dteKm = 175;
     int m_ambientTemp = 32;
-    double m_tripKm = 0.0;
-    QString m_tripTime = "0:00";
-    double m_tripEconomy = 0.0;
-    int m_tripSeconds = 0;
-    int m_tripPage = 1; // 0 = Drive info, 1 = Since refuelling, 2 = Accumulated info
-    double m_refuelKm = 0.0;
-    QString m_refuelTime = "0:00";
-    double m_refuelEconomy = 0.0;
-    int m_refuelSeconds = 0;
-    double m_accumKm = 0.0;
-    QString m_accumTime = "0:00";
-    double m_accumEconomy = 0.0;
-    int m_accumSeconds = 0;
-    double m_instantEconomy = 0.0;
-    double m_tripLitres = 0.0;
-    double m_refuelLitres = 0.0;
-    double m_accumLitres = 0.0;
-    double m_fuelBarAccumulator = 0.0;
-    double m_engineSecAcc       = 0.0; // Fractional second accumulator for trip timers
-    // Raw (un-rounded) distance accumulators – never overwritten by setter
-    double m_rawTripKm    = 0.0;
-    double m_rawRefuelKm  = 0.0;
-    double m_rawAccumKm   = 0.0;
-    double m_rawOdoAcc    = 0.0;  // sub-km odo accumulator (replaces static local)
-    double m_rawDteAcc    = 0.0;  // sub-km DTE accumulator (replaces static local)
-    double m_demoCycleTime = 0.0; // Demo drive scenario clock (seconds since demo start)
-    int    m_demoPrevGear  = 1;   // Previous gear num for RPM-drop on shift event
     int m_menuTab = 0; // 0 = Trip (Car), 1 = User Settings (Cog), 2 = TPMS/Info (i)
     bool m_showMenuTabs = false;
-
-    double m_flPsi = 35.0;
-    double m_frPsi = 35.0;
-    double m_rlPsi = 35.0;
-    double m_rrPsi = 31.0; // Sample low pressure for demo/verification
-    bool m_tpmsCalibrated = false; // "Drive to display" until driven for 5s
-    int m_driveSeconds = 0;
-
-    bool m_parkBrakeActive = true;
-    bool m_seatbeltActive = true;
-    bool m_absActive = false;
-    bool m_tpmsActive = false;
-    bool m_batteryActive = true;
-    bool m_oilActive = true;
-    bool m_leftIndicator = false;
-    bool m_rightIndicator = false;
-    bool m_highBeam = false;
-    bool m_lowBeam = false;
-    bool m_positionLamp = false;
-    bool m_masterWarning = false;
-    bool m_lightWarning = false;
-    bool m_escActive = false;
-    bool m_escOffActive = false;
-    bool m_checkEngineActive = false;
-    bool m_smartKeyActive = true;
-    bool m_steeringActive = true;
-    bool m_airbagActive = false;
     bool m_isInteractiveMode = false;
 
     QTimer m_sequenceTimer;
-    QTimer m_driveSimTimer;
     int m_sequenceStepIndex = 0;
-    bool m_isDemoDriving = false;
-    double m_demoTargetSpeed = 0.0;
-    QString m_demoScenario = "Idle / Parked";
-
-    bool m_showMediaPopup = false;
-    QString m_mediaSource = "USB";
-    QString m_mediaTitle = "Sunset Drive";
-    QString m_mediaArtist = "Revoic";
-    bool m_isMediaPlaying = true;
-    int m_mediaTrackIndex = 0;
-    QTimer* m_mediaPopupTimer = nullptr;
-    VehicleModel* m_vehicleState = nullptr;
+    QTimer *m_shutdownTimer = nullptr;
+    VehicleModel *m_vehicleState = nullptr;
 };
