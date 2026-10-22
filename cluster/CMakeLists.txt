@@ -28,6 +28,16 @@ qt_add_executable(ApexClusterApp
     src/main.cpp
     src/ClusterController.h
     src/ClusterController.cpp
+    src/ClusterTripComputer.h
+    src/ClusterTripComputer.cpp
+    src/ClusterTelltaleController.h
+    src/ClusterTelltaleController.cpp
+    src/ClusterAlertsController.h
+    src/ClusterAlertsController.cpp
+    src/ClusterMediaController.h
+    src/ClusterMediaController.cpp
+    src/ClusterDriveSimulator.h
+    src/ClusterDriveSimulator.cpp
 )
 
 qt_add_qml_module(ApexClusterApp
