@@ -7,6 +7,11 @@
 #include "CoreServer.h"
 #include "VehicleState.h"
 
+#ifdef AA_WITH_AASDK
+#include "AasdkUsbPort.h"
+#include "AoaSwitcher.h"
+#endif
+
 int main(int argc, char *argv[])
 {
     QCoreApplication app(argc, argv);
@@ -20,14 +25,18 @@ int main(int argc, char *argv[])
         return 2;
     }
 
-    // Declaration order matters: backend, vehicle, session, then server.
-    // Destruction runs in reverse, so the server goes before the vehicle.
+    // Declaration order matters: backend, vehicle, session, USB port and switcher, then server.
+    // Destruction runs in reverse: server first, then the switcher before the port it uses, then the vehicle.
     auto canBackend = CanBackendFactory::create();
 
     VehicleState vehicleState;
     vehicleState.attachCanInterface(canBackend.get());
 
     AaSessionState aaSession;
+#ifdef AA_WITH_AASDK
+    AasdkUsbPort usbPort;
+    AoaSwitcher aoaSwitcher(&usbPort);
+#endif
     CoreServer server(&vehicleState, &aaSession);
 
     if (!server.listen(*port)) {
@@ -38,6 +47,13 @@ int main(int argc, char *argv[])
     qInfo().noquote() << QStringLiteral("core: listening 127.0.0.1:%1 pid=%2")
                              .arg(*port)
                              .arg(QCoreApplication::applicationPid());
+
+#ifdef AA_WITH_AASDK
+    // AoaSwitcher logs a failed start and Core keeps running
+    aoaSwitcher.start();
+#else
+    qInfo().noquote() << QStringLiteral("aa-usb: USB backend not built (AA_WITH_AASDK=OFF), core runs without an AOA backend");
+#endif
 
     return app.exec();
 }

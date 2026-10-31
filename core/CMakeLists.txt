@@ -62,5 +62,20 @@ target_link_libraries(core_protocol_test PRIVATE
     Qt6::Test
 )
 
+# Z1 AOA replay (AA-Z1-T3)
+qt_add_executable(core_aa_usb_test
+    aa/tests/AoaSwitcherReplayTest.cpp
+)
+
+target_link_libraries(core_aa_usb_test PRIVATE
+    CoreAa
+    Qt6::Test
+)
+
+target_compile_definitions(core_aa_usb_test PRIVATE
+    AOA_FIXTURES_DIR="${CMAKE_CURRENT_SOURCE_DIR}/aa/tests/fixtures"
+)
+
 add_test(NAME core_test COMMAND core_test)
 add_test(NAME core_protocol_test COMMAND core_protocol_test)
+add_test(NAME core_aa_usb_test COMMAND core_aa_usb_test)

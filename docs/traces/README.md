@@ -15,14 +15,14 @@
 
 | Z | Маркер (точний текст або шаблон) | Де в трасі | Очікуваний показник |
 |---|---|---|---|
-| Z1 | `phone candidate 18d1:4ee7, switching – accessory mode` → `accessory up` | A: 20:02:02.872 → 03.890. B: 22:19:37.093 → 38.107 | ~1,0 с |
+| Z1 | `watching for phones`, `accessory left over from an earlier run, resetting it` (помилка: `reset: <помилка>`), `phone candidate 18d1:4ee7, switching to accessory mode` → `accessory mode requested` → `accessory up`, `aoap: <помилка>`, `closed (phone unplugged)`. Переходи: `docs/tickets/Z1-aoa-contract.md` | A: 19:45:03.374 (watching, left-over), 20:02:02.872 → 02.885 → 03.890, 20:02:41.674 (closed). B: 22:19:37.093 → 37.106 → 38.107. `aoap:` і `reset:` після left-over у трасах не було | ~1,0 с від `phone candidate` до `accessory up`, межа 2 с. Кор пише `accessory up in <N> ms` |
 | Z2 | `tls up, protocol 6.1`, `AUTH_COMPLETE proto bytes: 0800` | B: 22:19:38.275, 38.276 | TLS ~0,17 с після accessory up. 0800 = status 0 |
 | Z3 | `ServiceDiscoveryRequest label="Android" phone="Google Pixel 9 Pro"`, `SDR: 13 channels, 582B`, `CHANNEL_OPEN_REQUEST ch=... responding OK` | B: 22:19:38.282 → 38.3xx | 13 ChannelOpen за ~13 мс |
 | Z4 | `video codec selected: h265`, `VideoChannel] stream started, session=5`, `decoded format=NV12 1280x720`, `stream stopped` | B: 38.407, 38.413, 39.048 | Перезапуск потоку через ~0,6 с, у всіх трьох сесіях |
 | Z5 | `ch=8 KeyBindingRequest (len=57), replying status=OK` | B | InputReport у трасах не логується. Маркер додає T4 |
 | Z6 | `AVSetupRequest ch=4 codec=1`, `audio media start (48000Hz 2ch)`, `AudioFocus type=4(RELEASE) -> state=3(LOSS)`, `AudioFocus type=1(GAIN)`, `audio media stop` | B: 22:19:38.828, 39.869, 48.315 | Ack на кожен пакет у трасі не видно |
 | Z7 | `NavigationChannel] status=Active`, `NavigationFocusRequest raw: 0802`, `state maneuver=`, `position dest=`, `NavigationChannel] status=Inactive`, `NavigationFocusRequest raw: 0801` | B: 22:19:51.718, 51.722, 22:27:22.084, 22.186 | 346 пар STATE та CURRENT_POSITION за ~7,5 хв. STOP (0x8002) не було |
-| Z8 | `usb read error`, `closed (phone unplugged)`, `session over, video=570 audio=309`, `accessory left over from an earlier run, resetting it`, `Ping sent (1500ms interval)`, `BT pairing request ... -> already paired` | A: 20:02:41.567 → 41.675, 20:02:04.046 (reset). B: кожні ~2 с на ch 10 | Повторне підключення в межах одного запуску LIVI: сесія 2 в трасі A без рестарту |
+| Z8 | `usb read error`, `closed (phone unplugged)`, `session over, video=570 audio=309`, `accessory left over from an earlier run, resetting it`, `Ping sent (1500ms interval)`, `BT pairing request ... -> already paired` | A: 20:02:41.567 → 41.675, 19:45:03.374 (reset). B: кожні ~2 с на ch 10 | Повторне підключення в межах одного запуску LIVI: сесія 2 в трасі A без рестарту |
 | CL-2 | `core: listening 127.0.0.1:<port> pid=<pid>`, `core: hello id=<client_id> role=<role> aa_session=<id>/<phase> keyframe=<sent або none>`, `core: client disconnected id=<client_id> role=<role> aa_session=<id>/<phase> kept` | Лог Кора: `docs/traces/cl2-core-lifecycle-<дата>.log` | Один рядок `listening` на запуск. Те саме значення `aa_session=` до і після перепідключення клієнта. PID у `listening` не змінюється |
 
 ## Карта ID повідомлень (за LIVI `navigation.proto` і `consts.rs`)
